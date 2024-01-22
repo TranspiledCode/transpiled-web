@@ -1,16 +1,16 @@
-// Import your components for each section
+import { ThemeProvider } from '@transpiled/ui';
+import { ScrollToTop } from '@transpiled/ui';
 import Home from './sections/Home';
 import Services from './sections/Services';
 import Bytes from './sections/Bytes';
 import About from './sections/About';
 import Articles from './sections/Articles';
 import Footer from './sections/Footer';
-import { ThemeProvider } from '@transpiled/ui';
-import { ScrollToTop } from '@transpiled/ui';
+import transpiledTheme from './styles/theme';
 
 const App = () => {
   return (
-    <ThemeProvider>
+    <ThemeProvider externalTheme={transpiledTheme}>
       <ScrollToTop />
       <Home id='home' />
       <Services id='services' />
