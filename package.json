@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@transpiled/ui": "^0.0.25",
@@ -30,8 +31,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
-    "parcel": "^2.9.3",
-    "process": "^0.11.10",
     "eslint": "^8.54.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
@@ -39,6 +38,8 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
   }
 }

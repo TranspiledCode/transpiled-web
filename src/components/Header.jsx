@@ -1,30 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from '@transpiled/ui';
+import NavMenu from './NavMenu';
+import Icon from './Icon';
 
 import Logo from '../assets/images/logo-colored.png';
-import DropDownMenu from './DropdownMenu';
 import Navbar from './Navbar';
-import ToggleSwitch from './ToggleSwitch';
 
 const Header = () => {
-  const { toggleTheme } = useTheme();
-
-  const menuItems = [
-    { id: 1, label: 'Settings', href: '#home' },
-    { id: 2, label: 'Account', href: '#about' },
-    { id: 3, separator: true },
-    { id: 4, label: 'Login', href: '#contact' },
-  ];
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { id: 1, label: 'Home', link: '#home' },
     { id: 2, label: 'Services', link: '#services' },
-    { id: 3, label: 'Tutorials', link: '#bytes' },
     { id: 4, label: 'About Us', link: '#about' },
-    { id: 5, label: 'Articles', link: '#articles' },
     { id: 6, label: 'Contact Us', link: '#footer' },
   ];
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+  };
 
   return (
     <HeaderSection>
@@ -35,9 +33,13 @@ const Header = () => {
       <RightContainer>
         <Navbar navLinks={navLinks} />
         <StyledMenu>
-          <DropDownMenu menuItems={menuItems} />
+          <Icon onClick={handleOpenMenu} iconName='bars' iconType='solid' />
         </StyledMenu>
-        <ToggleSwitch rotation='270' onToggle={toggleTheme} />
+        <NavMenu
+          isMenuOpen={isMenuOpen}
+          closeMenu={handleCloseMenu}
+          sections={navLinks}
+        />
       </RightContainer>
     </HeaderSection>
   );
@@ -66,8 +68,8 @@ const HeaderSection = styled.header`
 const LeftContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   justify-content: flex-start;
+  padding: 20px 10px;
 
   @media (min-width: 769px) {
     margin-bottom: 0;
@@ -79,10 +81,12 @@ const RightContainer = styled.div`
   align-items: center;
   flex: 1;
   justify-content: flex-end;
+  padding: 0px 10px;
+  gap: 10px;
 `;
 
 const LogoImage = styled.img`
-  height: 40px;
+  height: 50px;
 
   @media (min-width: 769px) {
     height: 100px;
@@ -103,6 +107,8 @@ const CompanyName = styled.span`
 `;
 
 const StyledMenu = styled.div`
+  font-size: 4rem;
+
   @media (min-width: 768px) {
     display: none;
   }

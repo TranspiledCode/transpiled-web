@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 
 const Articels = styled.section`
   height: 800px;
-  background-color: #f2f2f2;
+  background-color: #af6161;
 `;
 
 const Contact = () => (
-  <Articels>
+  <Articels id='articles'>
     <div>Articles</div>
   </Articels>
 );

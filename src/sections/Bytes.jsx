@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 
 const BytesSection = styled.section`
   height: 800px;
-  background-color: ${(props) => props.theme.background};
+  background-color: #58b949;
 `;
 
 const Bytes = () => (
-  <BytesSection>
+  <BytesSection id='bytes'>
     <div>Bytes</div>
   </BytesSection>
 );

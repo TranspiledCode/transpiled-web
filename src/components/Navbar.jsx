@@ -12,7 +12,7 @@ const Navigation = styled.nav`
 
   li {
     margin-right: 30px;
-    font-size: 16px;
+    font-size: 2rem;
   }
 
   a {

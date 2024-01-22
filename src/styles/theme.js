@@ -13,7 +13,7 @@ const transpiledTheme = {
     transparent: 'transparent',
     separator: '#eaeaea',
     knobColor: '#2EBFD4',
-    barColor: '#013F6A',
+    barColor: '#ffffff',
   },
   dark: {
     primaryColor: '#013F6A',
@@ -28,7 +28,7 @@ const transpiledTheme = {
     gray: '#afafaf',
     transparent: 'transparent',
     knobColor: '#2EBFD4',
-    barColor: '#afafaf',
+    barColor: '#ffffff',
   },
 };
 
