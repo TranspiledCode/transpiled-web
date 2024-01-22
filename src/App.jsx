@@ -1,8 +1,8 @@
 // Import your components for each section
-import Home from './components/Home';
-import Services from './components/Services';
+import Home from './sections/Home';
+import Services from './sections/Services';
 import Header from './components/Header';
-import Footer from './components/Footer';
+import Footer from './sections/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { ThemeProvider } from './styles/ThemeProvider';
 
