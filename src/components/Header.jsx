@@ -39,9 +39,8 @@ const Header = () => {
 
 // Styles
 const HeaderSection = styled.header`
-  background-color: ${(props) => props.theme.background};
+  background-color: transparent;
   padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   color: ${(props) => props.theme.text};
   display: flex;

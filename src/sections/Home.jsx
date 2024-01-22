@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import Header from '../components/Header';
 import { useTheme } from '../styles/ThemeProvider';
 
 const HomeSection = styled.div`
   height: 800px;
-  background-color: ${(props) => props.theme.tertiaryColor};
+  background-color: ${(props) => props.theme.background};
 `;
 
 const Home = () => {
@@ -11,7 +12,8 @@ const Home = () => {
 
   return (
     <HomeSection id='home' theme={theme}>
-      <div>Home</div>
+      <Header />
+      <h3>Home</h3>
     </HomeSection>
   );
 };
