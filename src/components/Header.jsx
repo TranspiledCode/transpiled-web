@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@transpiled/ui';
 
@@ -11,19 +11,19 @@ const Header = () => {
   const { toggleTheme } = useTheme();
 
   const menuItems = [
-    { label: 'Settings', href: '#home' },
-    { label: 'Account', href: '#about' },
-    { separator: true },
-    { label: 'Login', href: '#contact' },
+    { id: 1, label: 'Settings', href: '#home' },
+    { id: 2, label: 'Account', href: '#about' },
+    { id: 3, separator: true },
+    { id: 4, label: 'Login', href: '#contact' },
   ];
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Services', href: '#services' },
-    { label: 'Tutorials', href: '#bytes' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Articles', href: '#articles' },
-    { label: 'Contact Us', href: '#footer' },
+    { id: 1, label: 'Home', link: '#home' },
+    { id: 2, label: 'Services', link: '#services' },
+    { id: 3, label: 'Tutorials', link: '#bytes' },
+    { id: 4, label: 'About Us', link: '#about' },
+    { id: 5, label: 'Articles', link: '#articles' },
+    { id: 6, label: 'Contact Us', link: '#footer' },
   ];
 
   return (

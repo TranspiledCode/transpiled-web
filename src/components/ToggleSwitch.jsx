@@ -1,6 +1,7 @@
 // ToggleSwitch
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import withRotation from '../utils/withRotation';
 
 // Define default colors
@@ -70,6 +71,20 @@ const ToggleSwitch = ({ onToggle, backgroundColor, knobColor, rotation }) => {
       <Slider backgroundColor={backgroundColor} knobColor={knobColor} />
     </RotatedSwitch>
   );
+};
+
+ToggleSwitch.propTypes = {
+  onToggle: PropTypes.func,
+  backgroundColor: PropTypes.string,
+  knobColor: PropTypes.string,
+  rotation: PropTypes.string,
+};
+
+ToggleSwitch.defaultProps = {
+  rotation: '0',
+  onToggle: null,
+  backgroundColor: null,
+  knobColor: null,
 };
 
 export default ToggleSwitch;

@@ -11,12 +11,10 @@ const HomeSection = styled.div`
   background-repeat: no-repeat;
 `;
 
-const Home = () => {
-  return (
-    <HomeSection>
-      <Header />
-    </HomeSection>
-  );
-};
+const Home = () => (
+  <HomeSection>
+    <Header />
+  </HomeSection>
+);
 
 export default Home;

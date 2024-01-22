@@ -6,12 +6,10 @@ const BytesSection = styled.section`
   background-color: ${(props) => props.theme.background};
 `;
 
-const Bytes = () => {
-  return (
-    <BytesSection>
-      <div>Bytes</div>
-    </BytesSection>
-  );
-};
+const Bytes = () => (
+  <BytesSection>
+    <div>Bytes</div>
+  </BytesSection>
+);
 
 export default Bytes;

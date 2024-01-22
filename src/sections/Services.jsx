@@ -5,12 +5,10 @@ const ServicesSection = styled.div`
   background-color: #20bdc3;
 `;
 
-const Services = () => {
-  return (
-    <ServicesSection id='services'>
-      <div>Services</div>
-    </ServicesSection>
-  );
-};
+const Services = () => (
+  <ServicesSection id='services'>
+    <div>Services</div>
+  </ServicesSection>
+);
 
 export default Services;

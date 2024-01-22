@@ -6,12 +6,10 @@ const Articels = styled.section`
   background-color: #f2f2f2;
 `;
 
-const Contact = () => {
-  return (
-    <Articels>
-      <div>Articles</div>
-    </Articels>
-  );
-};
+const Contact = () => (
+  <Articels>
+    <div>Articles</div>
+  </Articels>
+);
 
 export default Contact;

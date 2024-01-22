@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Navigation = styled.nav`
   ul {
@@ -30,18 +31,25 @@ const Navigation = styled.nav`
   }
 `;
 
-const Navbar = ({ navLinks }) => {
-  return (
-    <Navigation>
-      <ul>
-        {navLinks.map((item, index) => (
-          <li key={index}>
-            <a href={item.href}>{item.label}</a>
-          </li>
-        ))}
-      </ul>
-    </Navigation>
-  );
+const Navbar = ({ navLinks }) => (
+  <Navigation>
+    <ul>
+      {navLinks.map((item) => (
+        <li key={item.id}>
+          <a href={item.link}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </Navigation>
+);
+
+Navbar.propTypes = {
+  navLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      href: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Navbar;

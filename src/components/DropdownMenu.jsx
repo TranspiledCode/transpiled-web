@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+
 import {
   Menu,
   MenuProvider,
@@ -43,27 +45,33 @@ const StyledMenuItem = styled(MenuItem)`
   }
 `;
 
-const DropDownMenu = ({ menuItems }) => {
-  return (
-    <>
-      <MenuProvider>
-        <StyledMenuButton>
-          <FontAwesomeIcon icon={faBars} />
-        </StyledMenuButton>
-        <StyledMenu>
-          {menuItems.map((item, index) =>
-            item.separator ? (
-              <MenuSeparator key={index} />
-            ) : (
-              <StyledMenuItem key={index} href={item.href}>
-                {item.label}
-              </StyledMenuItem>
-            )
-          )}
-        </StyledMenu>
-      </MenuProvider>
-    </>
-  );
+const DropDownMenu = ({ menuItems }) => (
+  <MenuProvider>
+    <StyledMenuButton>
+      <FontAwesomeIcon icon={faBars} />
+    </StyledMenuButton>
+    <StyledMenu>
+      {menuItems.map((item) =>
+        item.separator ? (
+          <MenuSeparator key={item.id} />
+        ) : (
+          <StyledMenuItem key={item.id} href={item.link}>
+            {item.label}
+          </StyledMenuItem>
+        )
+      )}
+    </StyledMenu>
+  </MenuProvider>
+);
+
+DropDownMenu.propTypes = {
+  menuItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      href: PropTypes.string,
+      label: PropTypes.string,
+      separator: PropTypes.bool,
+    })
+  ).isRequired,
 };
 
 export default DropDownMenu;

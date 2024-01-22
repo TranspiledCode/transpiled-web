@@ -6,12 +6,10 @@ const AboutContainer = styled.div`
   background-color: ${(props) => props.theme.background};
 `;
 
-const About = () => {
-  return (
-    <AboutContainer>
-      <div>About</div>
-    </AboutContainer>
-  );
-};
+const About = () => (
+  <AboutContainer>
+    <div>About</div>
+  </AboutContainer>
+);
 
 export default About;
