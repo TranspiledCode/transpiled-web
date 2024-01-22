@@ -3,6 +3,7 @@
 /* Box Sizing Border Box */
 html {
   box-sizing: border-box;
+  font-size: 10px;
 }
 
 *,

@@ -29,6 +29,7 @@ const Navigation = styled.nav`
     display: none;
   }
 `;
+
 const Navbar = ({ navLinks }) => {
   return (
     <Navigation>

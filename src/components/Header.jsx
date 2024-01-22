@@ -20,6 +20,9 @@ const Header = () => {
   const navLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Services', href: '#services' },
+    { label: 'Tutorials', href: '#bytes' },
+    { label: 'About Us', href: '#about' },
+    { label: 'Articles', href: '#articles' },
     { label: 'Contact Us', href: '#footer' },
   ];
 
@@ -41,15 +44,15 @@ const Header = () => {
 // Styles
 const HeaderSection = styled.header`
   background-color: transparent;
-  padding: 10px 20px;
-  font-size: 16px;
+  font-size: 2rem;
   color: ${(props) => props.theme.text};
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
+    padding: 10px 20px;
     flex-direction: row;
     align-items: center;
     jutify-content: flex-end;
@@ -75,20 +78,18 @@ const RightContainer = styled.div`
 `;
 
 const LogoImage = styled.img`
-  height: 30px;
-  padding-right: 20px;
+  height: 40px;
 
-  @media (max-width: 769px) {
-    padding-right: 10px;
-    height: 40px;
+  @media (min-width: 769px) {
+    height: 110px;
   }
 `;
 
 const CompanyName = styled.span`
-  font-size: 20px;
-  margin: 0 20px;
+  font-size: 1.8rem;
+  margin-left: 20px;
 
-  @media (max-width: 769px) {
+  @media (min-width: 769px) {
     display: none;
   }
 `;
