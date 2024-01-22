@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import NavMenu from './NavMenu';
 import Icon from './Icon';
@@ -8,6 +8,21 @@ import Navbar from './Navbar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { id: 1, label: 'Home', link: '#home' },
@@ -32,7 +47,7 @@ const Header = () => {
       </LeftContainer>
       <RightContainer>
         <Navbar navLinks={navLinks} />
-        <StyledMenu>
+        <StyledMenu isScrolled={isScrolled}>
           <Icon onClick={handleOpenMenu} iconName='bars' iconType='solid' />
         </StyledMenu>
         <NavMenu
@@ -72,7 +87,8 @@ const LeftContainer = styled.div`
   padding: 20px 10px;
 
   @media (min-width: 769px) {
-    margin-bottom: 0;
+    padding: 30px 40px;
+    /* margin-left: 30px; */
   }
 `;
 
@@ -107,7 +123,15 @@ const CompanyName = styled.span`
 `;
 
 const StyledMenu = styled.div`
-  font-size: 4rem;
+  font-size: 3.5rem;
+  position: fixed;
+  background-color: ${(props) =>
+    props.isScrolled && props.theme.secondaryColor};
+  padding: 8px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (min-width: 768px) {
     display: none;

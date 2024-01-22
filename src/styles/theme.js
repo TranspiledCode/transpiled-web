@@ -1,7 +1,7 @@
 const transpiledTheme = {
   light: {
-    primaryColor: '#4A90E2',
-    secondaryColor: '#FF6B6B',
+    primaryColor: '#25B0D3', // Updated primary color
+    secondaryColor: '#F0912C', // Updated secondary color
     background: '#FFFFFF',
     text: '#333333',
     accentColor: '#64DDBB',
@@ -14,10 +14,12 @@ const transpiledTheme = {
     separator: '#eaeaea',
     knobColor: '#2EBFD4',
     barColor: '#ffffff',
+    pink: '#FF6B6B', // Pink color
+    green: '#64DDBB', // Green color
   },
   dark: {
-    primaryColor: '#013F6A',
-    secondaryColor: '#2EBFD4',
+    primaryColor: '#25B0D3', // Updated primary color
+    secondaryColor: '#F0912C', // Updated secondary color
     background: '#090909',
     text: '#ffffff',
     accentColor: '#FF910F',
@@ -29,6 +31,8 @@ const transpiledTheme = {
     transparent: 'transparent',
     knobColor: '#2EBFD4',
     barColor: '#ffffff',
+    pink: '#FF6B6B', // Pink color
+    green: '#64DDBB', // Green color
   },
 };
 

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const ServicesSection = styled.div`
   height: 800px;
-  background-color: #20bdc3;
+  background-color: #000;
 `;
 
 const Services = () => (
