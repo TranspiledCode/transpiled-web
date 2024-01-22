@@ -5,8 +5,8 @@ import Bytes from './sections/Bytes';
 import About from './sections/About';
 import Articles from './sections/Articles';
 import Footer from './sections/Footer';
-import ScrollToTop from './components/ScrollToTop';
-import { ThemeProvider } from './styles/ThemeProvider';
+import { ThemeProvider } from '@transpiled/ui';
+import { ScrollToTop } from '@transpiled/ui';
 
 const App = () => {
   return (

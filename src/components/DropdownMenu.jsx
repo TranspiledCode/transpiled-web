@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import {
   Menu,
   MenuProvider,
@@ -9,7 +9,6 @@ import {
   MenuItem,
   MenuSeparator,
 } from '@ariakit/react';
-import { useTheme } from '../styles/ThemeProvider';
 
 const StyledMenu = styled(Menu)`
   background: ${(props) => props.theme.background};
@@ -45,20 +44,18 @@ const StyledMenuItem = styled(MenuItem)`
 `;
 
 const DropDownMenu = ({ menuItems }) => {
-  const { theme } = useTheme();
-
   return (
     <>
       <MenuProvider>
-        <StyledMenuButton theme={theme}>
+        <StyledMenuButton>
           <FontAwesomeIcon icon={faBars} />
         </StyledMenuButton>
-        <StyledMenu theme={theme}>
+        <StyledMenu>
           {menuItems.map((item, index) =>
             item.separator ? (
               <MenuSeparator key={index} />
             ) : (
-              <StyledMenuItem key={index} href={item.href} theme={theme}>
+              <StyledMenuItem key={index} href={item.href}>
                 {item.label}
               </StyledMenuItem>
             )

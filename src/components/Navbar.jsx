@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useTheme } from '../styles/ThemeProvider';
 
 const Navigation = styled.nav`
   ul {
@@ -31,10 +30,8 @@ const Navigation = styled.nav`
   }
 `;
 const Navbar = ({ navLinks }) => {
-  const { theme } = useTheme();
-
   return (
-    <Navigation theme={theme}>
+    <Navigation>
       <ul>
         {navLinks.map((item, index) => (
           <li key={index}>

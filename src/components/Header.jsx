@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import { useTheme } from '@transpiled/ui';
+
 import Logo from '../assets/images/logo-colored.png';
 import DropDownMenu from './DropdownMenu';
 import Navbar from './Navbar';
-import ToggleButton from './ToggleButton';
-import { useTheme } from '../styles/ThemeProvider';
+import ToggleSwitch from './ToggleSwitch';
 
 const Header = () => {
-  const { theme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   const menuItems = [
     { label: 'Settings', href: '#home' },
@@ -23,7 +24,7 @@ const Header = () => {
   ];
 
   return (
-    <HeaderSection theme={theme}>
+    <HeaderSection>
       <LeftContainer>
         <LogoImage src={Logo} alt='Company Logo' />
         <CompanyName>Transpiled</CompanyName>
@@ -31,7 +32,7 @@ const Header = () => {
       <RightContainer>
         <Navbar navLinks={navLinks} />
         <DropDownMenu menuItems={menuItems} />
-        <ToggleButton vertical />
+        <ToggleSwitch rotation='270' onToggle={toggleTheme} />
       </RightContainer>
     </HeaderSection>
   );
