@@ -34,7 +34,9 @@ const Header = () => {
       </LeftContainer>
       <RightContainer>
         <Navbar navLinks={navLinks} />
-        <DropDownMenu menuItems={menuItems} />
+        <StyledMenu>
+          <DropDownMenu menuItems={menuItems} />
+        </StyledMenu>
         <ToggleSwitch rotation='270' onToggle={toggleTheme} />
       </RightContainer>
     </HeaderSection>
@@ -43,19 +45,21 @@ const Header = () => {
 
 // Styles
 const HeaderSection = styled.header`
-  background-color: transparent;
-  font-size: 2rem;
-  color: ${(props) => props.theme.text};
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
+  background-color: transparent;
+  font-size: 2rem;
+  color: ${(props) => props.theme.white};
+  padding: 10px;
+
   @media (min-width: 768px) {
-    padding: 10px 20px;
+    padding: 20px;
     flex-direction: row;
     align-items: center;
-    jutify-content: flex-end;
+    justify-content: flex-end;
   }
 `;
 
@@ -81,7 +85,7 @@ const LogoImage = styled.img`
   height: 40px;
 
   @media (min-width: 769px) {
-    height: 110px;
+    height: 100px;
   }
 `;
 
@@ -89,7 +93,17 @@ const CompanyName = styled.span`
   font-size: 1.8rem;
   margin-left: 20px;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1024px) {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+const StyledMenu = styled.div`
+  @media (min-width: 768px) {
     display: none;
   }
 `;

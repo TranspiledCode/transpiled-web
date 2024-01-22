@@ -1,17 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Navigation = styled.nav`
   ul {
     list-style: none;
-    padding: 0;
+    padding: 10px;
     display: flex;
     align-items: center;
   }
 
   li {
-    margin-right: 20px;
+    margin-right: 30px;
     font-size: 16px;
   }
 
@@ -46,7 +46,7 @@ const Navbar = ({ navLinks }) => (
 Navbar.propTypes = {
   navLinks: PropTypes.arrayOf(
     PropTypes.shape({
-      href: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
     })
   ).isRequired,
