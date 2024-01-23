@@ -1,0 +1,7 @@
+// css utils
+export const flexCenter = (direction = 'row') => `
+  display: flex;
+  flex-direction: ${direction};
+  align-items: center;
+  justify-content: center;
+`;
