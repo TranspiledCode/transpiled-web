@@ -15,7 +15,9 @@ const BannerContainer = styled.div`
 `;
 
 const BannerText = styled.h1`
+  margin-top: 40px;
   font-size: 4rem;
+  line-height: 1.2;
   color: #fff;
 
   @media (min-width: 768px) {
@@ -35,7 +37,7 @@ const Message = styled.p`
   font-size: 1.8rem;
   color: #fff;
   font-weight: bold;
-  line-height: 2;
+  line-height: 1.4;
 
   @media (min-width: 768px) {
     font-size: 2.5rem;

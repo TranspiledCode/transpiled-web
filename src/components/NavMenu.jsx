@@ -26,9 +26,9 @@ const FullScreenMenu = styled.div`
 
 const MenuLink = styled.a`
   color: white;
-  font-family: 'YoungerThanMe', sans-serif;
-  letter-spacing: 2px;
-  font-size: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  /* letter-spacing: 2px; */
+  font-size: 4rem;
   padding: 20px;
   cursor: pointer;
 
@@ -44,7 +44,7 @@ const CloseIcon = styled.div`
   cursor: pointer;
   position: absolute;
   top: 25px;
-  right: 10px;
+  right: 20px;
   background-color: ${(props) => props.theme.secondaryColor};
   width: 60px;
   height: 60px;
