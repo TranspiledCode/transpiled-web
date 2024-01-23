@@ -3,7 +3,9 @@
 /* Box Sizing Border Box */
 html {
   box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 10px;
+  font-weight: 400;
 }
 
 *,
@@ -16,8 +18,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: Roboto, Arial, sans-serif;
-  line-height: 1.6;
+  line-height: 1;
   color: #333;
   background-color: #fff;
 }
