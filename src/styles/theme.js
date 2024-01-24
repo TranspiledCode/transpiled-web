@@ -16,6 +16,7 @@ const transpiledTheme = {
     barColor: '#f5f5f5',
     pink: '#FF6B6B', // Pink color
     green: '#64DDBB', // Green color
+    primaryButton: '#0054AA',
   },
   dark: {
     primaryColor: '#25B0D3', // Updated primary color

@@ -133,7 +133,7 @@ const StyledMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  z-index: 1000;
   @media (min-width: 768px) {
     display: none;
   }

@@ -14,7 +14,7 @@ const FullScreenMenu = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
 
