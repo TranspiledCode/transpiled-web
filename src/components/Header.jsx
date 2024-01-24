@@ -27,9 +27,9 @@ const Header = () => {
   const navLinks = [
     { id: 1, label: 'Home', link: '#home' },
     { id: 2, label: 'Services', link: '#services' },
-    { id: 2, label: 'Tutorials', link: '#bytes' },
-    { id: 4, label: 'About Us', link: '#about' },
-    { id: 6, label: 'Contact Us', link: '#footer' },
+    { id: 3, label: 'Tutorials', link: '#bytes' },
+    { id: 4, label: 'About', link: '#about' },
+    { id: 6, label: 'Contact', link: '#footer' },
   ];
 
   const handleCloseMenu = () => {
