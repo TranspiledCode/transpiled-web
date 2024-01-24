@@ -133,7 +133,7 @@ const LogoSquares = styled.div`
     background-image: url(${logoSquares});
     background-repeat: no-repeat;
     right: 0px;
-    top: 0px;
+    top: 40px;
     width: 134px;
     height: 180px;
     opacity: 0.5;
