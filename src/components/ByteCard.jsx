@@ -74,6 +74,7 @@ const Author = styled.div`
   justify-content: flex-start;
   width: 100%;
   gap: 1rem;
+  font-weight: 300;
 `;
 
 const Avatar = styled.img`
@@ -93,6 +94,7 @@ const Description = styled.div`
   color: ${({ theme }) => theme.text};
   font-size: 2rem;
   font-weight: 400;
+  line-height: 1.2;
 `;
 
 const ViewMore = styled.button`
@@ -113,8 +115,14 @@ const ViewMore = styled.button`
   }
 `;
 
+// PropTypes
 ByteCard.propTypes = {
-  video: PropTypes.shape.isRequired,
+  video: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
 };
 
 export default ByteCard;
