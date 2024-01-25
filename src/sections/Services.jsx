@@ -9,8 +9,8 @@ import Icon from '../components/Icon';
 const ServicesSection = styled.div`
   ${flexCenter('column')}
   gap: 2rem;
-  height: 100vh;
-  max-height: 800px;
+  min-height: 100vh;
+  max-height: 1500px;
   background-color: ${({ theme }) => theme.background};
   overflow: hidden;
   position: relative;
@@ -37,10 +37,6 @@ const ServicesContainer = styled.div`
   flex-wrap: wrap;
   min-height: 300px;
   gap: 5rem;
-
-  @media (min-width: 1300px) {
-    gap: 0rem;
-  }
 
   @media (min-width: 1040px) {
     margin-top: 50px;
