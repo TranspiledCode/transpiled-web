@@ -5,10 +5,70 @@ import { flexCenter } from '../utils/css';
 import profile from '../assets/images/profile.jpg';
 import bytesBackground from '../assets/images/bytesBackground.png';
 
+const videos = [
+  {
+    id: 'ymCR4tIWZu8',
+    title: 'NVM on Mac for Fish Shell',
+    author: 'Joshua Crass',
+    description:
+      'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
+  },
+  {
+    id: 'ymCR4tIWZu8',
+    title: 'NVM on Mac for Fish Shell',
+    author: 'Joshua Crass',
+    description:
+      'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
+  },
+  {
+    id: 'ymCR4tIWZu8',
+    title: 'NVM on Mac for Fish Shell',
+    author: 'Joshua Crass',
+    description:
+      'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
+  },
+];
+
+const Bytes = () => (
+  <BytesSection id='bytes'>
+    <HeadingWrapper>
+      <BytesHeading>Transpiled Bytes</BytesHeading>
+      <Tagline>
+        A collection of byte-sized tutorials and guides for developers.
+      </Tagline>
+    </HeadingWrapper>
+    {videos.map((video) => (
+      <ByteCard id={video.id}>
+        <VideoWrapper>
+          <iframe
+            width='300'
+            height='160'
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title='YouTube video player'
+            frameBorder='0'
+            allowFullScreen
+          />
+        </VideoWrapper>
+        <ByteWrapper>
+          <ByteTitle>{video.title}</ByteTitle>
+          <Author>
+            <Avatar src={profile} alt='profile' />
+            <AuthorName>{`Host: ${video.author}`}</AuthorName>
+          </Author>
+          <Description>{video.description}</Description>
+        </ByteWrapper>
+        <ViewMore>View More</ViewMore>
+      </ByteCard>
+    ))}
+  </BytesSection>
+);
+
+// Styled Components
 const BytesSection = styled.section`
   ${flexCenter()}
   flex-wrap: wrap;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 800px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -98,7 +158,7 @@ const AuthorName = styled.div`
 const Description = styled.div`
   color: ${({ theme }) => theme.text};
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 400;
 `;
 
 const ViewMore = styled.button`
@@ -113,65 +173,10 @@ const ViewMore = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `;
-
-const videos = [
-  {
-    id: 'ymCR4tIWZu8',
-    title: 'NVM on Mac for Fish Shell',
-    author: 'Joshua Crass',
-    description:
-      'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
-  },
-  {
-    id: 'ymCR4tIWZu8',
-    title: 'NVM on Mac for Fish Shell',
-    author: 'Joshua Crass',
-    description:
-      'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
-  },
-  {
-    id: 'ymCR4tIWZu8',
-    title: 'NVM on Mac for Fish Shell',
-    author: 'Joshua Crass',
-    description:
-      'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
-  },
-];
-
-const Bytes = () => (
-  <BytesSection id='bytes'>
-    <HeadingWrapper>
-      <BytesHeading>Transpiled Bytes</BytesHeading>
-      <Tagline>
-        A collection of byte-sized tutorials and guides for developers.
-      </Tagline>
-    </HeadingWrapper>
-    {videos.map((video) => (
-      <ByteCard>
-        <VideoWrapper>
-          <iframe
-            width='300'
-            height='160'
-            src={`https://www.youtube.com/embed/${video.id}`}
-            title='YouTube video player'
-            frameBorder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowFullScreen
-          />
-        </VideoWrapper>
-        <ByteWrapper>
-          <ByteTitle>{video.title}</ByteTitle>
-          <Author>
-            <Avatar src={profile} alt='profile' />
-            <AuthorName>{`Host: ${video.author}`}</AuthorName>
-          </Author>
-          <Description>{video.description}</Description>
-        </ByteWrapper>
-        <ViewMore>View More</ViewMore>
-      </ByteCard>
-    ))}
-  </BytesSection>
-);
 
 export default Bytes;

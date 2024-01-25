@@ -9,7 +9,8 @@ import Icon from '../components/Icon';
 const ServicesSection = styled.div`
   ${flexCenter('column')}
   gap: 2rem;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 800px;
   background-color: ${({ theme }) => theme.background};
   overflow: hidden;
   position: relative;
