@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Header from '../components/Header';
-import background from '../assets/images/homeBackground.png';
+import background from '../assets/images/AltBannerImage.png';
 import logoOverlayImage from '../assets/images/leftSideLogoTransparent.svg';
 import Banner from '../components/Banner';
 

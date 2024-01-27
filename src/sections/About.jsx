@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
+import Image from '../components/Image';
 
 import Divider from '../components/Divider';
 import aboutImage from '../assets/images/aboutImage.svg';
@@ -42,7 +43,7 @@ const Message = styled(motion.div)`
   line-height: 1.5;
 `;
 
-const Image = styled.div`
+const StyledImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,21 +61,20 @@ const AboutUs = () => (
         transition={{ duration: 0.8 }}
       >
         <p>
-          Welcome to Transpiled, a fresh venture in the software development
-          world, led by a seasoned expert with decades of industry experience.
-          I'm Joshua, and I've embarked on this exciting journey to bring
-          innovative digital solutions to life. Specializing in developing web
-          and moble applications. <br />
-          At Transpiled, we're not just about writing code; we're about crafting
-          digital experiences that drive success and growth. Whether you're in
-          the ideation stage or looking to scale, Transpiled is your partner in
-          navigating the digital landscape. Let's collaborate to transform your
-          ideas into reality!
+          Hi there, I'm Joshua, the founder of Transpiled. With decades of
+          experience in the software industry, I've embarked on a journey to
+          bring your digital aspirations to life. At Transpiled, it's all about
+          turning innovative ideas into real-world solutions. My approach is
+          grounded in a deep passion for technology and a commitment to
+          excellence. Here, each project is a unique canvas, where creativity
+          meets functionality to create something truly special. Let's work
+          together to create software that stands out, functions seamlessly, and
+          helps your business thrive.
         </p>
       </Message>
-      <Image>
-        <img src={aboutImage} alt='about us section' />
-      </Image>
+      <StyledImage>
+        <Image src={aboutImage} alt='about us section' />
+      </StyledImage>
     </MessageWrapper>
   </AboutContainer>
 );
