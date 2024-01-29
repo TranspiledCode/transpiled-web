@@ -9,7 +9,7 @@ import Pill from './Pill';
 
 const ArticleCardContainer = styled.div`
   ${flexCenter('column')}
-  width: 300px;
+  width: 200px;
   background-color: ${(props) => props.theme.white};
   border-radius: 10px;
   padding: 20px;
