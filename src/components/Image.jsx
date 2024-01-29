@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+
+const ResponsiveImage = styled.img`
+  max-width: 100%;
+  height: auto;
+`;
 
 const ImageComponent = ({ src, alt, className, onClick }) => {
   const [imageSrc, setImageSrc] = useState(src);
@@ -13,7 +19,7 @@ const ImageComponent = ({ src, alt, className, onClick }) => {
   const defaultImage =
     'https://transpiled.s3.amazonaws.com/assets/img/default/m.webp';
   const ImageTag = (
-    <img
+    <ResponsiveImage
       src={imageError ? defaultImage : imageSrc}
       alt={alt}
       onError={() => setImageError(true)}

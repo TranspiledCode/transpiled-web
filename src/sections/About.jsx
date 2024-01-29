@@ -1,40 +1,45 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import Image from '../components/Image';
 
 import Divider from '../components/Divider';
-import aboutImage from '../assets/images/aboutImage.svg';
+import Image from '../components/Image';
+import aboutImage from '../assets/images/blackAndWhiteCoder.png';
 
-const AboutContainer = styled.div`
+const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  background: ${({ theme }) => theme.background};
-  padding: 4rem;
-  color: ${({ theme }) => theme.text};
-
-  @media (min-width: 768px) {
-  }
+  align-items: center;
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text};
+  position: relative;
+  padding: 40px;
 `;
 
-const Heading = styled.h1`
-  font-size: 5rem;
-  width: 100%;
-  margin-bottom: 2rem;
+const ImageWrapper = styled.div`
+  display: none;
+  @media (min-width: 1024px) {
+    display: flex;
+    flex: 1;
+    max-width: 500px;
+    padding: 20px;
+  }
+  img {
+    position: relative;
+    bottom: -125px;
+  }
 `;
 
 const MessageWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2rem;
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-  }
+  flex: 1;
+  padding: 20px; /* Adjust the spacing as needed */
 `;
 
-const Message = styled(motion.div)`
+const Title = styled.h2`
+  font-size: 6rem;
+  margin-bottom: 20px;
+`;
+
+const Message = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,18 +48,11 @@ const Message = styled(motion.div)`
   line-height: 1.5;
 `;
 
-const StyledImage = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-`;
-
-const AboutUs = () => (
-  <AboutContainer>
-    <Heading>About Us</Heading>
-    <Divider />
+const YourComponent = () => (
+  <Container>
     <MessageWrapper>
+      <Title>About Us</Title>
+      <Divider />
       <Message
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -72,11 +70,11 @@ const AboutUs = () => (
           helps your business thrive.
         </p>
       </Message>
-      <StyledImage>
-        <Image src={aboutImage} alt='about us section' />
-      </StyledImage>
     </MessageWrapper>
-  </AboutContainer>
+    <ImageWrapper>
+      <Image src={aboutImage} alt='Your Image' />
+    </ImageWrapper>
+  </Container>
 );
 
-export default AboutUs;
+export default YourComponent;

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Divider = styled.div`
-  width: 64px;
+  width: 80px;
   height: 3px;
   background: linear-gradient(
     90deg,
