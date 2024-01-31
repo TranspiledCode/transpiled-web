@@ -42,10 +42,7 @@ const sizes = {
 
 const StyledButton = styled.button`
   background-color: ${(props) => props.theme[props.colors.background]};
-  color: ${(props) => {
-    console.log(props.theme[props.colors.text]);
-    return props.theme[props.colors.text];
-  }};
+  color: ${(props) => props.theme[props.colors.text]};
   border: none;
   border-radius: 5px;
   padding: ${(props) => sizes[props.size].padding};
@@ -78,8 +75,6 @@ const Button = ({
   disabled = false,
 }) => {
   const buttonVariant = variants[variant] || variants.default;
-
-  console.log(buttonVariant);
 
   return (
     <StyledButton
