@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const PillContainer = styled.div`
   display: inline-block;
   padding: 5px 10px;
-  border-radius: 16px;
+  border-radius: 5px;
   min-width: 50px;
   background-color: ${(props) => props.theme.neutral};
   color: ${(props) => props.theme.text};

@@ -20,7 +20,8 @@ const articles = [
     date: 'Jun 22, 2018',
     time: '2 min read',
     tags: ['nvm', 'fish', 'macOS'],
-    image: 'https://transpiled.s3.amazonaws.com/assets/img/goFish/m.webp',
+    image:
+      'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
     url: 'https://medium.com/@joshuacrass/nvm-on-mac-for-fish-users-e00af124c540?sk=917a2e8691c7b2f7f64c5419bc654388',
   },
   {
@@ -38,13 +39,12 @@ const articles = [
   },
   {
     id: '3',
-    title: 'Javascript Linting and Formatting',
-    description:
-      'Javascript Linting and Formatting with ESLint, Prettier, and Airbnb',
+    title: 'Go Fish',
+    description: 'Setting up Go on macOS in the Fish Shell',
     author: 'Joshua Crass',
     date: 'Sep 10, 2018',
     time: '5 min read',
-    tags: ['javascript', 'eslint', 'prettier'],
+    tags: ['macOS', 'go', 'cli'],
     image: 'https://transpiled.s3.amazonaws.com/assets/img/goFish/m.webp',
     url: 'https://medium.com/@joshuacrass/javascript-linting-and-formatting-with-eslint-prettier-and-airbnb-30eb746db862?sk=0d5604a16a09e99e29666f525af1da2c',
   },

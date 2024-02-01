@@ -6,10 +6,11 @@ import { flexCenter } from '../utils/css';
 import Image from './Image';
 import Button from './Button';
 import Pill from './Pill';
+import Divider from './Divider';
 
 const ArticleCardContainer = styled.div`
   ${flexCenter('column')}
-  width: 200px;
+  width: 250px;
   background-color: ${(props) => props.theme.white};
   border-radius: 10px;
   padding: 20px;
@@ -25,25 +26,38 @@ const Title = styled.h3`
 `;
 
 const Description = styled.div`
-  ${flexCenter()}
-  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 1.5rem;
   font-weight: 400;
   height: 50px;
+  margin: 10px 0;
 `;
 const Details = styled.div`
-  ${flexCenter()}
+  ${flexCenter('column')}
   justify-content: space-between;
   width: 100%;
-  height: 50px;
+  gap: 10px;
+`;
+
+const DetailsLower = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const TagsContainer = styled.div`
   ${flexCenter()}
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
   gap: 10px;
-  height: 50px;
 `;
 
-const ArticleCard = ({ title, description, image, tags, time }) => (
+const ArticleCard = ({ title, description, image, tags, time, url }) => (
   <ArticleCardContainer>
     <Image src={image} alt={title} />
     <Title>{title}</Title>
@@ -54,17 +68,12 @@ const ArticleCard = ({ title, description, image, tags, time }) => (
           <Pill key={tag} text={tag} />
         ))}
       </TagsContainer>
-      <span>{time}</span>
+      <Divider />
+      <DetailsLower>
+        <span>{time}</span>
+        <a href={url}>Read more</a>
+      </DetailsLower>
     </Details>
-    <Button
-      variant='ghost'
-      size='small'
-      alignText='left'
-      ariaLabel='view article'
-      role='link'
-    >
-      Read More
-    </Button>
   </ArticleCardContainer>
 );
 
