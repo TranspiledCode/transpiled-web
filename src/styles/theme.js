@@ -3,7 +3,9 @@ const transpiledTheme = {
     primaryColor: '#25B0D3', // Blue
     secondaryColor: '#FF9215', // Orange
     background: '#f5f5f5',
+    altBackground: '#090909',
     text: '#090909', // Almost Black
+    altText: '#f5f5f5',
     accentColor: '#034C70', // Dark Blue
     neutral: '#AAAAAA', // Gray
     highlight: '#99D0E9', // Light Blue
@@ -22,7 +24,9 @@ const transpiledTheme = {
     primaryColor: '#25B0D3', // Blue
     secondaryColor: '#FF9215', // Orange
     background: '#090909', // Almost Black
+    altBackground: '#f5f5f5',
     text: '#f5f5f5',
+    altText: '#090909', // Almost Black
     accentColor: '#FF9215', // Orange for accent
     neutral: '#757575',
     highlight: '#99D0E9', // Light Blue

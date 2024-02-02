@@ -8,11 +8,13 @@ import { flexCenter } from '../utils/css';
 
 const Articles = styled.section`
   ${flexCenter('column')}
-  margin: 40px;
+  background-color: ${(props) => props.theme.background};
+  padding: 100px 20px;
   gap: 40px;
 `;
 
 const AticlesHeading = styled.h2`
+  color: ${(props) => props.theme.text};
   font-size: 6rem;
   font-weight: 700;
 `;
@@ -39,6 +41,7 @@ const Contact = () => (
           image={article.image}
           tags={article.tags}
           time={article.time}
+          url={article.url}
         />
       ))}
     </ArticelCards>

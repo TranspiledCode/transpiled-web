@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
 
 import Divider from '../components/Divider';
 import Image from '../components/Image';
@@ -48,7 +47,7 @@ const Message = styled.div`
   line-height: 1.5;
 `;
 
-const YourComponent = () => (
+const About = () => (
   <Container>
     <MessageWrapper>
       <Title>About Us</Title>
@@ -77,4 +76,4 @@ const YourComponent = () => (
   </Container>
 );
 
-export default YourComponent;
+export default About;

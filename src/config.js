@@ -22,7 +22,7 @@ const articles = [
     tags: ['nvm', 'fish', 'macOS'],
     image:
       'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-    url: 'https://medium.com/@joshuacrass/nvm-on-mac-for-fish-users-e00af124c540?sk=917a2e8691c7b2f7f64c5419bc654388',
+    url: 'article/1',
   },
   {
     id: '2',
@@ -35,7 +35,7 @@ const articles = [
     tags: ['git', 'fish', 'cli'],
     image:
       'https://transpiled.s3.amazonaws.com/assets/img/gitFishPrompt/m.webp',
-    url: 'https://medium.com/@joshuacrass/git-fish-prompt-faa389fff07c?sk=29a8d7fde6de4f816a5f260517460c11',
+    url: 'article/2',
   },
   {
     id: '3',
@@ -46,7 +46,7 @@ const articles = [
     time: '5 min read',
     tags: ['macOS', 'go', 'cli'],
     image: 'https://transpiled.s3.amazonaws.com/assets/img/goFish/m.webp',
-    url: 'https://medium.com/@joshuacrass/javascript-linting-and-formatting-with-eslint-prettier-and-airbnb-30eb746db862?sk=0d5604a16a09e99e29666f525af1da2c',
+    url: 'article/3',
   },
 ];
 

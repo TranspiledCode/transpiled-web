@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 import { flexCenter } from '../utils/css';
 import Image from './Image';
-import Button from './Button';
 import Pill from './Pill';
-import Divider from './Divider';
 
 const ArticleCardContainer = styled.div`
   ${flexCenter('column')}
-  width: 250px;
-  background-color: ${(props) => props.theme.white};
+  width: 300px;
+  background-color: ${(props) => props.theme.background};
   border-radius: 10px;
   padding: 20px;
   border: 1px solid ${(props) => props.theme.neutral};
   position: relative;
+  color: ${(props) => props.theme.text};
 `;
 
 const Title = styled.h3`
@@ -23,6 +23,25 @@ const Title = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
   height: 50px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const Description = styled.div`
@@ -34,19 +53,12 @@ const Description = styled.div`
   height: 50px;
   margin: 10px 0;
 `;
+
 const Details = styled.div`
   ${flexCenter('column')}
   justify-content: space-between;
   width: 100%;
   gap: 10px;
-`;
-
-const DetailsLower = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
 `;
 
 const TagsContainer = styled.div`
@@ -57,10 +69,12 @@ const TagsContainer = styled.div`
   gap: 10px;
 `;
 
-const ArticleCard = ({ title, description, image, tags, time, url }) => (
+const ArticleCard = ({ title, description, image, tags, url }) => (
   <ArticleCardContainer>
-    <Image src={image} alt={title} />
-    <Title>{title}</Title>
+    <StyledLink to={url}>
+      <StyledImage src={image} alt={title} />
+      <Title>{title}</Title>
+    </StyledLink>
     <Description>{description}</Description>
     <Details>
       <TagsContainer>
@@ -68,11 +82,6 @@ const ArticleCard = ({ title, description, image, tags, time, url }) => (
           <Pill key={tag} text={tag} />
         ))}
       </TagsContainer>
-      <Divider />
-      <DetailsLower>
-        <span>{time}</span>
-        <a href={url}>Read more</a>
-      </DetailsLower>
     </Details>
   </ArticleCardContainer>
 );
@@ -82,7 +91,7 @@ ArticleCard.propTypes = {
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  time: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default ArticleCard;
