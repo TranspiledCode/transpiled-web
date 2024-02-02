@@ -35,13 +35,13 @@ const Contact = () => (
     <ArticelCards>
       {articles.map((article) => (
         <ArticelCard
-          key={article.title}
+          id={article.id}
+          key={article.id}
           title={article.title}
           description={article.description}
           image={article.image}
           tags={article.tags}
           time={article.time}
-          url={article.url}
         />
       ))}
     </ArticelCards>

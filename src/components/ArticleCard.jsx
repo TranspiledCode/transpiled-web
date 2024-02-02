@@ -69,10 +69,12 @@ const TagsContainer = styled.div`
   gap: 10px;
 `;
 
-const ArticleCard = ({ title, description, image, tags, url }) => (
+const ArticleCard = ({ id, title, description, image, tags }) => (
   <ArticleCardContainer>
-    <StyledLink to={url}>
+    <StyledLink to={`article/${id}`}>
       <StyledImage src={image} alt={title} />
+    </StyledLink>
+    <StyledLink to={`article/${id}`}>
       <Title>{title}</Title>
     </StyledLink>
     <Description>{description}</Description>
@@ -87,11 +89,11 @@ const ArticleCard = ({ title, description, image, tags, url }) => (
 );
 
 ArticleCard.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 export default ArticleCard;
