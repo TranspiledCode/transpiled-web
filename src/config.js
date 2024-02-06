@@ -1,5 +1,7 @@
 const companyName = 'Transpiled';
 
+const gqlEndpoint = 'https://0267avkpvi.execute-api.us-west-2.amazonaws.com/';
+
 const videos = [
   {
     id: 'ymCR4tIWZu8',
@@ -50,4 +52,4 @@ const articles = [
   },
 ];
 
-export { videos, companyName, articles };
+export { videos, companyName, articles, gqlEndpoint };
