@@ -1,10 +1,24 @@
 import React from 'react';
+import { useQuery, gql } from '@apollo/client';
 import styled from '@emotion/styled';
 import Divider from '../components/Divider';
-import ArticelCard from '../components/ArticleCard';
-import { articles } from '../config';
+import ArticleCard from '../components/ArticleCard';
 
 import { flexCenter } from '../utils/css';
+
+const ARTICLES_QUERY = gql`
+  {
+    articles {
+      _id
+      imageURL
+      title
+      summary
+      views
+      likes
+      tags
+    }
+  }
+`;
 
 const Articles = styled.section`
   ${flexCenter('column')}
@@ -13,13 +27,13 @@ const Articles = styled.section`
   gap: 40px;
 `;
 
-const AticlesHeading = styled.h2`
+const ArticlesHeading = styled.h2`
   color: ${(props) => props.theme.text};
   font-size: 6rem;
   font-weight: 700;
 `;
 
-const ArticelCards = styled.div`
+const ArticleCards = styled.div`
   ${flexCenter('column')}
   gap: 50px;
 
@@ -28,24 +42,40 @@ const ArticelCards = styled.div`
   }
 `;
 
-const Contact = () => (
-  <Articles id='articles'>
-    <AticlesHeading>Articles</AticlesHeading>
-    <Divider />
-    <ArticelCards>
-      {articles.map((article) => (
-        <ArticelCard
-          id={article.id}
-          key={article.id}
-          title={article.title}
-          description={article.description}
-          image={article.image}
-          tags={article.tags}
-          time={article.time}
-        />
-      ))}
-    </ArticelCards>
-  </Articles>
-);
+const Contact = () => {
+  const { loading, error, data } = useQuery(ARTICLES_QUERY);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>{`Error ->> ${error.message}`}</p>;
+  }
+
+  console.log(data);
+
+  return (
+    <Articles id='articles'>
+      <ArticlesHeading>Articles</ArticlesHeading>
+      <Divider />
+      <ArticleCards>
+        {data.articles.map(
+          ({ _id, title, views, likes, imageURL, summary, tags }) => (
+            <ArticleCard
+              key={_id}
+              id={_id}
+              title={title}
+              summary={summary}
+              views={views}
+              image={imageURL}
+              likes={likes}
+              tags={tags}
+            />
+          )
+        )}
+      </ArticleCards>
+    </Articles>
+  );
+};
 
 export default Contact;

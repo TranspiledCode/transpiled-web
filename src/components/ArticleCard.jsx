@@ -44,7 +44,7 @@ const StyledImage = styled(Image)`
   }
 `;
 
-const Description = styled.div`
+const Summary = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -69,7 +69,7 @@ const TagsContainer = styled.div`
   gap: 10px;
 `;
 
-const ArticleCard = ({ id, title, description, image, tags }) => (
+const ArticleCard = ({ id, title, summary, image, views, likes, tags }) => (
   <ArticleCardContainer>
     <StyledLink to={`article/${id}`}>
       <StyledImage src={image} alt={title} />
@@ -77,8 +77,10 @@ const ArticleCard = ({ id, title, description, image, tags }) => (
     <StyledLink to={`article/${id}`}>
       <Title>{title}</Title>
     </StyledLink>
-    <Description>{description}</Description>
+    <Summary>{summary}</Summary>
     <Details>
+      <Pill text={`${views} views`} />
+      <Pill text={`${likes} likes`} />
       <TagsContainer>
         {tags.map((tag) => (
           <Pill key={tag} text={tag} />
@@ -91,8 +93,10 @@ const ArticleCard = ({ id, title, description, image, tags }) => (
 ArticleCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  views: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
