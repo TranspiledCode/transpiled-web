@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
-import { gqlEndpoint, gqlDevEndpoint } from './config';
+import { gqlEndpoint, gqlDevEndpoint } from '../config';
 
 const useProduction = process.env.GQL_ENV === 'production';
 const gqlUrl = useProduction ? gqlEndpoint : gqlDevEndpoint;

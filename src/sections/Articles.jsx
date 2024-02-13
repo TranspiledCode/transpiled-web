@@ -49,10 +49,10 @@ const Contact = () => {
     return <p>Loading...</p>;
   }
   if (error) {
+    // TODO: Implement error handling
+    console.error('Error fetching articles: ', error.message);
     return <p>{`Error ->> ${error.message}`}</p>;
   }
-
-  console.log(data);
 
   return (
     <Articles id='articles'>

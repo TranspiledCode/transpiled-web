@@ -1,7 +1,7 @@
 import { ThemeProvider, ScrollToTop } from '@transpiled/ui';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-import client from './apolloClient';
+import client from './graphql/apolloClient';
 
 import transpiledTheme from './styles/theme';
 import HomePage from './pages/Home';
