@@ -8,7 +8,7 @@ import { flexCenter } from '../utils/css';
 
 const ARTICLES_QUERY = gql`
   {
-    articles {
+    topLikedArticles {
       _id
       imageURL
       title
@@ -59,7 +59,7 @@ const Contact = () => {
       <ArticlesHeading>Articles</ArticlesHeading>
       <Divider />
       <ArticleCards>
-        {data.articles.map(
+        {data.topLikedArticles.map(
           ({ _id, title, views, likes, imageURL, summary, tags }) => (
             <ArticleCard
               key={_id}
