@@ -2,21 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import CodeBlock from './CodeBlock';
+
 const Paragraph = styled.p`
   font-size: 16px;
   line-height: 1.5;
-`;
-
-const CodeBlock = styled.pre`
-  background-color: #f6f8fa;
-  border-radius: 5px;
-  padding: 15px;
-  overflow-x: auto;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 1.6em;
 `;
 
 const ContentBlock = ({ contentBlocks }) => (
@@ -27,9 +17,11 @@ const ContentBlock = ({ contentBlocks }) => (
           return <Paragraph key={block.id}>{block.data}</Paragraph>;
         case 'code':
           return (
-            <CodeBlock key={block.id}>
-              <code>{block.data}</code>
-            </CodeBlock>
+            <CodeBlock
+              key={block.id}
+              code={block.data}
+              language={block.language}
+            />
           );
         default:
           return null;

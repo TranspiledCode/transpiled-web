@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -19,28 +20,31 @@ const GET_ARTICLE = gql`
 `;
 
 const ArticleContainer = styled.div`
-  /* your styles here */
   ${flexCenter('column')}
   margin: 20px;
   padding: 20px;
 `;
 
 const ArticleTitle = styled.h1`
-  /* your styles here */
   color: ${(props) => props.theme.text};
   font-size: 2em;
 `;
 
 const Article = () => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(GET_ARTICLE, {
+  const { loading, error, data, refetch } = useQuery(GET_ARTICLE, {
     variables: { id },
+    notifyOnNetworkStatusChange: true,
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  useEffect(() => {
+    refetch({ id });
+  }, [id, refetch]);
 
-  console.log(data.getArticleById);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <ArticleContainer>
