@@ -1,9 +1,11 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import styled from '@emotion/styled';
+
 import Divider from '../components/Divider';
 import ArticleCard from '../components/ArticleCard';
 import Loading from '../components/Loading';
+import Button from '../components/Button';
 
 import { flexCenter } from '../utils/css';
 
@@ -82,6 +84,14 @@ const Articles = () => {
           )
         )}
       </ArticleCards>
+      <Button
+        ariaLabel='View More Articles'
+        size='large'
+        to='/articles'
+        variant='primary'
+      >
+        View More
+      </Button>
     </ArticlesSection>
   );
 };

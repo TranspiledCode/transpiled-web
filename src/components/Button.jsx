@@ -1,22 +1,27 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const variants = {
   default: {
     background: 'neutral',
+    hover: 'background',
     text: 'text',
   },
   primary: {
     background: 'primaryColor',
+    hover: 'neutral',
     text: 'text',
   },
   secondary: {
     background: 'secondaryColor',
+    hover: 'neutral',
     text: 'text',
   },
   ghost: {
     background: 'transparent',
+    hover: 'neutral',
     text: 'text',
   },
 };
@@ -40,7 +45,9 @@ const sizes = {
   },
 };
 
-const StyledButton = styled.button`
+const ButtonLink = styled(Link)`
+  text-decoration: none;
+  display: inline-block;
   background-color: ${(props) => props.theme[props.colors.background]};
   color: ${(props) => props.theme[props.colors.text]};
   border: none;
@@ -50,10 +57,28 @@ const StyledButton = styled.button`
   cursor: pointer;
   display: ${(props) => (props.fit ? 'block' : 'inline-block')};
   width: ${(props) => (props.fit ? '100%' : 'auto')};
-  text-align: ${(props) => props.alignText};
+  text-align: ${(props) => props.aligntext};
 
   &:hover {
-    background-color: ${(props) => props.theme[props.colors.background]};
+    text-decoration: none;
+    background-color: ${(props) => props.theme[props.colors.hover]};
+  }
+`;
+
+const StyledButtonComponent = styled.button`
+  background-color: ${(props) => props.theme[props.colors.background]};
+  color: ${(props) => props.theme[props.colors.text]};
+  border: none;
+  border-radius: 5px;
+  padding: ${(props) => sizes[props.size].padding};
+  font-size: ${(props) => sizes[props.size].fontSize};
+  cursor: pointer;
+  display: ${(props) => (props.fit ? 'block' : 'inline-block')};
+  width: ${(props) => (props.fit ? '100%' : 'auto')};
+  text-align: ${(props) => props.aligntext};
+
+  &:hover {
+    background-color: ${(props) => props.theme[props.colors.hover]};
   }
 
   &:disabled {
@@ -62,25 +87,29 @@ const StyledButton = styled.button`
     cursor: not-allowed;
   }
 `;
-
 const Button = ({
   children,
   variant = 'default',
   size = 'medium',
-  alignText = 'center',
+  aligntext = 'center',
   onClick,
   ariaLabel,
   role,
   fit = false,
   disabled = false,
+  to,
 }) => {
   const buttonVariant = variants[variant] || variants.default;
+  const isLink = !!to;
+
+  const ButtonComponent = isLink ? ButtonLink : StyledButtonComponent;
 
   return (
-    <StyledButton
+    <ButtonComponent
+      to={to || undefined}
       colors={buttonVariant}
       size={size}
-      alignText={alignText}
+      aligntext={aligntext}
       onClick={onClick}
       aria-label={ariaLabel}
       role={role}
@@ -88,7 +117,7 @@ const Button = ({
       disabled={disabled}
     >
       {children}
-    </StyledButton>
+    </ButtonComponent>
   );
 };
 
@@ -96,22 +125,24 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(['default', 'primary', 'secondary', 'ghost']),
   size: PropTypes.oneOf(['icon', 'small', 'medium', 'large']),
-  alignText: PropTypes.oneOf(['left', 'center', 'right']),
+  aligntext: PropTypes.oneOf(['left', 'center', 'right']),
   onClick: PropTypes.func,
   ariaLabel: PropTypes.string.isRequired,
   role: PropTypes.string,
   fit: PropTypes.bool,
   disabled: PropTypes.bool,
+  to: PropTypes.string,
 };
 
 Button.defaultProps = {
   variant: 'default',
   size: 'medium',
-  alignText: 'center',
+  aligntext: 'center',
   onClick: undefined,
   role: 'button',
   fit: false,
   disabled: false,
+  to: null,
 };
 
 export default Button;

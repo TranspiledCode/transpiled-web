@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { flexCenter } from '../utils/css';
 import Image from './Image';
-import Pill from './Pill';
 
 const ArticleCardContainer = styled.div`
   ${flexCenter('column')}
@@ -18,8 +17,14 @@ const ArticleCardContainer = styled.div`
   color: ${(props) => props.theme.text};
 `;
 
+const CardTitle = styled.div`
+  width: 100%;
+  padding: 10px 0;
+`;
+
 const Title = styled.h3`
-  ${flexCenter()}
+  display: block;
+  text-align: left;
   font-size: 1.5rem;
   font-weight: 700;
   height: 50px;
@@ -51,42 +56,19 @@ const Summary = styled.div`
   font-size: 1.5rem;
   font-weight: 400;
   height: 50px;
-  margin: 10px 0;
 `;
 
-const Details = styled.div`
-  ${flexCenter('column')}
-  justify-content: space-between;
-  width: 100%;
-  gap: 10px;
-`;
-
-const TagsContainer = styled.div`
-  ${flexCenter()}
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 10px;
-`;
-
-const ArticleCard = ({ id, title, summary, image, views, likes, tags }) => (
+const ArticleCard = ({ id, title, summary, image }) => (
   <ArticleCardContainer>
     <StyledLink to={`article/${id}`}>
       <StyledImage src={image} alt={title} />
     </StyledLink>
-    <StyledLink to={`article/${id}`}>
-      <Title>{title}</Title>
-    </StyledLink>
+    <CardTitle>
+      <StyledLink to={`article/${id}`}>
+        <Title>{title}</Title>
+      </StyledLink>
+    </CardTitle>
     <Summary>{summary}</Summary>
-    <Details>
-      <Pill text={`${views} views`} />
-      <Pill text={`${likes} likes`} />
-      <TagsContainer>
-        {tags.map((tag) => (
-          <Pill key={tag} text={tag} />
-        ))}
-      </TagsContainer>
-    </Details>
   </ArticleCardContainer>
 );
 
@@ -95,9 +77,6 @@ ArticleCard.propTypes = {
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  views: PropTypes.number.isRequired,
-  likes: PropTypes.number.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ArticleCard;
