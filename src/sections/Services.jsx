@@ -54,8 +54,8 @@ const ServiceBox = styled.div`
   height: 300px;
   border-radius: 50%;
   border: 3px solid;
-  border-color: ${({ theme }) => theme.primaryColor};
-  box-shadow: 0 0 5px 2px ${({ theme }) => theme.primaryColor};
+  border-color: ${({ theme }) => theme.primary};
+  box-shadow: 0 0 5px 2px ${({ theme }) => theme.primary};
 
   @media (min-width: 1040px) {
     border: 0;
@@ -66,10 +66,10 @@ const ServiceBox = styled.div`
     /* border: 3px ${({ theme }) => theme.background} solid; */
     border-radius: 50%;
     border: 3px solid;
-    border-color: ${({ theme }) => theme.primaryColor};
+    border-color: ${({ theme }) => theme.primary};
 
     &:hover {
-      box-shadow: 0 0 5px 2px ${({ theme }) => theme.primaryColor};
+      box-shadow: 0 0 5px 2px ${({ theme }) => theme.primary};
     }
   }
 `;
@@ -103,8 +103,8 @@ const ServiceDescription = styled.div`
 //     height: 350px;
 //     border-radius: 50%;
 //     border: 3px solid;
-//     border-color: ${({ theme }) => theme.primaryColor};
-//     box-shadow: 0 0 5px 2px ${({ theme }) => theme.primaryColor};
+//     border-color: ${({ theme }) => theme.primary};
+//     box-shadow: 0 0 5px 2px ${({ theme }) => theme.primary};
 //   }
 // `;
 
@@ -120,7 +120,7 @@ const MoreInfoButton = styled.button`
   transition: all 0.3s ease;
   z-index: 2;
   &:hover {
-    background-color: ${({ theme }) => theme.primaryColorDark};
+    background-color: ${({ theme }) => theme.primaryDark};
   }
 `;
 

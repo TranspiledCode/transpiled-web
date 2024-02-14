@@ -45,7 +45,7 @@ const CloseIcon = styled.div`
   position: absolute;
   top: 25px;
   right: 20px;
-  background-color: ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.secondary};
   width: 60px;
   height: 60px;
   display: flex;

@@ -12,7 +12,7 @@ const Spinner = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border-left-color: ${(props) => props.theme.secondaryColor};
+  border-left-color: ${(props) => props.theme.secondary};
   animation: spin 1s ease infinite;
 
   @keyframes spin {

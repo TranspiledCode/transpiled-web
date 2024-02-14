@@ -26,11 +26,11 @@ const BannerText = styled.h1`
 `;
 
 const Web = styled.span`
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.primary};
 `;
 
 const MobileApp = styled.span`
-  color: ${(props) => props.theme.secondaryColor};
+  color: ${(props) => props.theme.secondary};
 `;
 
 const Message = styled.p`

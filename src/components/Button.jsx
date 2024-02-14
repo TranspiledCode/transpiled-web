@@ -10,12 +10,12 @@ const variants = {
     text: 'text',
   },
   primary: {
-    background: 'primaryColor',
+    background: 'primary',
     hover: 'neutral',
     text: 'text',
   },
   secondary: {
-    background: 'secondaryColor',
+    background: 'secondary',
     hover: 'neutral',
     text: 'text',
   },

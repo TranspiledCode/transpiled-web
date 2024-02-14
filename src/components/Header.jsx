@@ -126,8 +126,7 @@ const CompanyName = styled.span`
 const StyledMenu = styled.div`
   font-size: 3.5rem;
   position: fixed;
-  background-color: ${(props) =>
-    props.isScrolled && props.theme.secondaryColor};
+  background-color: ${(props) => props.isScrolled && props.theme.secondary};
   padding: 8px 10px;
   border-radius: 10px;
   display: flex;

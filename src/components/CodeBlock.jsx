@@ -57,11 +57,14 @@ export default CodeBlock;
  * Component Documentation: CodeBlock
  *
  * Description:
- * The CodeBlock component is designed to display code snippets with syntax highlighting and a copy-to-clipboard feature.
- * It leverages `react-syntax-highlighter` for highlighting and supports light and dark themes through `@transpiled/ui`'s `useTheme`.
+ * The CodeBlock component is designed to display code snippets with syntax
+ * highlighting and a copy-to-clipboard feature.
+ * It leverages `react-syntax-highlighter` for highlighting and supports
+ * light and dark themes through `@transpiled/ui`'s `useTheme`.
  *
  * Props:
- * - language: A string indicating the programming language of the code snippet. This is required for syntax highlighting.
+ * - language: A string indicating the programming language of the code snippet.
+ * This is required for syntax highlighting.
  * - code: The code snippet to be displayed and copied.
  *
  * Usage:
@@ -72,11 +75,15 @@ export default CodeBlock;
  * Features:
  * - Syntax highlighting for the specified programming language.
  * - A copy button to easily copy the code snippet to the clipboard.
- * - Theme support: Automatically switches between light and dark syntax highlighting themes based on the `isDarkTheme` flag from `useTheme`.
+ * - Theme support: Automatically switches between light and dark syntax
+ * highlighting themes based on the `isDarkTheme` flag from `useTheme`.
  *
  * Implementation Notes:
- * - The `handleCopy` function utilizes the Clipboard API. It should handle both success and failure cases, ideally with user feedback (e.g., toast notifications).
- * - The styled components `Container` and `CopyButton` use `@emotion/styled` for styling based on the theme context.
+ * - The `handleCopy` function utilizes the Clipboard API. It should handle
+ * both success and failure cases, ideally with user feedback (e.g., toast notifications).
+ * - The styled components `Container` and `CopyButton` use `@emotion/styled`
+ * for styling based on the theme context.
  *
- * This component is a part of the "Transpiled" project, aiming to provide developer-friendly UI components for software development tutorials and projects.
+ * This component is a part of the "Transpiled" project, aiming to provide
+ * developer-friendly UI components for software development tutorials and projects.
  */

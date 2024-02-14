@@ -5,8 +5,8 @@ const Divider = styled.div`
   height: 3px;
   background: linear-gradient(
     90deg,
-    ${({ theme }) => theme.primaryColor} 0%,
-    ${({ theme }) => theme.secondaryColor} 100%
+    ${({ theme }) => theme.primary} 0%,
+    ${({ theme }) => theme.secondary} 100%
   );
 `;
 
