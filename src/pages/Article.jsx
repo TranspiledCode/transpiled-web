@@ -3,7 +3,6 @@ import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import ContentBlock from '../components/ContentBlock';
-import { flexCenter } from '../utils/css';
 
 const GET_ARTICLE = gql`
   query getArticleById($id: ID!) {
@@ -18,16 +17,25 @@ const GET_ARTICLE = gql`
     }
   }
 `;
+const ArticlePage = styled.div`
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text};
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+`;
 
 const ArticleContainer = styled.div`
-  ${flexCenter('column')}
-  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
   padding: 20px;
 `;
 
 const ArticleTitle = styled.h1`
   color: ${(props) => props.theme.text};
-  font-size: 2em;
+  font-size: 3em;
 `;
 
 const Article = () => {
@@ -47,10 +55,12 @@ const Article = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <ArticleContainer>
-      <ArticleTitle>{data.getArticleById.title}</ArticleTitle>
-      <ContentBlock contentBlocks={data.getArticleById.contentBlocks} />
-    </ArticleContainer>
+    <ArticlePage>
+      <ArticleContainer>
+        <ArticleTitle>{data.getArticleById.title}</ArticleTitle>
+        <ContentBlock contentBlocks={data.getArticleById.contentBlocks} />
+      </ArticleContainer>
+    </ArticlePage>
   );
 };
 
