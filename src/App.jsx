@@ -9,7 +9,7 @@ import Article from './pages/Article';
 
 const App = () => (
   <ApolloProvider client={client}>
-    <ThemeProvider theme={transpiledTheme}>
+    <ThemeProvider externalTheme={transpiledTheme}>
       <ScrollToTop />
       <Router>
         <Routes>

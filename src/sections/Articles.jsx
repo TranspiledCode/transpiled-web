@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client';
 import styled from '@emotion/styled';
 import Divider from '../components/Divider';
 import ArticleCard from '../components/ArticleCard';
+import Loading from '../components/Loading';
 
 import { flexCenter } from '../utils/css';
 
@@ -20,7 +21,7 @@ const ARTICLES_QUERY = gql`
   }
 `;
 
-const Articles = styled.section`
+const ArticlesSection = styled.section`
   ${flexCenter('column')}
   background-color: ${(props) => props.theme.background};
   padding: 100px 20px;
@@ -42,20 +43,27 @@ const ArticleCards = styled.div`
   }
 `;
 
-const Contact = () => {
+const Articles = () => {
   const { loading, error, data } = useQuery(ARTICLES_QUERY);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <ArticlesSection id='articles'>
+        <Loading />
+      </ArticlesSection>
+    );
   }
-  if (error) {
-    // TODO: Implement error handling
-    console.error('Error fetching articles: ', error.message);
-    return <p>{`Error ->> ${error.message}`}</p>;
+  if (error || !data.topLikedArticles || data.topLikedArticles.length === 0) {
+    // TODO: Implement error handling and feedback mechanism for articles
+    console.error(
+      'Error fetching articles or no articles available: ',
+      error?.message
+    );
+    return null;
   }
 
   return (
-    <Articles id='articles'>
+    <ArticlesSection id='articles'>
       <ArticlesHeading>Articles</ArticlesHeading>
       <Divider />
       <ArticleCards>
@@ -74,8 +82,8 @@ const Contact = () => {
           )
         )}
       </ArticleCards>
-    </Articles>
+    </ArticlesSection>
   );
 };
 
-export default Contact;
+export default Articles;
