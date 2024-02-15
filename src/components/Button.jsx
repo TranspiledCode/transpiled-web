@@ -113,7 +113,7 @@ const Button = ({
       onClick={onClick}
       aria-label={ariaLabel}
       role={role}
-      fit={fit}
+      fit={fit ? 'true' : undefined}
       disabled={disabled}
     >
       {children}
