@@ -39,7 +39,7 @@ const StyledMenuItem = styled(MenuItem)`
   margin: 5px;
   &:hover {
     text-decoration-line: underline;
-    text-decoration-color: ${(props) => props.theme.accentColor};
+    text-decoration-color: ${(props) => props.theme.accent};
     text-decoration-thickness: 3px;
     text-underline-offset: 5px;
   }

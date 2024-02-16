@@ -1,93 +1,103 @@
-// Define a base theme to reduce repetition and enhance maintainability
-const baseTheme = {
-  colors: {
-    blue: '#25B0D3',
-    darkBlue: '#034C70',
-    lightBlue: '#99D0E9',
-    gray: '#afafaf',
-    lightGray: '#f5f5f5',
-    darkGray: '#757575',
-    orange: '#FF9215',
-    pink: '#FF6B6B',
-    green: '#64DDBB',
-    transparent: 'transparent',
-    separator: '#eaeaea',
-    white: '#ffffff',
-    black: '#090909',
-    shark: '#212529',
-    // Notification colors
-    info: '#17a2b8',
-    success: '#28a745',
-    warning: '#ffc107',
-    error: '#dc3545',
-  },
+import baseColors from './baseColors';
+
+// Function to generate theme-specific variations (e.g., for buttons, notifications)
+const generateThemeVariants = (mode) => {
+  const isDark = mode === 'dark';
+  return {
+    background: isDark ? baseColors.black : baseColors.white,
+    altBackground: isDark ? baseColors.white : baseColors.black,
+    text: isDark ? baseColors.white : baseColors.black,
+    altText: isDark ? baseColors.black : baseColors.white,
+    border: isDark ? baseColors.darkGray : baseColors.lightGray,
+    altBorder: isDark ? baseColors.lightGray : baseColors.darkGray,
+    primary: isDark ? baseColors.blue : baseColors.orange,
+    secondary: isDark ? baseColors.orange : baseColors.blue,
+    accent: isDark ? baseColors.blue : baseColors.orange,
+    neutral: isDark ? baseColors.lightGray : baseColors.darkGray,
+    shadowColor: isDark ? baseColors.darkGray : baseColors.lightGray,
+    separator: isDark ? baseColors.darkGray : baseColors.lightGray,
+
+    switch: {
+      bar: isDark ? baseColors.blue : baseColors.orange,
+      knob: isDark ? baseColors.orange : baseColors.blue,
+    },
+    button: {
+      default: {
+        background: isDark ? baseColors.darkGray : baseColors.gray,
+        text: isDark ? baseColors.lightGray : baseColors.black,
+        hoverBackground: isDark ? baseColors.gray : baseColors.darkGray,
+        hoverText: isDark ? baseColors.lightGray : baseColors.white,
+        disabledBackground: isDark ? baseColors.gray : baseColors.darkGray,
+        disabledText: isDark ? baseColors.lightGray : baseColors.white,
+      },
+      ghost: {
+        background: baseColors.transparent,
+        text: isDark ? baseColors.lightGray : baseColors.black,
+        hoverBackground: isDark ? baseColors.gray : baseColors.darkGray,
+        hoverText: isDark ? baseColors.lightGray : baseColors.white,
+        disabledBackground: isDark ? baseColors.gray : baseColors.darkGray,
+        disabledText: isDark ? baseColors.lightGray : baseColors.white,
+      },
+      primary: {
+        background: isDark ? baseColors.blue : baseColors.darkBlue,
+        text: isDark ? baseColors.white : baseColors.white,
+        hoverBackground: isDark ? baseColors.darkBlue : baseColors.blue,
+        hoverText: isDark ? baseColors.white : baseColors.white,
+        disabledBackground: isDark ? baseColors.darkBlue : baseColors.blue,
+        disabledText: isDark ? baseColors.white : baseColors.white,
+      },
+      secondary: {
+        background: isDark ? baseColors.orange : baseColors.darkGray,
+        text: isDark ? baseColors.white : baseColors.white,
+        hoverBackground: isDark ? baseColors.darkGray : baseColors.orange,
+        hoverText: isDark ? baseColors.white : baseColors.white,
+        disabledBackground: isDark ? baseColors.darkGray : baseColors.orange,
+        disabledText: isDark ? baseColors.white : baseColors.white,
+      },
+    },
+    notification: {
+      error: {
+        background: isDark ? baseColors.shark : baseColors.error,
+        text: baseColors.white,
+        hoverBackground: isDark ? baseColors.error : baseColors.shark,
+        hoverText: baseColors.white,
+      },
+      success: {
+        background: isDark ? baseColors.shark : baseColors.success,
+        text: baseColors.white,
+        hoverBackground: isDark ? baseColors.success : baseColors.shark,
+        hoverText: baseColors.white,
+      },
+      warning: {
+        background: isDark ? baseColors.shark : baseColors.warning,
+        text: baseColors.black,
+        hoverBackground: isDark ? baseColors.warning : baseColors.shark,
+        hoverText: baseColors.black,
+      },
+      info: {
+        background: isDark ? baseColors.shark : baseColors.info,
+        text: baseColors.white,
+        hoverBackground: isDark ? baseColors.info : baseColors.shark,
+        hoverText: baseColors.white,
+      },
+      default: {
+        background: isDark ? baseColors.darkGray : baseColors.gray,
+        text: isDark ? baseColors.lightGray : baseColors.black,
+        hoverBackground: isDark ? baseColors.gray : baseColors.darkGray,
+        hoverText: isDark ? baseColors.lightGray : baseColors.white,
+      },
+    },
+    link: {
+      text: isDark ? baseColors.lightGray : baseColors.black,
+      hoverText: isDark ? baseColors.lightGray : baseColors.black,
+    },
+  };
 };
 
-const notificationColors = {
-  info: {
-    background: baseTheme.colors.info,
-    foreground: baseTheme.colors.white,
-  },
-  success: {
-    background: baseTheme.colors.success,
-    foreground: baseTheme.colors.white,
-  },
-  warning: {
-    background: baseTheme.colors.warning,
-    foreground: baseTheme.colors.shark,
-  },
-  error: {
-    background: baseTheme.colors.error,
-    foreground: baseTheme.colors.white,
-  },
-};
-
+// Defining the dark and light themes using the base colors and variations
 const transpiledTheme = {
-  light: {
-    ...baseTheme,
-    primary: baseTheme.colors.blue,
-    secondary: baseTheme.colors.orange,
-    background: baseTheme.colors.lightGray,
-    altBackground: baseTheme.colors.almostBlack,
-    text: baseTheme.colors.almostBlack,
-    altText: baseTheme.colors.lightGray,
-    accent: baseTheme.colors.darkBlue,
-    neutral: baseTheme.colors.gray,
-    highlight: baseTheme.colors.lightBlue,
-    white: baseTheme.colors.lightGray,
-    black: baseTheme.colors.almostBlack,
-    knob: baseTheme.colors.blue,
-    bar: baseTheme.colors.lightGray,
-    primaryButton: baseTheme.colors.darkBlue,
-    info: baseTheme.colors.info,
-    success: baseTheme.colors.success,
-    warning: baseTheme.colors.warning,
-    error: baseTheme.colors.error,
-  },
-  dark: {
-    ...baseTheme,
-    primary: baseTheme.colors.blue,
-    secondary: baseTheme.colors.orange,
-    background: baseTheme.colors.almostBlack,
-    altBackground: baseTheme.colors.lightGray,
-    text: baseTheme.colors.lightGray,
-    altText: baseTheme.colors.almostBlack,
-    accent: baseTheme.colors.orange,
-    neutral: baseTheme.colors.darkGray,
-    highlight: baseTheme.colors.lightBlue,
-    white: baseTheme.colors.lightGray,
-    black: baseTheme.colors.almostBlack,
-    bar: baseTheme.colors.almostBlack,
-    primaryButton: baseTheme.colors.darkBlue,
-    info: baseTheme.colors.info,
-    success: baseTheme.colors.success,
-    warning: baseTheme.colors.warning,
-    error: baseTheme.colors.error,
-  },
-  colors: {
-    ...baseTheme.colors,
-    ...notificationColors,
-  },
+  dark: generateThemeVariants('dark'),
+  light: generateThemeVariants('light'),
 };
 
 export default transpiledTheme;

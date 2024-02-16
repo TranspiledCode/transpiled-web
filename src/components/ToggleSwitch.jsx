@@ -23,8 +23,7 @@ const Slider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${(props) =>
-    props.backgroundColor ?? props.theme?.barColor ?? defaultBarColor};
+  background-color: ${(props) => props.theme.switch.bar ?? defaultBarColor};
   transition: 0.4s;
   border-radius: 34px;
 
@@ -35,8 +34,7 @@ const Slider = styled.span`
     width: 15px;
     left: -4px;
     bottom: -5px;
-    background-color: ${(props) =>
-      props.knobColor ?? props.theme?.knobColor ?? defaultKnobColor};
+    background-color: ${(props) => props.theme.switch.knob ?? defaultKnobColor};
     transition: 0.4s;
     border-radius: 50%;
   }

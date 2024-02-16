@@ -18,7 +18,7 @@ const BannerText = styled.h1`
   margin-top: 40px;
   font-size: 4rem;
   line-height: 1.2;
-  color: #fff;
+  color: ${(props) => props.theme.text};
 
   @media (min-width: 768px) {
     font-size: 5rem;
@@ -35,7 +35,7 @@ const MobileApp = styled.span`
 
 const Message = styled.p`
   font-size: 1.8rem;
-  color: #fff;
+  color: ${(props) => props.theme.text};
   font-weight: bold;
   line-height: 1.4;
 

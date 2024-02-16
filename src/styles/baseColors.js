@@ -1,0 +1,26 @@
+const baseColors = {
+  // Neutral Colors
+  white: '#ffffff',
+  lightGray: '#f5f5f5',
+  gray: '#afafaf',
+  darkGray: '#757575',
+  shark: '#212529',
+  black: '#090909',
+
+  // Standard Colors
+  blue: '#25B0D3',
+  lightBlue: '#99D0E9',
+  darkBlue: '#034C70',
+  green: '#64DDBB',
+  orange: '#FF9215',
+  pink: '#FF6B6B',
+
+  // Functional Colors
+  transparent: 'transparent',
+  success: '#28a745',
+  error: '#dc3545',
+  warning: '#ffc107',
+  info: '#17a2b8',
+};
+
+export default baseColors;

@@ -3,29 +3,6 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const variants = {
-  default: {
-    background: 'neutral',
-    hover: 'background',
-    text: 'text',
-  },
-  primary: {
-    background: 'primary',
-    hover: 'neutral',
-    text: 'text',
-  },
-  secondary: {
-    background: 'secondary',
-    hover: 'neutral',
-    text: 'text',
-  },
-  ghost: {
-    background: 'transparent',
-    hover: 'neutral',
-    text: 'text',
-  },
-};
-
 const sizes = {
   icon: {
     padding: '0px',
@@ -48,8 +25,8 @@ const sizes = {
 const ButtonLink = styled(Link)`
   text-decoration: none;
   display: inline-block;
-  background-color: ${(props) => props.theme[props.colors.background]};
-  color: ${(props) => props.theme[props.colors.text]};
+  background-color: ${(props) => props.theme.button[props.variant].background};
+  color: ${(props) => props.theme.button[props.variant].text};
   border: none;
   border-radius: 5px;
   padding: ${(props) => sizes[props.size].padding};
@@ -61,13 +38,15 @@ const ButtonLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
-    background-color: ${(props) => props.theme[props.colors.hover]};
+    background-color: ${(props) =>
+      props.theme.button[props.variant].hoverBackground};
+    color: ${(props) => props.theme.button[props.variant].hoverText};
   }
 `;
 
 const StyledButtonComponent = styled.button`
-  background-color: ${(props) => props.theme[props.colors.background]};
-  color: ${(props) => props.theme[props.colors.text]};
+  background-color: ${(props) => props.theme.button[props.variant].background};
+  color: ${(props) => props.theme.button[props.variant].text};
   border: none;
   border-radius: 5px;
   padding: ${(props) => sizes[props.size].padding};
@@ -78,12 +57,15 @@ const StyledButtonComponent = styled.button`
   text-align: ${(props) => props.aligntext};
 
   &:hover {
-    background-color: ${(props) => props.theme[props.colors.hover]};
+    background-color: ${(props) =>
+      props.theme.button[props.variant].hoverBackground};
+    color: ${(props) => props.theme.button[props.variant].hoverText};
   }
 
   &:disabled {
-    background-color: ${(props) => props.theme.neutral};
-    color: ${(props) => props.theme.text};
+    background-color: ${(props) =>
+      props.theme.button[props.variant].disabledBackground};
+    color: ${(props) => props.theme.button[props.variant].disabledText};
     cursor: not-allowed;
   }
 `;
@@ -99,15 +81,12 @@ const Button = ({
   disabled = false,
   to,
 }) => {
-  const buttonVariant = variants[variant] || variants.default;
   const isLink = !!to;
-
   const ButtonComponent = isLink ? ButtonLink : StyledButtonComponent;
 
   return (
     <ButtonComponent
       to={to || undefined}
-      colors={buttonVariant}
       size={size}
       aligntext={aligntext}
       onClick={onClick}
@@ -115,6 +94,7 @@ const Button = ({
       role={role}
       fit={fit ? 'true' : undefined}
       disabled={disabled}
+      variant={variant}
     >
       {children}
     </ButtonComponent>

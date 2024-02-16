@@ -25,21 +25,20 @@ const FullScreenMenu = styled.div`
 `;
 
 const MenuLink = styled.a`
-  color: white;
+  color: ${(props) => props.theme.text};
   font-family: 'Ubuntu', sans-serif;
-  /* letter-spacing: 2px; */
   font-size: 4rem;
   padding: 20px;
   cursor: pointer;
 
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.accentColor};
+    color: ${(props) => props.theme.accent};
   }
 `;
 
 const CloseIcon = styled.div`
-  color: #ffffff;
+  color: ${(props) => props.theme.text};
   font-size: 3rem;
   cursor: pointer;
   position: absolute;
@@ -54,7 +53,7 @@ const CloseIcon = styled.div`
   border-radius: 50%;
 
   &:hover {
-    color: #658354;
+    color: ${(props) => props.theme.accent};
   }
 `;
 const NavMenu = ({ isMenuOpen, closeMenu, sections }) => (
