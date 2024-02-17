@@ -8,8 +8,8 @@ import aboutImage from '../assets/images/blackAndWhiteCoder.png';
 const Container = styled.div`
   display: flex;
   align-items: center;
-  background: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.text};
+  background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   position: relative;
   padding: 40px;
 `;

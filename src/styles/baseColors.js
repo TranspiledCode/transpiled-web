@@ -1,11 +1,11 @@
 const baseColors = {
   // Neutral Colors
+  black: '#090909',
   white: '#ffffff',
-  lightGray: '#f5f5f5',
   gray: '#afafaf',
+  lightGray: '#f5f5f5',
   darkGray: '#757575',
   shark: '#212529',
-  black: '#090909',
 
   // Standard Colors
   blue: '#25B0D3',

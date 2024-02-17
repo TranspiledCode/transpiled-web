@@ -18,7 +18,7 @@ const BannerText = styled.h1`
   margin-top: 40px;
   font-size: 4rem;
   line-height: 1.2;
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.white};
 
   @media (min-width: 768px) {
     font-size: 5rem;
@@ -26,16 +26,16 @@ const BannerText = styled.h1`
 `;
 
 const Web = styled.span`
-  color: ${(props) => props.theme.primary};
+  color: ${({ theme }) => theme.primary};
 `;
 
 const MobileApp = styled.span`
-  color: ${(props) => props.theme.secondary};
+  color: ${({ theme }) => theme.secondary};
 `;
 
 const Message = styled.p`
   font-size: 1.8rem;
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.white};
   font-weight: bold;
   line-height: 1.4;
 

@@ -10,13 +10,13 @@ const PillContainer = styled.div`
   padding: 5px 10px;
   border-radius: 10px;
   min-width: 50px;
-  background-color: ${(props) => props.theme.neutral};
-  color: ${(props) => props.theme.text};
+  background-color: ${({ theme }) => theme.neutral};
+  color: ${({ theme }) => theme.text};
   font-size: 1.3rem;
   text-align: center;
 
   &:hover {
-    color: ${(props) => props.theme.background};
+    color: ${({ theme }) => theme.background};
   }
 `;
 

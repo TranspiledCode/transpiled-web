@@ -17,10 +17,11 @@ const Navigation = styled.nav`
 
   a {
     text-decoration: none;
-    color: inherit;
+    color: ${({ theme }) => theme.white};
+
     &:hover {
       text-decoration-line: underline;
-      text-decoration-color: ${(props) => props.theme.accent};
+      text-decoration-color: ${({ theme }) => theme.accent};
       text-decoration-thickness: 3px;
       text-underline-offset: 5px;
     }

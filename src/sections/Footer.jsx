@@ -4,8 +4,8 @@ import ToggleSwitch from '../components/ToggleSwitch';
 
 const FooterSection = styled.div`
   height: 400px;
-  background-color: ${(props) => props.theme.altBackground};
-  color: ${(props) => props.theme.text};
+  background-color: ${({ theme }) => theme.altBackground};
+  color: ${({ theme }) => theme.text};
   display: flex;
   align-items: center;
   justify-content: center;

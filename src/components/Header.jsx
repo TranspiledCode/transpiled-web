@@ -61,7 +61,6 @@ const Header = () => {
   );
 };
 
-// Styles
 const HeaderSection = styled.header`
   display: flex;
   flex-direction: row;
@@ -70,7 +69,7 @@ const HeaderSection = styled.header`
 
   background-color: transparent;
   font-size: 2rem;
-  color: ${(props) => props.theme.white};
+  color: ${({ theme }) => theme.white};
   padding: 10px;
 
   @media (min-width: 768px) {
@@ -89,7 +88,6 @@ const LeftContainer = styled.div`
 
   @media (min-width: 769px) {
     padding: 30px 40px;
-    /* margin-left: 30px; */
   }
 `;
 

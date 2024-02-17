@@ -9,12 +9,12 @@ import Image from './Image';
 const ArticleCardContainer = styled.div`
   ${flexCenter('column')}
   width: 300px;
-  background-color: ${(props) => props.theme.background};
+  background-color: ${({ theme }) => theme.background};
   border-radius: 10px;
   padding: 20px;
-  border: 1px solid ${(props) => props.theme.neutral};
+  border: 1px solid ${({ theme }) => theme.neutral};
   position: relative;
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 const CardTitle = styled.div`

@@ -10,12 +10,16 @@ const generateThemeVariants = (mode) => {
     altText: isDark ? baseColors.black : baseColors.white,
     border: isDark ? baseColors.darkGray : baseColors.lightGray,
     altBorder: isDark ? baseColors.lightGray : baseColors.darkGray,
-    primary: isDark ? baseColors.blue : baseColors.orange,
-    secondary: isDark ? baseColors.orange : baseColors.blue,
+    primary: isDark ? baseColors.orange : baseColors.blue,
+    secondary: isDark ? baseColors.blue : baseColors.orange,
     accent: isDark ? baseColors.blue : baseColors.orange,
     neutral: isDark ? baseColors.lightGray : baseColors.darkGray,
     shadowColor: isDark ? baseColors.darkGray : baseColors.lightGray,
     separator: isDark ? baseColors.darkGray : baseColors.lightGray,
+
+    // base colors
+    white: baseColors.white,
+    black: baseColors.black,
 
     switch: {
       bar: isDark ? baseColors.blue : baseColors.orange,

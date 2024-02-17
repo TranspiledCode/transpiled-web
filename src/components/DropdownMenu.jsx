@@ -13,10 +13,10 @@ import {
 } from '@ariakit/react';
 
 const StyledMenu = styled(Menu)`
-  background: ${(props) => props.theme.background};
+  background: ${({ theme }) => theme.background};
   width: 200px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px ${(props) => props.theme.shadowColor};
+  box-shadow: 0 2px 4px ${({ theme }) => theme.shadowColor};
   margin-top: 15px;
   padding: 5px;
 `;
@@ -27,19 +27,19 @@ const StyledMenuButton = styled(MenuButton)`
   outline: none;
   cursor: pointer;
   padding: 16px;
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.text};
   font-size: 16px;
 `;
 
 const StyledMenuItem = styled(MenuItem)`
   padding: 16px;
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
   border-radius: 5px;
   margin: 5px;
   &:hover {
     text-decoration-line: underline;
-    text-decoration-color: ${(props) => props.theme.accent};
+    text-decoration-color: ${({ theme }) => theme.accent};
     text-decoration-thickness: 3px;
     text-underline-offset: 5px;
   }

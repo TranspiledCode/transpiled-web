@@ -18,8 +18,8 @@ const GET_ARTICLE = gql`
   }
 `;
 const ArticlePage = styled.div`
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.text};
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -34,7 +34,7 @@ const ArticleContainer = styled.div`
 `;
 
 const ArticleTitle = styled.h1`
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.text};
   font-size: 3em;
 `;
 

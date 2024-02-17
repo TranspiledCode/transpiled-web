@@ -25,13 +25,13 @@ const ARTICLES_QUERY = gql`
 
 const ArticlesSection = styled.section`
   ${flexCenter('column')}
-  background-color: ${(props) => props.theme.background};
+  background-color: ${({ theme }) => theme.background};
   padding: 100px 20px;
   gap: 40px;
 `;
 
 const ArticlesHeading = styled.h2`
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.text};
   font-size: 6rem;
   font-weight: 700;
 `;
