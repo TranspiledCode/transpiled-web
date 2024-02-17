@@ -2,32 +2,30 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import VideoPlayer from './VideoPlayer';
 import { flexCenter } from '../utils/css';
 import profile from '../assets/images/profile.jpg';
 
-const ByteCard = ({ video }) => (
-  <Card>
-    <VideoWrapper>
-      <iframe
-        width='300'
-        height='160'
-        src={`https://www.youtube.com/embed/${video.id}`}
-        title='YouTube video player'
-        frameBorder='0'
-        allowFullScreen
-      />
-    </VideoWrapper>
-    <ByteWrapper>
-      <ByteTitle>{video.title}</ByteTitle>
-      <Author>
-        <Avatar src={profile} alt='profile' />
-        <AuthorName>{`Host: ${video.author}`}</AuthorName>
-      </Author>
-      <Description>{video.description}</Description>
-    </ByteWrapper>
-    <ViewMore>View More</ViewMore>
-  </Card>
-);
+const ByteCard = ({ video }) => {
+  const videoURL =
+    'https://transpiled.s3.us-west-2.amazonaws.com/assets/video/nvmMacFish.mp4';
+  return (
+    <Card>
+      <VideoWrapper>
+        <VideoPlayer src={videoURL} />
+      </VideoWrapper>
+      <ByteWrapper>
+        <ByteTitle>{video.title}</ByteTitle>
+        <Author>
+          <Avatar src={profile} alt='profile' />
+          <AuthorName>{`Host: ${video.author}`}</AuthorName>
+        </Author>
+        <Description>{video.description}</Description>
+      </ByteWrapper>
+      <ViewMore>View More</ViewMore>
+    </Card>
+  );
+};
 
 // Styled Components for ByteCard
 const Card = styled.div`
