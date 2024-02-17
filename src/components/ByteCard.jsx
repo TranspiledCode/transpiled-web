@@ -48,6 +48,7 @@ const VideoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-color: #f8f9fa;
 `;
 
 const ByteWrapper = styled.div`

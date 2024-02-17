@@ -3,21 +3,59 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledVideoContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 640px;
   margin: auto;
+
+  // for testing
+  border: 1px solid red;
+`;
+
+const StyledVideoWrapper = styled.div`
+  position: relative;
 `;
 
 const StyledVideo = styled.video`
   width: 100%;
   height: auto;
+  border-radius: 5px;
 `;
 
-const StyledPlayPauseButton = styled.button`
-  cursor: pointer;
+const StyledControlsContainer = styled.div`
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+
+  ${StyledVideoContainer}:hover & {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
 const StyledProgressBar = styled.progress`
   width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+`;
+
+const StyledPlayPauseButton = styled.button`
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #0056b3;
+  }
 `;
 
 const VideoPlayer = ({ src }) => {
@@ -27,7 +65,7 @@ const VideoPlayer = ({ src }) => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
 
     const updateProgress = () => {
       const progressValue = (video.currentTime / video.duration) * 100;
@@ -36,16 +74,20 @@ const VideoPlayer = ({ src }) => {
 
     video.addEventListener('timeupdate', updateProgress);
 
-    const cleanupFunction = () =>
-      video.removeEventListener('timeupdate', updateProgress);
-    cleanupFunction();
+    // Cleanup function
+    return () => video.removeEventListener('timeupdate', updateProgress);
   }, []);
 
-  const togglePlayPause = () => {
+  const togglePlayPause = async () => {
+    // Use async function for better error handling
     const video = videoRef.current;
     if (video.paused) {
-      video.play();
-      setIsPlaying(true);
+      try {
+        await video.play();
+        setIsPlaying(true);
+      } catch (err) {
+        console.error('Error attempting to play the video:', err);
+      }
     } else {
       video.pause();
       setIsPlaying(false);
@@ -54,12 +96,22 @@ const VideoPlayer = ({ src }) => {
 
   return (
     <StyledVideoContainer>
-      <StyledVideo ref={videoRef} src={src} onClick={togglePlayPause} />
-      <StyledPlayPauseButton onClick={togglePlayPause}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </StyledPlayPauseButton>
-      <StyledProgressBar value={progress} max='100' />{' '}
-      {/* Simplified progress handling */}
+      <StyledVideoWrapper>
+        <StyledVideo ref={videoRef} src={src} onClick={togglePlayPause} />
+        <StyledControlsContainer>
+          <StyledPlayPauseButton
+            onClick={togglePlayPause}
+            aria-label={isPlaying ? 'Pause' : 'Play'}
+          >
+            {isPlaying ? 'Pause' : 'Play'}
+          </StyledPlayPauseButton>
+        </StyledControlsContainer>
+      </StyledVideoWrapper>
+      <StyledProgressBar
+        value={progress}
+        max='100'
+        aria-label='Video progress'
+      />
     </StyledVideoContainer>
   );
 };
