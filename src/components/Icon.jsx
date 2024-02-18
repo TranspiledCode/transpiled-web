@@ -36,3 +36,12 @@ Icon.defaultProps = {
 };
 
 export default Icon;
+
+/* 
+
+Usage:
+  To use the Icon component, import it and include it in your JSX code with the required props.
+Example:
+  <Icon iconName="star" size="2x" iconType="solid" onClick={() => console.log("Icon clicked")} />
+
+*/
