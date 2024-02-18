@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import Icon from './Icon';
+import ProgressBar from './ProgressBar';
 
 const StyledVideoContainer = styled.div`
   position: relative;
@@ -53,9 +54,10 @@ const StyledControlsContainer = styled.div`
   }
 `;
 
+// Styled progress Section
 const ProgressContainer = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   left: 0;
   width: 100%;
   padding: 10px;
@@ -70,20 +72,15 @@ const ProgressContainer = styled.div`
     opacity: 1;
   }
 `;
-
-const StyledProgressBar = styled.progress`
-  width: 75%;
-  height: 5px;
-  border-radius: 5px;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: #f3f3f3;
+const ProgressBarWrapper = styled.div`
+  width: 70%;
 `;
 
-const TimeContainer = styled.div`
+const TimeWrapper = styled.div`
   color: ${(props) => props.theme.accent};
 `;
 
+// Styled buttons
 const StyledPlayPauseButton = styled.button`
   color: ${(props) => props.theme.white};
 
@@ -138,13 +135,14 @@ const VideoPlayer = ({ src }) => {
   }, []);
 
   const handleProgressBarClick = (e) => {
-    const progressBar = e.target;
-    const bounds = progressBar.getBoundingClientRect();
-    const clickPosition = e.clientX - bounds.left;
-    const progressBarWidth = bounds.width;
-    const clickRatio = clickPosition / progressBarWidth;
-    const newTime = clickRatio * videoRef.current.duration;
-    videoRef.current.currentTime = newTime;
+    console.log('barClicked');
+    // const progressBar = e.target;
+    // const bounds = progressBar.getBoundingClientRect();
+    // const clickPosition = e.clientX - bounds.left;
+    // const progressBarWidth = bounds.width;
+    // const clickRatio = clickPosition / progressBarWidth;
+    // const newTime = clickRatio * videoRef.current.duration;
+    // videoRef.current.currentTime = newTime;
   };
 
   const togglePlayPause = async () => {
@@ -163,6 +161,14 @@ const VideoPlayer = ({ src }) => {
     }
   };
 
+  const handleAdjustTimeClick = (direction, time) => {
+    if (direction === 'forward') {
+      videoRef.current.currentTime += time;
+    } else if (direction === 'backward') {
+      videoRef.current.currentTime -= time;
+    }
+  };
+
   const playButton = <Icon iconName='play' size='3x' iconType='solid' />;
   const pauseButton = <Icon iconName='pause' size='3x' iconType='solid' />;
 
@@ -176,7 +182,7 @@ const VideoPlayer = ({ src }) => {
               iconName='clockRotateLeft'
               size='3x'
               iconType='solid'
-              onClick={() => (videoRef.current.currentTime -= 15)}
+              onClick={() => handleAdjustTimeClick('backward', 15)}
             />
           </SkipBackButton>
           <StyledPlayPauseButton
@@ -190,24 +196,25 @@ const VideoPlayer = ({ src }) => {
               iconName='clockRotateLeft'
               size='3x'
               iconType='solid'
-              onClick={() => (videoRef.current.currentTime += 15)}
+              onClick={() => handleAdjustTimeClick('forward', 15)}
             />
           </SkipAheadButton>
         </StyledControlsContainer>
         <ProgressContainer>
-          <StyledProgressBar
-            value={progress}
-            max='100'
-            onClick={handleProgressBarClick}
-            aria-label='Video progress'
-          />
-          <TimeContainer>
+          <ProgressBarWrapper>
+            <ProgressBar
+              progress={progress}
+              aria-label='Video progress'
+              onClick={handleProgressBarClick}
+            />
+          </ProgressBarWrapper>
+          <TimeWrapper>
             {videoRef.current
               ? formatTime(videoRef.current.currentTime)
               : '0:00'}
             {' / '}
             {videoRef.current ? formatTime(videoRef.current.duration) : '0:00'}
-          </TimeContainer>
+          </TimeWrapper>
         </ProgressContainer>
       </StyledVideoWrapper>
     </StyledVideoContainer>
