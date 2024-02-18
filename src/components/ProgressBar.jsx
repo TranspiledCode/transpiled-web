@@ -8,6 +8,7 @@ const ProgressBarContainer = styled.div`
   border-radius: 2px;
   margin: 10px 0;
   position: relative;
+  cursor: pointer;
 `;
 
 const ProgressBarFiller = styled.div`
@@ -30,8 +31,8 @@ const Playhead = styled.div`
   cursor: grab;
 `;
 
-const ProgressBar = ({ progress }) => (
-  <ProgressBarContainer>
+const ProgressBar = ({ progress, onClick }) => (
+  <ProgressBarContainer onClick={onClick}>
     <ProgressBarFiller width={progress} />
     <Playhead width={progress} />
   </ProgressBarContainer>
@@ -39,6 +40,11 @@ const ProgressBar = ({ progress }) => (
 
 ProgressBar.propTypes = {
   progress: PropTypes.number.isRequired,
+  onClick: PropTypes.func,
+};
+
+ProgressBar.defaultProps = {
+  onClick: null,
 };
 
 export default ProgressBar;

@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import Icon from './Icon';
 import ProgressBar from './ProgressBar';
+import VideoControls from './VideoControls';
+import { formatTime } from '../utils/time';
 
 const StyledVideoContainer = styled.div`
   position: relative;
@@ -36,24 +37,6 @@ const StyledVideo = styled.video`
   }
 `;
 
-const StyledControlsContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.5s linear;
-  visibility: hidden;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  ${StyledVideoWrapper}:hover & {
-    visibility: visible;
-    opacity: 1;
-  }
-`;
-
 // Styled progress Section
 const ProgressContainer = styled.div`
   position: absolute;
@@ -65,11 +48,13 @@ const ProgressContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   visibility: hidden;
+  opacity: 0;
   color: ${(props) => props.theme.white};
 
   ${StyledVideoWrapper}:hover & {
     visibility: visible;
     opacity: 1;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 `;
 const ProgressBarWrapper = styled.div`
@@ -80,44 +65,11 @@ const TimeWrapper = styled.div`
   color: ${(props) => props.theme.accent};
 `;
 
-// Styled buttons
-const StyledPlayPauseButton = styled.button`
-  color: ${(props) => props.theme.white};
-
-  &:hover {
-    color: ${(props) => props.theme.accent};
-  }
-`;
-
-const SkipAheadButton = styled.button`
-  color: ${(props) => props.theme.white};
-  transform: scaleX(-1);
-
-  &:hover {
-    color: ${(props) => props.theme.accent};
-  }
-`;
-
-const SkipBackButton = styled.button`
-  color: ${(props) => props.theme.white};
-
-  &:hover {
-    color: ${(props) => props.theme.accent};
-  }
-`;
-
-const formatTime = (seconds) => {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
-  return `${minutes}:${
-    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds
-  }`;
-};
-
 const VideoPlayer = ({ src }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -135,14 +87,22 @@ const VideoPlayer = ({ src }) => {
   }, []);
 
   const handleProgressBarClick = (e) => {
-    console.log('barClicked');
-    // const progressBar = e.target;
-    // const bounds = progressBar.getBoundingClientRect();
-    // const clickPosition = e.clientX - bounds.left;
-    // const progressBarWidth = bounds.width;
-    // const clickRatio = clickPosition / progressBarWidth;
-    // const newTime = clickRatio * videoRef.current.duration;
-    // videoRef.current.currentTime = newTime;
+    const progressBar = e.currentTarget;
+    const progressWidth = progressBar.offsetWidth;
+    const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
+
+    if (!Number.isFinite(progressWidth) || progressWidth === 0) {
+      console.error('Progress bar width is invalid or zero.');
+      return;
+    }
+
+    const clickRatio = clickPosition / progressWidth;
+    let newTime = clickRatio * videoRef.current.duration;
+
+    // Ensure newTime is within valid range (0 to duration)
+    newTime = Math.max(0, Math.min(newTime, videoRef.current.duration));
+
+    videoRef.current.currentTime = newTime;
   };
 
   const togglePlayPause = async () => {
@@ -169,40 +129,24 @@ const VideoPlayer = ({ src }) => {
     }
   };
 
-  const playButton = <Icon iconName='play' size='3x' iconType='solid' />;
-  const pauseButton = <Icon iconName='pause' size='3x' iconType='solid' />;
-
   return (
     <StyledVideoContainer>
-      <StyledVideoWrapper>
+      <StyledVideoWrapper
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <StyledVideo ref={videoRef} src={src} onClick={togglePlayPause} />
-        <StyledControlsContainer>
-          <SkipBackButton>
-            <Icon
-              iconName='clockRotateLeft'
-              size='3x'
-              iconType='solid'
-              onClick={() => handleAdjustTimeClick('backward', 15)}
-            />
-          </SkipBackButton>
-          <StyledPlayPauseButton
-            onClick={togglePlayPause}
-            aria-label={isPlaying ? 'Pause' : 'Play'}
-          >
-            {isPlaying ? pauseButton : playButton}
-          </StyledPlayPauseButton>
-          <SkipAheadButton>
-            <Icon
-              iconName='clockRotateLeft'
-              size='3x'
-              iconType='solid'
-              onClick={() => handleAdjustTimeClick('forward', 15)}
-            />
-          </SkipAheadButton>
-        </StyledControlsContainer>
+        <VideoControls
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          videoRef={videoRef}
+          handleAdjustTimeClick={handleAdjustTimeClick}
+          showControls={isHovered}
+        />
         <ProgressContainer>
           <ProgressBarWrapper>
             <ProgressBar
+              id='progress-bar'
               progress={progress}
               aria-label='Video progress'
               onClick={handleProgressBarClick}
