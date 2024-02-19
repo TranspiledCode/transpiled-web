@@ -6,6 +6,7 @@ import client from './graphql/apolloClient';
 import transpiledTheme from './styles/theme';
 import HomePage from './pages/Home';
 import Article from './pages/Article';
+import Tutorial from './pages/Tutorial';
 
 const App = () => (
   <ApolloProvider client={client}>
@@ -15,6 +16,7 @@ const App = () => (
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/article/:id' element={<Article />} />
+          <Route path='/tutorial' element={<Tutorial />} />
         </Routes>
       </Router>
     </ThemeProvider>

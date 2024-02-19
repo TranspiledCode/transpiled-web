@@ -11,14 +11,12 @@ const StyledVideoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 640px;
   margin: auto;
 `;
 
 const StyledVideoWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 640px;
   margin: auto;
 `;
 
@@ -47,15 +45,10 @@ const ProgressContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  visibility: hidden;
-  opacity: 0;
   color: ${(props) => props.theme.white};
-
-  ${StyledVideoWrapper}:hover & {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  }
+  visibility: ${({ showControls }) => (showControls ? 'visible' : 'hidden')};
+  opacity: ${({ showControls }) => (showControls ? 1 : 0)};
+  transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 `;
 const ProgressBarWrapper = styled.div`
   width: 70%;
@@ -121,6 +114,10 @@ const VideoPlayer = ({ src }) => {
     }
   };
 
+  const MemoizedVideoControls = React.memo(VideoControls);
+
+  const MemoizedProgressBar = React.memo(ProgressBar);
+
   const handleAdjustTimeClick = (direction, time) => {
     if (direction === 'forward') {
       videoRef.current.currentTime += time;
@@ -136,16 +133,16 @@ const VideoPlayer = ({ src }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <StyledVideo ref={videoRef} src={src} onClick={togglePlayPause} />
-        <VideoControls
+        <MemoizedVideoControls
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
           videoRef={videoRef}
           handleAdjustTimeClick={handleAdjustTimeClick}
           showControls={isHovered}
         />
-        <ProgressContainer>
+        <ProgressContainer showControls={isHovered}>
           <ProgressBarWrapper>
-            <ProgressBar
+            <MemoizedProgressBar
               id='progress-bar'
               progress={progress}
               aria-label='Video progress'

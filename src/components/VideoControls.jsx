@@ -86,10 +86,11 @@ const VideoControls = ({
 
 VideoControls.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  videoRef: PropTypes.shape.isRequired,
   setIsPlaying: PropTypes.func.isRequired,
   handleAdjustTimeClick: PropTypes.func.isRequired,
   showControls: PropTypes.bool.isRequired,
+  videoRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    .isRequired,
 };
 
 export default VideoControls;
