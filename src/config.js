@@ -10,6 +10,9 @@ const videos = [
     author: 'Joshua Crass',
     description:
       'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
+    thumbnail:
+      'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
+    url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/video/nvmMacFish.mp4',
   },
 ];
 

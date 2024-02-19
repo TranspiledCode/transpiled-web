@@ -16,7 +16,7 @@ const App = () => (
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/article/:id' element={<Article />} />
-          <Route path='/tutorial' element={<Tutorial />} />
+          <Route path='/tutorial/:id' element={<Tutorial />} />
         </Routes>
       </Router>
     </ThemeProvider>

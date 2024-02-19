@@ -58,7 +58,7 @@ const TimeWrapper = styled.div`
   color: ${(props) => props.theme.accent};
 `;
 
-const VideoPlayer = ({ src }) => {
+const VideoPlayer = ({ src, poster }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -75,7 +75,6 @@ const VideoPlayer = ({ src }) => {
 
     video.addEventListener('timeupdate', updateProgress);
 
-    // Cleanup function
     return () => video.removeEventListener('timeupdate', updateProgress);
   }, []);
 
@@ -132,7 +131,12 @@ const VideoPlayer = ({ src }) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <StyledVideo ref={videoRef} src={src} onClick={togglePlayPause} />
+        <StyledVideo
+          ref={videoRef}
+          src={src}
+          onClick={togglePlayPause}
+          poster={poster}
+        />
         <MemoizedVideoControls
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
@@ -164,6 +168,10 @@ const VideoPlayer = ({ src }) => {
 
 VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,
+  poster: PropTypes.string,
 };
 
+VideoPlayer.defaultProps = {
+  poster: null,
+};
 export default VideoPlayer;

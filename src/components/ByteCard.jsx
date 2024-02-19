@@ -2,30 +2,29 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import { flexCenter } from '../utils/css';
 import profile from '../assets/images/profile.jpg';
 
-const ByteCard = ({ video }) => {
-  const videoURL =
-    'https://transpiled.s3.us-west-2.amazonaws.com/assets/video/nvmMacFish.mp4';
-  return (
-    <Card>
-      <VideoWrapper>
-        <VideoPlayer src={videoURL} />
-      </VideoWrapper>
-      <ByteWrapper>
+const ByteCard = ({ video }) => (
+  <Card>
+    <VideoWrapper>
+      <VideoPlayer src={video.url} poster={video.thumbnail} />
+    </VideoWrapper>
+    <ByteWrapper>
+      <StyledLink to={`tutorial/${video.id}`}>
         <ByteTitle>{video.title}</ByteTitle>
-        <Author>
-          <Avatar src={profile} alt='profile' />
-          <AuthorName>{`Host: ${video.author}`}</AuthorName>
-        </Author>
-        <Description>{video.description}</Description>
-      </ByteWrapper>
-      <ViewMore>View More</ViewMore>
-    </Card>
-  );
-};
+      </StyledLink>
+      <Author>
+        <Avatar src={profile} alt='profile' />
+        <AuthorName>{`Host: ${video.author}`}</AuthorName>
+      </Author>
+      <Description>{video.description}</Description>
+    </ByteWrapper>
+    <ViewMore>View More</ViewMore>
+  </Card>
+);
 
 // Styled Components for ByteCard
 const Card = styled.div`
@@ -57,6 +56,17 @@ const ByteWrapper = styled.div`
   width: 100%;
   height: 100%;
   padding: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const ByteTitle = styled.h3`
@@ -120,6 +130,8 @@ ByteCard.propTypes = {
     title: PropTypes.string,
     author: PropTypes.string,
     description: PropTypes.string,
+    thumbnail: PropTypes.string,
+    url: PropTypes.string,
   }).isRequired,
 };
 
