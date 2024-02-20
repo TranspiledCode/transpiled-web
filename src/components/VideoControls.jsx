@@ -42,6 +42,7 @@ const VideoControls = ({
   videoRef,
   handleAdjustTimeClick,
   showControls,
+  videoPlayerWidth,
 }) => {
   const togglePlayPause = async () => {
     // Use async function for better error handling
@@ -91,6 +92,7 @@ VideoControls.propTypes = {
   showControls: PropTypes.bool.isRequired,
   videoRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     .isRequired,
+  videoPlayerWidth: PropTypes.number.isRequired,
 };
 
 export default VideoControls;

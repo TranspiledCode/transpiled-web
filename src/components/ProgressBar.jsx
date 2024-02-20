@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
+const transitionTime = '0.2s';
+
 const ProgressBarContainer = styled.div`
-  height: 4px;
+  height: 1rem;
   width: 100%;
   background-color: ${({ theme }) => theme.white};
   border-radius: 2px;
@@ -16,18 +18,18 @@ const ProgressBarFiller = styled.div`
   width: ${({ width }) => `${width}%`};
   background-color: ${({ theme }) => theme.primary};
   border-radius: 2px;
-  transition: width 0.5s ease-in-out;
+  transition: width ${transitionTime} ease-out;
 `;
 
 const Playhead = styled.div`
-  width: 6px;
-  height: 12px;
+  width: 1rem;
+  height: 1.8rem;
   background-color: ${({ theme }) => theme.secondary};
   border-radius: 2px;
   position: absolute;
   top: -4px;
   left: ${({ width }) => `calc(${width}% - 2px)`};
-  transition: left 0.5s ease-in-out;
+  transition: left ${transitionTime} ease-out;
   cursor: grab;
 `;
 

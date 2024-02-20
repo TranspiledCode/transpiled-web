@@ -5,64 +5,26 @@ import ProgressBar from './ProgressBar';
 import VideoControls from './VideoControls';
 import { formatTime } from '../utils/time';
 
-const StyledVideoContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-`;
-
-const StyledVideoWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  margin: auto;
-`;
-
-const StyledVideo = styled.video`
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  ${StyledVideoWrapper}:hover & {
-    filter: brightness(0.5);
-    transition: filter 0.5s ease-in-out;
-  }
-`;
-
-// Styled progress Section
-const ProgressContainer = styled.div`
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  color: ${(props) => props.theme.white};
-  visibility: ${({ showControls }) => (showControls ? 'visible' : 'hidden')};
-  opacity: ${({ showControls }) => (showControls ? 1 : 0)};
-  transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
-`;
-const ProgressBarWrapper = styled.div`
-  width: 70%;
-`;
-
-const TimeWrapper = styled.div`
-  color: ${(props) => props.theme.accent};
-`;
-
 const VideoPlayer = ({ src, poster }) => {
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [videoPlayerWidth, setVideoPlayerWidth] = useState(0);
+
+  useEffect(() => {
+    const updateVideoPlayerWidth = () => {
+      if (containerRef.current) {
+        setVideoPlayerWidth(containerRef.current.offsetWidth);
+      }
+    };
+
+    window.addEventListener('resize', updateVideoPlayerWidth);
+    updateVideoPlayerWidth();
+
+    return () => window.removeEventListener('resize', updateVideoPlayerWidth);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -94,6 +56,7 @@ const VideoPlayer = ({ src, poster }) => {
     // Ensure newTime is within valid range (0 to duration)
     newTime = Math.max(0, Math.min(newTime, videoRef.current.duration));
 
+    console.log('newTime:', newTime);
     videoRef.current.currentTime = newTime;
   };
 
@@ -113,10 +76,6 @@ const VideoPlayer = ({ src, poster }) => {
     }
   };
 
-  const MemoizedVideoControls = React.memo(VideoControls);
-
-  const MemoizedProgressBar = React.memo(ProgressBar);
-
   const handleAdjustTimeClick = (direction, time) => {
     if (direction === 'forward') {
       videoRef.current.currentTime += time;
@@ -126,7 +85,7 @@ const VideoPlayer = ({ src, poster }) => {
   };
 
   return (
-    <StyledVideoContainer>
+    <StyledVideoContainer ref={containerRef}>
       <StyledVideoWrapper
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -137,16 +96,17 @@ const VideoPlayer = ({ src, poster }) => {
           onClick={togglePlayPause}
           poster={poster}
         />
-        <MemoizedVideoControls
+        <VideoControls
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
           videoRef={videoRef}
           handleAdjustTimeClick={handleAdjustTimeClick}
           showControls={isHovered}
+          videoPlayerWidth={videoPlayerWidth}
         />
         <ProgressContainer showControls={isHovered}>
-          <ProgressBarWrapper>
-            <MemoizedProgressBar
+          <ProgressBarWrapper videoPlayerWidth={videoPlayerWidth}>
+            <ProgressBar
               id='progress-bar'
               progress={progress}
               aria-label='Video progress'
@@ -174,4 +134,60 @@ VideoPlayer.propTypes = {
 VideoPlayer.defaultProps = {
   poster: null,
 };
+
+const StyledVideoContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+`;
+
+const StyledVideoWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  margin: auto;
+`;
+
+const StyledVideo = styled.video`
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ${StyledVideoWrapper}:hover & {
+    filter: brightness(0.5);
+    transition: filter 0.5s ease-in-out;
+  }
+`;
+
+const ProgressContainer = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: ${(props) => props.theme.white};
+  visibility: ${({ showControls }) => (showControls ? 'visible' : 'hidden')};
+  opacity: ${({ showControls }) => (showControls ? 1 : 0)};
+  transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+`;
+const ProgressBarWrapper = styled.div`
+  // StyledVideoContainer width  is less than 640px than the width should be 60%
+  // StyledVideoContainer width is greater than 640px than the width should be 80%
+  width: ${({ videoPlayerWidth }) => (videoPlayerWidth < 640 ? '60%' : '80%')};
+`;
+
+const TimeWrapper = styled.div`
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.accent};
+`;
+
 export default VideoPlayer;
