@@ -108,17 +108,19 @@ const VideoPlayer = ({ src, poster }) => {
           <ProgressBarWrapper videoPlayerWidth={videoPlayerWidth}>
             <ProgressBar
               id='progress-bar'
-              progress={progress}
+              initialProgress={progress}
               aria-label='Video progress'
               onClick={handleProgressBarClick}
             />
           </ProgressBarWrapper>
           <TimeWrapper>
-            {videoRef.current
+            {videoRef.current && videoRef.current.currentTime
               ? formatTime(videoRef.current.currentTime)
               : '0:00'}
             {' / '}
-            {videoRef.current ? formatTime(videoRef.current.duration) : '0:00'}
+            {videoRef.current && videoRef.current.duration
+              ? formatTime(videoRef.current.duration)
+              : '0:00'}
           </TimeWrapper>
         </ProgressContainer>
       </StyledVideoWrapper>

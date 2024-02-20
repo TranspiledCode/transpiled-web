@@ -33,9 +33,6 @@ const SkipBackButton = styled.button`
   }
 `;
 
-const playButton = <Icon iconName='play' size='3x' iconType='solid' />;
-const pauseButton = <Icon iconName='pause' size='3x' iconType='solid' />;
-
 const VideoControls = ({
   isPlaying,
   setIsPlaying,
@@ -44,8 +41,13 @@ const VideoControls = ({
   showControls,
   videoPlayerWidth,
 }) => {
+  const iconSize = videoPlayerWidth < 500 ? '3x' : '4x';
+  const playButton = <Icon iconName='play' size={iconSize} iconType='solid' />;
+  const pauseButton = (
+    <Icon iconName='pause' size={iconSize} iconType='solid' />
+  );
+
   const togglePlayPause = async () => {
-    // Use async function for better error handling
     const video = videoRef.current;
     if (video.paused) {
       try {
@@ -65,7 +67,7 @@ const VideoControls = ({
       <SkipBackButton>
         <Icon
           iconName='clockRotateLeft'
-          size='3x'
+          size={iconSize}
           iconType='solid'
           onClick={() => handleAdjustTimeClick('backward', 15)}
         />
@@ -76,7 +78,7 @@ const VideoControls = ({
       <SkipAheadButton>
         <Icon
           iconName='clockRotateLeft'
-          size='3x'
+          size={iconSize}
           iconType='solid'
           onClick={() => handleAdjustTimeClick('forward', 15)}
         />
