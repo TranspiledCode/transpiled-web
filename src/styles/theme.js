@@ -20,6 +20,7 @@ const generateThemeVariants = (mode) => {
     // base colors
     white: baseColors.white,
     black: baseColors.black,
+    transparent: baseColors.transparent,
 
     switch: {
       bar: isDark ? baseColors.blue : baseColors.orange,

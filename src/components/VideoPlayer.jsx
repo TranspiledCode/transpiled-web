@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import ProgressBar from './ProgressBar';
 import VideoControls from './VideoControls';
+import SpeedController from './SpeedController';
+import VolumeControl from './VolumeController';
+
 import { formatTime } from '../utils/time';
 
 const VideoPlayer = ({ src, poster }) => {
@@ -114,6 +117,8 @@ const VideoPlayer = ({ src, poster }) => {
               togglePlayPause={togglePlayPause}
             />
           </ProgressBarWrapper>
+          <SpeedController videoRef={videoRef} />
+          <VolumeControl videoRef={videoRef} />
           <TimeWrapper>
             {videoRef.current && videoRef.current.currentTime
               ? formatTime(videoRef.current.currentTime)

@@ -123,7 +123,6 @@ ProgressBar.propTypes = {
   progress: PropTypes.number.isRequired,
   videoRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     .isRequired,
-  togglePlayPause: PropTypes.func.isRequired,
 };
 
 ProgressBar.defaultProps = {
