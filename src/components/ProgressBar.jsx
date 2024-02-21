@@ -1,8 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-
-const clickTransitionTime = '0.2s';
+import { formatTime } from '../utils/time';
 
 const ProgressBarContainer = styled.div`
   height: 1rem;
@@ -19,7 +18,6 @@ const ProgressBarFiller = styled.div`
   width: ${({ width }) => `${width}%`};
   background-color: ${({ theme }) => theme.primary};
   border-radius: 2px;
-  transition: width ${clickTransitionTime} ease-out;
 `;
 
 const Playhead = styled.div`
@@ -30,62 +28,132 @@ const Playhead = styled.div`
   position: absolute;
   top: -4px;
   left: ${({ width }) => `calc(${width}% - 2px)`};
-  transition: left ${clickTransitionTime} ease-out;
-  cursor: grab;
-`;
 
-const ProgressBar = ({ initialProgress = 0, onClick }) => {
-  const [progress, setProgress] = useState(initialProgress);
+  ::after {
+    visibility: ${({ isDragging }) => (isDragging ? 'visible' : 'hidden')};
+    content: attr(data-progress);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    color: ${({ theme }) => theme.white};
+    font-size: 1.2rem;
+    transform: translate(-50%, -50%);
+  }
+`;
+const ProgressBar = ({
+  initialProgress = 0,
+  onClick,
+  progress,
+  videoRef,
+  togglePlayPause,
+}) => {
+  const [barProgress, setProgress] = useState(initialProgress);
   const [isDragging, setIsDragging] = useState(false);
+  const [videoTime, setVideoTime] = useState(0);
+  const [paused, setPaused] = useState(false);
   const progressBarRef = useRef(null);
+
+  const calculateVideoTime = (percentage) => {
+    if (!videoRef.current) return 0;
+    // return formatted time based on the percentage using the formatTime function
+    return formatTime((videoRef.current.duration / 100) * percentage);
+  };
+
+  // Track the playPaused state so we can return the video
+  // to the previous state on mouse up after dragging.
+  // if the video was playing on mouse down, pause it and return to playing
+  // if the video was paused on mousedown then leave it paused on mouse up.
 
   const updateProgress = (e) => {
     const progressBar = progressBarRef.current;
+    if (!progressBar) return;
+
     const { left, width } = progressBar.getBoundingClientRect();
     const clickX = e.clientX - left;
     const newProgress = Math.max(0, Math.min(100, (clickX / width) * 100));
-    console.log('updateProgress:', newProgress);
+
+    setVideoTime(calculateVideoTime(newProgress));
+
     setProgress(newProgress);
+  };
+
+  const handleMouseMove = (e) => {
+    updateProgress(e);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+
+    if (paused) {
+      console.log('I see you paused it...');
+      setPaused(false);
+    } else {
+      console.log('Must have been paused prior to dragging');
+    }
+
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseup', handleMouseUp);
   };
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
     updateProgress(e);
-  };
 
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      updateProgress(e);
+    // pause the video if playing
+    if (!videoRef.current.paused) {
+      console.log('Video is playing...');
+      setPaused(true);
+      togglePlayPause(); // pause the video
+      console.log('I paused the video..');
+    } else {
+      setPaused(false);
+      console.log('Video already paused');
     }
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+  useEffect(() => {
+    if (isDragging) return;
+    setProgress(progress);
+    setVideoTime(calculateVideoTime(progress));
+  }, [progress]);
+
+  useEffect(
+    () => () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    },
+    []
+  );
 
   return (
     <ProgressBarContainer
       ref={progressBarRef}
       onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      // onMouseLeave={handleMouseUp} // To stop dragging when mouse leaves the element
-      onMouseUp={handleMouseUp}
       onClick={onClick}
     >
-      <ProgressBarFiller width={progress} />
-      <Playhead width={progress} />
+      <ProgressBarFiller width={barProgress} />
+      <Playhead
+        width={barProgress}
+        data-progress={videoTime}
+        isDragging={isDragging}
+      />
     </ProgressBarContainer>
   );
 };
 
 ProgressBar.propTypes = {
-  // progress: PropTypes.number.isRequired,
-  onClick: PropTypes.func,
   initialProgress: PropTypes.number,
+  onClick: PropTypes.func.isRequired,
+  progress: PropTypes.number.isRequired,
+  videoRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    .isRequired,
+  togglePlayPause: PropTypes.func.isRequired,
 };
 
 ProgressBar.defaultProps = {
-  onClick: null,
   initialProgress: 0,
 };
 

@@ -108,9 +108,11 @@ const VideoPlayer = ({ src, poster }) => {
           <ProgressBarWrapper videoPlayerWidth={videoPlayerWidth}>
             <ProgressBar
               id='progress-bar'
-              initialProgress={progress}
+              progress={progress}
               aria-label='Video progress'
               onClick={handleProgressBarClick}
+              videoRef={videoRef}
+              togglePlayPause={togglePlayPause}
             />
           </ProgressBarWrapper>
           <TimeWrapper>
