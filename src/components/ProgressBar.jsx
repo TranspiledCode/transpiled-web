@@ -40,17 +40,10 @@ const Playhead = styled.div`
     transform: translate(-50%, -50%);
   }
 `;
-const ProgressBar = ({
-  initialProgress = 0,
-  onClick,
-  progress,
-  videoRef,
-  togglePlayPause,
-}) => {
+const ProgressBar = ({ initialProgress = 0, onClick, progress, videoRef }) => {
   const [barProgress, setProgress] = useState(initialProgress);
   const [isDragging, setIsDragging] = useState(false);
   const [videoTime, setVideoTime] = useState(0);
-  const [paused, setPaused] = useState(false);
   const progressBarRef = useRef(null);
 
   const calculateVideoTime = (percentage) => {
@@ -83,14 +76,6 @@ const ProgressBar = ({
 
   const handleMouseUp = () => {
     setIsDragging(false);
-
-    if (paused) {
-      console.log('I see you paused it...');
-      setPaused(false);
-    } else {
-      console.log('Must have been paused prior to dragging');
-    }
-
     window.removeEventListener('mousemove', handleMouseMove);
     window.removeEventListener('mouseup', handleMouseUp);
   };
@@ -98,18 +83,6 @@ const ProgressBar = ({
   const handleMouseDown = (e) => {
     setIsDragging(true);
     updateProgress(e);
-
-    // pause the video if playing
-    if (!videoRef.current.paused) {
-      console.log('Video is playing...');
-      setPaused(true);
-      togglePlayPause(); // pause the video
-      console.log('I paused the video..');
-    } else {
-      setPaused(false);
-      console.log('Video already paused');
-    }
-
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
   };

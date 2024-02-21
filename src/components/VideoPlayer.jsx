@@ -56,7 +56,6 @@ const VideoPlayer = ({ src, poster }) => {
     // Ensure newTime is within valid range (0 to duration)
     newTime = Math.max(0, Math.min(newTime, videoRef.current.duration));
 
-    console.log('newTime:', newTime);
     videoRef.current.currentTime = newTime;
   };
 
