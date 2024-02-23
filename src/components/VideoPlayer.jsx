@@ -117,17 +117,22 @@ const VideoPlayer = ({ src, poster }) => {
               togglePlayPause={togglePlayPause}
             />
           </ProgressBarWrapper>
-          <SpeedController videoRef={videoRef} />
-          <VolumeControl videoRef={videoRef} />
-          <TimeWrapper>
-            {videoRef.current && videoRef.current.currentTime
-              ? formatTime(videoRef.current.currentTime)
-              : '0:00'}
-            {' / '}
-            {videoRef.current && videoRef.current.duration
-              ? formatTime(videoRef.current.duration)
-              : '0:00'}
-          </TimeWrapper>
+          <LowerControlsWrapper>
+            <VolumeControl videoRef={videoRef} />
+            <TimeWrapper>
+              {videoRef.current && videoRef.current.currentTime
+                ? formatTime(videoRef.current.currentTime)
+                : '0:00'}
+              {' / '}
+              {videoRef.current && videoRef.current.duration
+                ? formatTime(videoRef.current.duration)
+                : '0:00'}
+            </TimeWrapper>
+            <SpeedController
+              videoRef={videoRef}
+              togglePlayPause={togglePlayPause}
+            />
+          </LowerControlsWrapper>
         </ProgressContainer>
       </StyledVideoWrapper>
     </StyledVideoContainer>
@@ -180,20 +185,30 @@ const ProgressContainer = styled.div`
   width: 100%;
   padding: 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
   color: ${(props) => props.theme.white};
   visibility: ${({ showControls }) => (showControls ? 'visible' : 'hidden')};
   opacity: ${({ showControls }) => (showControls ? 1 : 0)};
   transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 `;
 const ProgressBarWrapper = styled.div`
-  // StyledVideoContainer width  is less than 640px than the width should be 60%
-  // StyledVideoContainer width is greater than 640px than the width should be 80%
-  width: ${({ videoPlayerWidth }) => (videoPlayerWidth < 640 ? '60%' : '80%')};
+  // StyledVideoContainer width  is less than 640px than the width should be 80%
+  // StyledVideoContainer width is greater than 640px than the width should be 90%
+  width: ${({ videoPlayerWidth }) => (videoPlayerWidth < 640 ? '80%' : '90%')};
+`;
+
+const LowerControlsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: ${({ videoPlayerWidth }) => (videoPlayerWidth < 640 ? '80%' : '90%')};
 `;
 
 const TimeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.5rem;
   color: ${(props) => props.theme.accent};
 `;

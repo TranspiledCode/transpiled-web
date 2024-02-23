@@ -1,63 +1,131 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import Icon from './Icon';
 
-const Container = styled.div`
+const SliderContainer = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const Icon = styled.button`
-  background: none;
-  border: none;
+  justify-content: flex-start;
   cursor: pointer;
+  gap: 30px;
 `;
 
-const Slider = styled.input`
-  cursor: pointer;
+const SliderTrack = styled.div`
+  width: 100px;
+  height: 4px;
+  background-color: ${({ theme }) => theme.white};
+  position: relative;
+  border-radius: 2px;
 `;
 
-const VolumeControl = ({ initialVolume = 0.5, videoRef }) => {
+const SliderThumb = styled.div`
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: ${({ theme }) => theme.primary};
+  border-radius: 50%;
+  top: -6px;
+`;
+
+const Volume = styled.p`
+  font-size: 1.5rem;
+  display: block;
+  opacity: ${({ isDragging }) => (isDragging ? 1 : 0)};
+  transition: opacity 0.3s ease-in-out;
+  color: ${({ theme }) => theme.white};
+  margin-left: 10px;
+  width: 30px;
+`;
+
+const MuteButton = styled.div`
+  width: 30px;
+`;
+
+const CustomSlider = ({ initialVolume = 50, videoRef }) => {
   const [volume, setVolume] = useState(initialVolume);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isMuted, setMuted] = useState(false);
+  const trackRef = useRef(null);
   const video = videoRef.current;
 
-  const toggleMute = () => {
-    const newVolume = isMuted ? volume : 0;
-    video.volume = newVolume;
-    setIsMuted(!isMuted);
+  const setVideoVolume = (newVolume) => {
+    if (video) {
+      video.volume = newVolume;
+    }
   };
 
-  const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    video.volume = newVolume;
-    setVolume(newVolume);
-    setIsMuted(newVolume === 0);
+  const toggleMute = () => {
+    if (video && isMuted) {
+      setMuted(false);
+      video.muted = false;
+    } else if (video) {
+      setMuted(true);
+      video.muted = true;
+    }
   };
+
+  const updateVolume = (e) => {
+    const track = trackRef.current;
+    const trackRect = track.getBoundingClientRect();
+    const newVolume = ((e.clientX - trackRect.left) / trackRect.width) * 100;
+    const volumeToSet =
+      Math.round(Math.min(Math.max(newVolume, 0), 100) / 1) * 1;
+    setVolume(volumeToSet);
+    setVideoVolume(volumeToSet / 100);
+  };
+
+  const handleMouseMove = (e) => {
+    updateVolume(e);
+    setIsDragging(true);
+  };
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseup', handleMouseUp);
+  };
+
+  const handleMouseDown = () => {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+  };
+
+  const VolumeHigh = (
+    <Icon
+      iconName='volumeHigh'
+      size='2x'
+      iconType='solid'
+      onClick={toggleMute}
+    />
+  );
+  const VolumeMute = (
+    <Icon
+      iconName='volumeXmark'
+      size='2x'
+      iconType='solid'
+      onClick={toggleMute}
+    />
+  );
 
   return (
-    <Container>
-      <Icon onClick={toggleMute}>{isMuted ? '🔇' : '🔊'}</Icon>
-      <Slider
-        type='range'
-        min='0'
-        max='1'
-        step='0.01'
-        value={isMuted ? 0 : volume}
-        onChange={handleVolumeChange}
-      />
-    </Container>
+    <SliderContainer onMouseDown={handleMouseDown}>
+      <MuteButton>{isMuted ? VolumeMute : VolumeHigh}</MuteButton>
+      <SliderTrack ref={trackRef}>
+        <SliderThumb style={{ left: `${volume}%`, marginLeft: '-8px' }} />
+      </SliderTrack>
+      <Volume isDragging={isDragging}>{volume}%</Volume>
+    </SliderContainer>
   );
 };
 
-VolumeControl.propTypes = {
+CustomSlider.propTypes = {
   initialVolume: PropTypes.number,
   videoRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     .isRequired,
 };
 
-VolumeControl.defaultProps = {
-  initialVolume: 0.5,
+CustomSlider.defaultProps = {
+  initialVolume: 50,
 };
 
-export default VolumeControl;
+export default CustomSlider;
