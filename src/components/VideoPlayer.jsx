@@ -15,6 +15,15 @@ const VideoPlayer = ({ src, poster }) => {
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [videoPlayerWidth, setVideoPlayerWidth] = useState(0);
+  const hoverTimerRef = useRef(null);
+
+  const handleMouseMove = () => {
+    setIsHovered(true);
+    clearTimeout(hoverTimerRef.current);
+    hoverTimerRef.current = setTimeout(() => {
+      setIsHovered(false);
+    }, 3000);
+  };
 
   useEffect(() => {
     const updateVideoPlayerWidth = () => {
@@ -39,8 +48,12 @@ const VideoPlayer = ({ src, poster }) => {
     };
 
     video.addEventListener('timeupdate', updateProgress);
+    video.addEventListener('mousemove', handleMouseMove);
 
-    return () => video.removeEventListener('timeupdate', updateProgress);
+    return () => {
+      video.removeEventListener('timeupdate', updateProgress);
+      video.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const handleProgressBarClick = (e) => {
@@ -97,6 +110,7 @@ const VideoPlayer = ({ src, poster }) => {
           src={src}
           onClick={togglePlayPause}
           poster={poster}
+          isHovered={isHovered}
         />
         <VideoControls
           isPlaying={isPlaying}
@@ -172,10 +186,8 @@ const StyledVideo = styled.video`
   justify-content: center;
   align-items: center;
 
-  ${StyledVideoWrapper}:hover & {
-    filter: brightness(0.5);
-    transition: filter 0.5s ease-in-out;
-  }
+  filter: ${({ isHovered }) => (isHovered ? 'brightness(0.5)' : 'none')};
+  transition: filter 0.5s ease-in-out;
 `;
 
 const ProgressContainer = styled.div`
