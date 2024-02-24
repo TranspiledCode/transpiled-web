@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as SolidIcons from '@fortawesome/free-solid-svg-icons';
 import * as BrandIcons from '@fortawesome/free-brands-svg-icons';
 
-const Icon = ({ iconName, size, iconType, onClick }) => {
+const Icon = ({ iconName, size, iconType, onClick, ariaLabel }) => {
   let icon;
   if (iconType === 'brand') {
     icon =
@@ -19,7 +19,15 @@ const Icon = ({ iconName, size, iconType, onClick }) => {
   const defaultIcon = SolidIcons.faQuestionCircle;
   icon = icon || defaultIcon;
 
-  return <FontAwesomeIcon icon={icon} size={size} onClick={onClick} />;
+  return (
+    <FontAwesomeIcon
+      icon={icon}
+      size={size}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      role='img'
+    />
+  );
 };
 
 Icon.propTypes = {
@@ -27,12 +35,14 @@ Icon.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   iconType: PropTypes.oneOf(['solid', 'brand']),
   onClick: PropTypes.func,
+  ariaLabel: PropTypes.string,
 };
 
 Icon.defaultProps = {
   size: '1x',
   iconType: 'solid',
   onClick: () => {},
+  ariaLabel: 'Icon',
 };
 
 export default Icon;
@@ -42,6 +52,6 @@ export default Icon;
 Usage:
   To use the Icon component, import it and include it in your JSX code with the required props.
 Example:
-  <Icon iconName="star" size="2x" iconType="solid" onClick={() => console.log("Icon clicked")} />
+  <Icon iconName="star" size="2x" iconType="solid" onClick={() => console.log("Icon clicked")} ariaLabel="Star Icon"/>
 
 */
