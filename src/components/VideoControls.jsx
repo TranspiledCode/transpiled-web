@@ -39,9 +39,9 @@ const VideoControls = ({
   videoRef,
   handleAdjustTimeClick,
   showControls,
-  videoPlayerWidth,
+  videoWidth,
 }) => {
-  const iconSize = videoPlayerWidth < 500 ? '3x' : '4x';
+  const iconSize = videoWidth < 500 ? '3x' : '4x';
   const playButton = <Icon iconName='play' size={iconSize} iconType='solid' />;
   const pauseButton = (
     <Icon iconName='pause' size={iconSize} iconType='solid' />
@@ -94,7 +94,7 @@ VideoControls.propTypes = {
   showControls: PropTypes.bool.isRequired,
   videoRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     .isRequired,
-  videoPlayerWidth: PropTypes.number.isRequired,
+  videoWidth: PropTypes.number.isRequired,
 };
 
 export default VideoControls;

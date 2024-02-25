@@ -14,7 +14,7 @@ const VideoPlayer = ({ src, poster }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [videoPlayerWidth, setVideoPlayerWidth] = useState(0);
+  const [videoWidth, setVideoWidth] = useState(0);
   const hoverTimerRef = useRef(null);
 
   const handleMouseMove = () => {
@@ -26,16 +26,16 @@ const VideoPlayer = ({ src, poster }) => {
   };
 
   useEffect(() => {
-    const updateVideoPlayerWidth = () => {
+    const updateVideoWidth = () => {
       if (containerRef.current) {
-        setVideoPlayerWidth(containerRef.current.offsetWidth);
+        setVideoWidth(containerRef.current.offsetWidth);
       }
     };
 
-    window.addEventListener('resize', updateVideoPlayerWidth);
-    updateVideoPlayerWidth();
+    window.addEventListener('resize', updateVideoWidth);
+    updateVideoWidth();
 
-    return () => window.removeEventListener('resize', updateVideoPlayerWidth);
+    return () => window.removeEventListener('resize', updateVideoWidth);
   }, []);
 
   useEffect(() => {
@@ -118,10 +118,10 @@ const VideoPlayer = ({ src, poster }) => {
           videoRef={videoRef}
           handleAdjustTimeClick={handleAdjustTimeClick}
           showControls={isHovered}
-          videoPlayerWidth={videoPlayerWidth}
+          videoWidth={videoWidth}
         />
         <ProgressContainer showControls={isHovered}>
-          <ProgressBarWrapper videoPlayerWidth={videoPlayerWidth}>
+          <ProgressBarWrapper videoWidth={videoWidth}>
             <ProgressBar
               id='progress-bar'
               progress={progress}
@@ -131,7 +131,7 @@ const VideoPlayer = ({ src, poster }) => {
               togglePlayPause={togglePlayPause}
             />
           </ProgressBarWrapper>
-          <LowerControlsWrapper>
+          <LowerControlsWrapper videoWidth={videoWidth}>
             <VolumeControl videoRef={videoRef} />
             <TimeWrapper>
               {videoRef.current && videoRef.current.currentTime
@@ -206,15 +206,15 @@ const ProgressContainer = styled.div`
   transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 `;
 const ProgressBarWrapper = styled.div`
-  // StyledVideoContainer width  is less than 640px than the width should be 80%
-  // StyledVideoContainer width is greater than 640px than the width should be 90%
-  width: ${({ videoPlayerWidth }) => (videoPlayerWidth < 640 ? '80%' : '90%')};
+  width: ${({ videoWidth }) => (videoWidth < 640 ? '80%' : '90%')};
 `;
 
 const LowerControlsWrapper = styled.div`
-  display: grid;
+  display: ${({ videoWidth }) => (videoWidth < 640 ? 'none' : 'grid')};
+  justify-content: space-between;
+  align-items: center;
   grid-template-columns: repeat(3, 1fr);
-  width: ${({ videoPlayerWidth }) => (videoPlayerWidth < 640 ? '80%' : '90%')};
+  width: ${({ videoWidth }) => (videoWidth < 640 ? '80%' : '90%')};
 `;
 
 const TimeWrapper = styled.div`
