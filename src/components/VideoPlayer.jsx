@@ -40,6 +40,7 @@ const VideoPlayer = ({ src, poster }) => {
 
   useEffect(() => {
     const video = videoRef.current;
+    const container = containerRef.current;
     if (!video) return undefined;
 
     const updateProgress = () => {
@@ -48,11 +49,11 @@ const VideoPlayer = ({ src, poster }) => {
     };
 
     video.addEventListener('timeupdate', updateProgress);
-    video.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       video.removeEventListener('timeupdate', updateProgress);
-      video.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 

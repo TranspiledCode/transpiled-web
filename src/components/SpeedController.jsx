@@ -20,6 +20,7 @@ const DropdownButton = styled.button`
     props.isOpen ? props.theme.white : props.theme.transparent};
   border: none;
   width: 80px;
+  margin-top: 10px;
   border-radius: 5px;
   box-shadow: ${(props) =>
     props.isOpen
