@@ -16,4 +16,13 @@ const videos = [
   },
 ];
 
-export { videos, companyName, gqlEndpoint, gqlDevEndpoint };
+const siteImages = {
+  headerLogo:
+    'https://transpiled.s3.amazonaws.com/assets/img/logo-colored/m.webp',
+  backgroundImage:
+    'https://transpiled.s3.amazonaws.com/assets/img/AltBannerImage/l.webp',
+  logoOverlayImage:
+    'https://transpiled.s3.amazonaws.com/assets/img/leftSideLogoTransparent/m.webp',
+};
+
+export { videos, companyName, gqlEndpoint, gqlDevEndpoint, siteImages };

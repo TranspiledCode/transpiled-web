@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import NavMenu from './NavMenu';
 import Icon from './Icon';
-
-import Logo from '../assets/images/logo-colored.png';
+import { siteImages } from '../config';
 import Navbar from './Navbar';
+
+const { headerLogo } = siteImages.headerLogo;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +44,7 @@ const Header = () => {
   return (
     <HeaderSection>
       <LeftContainer>
-        <LogoImage src={Logo} alt='Company Logo' />
+        <LogoImage src={headerLogo} alt='Company Logo' />
         <CompanyName>Transpiled</CompanyName>
       </LeftContainer>
       <RightContainer>

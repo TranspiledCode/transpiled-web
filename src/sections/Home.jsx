@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import Header from '../components/Header';
-import background from '../assets/images/AltBannerImage.png';
-import logoOverlayImage from '../assets/images/leftSideLogoTransparent.svg';
 import Banner from '../components/Banner';
+import { siteImages } from '../config';
+
+const { backgroundImage, logoOverlayImage } = siteImages;
 
 const HomeSection = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ const HomeSection = styled.div`
   min-height: 700px;
   max-height: 1000px;
   background-color: ${({ theme }) => theme.background};
-  background-image: url(${background});
+  background-image: url(${backgroundImage});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

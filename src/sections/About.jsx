@@ -3,7 +3,9 @@ import styled from '@emotion/styled';
 
 import Divider from '../components/Divider';
 import Image from '../components/Image';
-import aboutImage from '../assets/images/blackAndWhiteCoder.png';
+
+const aboutImageURL =
+  'https://transpiled.s3.amazonaws.com/assets/img/blackAndWhiteCoder/m.webp';
 
 const Container = styled.div`
   display: flex;
@@ -71,7 +73,7 @@ const About = () => (
       </Message>
     </MessageWrapper>
     <ImageWrapper>
-      <Image src={aboutImage} alt='Your Image' />
+      <Image src={aboutImageURL} alt='Your Image' />
     </ImageWrapper>
   </Container>
 );
