@@ -2,10 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import Divider from '../components/Divider';
-import Image from '../components/Image';
-
-const aboutImageURL =
-  'https://transpiled.s3.amazonaws.com/assets/img/blackAndWhiteCoder/m.webp';
 
 const Container = styled.div`
   display: flex;
@@ -14,20 +10,6 @@ const Container = styled.div`
   color: ${({ theme }) => theme.text};
   position: relative;
   padding: 40px;
-`;
-
-const ImageWrapper = styled.div`
-  display: none;
-  @media (min-width: 1024px) {
-    display: flex;
-    flex: 1;
-    max-width: 500px;
-    padding: 20px;
-  }
-  img {
-    position: relative;
-    bottom: -125px;
-  }
 `;
 
 const MessageWrapper = styled.div`
@@ -60,7 +42,7 @@ const About = () => (
         transition={{ duration: 0.8 }}
       >
         <p>
-          Hi there, I'm Joshua, the founder of Transpiled. With decades of
+          Hi there, Im Joshua, the founder of Transpiled. With decades of
           experience in the software industry, I've embarked on a journey to
           bring your digital aspirations to life. At Transpiled, it's all about
           turning innovative ideas into real-world solutions. My approach is
@@ -72,9 +54,6 @@ const About = () => (
         </p>
       </Message>
     </MessageWrapper>
-    <ImageWrapper>
-      <Image src={aboutImageURL} alt='Your Image' />
-    </ImageWrapper>
   </Container>
 );
 

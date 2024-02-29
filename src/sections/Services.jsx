@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 import { flexCenter } from '../utils/css';
-import webDevIcon from '../assets/images/webDevIcon.png';
-import tutorialsIcon from '../assets/images/tutorialsIcon.png';
-import mobileAppIcon from '../assets/images/mobileAppIcon.png';
-import logoSquares from '../assets/images/logoSquares.png';
 import Icon from '../components/Icon';
+import { siteImages } from '../config';
+
+const { webDevIcon, tutorialsIcon, mobileAppIcon, logoSquares } = siteImages;
 
 const ServicesSection = styled.div`
   ${flexCenter('column')}
@@ -170,7 +169,7 @@ const Services = () => {
         </ServiceBox>
         <ServiceBox>
           <ServiceIcon>
-            <img src={mobileAppIcon} alt='web dev icon' />
+            <img src={mobileAppIcon} alt='mobile app icon' />
           </ServiceIcon>
           <ServiceTitle>Mobile Apps</ServiceTitle>
           <ServiceDescription>
@@ -187,7 +186,7 @@ const Services = () => {
         </ServiceBox>
         <ServiceBox>
           <ServiceIcon>
-            <img src={tutorialsIcon} alt='web dev icon' />
+            <img src={tutorialsIcon} alt='tutorials icon' />
           </ServiceIcon>
           <ServiceTitle>Tutorials</ServiceTitle>
           <ServiceDescription>

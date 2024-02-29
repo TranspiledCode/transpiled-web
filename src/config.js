@@ -11,18 +11,23 @@ const videos = [
     description:
       'Step-by-step guide to get nvm and Fish Shell to play nicely on your Mac.',
     thumbnail:
-      'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
+      'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/NVMFishCover/s.webp',
     url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/video/nvmMacFish.mp4',
   },
 ];
 
+const baseImgURL = 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/';
+
 const siteImages = {
-  headerLogo:
-    'https://transpiled.s3.amazonaws.com/assets/img/logo-colored/m.webp',
-  backgroundImage:
-    'https://transpiled.s3.amazonaws.com/assets/img/AltBannerImage/l.webp',
-  logoOverlayImage:
-    'https://transpiled.s3.amazonaws.com/assets/img/leftSideLogoTransparent/m.webp',
+  headerLogo: `${baseImgURL}logo-colored/m.webp`,
+  backgroundImage: `${baseImgURL}AltBannerImage/l.webp`,
+  logoOverlayImage: `${baseImgURL}leftSideLogoTransparent/m.webp`,
+  bytesBackground: `${baseImgURL}bytesBackground/m.webp`,
+  logoSquares: `${baseImgURL}logoSquares/s.webp`,
+  webDevIcon: `${baseImgURL}webDevIcon/s.webp`,
+  mobileAppIcon: `${baseImgURL}mobileAppIcon/s.webp`,
+  tutorialsIcon: `${baseImgURL}tutorialsIcon/s.webp`,
+  profile: `${baseImgURL}profile/t.webp`,
 };
 
 export { videos, companyName, gqlEndpoint, gqlDevEndpoint, siteImages };

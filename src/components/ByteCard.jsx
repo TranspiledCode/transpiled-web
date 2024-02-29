@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import { flexCenter } from '../utils/css';
-import profile from '../assets/images/profile.jpg';
+import { siteImages } from '../config';
+
+const { profile } = siteImages;
 
 const ByteCard = ({ video }) => (
   <Card>

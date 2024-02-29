@@ -5,7 +5,7 @@ import Icon from './Icon';
 import { siteImages } from '../config';
 import Navbar from './Navbar';
 
-const { headerLogo } = siteImages.headerLogo;
+const { headerLogo } = siteImages;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

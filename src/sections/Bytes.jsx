@@ -3,10 +3,9 @@ import styled from '@emotion/styled';
 import ByteCard from '../components/ByteCard';
 import { flexCenter } from '../utils/css';
 
-import { videos } from '../config';
+import { videos, siteImages } from '../config';
 
-const bytesBackgroundURL =
-  'https://transpiled.s3.amazonaws.com/assets/img/bytesBackground/m.webp';
+const { bytesBackground } = siteImages;
 
 const Bytes = () => (
   <BytesSection id='bytes'>
@@ -30,7 +29,7 @@ const BytesSection = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   background-color: ${({ theme }) => theme.black};
-  background-image: url(${bytesBackgroundURL});
+  background-image: url(${bytesBackground});
   gap: 5rem;
   padding: 80px 0;
   position: relative;
