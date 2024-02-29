@@ -1,26 +1,62 @@
 import React from 'react';
+import { useQuery, gql } from '@apollo/client';
 import styled from '@emotion/styled';
+import Loading from '../components/Loading';
 import ByteCard from '../components/ByteCard';
 import { flexCenter } from '../utils/css';
 
-import { videos, siteImages } from '../config';
+import { siteImages } from '../config';
 
 const { bytesBackground } = siteImages;
 
-const Bytes = () => (
-  <BytesSection id='bytes'>
-    <HeadingWrapper>
-      <BytesHeading>Transpiled Bytes</BytesHeading>
-      <Tagline>A collection of byte-sized tutorials for developers.</Tagline>
-    </HeadingWrapper>
-    <ByteCardWrapper>
-      {videos.map((video) => (
-        <ByteCard key={video.id} video={video} />
-      ))}
-    </ByteCardWrapper>
-  </BytesSection>
-);
+// query videos
+const VIDEO_QUERY = gql`
+  {
+    videos {
+      _id
+      title
+      imageURL
+      videoURL
+      summary
+      author {
+        name
+        imageURL
+      }
+    }
+  }
+`;
 
+const Bytes = () => {
+  const { loading, error, data } = useQuery(VIDEO_QUERY);
+
+  if (loading) {
+    return (
+      <BytesSection id='bytes'>
+        <Loading />
+      </BytesSection>
+    );
+  }
+
+  if (error || !data.videos || data.videos.length === 0) {
+    // TODO: Implement error handling and feedback mechanism for bytes
+    return null;
+  }
+
+  return (
+    <BytesSection id='bytes'>
+      <HeadingWrapper>
+        <BytesHeading>Transpiled Bytes</BytesHeading>
+        <Tagline>A collection of byte-sized tutorials for developers.</Tagline>
+      </HeadingWrapper>
+      <ByteCardWrapper>
+        {data.videos.map((video) => {
+          const { _id } = video;
+          return <ByteCard key={_id} video={video} />;
+        })}
+      </ByteCardWrapper>
+    </BytesSection>
+  );
+};
 // Styled Components
 const BytesSection = styled.section`
   ${flexCenter('column')}

@@ -5,28 +5,28 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import { flexCenter } from '../utils/css';
-import { siteImages } from '../config';
 
-const { profile } = siteImages;
-
-const ByteCard = ({ video }) => (
-  <Card>
-    <VideoWrapper>
-      <VideoPlayer src={video.url} poster={video.thumbnail} />
-    </VideoWrapper>
-    <ByteWrapper>
-      <StyledLink to={`tutorial/${video.id}`}>
-        <ByteTitle>{video.title}</ByteTitle>
-      </StyledLink>
-      <Author>
-        <Avatar src={profile} alt='profile' />
-        <AuthorName>{`Host: ${video.author}`}</AuthorName>
-      </Author>
-      <Description>{video.description}</Description>
-    </ByteWrapper>
-    <ViewMore>View More</ViewMore>
-  </Card>
-);
+const ByteCard = ({ video }) => {
+  const { _id, title, author, summary, imageURL, videoURL } = video;
+  return (
+    <Card>
+      <VideoWrapper>
+        <VideoPlayer src={videoURL} poster={imageURL} />
+      </VideoWrapper>
+      <ByteWrapper>
+        <StyledLink to={`tutorial/${_id}`}>
+          <ByteTitle>{title}</ByteTitle>
+        </StyledLink>
+        <Author>
+          <Avatar src={author.imageURL} alt='profile' />
+          <AuthorName>{`Host: ${author.name}`}</AuthorName>
+        </Author>
+        <Description>{summary}</Description>
+      </ByteWrapper>
+      <ViewMore>View More</ViewMore>
+    </Card>
+  );
+};
 
 // Styled Components for ByteCard
 const Card = styled.div`
@@ -48,7 +48,6 @@ const VideoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #f8f9fa;
 `;
 
 const ByteWrapper = styled.div`
@@ -128,12 +127,15 @@ const ViewMore = styled.button`
 // PropTypes
 ByteCard.propTypes = {
   video: PropTypes.shape({
-    id: PropTypes.string,
+    _id: PropTypes.string,
     title: PropTypes.string,
-    author: PropTypes.string,
-    description: PropTypes.string,
-    thumbnail: PropTypes.string,
-    url: PropTypes.string,
+    author: PropTypes.shape({
+      name: PropTypes.string,
+      imageURL: PropTypes.string,
+    }),
+    summary: PropTypes.string,
+    imageURL: PropTypes.string,
+    videoURL: PropTypes.string,
   }).isRequired,
 };
 

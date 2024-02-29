@@ -26,7 +26,7 @@ const LogoOverlay = styled.div`
     height: 50%;
     background-image: url(${logoOverlayImage});
     background-repeat: no-repeat;
-    opacity: 0.5;
+    opacity: 1;
   }
 `;
 
