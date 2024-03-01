@@ -16,12 +16,12 @@ const BannerContainer = styled.div`
 
 const BannerText = styled.h1`
   margin-top: 40px;
-  font-size: 4rem;
+  font-size: 10vw;
   line-height: 1.2;
   color: ${({ theme }) => theme.white};
 
   @media (min-width: 768px) {
-    font-size: 5rem;
+    font-size: 7rem;
   }
 `;
 
@@ -34,13 +34,13 @@ const MobileApp = styled.span`
 `;
 
 const Message = styled.p`
-  font-size: 1.8rem;
+  font-size: 4vw;
   color: ${({ theme }) => theme.white};
   font-weight: bold;
   line-height: 1.4;
 
   @media (min-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 `;
 

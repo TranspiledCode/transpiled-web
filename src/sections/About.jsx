@@ -32,7 +32,7 @@ const Message = styled.div`
 `;
 
 const About = () => (
-  <Container>
+  <Container id='about'>
     <MessageWrapper>
       <Title>About Us</Title>
       <Divider />
@@ -46,11 +46,10 @@ const About = () => (
           experience in the software industry, I've embarked on a journey to
           bring your digital aspirations to life. At Transpiled, it's all about
           turning innovative ideas into real-world solutions. My approach is
-          grounded in a deep passion for technology and a commitment to
-          excellence. Here, each project is a unique canvas, where creativity
-          meets functionality to create something truly special. Let's work
-          together to create software that stands out, functions seamlessly, and
-          helps your business thrive.
+          grounded in a deep passion for technology and innovation. Here, each
+          project is a unique canvas, where creativity meets functionality to
+          create something truly special. Let's work together to create software
+          that stands out, functions seamlessly, and helps your business thrive.
         </p>
       </Message>
     </MessageWrapper>

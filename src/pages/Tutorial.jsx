@@ -12,6 +12,7 @@ const GET_VIDEO = gql`
       title
       videoURL
       summary
+      imageURL
     }
   }
 `;
@@ -61,14 +62,14 @@ const TutorialPage = () => {
   if (error || !data.getVideoById || !data.getVideoById.videoURL)
     return <p>Error: {error.message}</p>;
 
-  const { videoURL, title, summary } = data.getVideoById;
+  const { videoURL, title, summary, imageURL } = data.getVideoById;
 
   return (
     <StyledTutorialContainer>
       <VideoTitle>{title}</VideoTitle>
       <VideoSummary>{summary}</VideoSummary>
       <StyledVideoWrapper>
-        <VideoPlayer src={videoURL} />
+        <VideoPlayer src={videoURL} poster={imageURL} />
       </StyledVideoWrapper>
     </StyledTutorialContainer>
   );
