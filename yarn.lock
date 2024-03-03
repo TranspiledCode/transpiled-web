@@ -1372,14 +1372,15 @@
   resolved "https://registry.yarnpkg.com/@swc/types/-/types-0.1.5.tgz#043b731d4f56a79b4897a3de1af35e75d56bc63a"
   integrity sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==
 
-"@transpiled/ui@^0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@transpiled/ui/-/ui-0.0.27.tgz#988d659ce8ab7ca1fb66f8b122f97aebf525f32b"
-  integrity sha512-JN09qZdVj8udmw/yHmfnfuQtSe0w+C2PPD6Sjul5Uq08mzP40+RWr9J4LXLJNBROxJ9/f5XkNsaAx9Ha8EagMA==
+"@transpiled/ui@0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@transpiled/ui/-/ui-0.0.30.tgz#b5812c53afe2c8772eb486fa3512c1f770a7781e"
+  integrity sha512-EeO/hnChFguwxtXAHDj+g+jrwFx0bKa1dXT42x6EjgZ33fnK5r3LA2mXwjssFo6tmshGVkXjmymT+Co+BCun3A==
   dependencies:
     "@emotion/react" "^11.11.1"
     "@emotion/styled" "^11.11.0"
     "@fortawesome/fontawesome-svg-core" "^6.5.1"
+    "@fortawesome/free-brands-svg-icons" "^6.5.1"
     "@fortawesome/free-solid-svg-icons" "^6.5.1"
     "@fortawesome/react-fontawesome" "^0.2.0"
 

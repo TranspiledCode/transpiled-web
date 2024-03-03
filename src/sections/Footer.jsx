@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Input, useTheme } from '@transpiled/ui';
 import Icon from '../components/Icon';
 import Button from '../components/Button';
 import { phoneNumber, email } from '../config';
@@ -66,42 +67,58 @@ const SocialIcons = styled.div`
   }
 `;
 
-const Footer = () => (
-  <FooterSection id='footer'>
-    <ContactContainer>
-      <Heading>Stay in touch with us!</Heading>
-      <DetailsWrapper>
-        <SubHeading>Phone Number</SubHeading>
-        <DetailText>{phoneNumber}</DetailText>
-      </DetailsWrapper>
-      <DetailsWrapper>
-        <SubHeading>Email</SubHeading>
-        <DetailText>{email}</DetailText>
-      </DetailsWrapper>
-      <SocialIcons>
-        <Icon iconName='facebook' size='3x' iconType='brand' />
-        <Icon iconName='twitter' size='3x' iconType='brand' />
-        <Icon iconName='instagram' size='3x' iconType='brand' />
-      </SocialIcons>
-    </ContactContainer>
-    <FormContainer as='form' action='#'>
-      <label>
-        <SubHeading>Name</SubHeading>
-        <input type='text' placeholder='Enter your name' required />
-      </label>
-      <label>
-        <SubHeading>Email</SubHeading>
-        <input type='email' placeholder='Enter your email' required />
-      </label>
-      <label>
-        <SubHeading>Message</SubHeading>
-        <textarea placeholder='Enter your message' required />
-      </label>
-      <Button type='submit' variant='primary'>
-        Submit
-      </Button>
-    </FormContainer>
-  </FooterSection>
-);
+const StyledInput = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Footer = () => {
+  const { theme } = useTheme();
+
+  return (
+    <FooterSection id='footer'>
+      <ContactContainer>
+        <Heading>Stay in touch with us!</Heading>
+        <DetailsWrapper>
+          <SubHeading>Phone Number</SubHeading>
+          <DetailText>{phoneNumber}</DetailText>
+        </DetailsWrapper>
+        <DetailsWrapper>
+          <SubHeading>Email</SubHeading>
+          <DetailText>{email}</DetailText>
+        </DetailsWrapper>
+        <SocialIcons>
+          <Icon iconName='facebook' size='3x' iconType='brand' />
+          <Icon iconName='twitter' size='3x' iconType='brand' />
+          <Icon iconName='instagram' size='3x' iconType='brand' />
+        </SocialIcons>
+      </ContactContainer>
+      <FormContainer as='form' action='#'>
+        <StyledInput>
+          <Input
+            id='usersName'
+            name='usersName'
+            type='text'
+            size='l'
+            placeholder='Enter your name'
+            clearable
+            borderStyle='box'
+            theme={theme}
+          />
+        </StyledInput>
+        <label>
+          <SubHeading>Email</SubHeading>
+          <input type='email' placeholder='Enter your email' required />
+        </label>
+        <label>
+          <SubHeading>Message</SubHeading>
+          <textarea placeholder='Enter your message' required />
+        </label>
+        <Button type='submit' variant='primary'>
+          Submit
+        </Button>
+      </FormContainer>
+    </FooterSection>
+  );
+};
 
 export default Footer;
