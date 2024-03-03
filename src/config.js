@@ -1,4 +1,7 @@
 const companyName = 'Transpiled';
+const companyLink = 'https://transpiled.com';
+const phoneNumber = '1-800-555-5555';
+const email = '6iJvq@example.com';
 
 const gqlEndpoint = 'https://0267avkpvi.execute-api.us-west-2.amazonaws.com/';
 const gqlDevEndpoint = 'http://localhost:4000/';
@@ -17,4 +20,12 @@ const siteImages = {
   profile: `${baseImgURL}profile/t.webp`,
 };
 
-export { companyName, gqlEndpoint, gqlDevEndpoint, siteImages };
+export {
+  companyName,
+  companyLink,
+  phoneNumber,
+  email,
+  gqlEndpoint,
+  gqlDevEndpoint,
+  siteImages,
+};
