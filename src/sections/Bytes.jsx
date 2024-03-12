@@ -39,6 +39,7 @@ const Bytes = () => {
 
   if (error || !data.videos || data.videos.length === 0) {
     // TODO: Implement error handling and feedback mechanism for bytes
+    console.log('error:', error);
     return null;
   }
 

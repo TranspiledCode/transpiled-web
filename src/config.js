@@ -1,7 +1,12 @@
 const companyName = 'Transpiled';
 const companyLink = 'https://transpiled.com';
-const phoneNumber = '1-800-555-5555';
-const email = '6iJvq@example.com';
+const phoneNumber = '(458) 256 - 9363';
+const email = 'hello@transpiled.com';
+const socialLinks = {
+  facebook: 'https://www.facebook.com/transpiled',
+  twitter: 'https://twitter.com/transpiled',
+  linkedin: 'https://www.linkedin.com/company/transpiled',
+};
 
 const gqlEndpoint = 'https://0267avkpvi.execute-api.us-west-2.amazonaws.com/';
 const gqlDevEndpoint = 'http://localhost:4000/';
@@ -28,4 +33,5 @@ export {
   gqlEndpoint,
   gqlDevEndpoint,
   siteImages,
+  socialLinks,
 };

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Input, useTheme } from '@transpiled/ui';
 import Icon from '../components/Icon';
 import Button from '../components/Button';
-import { phoneNumber, email } from '../config';
+import { phoneNumber, companyLink, email, socialLinks } from '../config';
 
 const FooterSection = styled.div`
   background-color: ${({ theme }) => theme.darkBlue};
@@ -59,16 +59,20 @@ const DetailText = styled.h3`
   color: ${({ theme }) => theme.white};
   font-size: 1.5rem;
   font-weight: 300;
+  a {
+    color: ${({ theme }) => theme.white};
+  }
 `;
 
 const SocialIcons = styled.div`
   & > *:not(:last-child) {
-    margin-right: 10px; // Adds spacing between icons, adjust as necessary
+    margin-right: 10px;
   }
 `;
 
 const StyledInput = styled.div`
-  margin-bottom: 20px;
+  height: 70px;
+  width: 100%;
 `;
 
 const Footer = () => {
@@ -84,36 +88,65 @@ const Footer = () => {
         </DetailsWrapper>
         <DetailsWrapper>
           <SubHeading>Email</SubHeading>
-          <DetailText>{email}</DetailText>
+          <DetailText>
+            <a href={`mailto:${email}`}>{email}</a>
+          </DetailText>
         </DetailsWrapper>
         <SocialIcons>
-          <Icon iconName='facebook' size='3x' iconType='brand' />
-          <Icon iconName='twitter' size='3x' iconType='brand' />
-          <Icon iconName='instagram' size='3x' iconType='brand' />
+          <Icon
+            iconName='xTwitter'
+            size='3x'
+            iconType='brand'
+            url={socialLinks.twitter}
+          />
+          <Icon
+            iconName='linkedinIn'
+            size='3x'
+            iconType='brand'
+            url={socialLinks.linkedin}
+          />
+          <Icon iconName='globe' size='3x' iconType='solid' url={companyLink} />
         </SocialIcons>
       </ContactContainer>
       <FormContainer as='form' action='#'>
         <StyledInput>
           <Input
-            id='usersName'
-            name='usersName'
+            id='name'
+            name='name'
             type='text'
-            size='l'
-            placeholder='Enter your name'
+            size='xl'
+            placeholder='Name'
             clearable
-            borderStyle='box'
+            borderStyle='bottom'
             theme={theme}
           />
         </StyledInput>
-        <label>
-          <SubHeading>Email</SubHeading>
-          <input type='email' placeholder='Enter your email' required />
-        </label>
-        <label>
-          <SubHeading>Message</SubHeading>
-          <textarea placeholder='Enter your message' required />
-        </label>
-        <Button type='submit' variant='primary'>
+        <StyledInput>
+          <Input
+            id='email'
+            name='email'
+            type='email'
+            size='xl'
+            placeholder='Email address'
+            clearable
+            borderStyle='bottom'
+            theme={theme}
+          />
+        </StyledInput>
+        <StyledInput>
+          <Input
+            id='message'
+            name='message'
+            type='text'
+            size='xl'
+            placeholder='Message'
+            clearable
+            borderStyle='bottom'
+            theme={theme}
+          />
+        </StyledInput>
+
+        <Button type='submit' variant='secondary'>
           Submit
         </Button>
       </FormContainer>

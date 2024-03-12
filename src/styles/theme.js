@@ -23,12 +23,12 @@ const generateThemeVariants = (mode) => {
     darkBlue: baseColors.darkBlue,
     transparent: baseColors.transparent,
 
-    inputBorderColor: isDark ? baseColors.lightGray : baseColors.darkGray,
-    inputBorderFocusColor: isDark ? baseColors.blue : baseColors.orange,
-    inputFontColor: isDark ? baseColors.white : baseColors.black,
-    inputLabelColor: isDark ? baseColors.white : baseColors.black,
-    inputPlaceholderColor: isDark ? baseColors.lightGray : baseColors.darkGray,
-    inputClearIconColor: isDark ? baseColors.white : baseColors.orange,
+    inputBorderColor: baseColors.white,
+    inputBorderFocusColor: baseColors.blue,
+    inputFontColor: baseColors.white,
+    inputLabelColor: baseColors.orange,
+    inputPlaceholderColor: baseColors.white,
+    inputClearIconColor: baseColors.white,
 
     switch: {
       bar: isDark ? baseColors.blue : baseColors.orange,
