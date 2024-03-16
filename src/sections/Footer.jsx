@@ -34,6 +34,7 @@ const FormContainer = styled.div`
   padding: 20px;
   width: 50%;
   max-width: 500px;
+  gap: 1.5rem;
 `;
 
 const Heading = styled.h1`
@@ -71,7 +72,7 @@ const SocialIcons = styled.div`
 `;
 
 const StyledInput = styled.div`
-  height: 70px;
+  margin: 10px 0;
   width: 100%;
 `;
 
@@ -108,13 +109,13 @@ const Footer = () => {
           <Icon iconName='globe' size='3x' iconType='solid' url={companyLink} />
         </SocialIcons>
       </ContactContainer>
-      <FormContainer as='form' action='#'>
+      <FormContainer>
         <StyledInput>
           <Input
             id='name'
             name='name'
             type='text'
-            size='xl'
+            size='l'
             placeholder='Name'
             clearable
             borderStyle='bottom'
@@ -126,8 +127,8 @@ const Footer = () => {
             id='email'
             name='email'
             type='email'
-            size='xl'
-            placeholder='Email address'
+            size='l'
+            placeholder='Email'
             clearable
             borderStyle='bottom'
             theme={theme}
@@ -138,17 +139,14 @@ const Footer = () => {
             id='message'
             name='message'
             type='text'
-            size='xl'
+            size='l'
             placeholder='Message'
             clearable
             borderStyle='bottom'
             theme={theme}
           />
         </StyledInput>
-
-        <Button type='submit' variant='secondary'>
-          Submit
-        </Button>
+        <Button variant='secondary'>Submit</Button>
       </FormContainer>
     </FooterSection>
   );

@@ -60,9 +60,9 @@ const generateThemeVariants = (mode) => {
         disabledText: isDark ? baseColors.white : baseColors.white,
       },
       secondary: {
-        background: isDark ? baseColors.orange : baseColors.darkGray,
+        background: isDark ? baseColors.darkGray : baseColors.orange,
         text: isDark ? baseColors.white : baseColors.white,
-        hoverBackground: isDark ? baseColors.darkGray : baseColors.orange,
+        hoverBackground: isDark ? baseColors.orange : baseColors.darkGray,
         hoverText: isDark ? baseColors.white : baseColors.white,
         disabledBackground: isDark ? baseColors.darkGray : baseColors.orange,
         disabledText: isDark ? baseColors.white : baseColors.white,

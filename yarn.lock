@@ -1380,7 +1380,7 @@
   resolved "https://registry.yarnpkg.com/@swc/types/-/types-0.1.5.tgz#043b731d4f56a79b4897a3de1af35e75d56bc63a"
   integrity sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==
 
-"@transpiled/ui@^0.0.31":
+"@transpiled/ui@0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@transpiled/ui/-/ui-0.0.31.tgz#c09358fced48146b18c4ab455ba85140eae1aa90"
   integrity sha512-4aqlX3DNuAqS8v69UvV+mNIneamhW/0mJBonDl/KWyVqdd7do1lhp43XDnWMD+Ftcd+sFFBCa7OnbnU/mJcqVQ==

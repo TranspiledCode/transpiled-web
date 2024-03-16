@@ -9,7 +9,7 @@ const socialLinks = {
 };
 
 const gqlEndpoint = 'https://0267avkpvi.execute-api.us-west-2.amazonaws.com/';
-const gqlDevEndpoint = 'http://localhost:4000/';
+const gqlDevEndpoint = 'http://localhost:3000/';
 
 const baseImgURL = 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/';
 
