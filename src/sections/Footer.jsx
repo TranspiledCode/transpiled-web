@@ -7,22 +7,27 @@ const FooterSection = styled.div`
   background-color: ${({ theme }) => theme.darkBlue};
   color: ${({ theme }) => theme.white};
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding: 40px;
-  @media (max-width: 768px) {
-    flex-direction: column;
+  padding: 10px;
+  @media (min-width: 768px) {
+    padding: 40px;
+    flex-direction: row;
+    margin: 0 auto;
   }
 `;
 
 const ContactContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 20px;
-  width: 50%;
+  width: 100%;
   gap: 1rem;
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
+    align-items: flex-start;
+    width: 50%;
     margin: 0 auto;
   }
 `;
@@ -30,16 +35,35 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  width: 50%;
   max-width: 500px;
   gap: 1.5rem;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+`;
+
+const FormHeading = styled.h1`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  color: ${({ theme }) => theme.white};
+  font-size: 3rem;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Heading = styled.h1`
-  color: ${({ theme }) => theme.secondary};
-  font-size: 3rem;
-  font-weight: 500;
-  text-align: center;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    color: ${({ theme }) => theme.secondary};
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+  }
 `;
 const SubHeading = styled.h2`
   color: ${({ theme }) => theme.white};
@@ -72,7 +96,7 @@ const SocialIcons = styled.div`
 const Footer = () => (
   <FooterSection id='footer'>
     <ContactContainer>
-      <Heading>Stay in touch with us!</Heading>
+      <Heading>Stay in touch!</Heading>
       <DetailsWrapper>
         <SubHeading>Phone Number</SubHeading>
         <DetailText>{phoneNumber}</DetailText>
@@ -100,6 +124,7 @@ const Footer = () => (
       </SocialIcons>
     </ContactContainer>
     <FormContainer>
+      <FormHeading>Contact Us!</FormHeading>
       <ContactForm />
     </FormContainer>
   </FooterSection>
