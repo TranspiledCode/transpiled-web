@@ -68,6 +68,13 @@ textarea {
   line-height: inherit;
 }
 
+input[data-com-onepassword-filled='dark'] {
+  background-color: transparent !important;
+}
+input[data-com-onepassword-filled='light'] {
+  background-color: transparent !important;
+}
+
 /* Responsive Images */
 /* Adjust the width and height as needed */
 img {

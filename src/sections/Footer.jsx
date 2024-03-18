@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
-import { Input, useTheme } from '@transpiled/ui';
 import Icon from '../components/Icon';
-import Button from '../components/Button';
+import ContactForm from '../components/ContactForm';
 import { phoneNumber, companyLink, email, socialLinks } from '../config';
 
 const FooterSection = styled.div`
@@ -27,7 +26,6 @@ const ContactContainer = styled.div`
     margin: 0 auto;
   }
 `;
-
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -71,85 +69,40 @@ const SocialIcons = styled.div`
   }
 `;
 
-const StyledInput = styled.div`
-  margin: 10px 0;
-  width: 100%;
-`;
-
-const Footer = () => {
-  const { theme } = useTheme();
-
-  return (
-    <FooterSection id='footer'>
-      <ContactContainer>
-        <Heading>Stay in touch with us!</Heading>
-        <DetailsWrapper>
-          <SubHeading>Phone Number</SubHeading>
-          <DetailText>{phoneNumber}</DetailText>
-        </DetailsWrapper>
-        <DetailsWrapper>
-          <SubHeading>Email</SubHeading>
-          <DetailText>
-            <a href={`mailto:${email}`}>{email}</a>
-          </DetailText>
-        </DetailsWrapper>
-        <SocialIcons>
-          <Icon
-            iconName='xTwitter'
-            size='3x'
-            iconType='brand'
-            url={socialLinks.twitter}
-          />
-          <Icon
-            iconName='linkedinIn'
-            size='3x'
-            iconType='brand'
-            url={socialLinks.linkedin}
-          />
-          <Icon iconName='globe' size='3x' iconType='solid' url={companyLink} />
-        </SocialIcons>
-      </ContactContainer>
-      <FormContainer>
-        <StyledInput>
-          <Input
-            id='name'
-            name='name'
-            type='text'
-            size='l'
-            placeholder='Name'
-            clearable
-            borderStyle='bottom'
-            theme={theme}
-          />
-        </StyledInput>
-        <StyledInput>
-          <Input
-            id='email'
-            name='email'
-            type='email'
-            size='l'
-            placeholder='Email'
-            clearable
-            borderStyle='bottom'
-            theme={theme}
-          />
-        </StyledInput>
-        <StyledInput>
-          <Input
-            id='message'
-            name='message'
-            type='text'
-            size='l'
-            placeholder='Message'
-            clearable
-            borderStyle='bottom'
-            theme={theme}
-          />
-        </StyledInput>
-        <Button variant='secondary'>Submit</Button>
-      </FormContainer>
-    </FooterSection>
-  );
-};
+const Footer = () => (
+  <FooterSection id='footer'>
+    <ContactContainer>
+      <Heading>Stay in touch with us!</Heading>
+      <DetailsWrapper>
+        <SubHeading>Phone Number</SubHeading>
+        <DetailText>{phoneNumber}</DetailText>
+      </DetailsWrapper>
+      <DetailsWrapper>
+        <SubHeading>Email</SubHeading>
+        <DetailText>
+          <a href={`mailto:${email}`}>{email}</a>
+        </DetailText>
+      </DetailsWrapper>
+      <SocialIcons>
+        <Icon
+          iconName='xTwitter'
+          size='3x'
+          iconType='brand'
+          url={socialLinks.twitter}
+        />
+        <Icon
+          iconName='linkedinIn'
+          size='3x'
+          iconType='brand'
+          url={socialLinks.linkedin}
+        />
+        <Icon iconName='globe' size='3x' iconType='solid' url={companyLink} />
+      </SocialIcons>
+    </ContactContainer>
+    <FormContainer>
+      <ContactForm />
+    </FormContainer>
+  </FooterSection>
+);
 
 export default Footer;
