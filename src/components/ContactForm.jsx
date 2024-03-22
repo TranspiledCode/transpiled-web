@@ -11,9 +11,13 @@ const StyledForm = styled.form`
   max-width: 800px;
 `;
 
-const StyledInput = styled.div`
+const StyledInputContainer = styled.div`
   margin: 10px 0;
   width: 100%;
+  font-size: 22px;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const ContactForm = () => {
@@ -26,55 +30,51 @@ const ContactForm = () => {
       data-netlify='true'
     >
       <input type='hidden' name='form-name' value='contact-form' />
-      <StyledInput>
+      <StyledInputContainer>
         <Input
           id='name'
           name='name'
           type='text'
-          size='l'
           placeholder='Name'
           clearable
-          borderStyle='bottom'
+          ariaLabel='name field'
           theme={theme}
         />
-      </StyledInput>
-      <StyledInput>
+      </StyledInputContainer>
+      <StyledInputContainer>
         <Input
           id='email'
           name='email'
           type='email'
-          size='l'
           placeholder='Email'
           clearable
-          borderStyle='bottom'
+          ariaLabel='email field'
           theme={theme}
         />
-      </StyledInput>
-      <StyledInput>
+      </StyledInputContainer>
+      <StyledInputContainer>
         <Input
           id='phone'
           name='phone'
           type='text'
-          size='l'
           placeholder='Phone'
           clearable
-          borderStyle='bottom'
+          ariaLabel='phone number field'
           theme={theme}
         />
-      </StyledInput>
-      <StyledInput>
+      </StyledInputContainer>
+      <StyledInputContainer>
         <Input
           id='message'
           name='message'
           type='text'
-          size='l'
           placeholder='Message'
           clearable
-          borderStyle='bottom'
+          ariaLabel='message field'
           theme={theme}
           // textarea
         />
-      </StyledInput>
+      </StyledInputContainer>
       <Button variant='secondary'>Send</Button>
     </StyledForm>
   );

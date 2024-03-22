@@ -7,7 +7,7 @@ const FooterSection = styled.div`
   background-color: ${({ theme }) => theme.darkBlue};
   color: ${({ theme }) => theme.white};
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   flex-wrap: wrap;
   padding: 10px;
@@ -74,8 +74,12 @@ const SubHeading = styled.h2`
 const DetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
   margin: 15px 0;
+  @media (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 const DetailText = styled.h3`
