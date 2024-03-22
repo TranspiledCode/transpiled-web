@@ -4,7 +4,7 @@ const phoneNumber = '(458) 256 - 9363';
 const email = 'hello@transpiled.com';
 const socialLinks = {
   facebook: 'https://www.facebook.com/transpiled',
-  twitter: 'https://twitter.com/transpiled',
+  twitter: 'https://twitter.com/transpiledcode',
   linkedin: 'https://www.linkedin.com/company/transpiled',
 };
 

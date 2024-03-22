@@ -1856,7 +1856,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transpiled/ui@npm:^0.0.38":
+"@transpiled/ui@npm:0.0.38":
   version: 0.0.38
   resolution: "@transpiled/ui@npm:0.0.38"
   dependencies:
@@ -6093,7 +6093,7 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": "npm:^6.5.1"
     "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
-    "@transpiled/ui": "npm:^0.0.38"
+    "@transpiled/ui": "npm:0.0.38"
     eslint: "npm:^8.54.0"
     eslint-config-airbnb: "npm:^19.0.4"
     eslint-config-prettier: "npm:^9.0.0"

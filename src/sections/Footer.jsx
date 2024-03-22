@@ -11,9 +11,12 @@ const FooterSection = styled.div`
   align-items: center;
   flex-wrap: wrap;
   padding: 10px;
-  @media (min-width: 768px) {
+
+  @media (min-width: 1024px) {
     padding: 40px;
     flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
     margin: 0 auto;
   }
 `;
@@ -23,12 +26,9 @@ const ContactContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  width: 100%;
   gap: 1rem;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     align-items: flex-start;
-    width: 50%;
-    margin: 0 auto;
   }
 `;
 const FormContainer = styled.div`
@@ -38,8 +38,7 @@ const FormContainer = styled.div`
   max-width: 500px;
   gap: 1.5rem;
   width: 100%;
-  @media (min-width: 768px) {
-    width: 50%;
+  @media (min-width: 1024px) {
   }
 `;
 
@@ -50,14 +49,14 @@ const FormHeading = styled.h1`
   margin: 20px 0;
   color: ${({ theme }) => theme.white};
   font-size: 3rem;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 `;
 
 const Heading = styled.h1`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: flex;
     color: ${({ theme }) => theme.secondary};
     font-size: 3rem;
@@ -77,7 +76,7 @@ const DetailsWrapper = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin: 15px 0;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     align-items: flex-start;
   }
 `;
@@ -93,7 +92,7 @@ const DetailText = styled.h3`
 
 const SocialIcons = styled.div`
   & > *:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 15px;
   }
 `;
 

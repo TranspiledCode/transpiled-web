@@ -23,7 +23,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@transpiled/ui": "^0.0.38",
+    "@transpiled/ui": "0.0.38",
     "framer-motion": "^11.0.3",
     "graphql": "^16.8.1",
     "prop-types": "^15.8.1",
