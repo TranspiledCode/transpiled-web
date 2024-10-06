@@ -1,22 +1,22 @@
 {
-  "name": "transpiled",
+  "name": "transpiled-web",
   "version": "1.0.0",
-  "license": "private",
-  "author": {
-    "name": "Joshua Crass",
-    "email": "joshua@transpiled.com"
-  },
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "dev": "node start.js",
+    "build": "parcel build public/index.html"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^6.0.7"
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "parcel": "^2.9.3",
+    "local-ip": "^2.0.0",
+    "parcel": "^2.12.0",
     "process": "^0.11.10"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
