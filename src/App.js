@@ -25,7 +25,6 @@ const App = () => {
   return (
     <PageContainer>
       <Title>Transpiled</Title>
-      <SubHeading>Transpiling Complexity into Simplicity</SubHeading>
       <SubHeading>Cutting-Edge Web and App Design and Development</SubHeading>
     </PageContainer>
   );
