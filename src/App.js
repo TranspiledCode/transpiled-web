@@ -25,7 +25,8 @@ const App = () => {
   return (
     <PageContainer>
       <Title>Transpiled</Title>
-      <SubHeading>Transpiling Tech Complexity into Simplicity</SubHeading>
+      <SubHeading>Transpiling Complexity into Simplicity</SubHeading>
+      <SubHeading>Cutting-Edge Web and App Design and Development</SubHeading>
     </PageContainer>
   );
 };
