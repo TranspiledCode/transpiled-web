@@ -19,7 +19,9 @@ function getLocalIp() {
 }
 
 // Start Parcel server
-const parcel = exec(`parcel serve ${ENTRY} --host 0.0.0.0 --port ${PORT}`);
+const parcel = exec(
+  `parcel serve ${ENTRY} --host localhost --port ${PORT} --no-cache`
+);
 
 // Handle Parcel stdout
 parcel.stdout.on('data', (data) => {
