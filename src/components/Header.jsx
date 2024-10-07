@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { GlobalContext } from '../context/GlobalContext';
 import config from '../config';
 import Icon from './Icon';
+import NavBar from './NavBar';
 import NavMenu from './NavMenu';
 
 const StyledHeader = styled.header`
@@ -23,27 +24,17 @@ const StyledLogo = styled.img`
 
 const MobileMenu = styled.div`
   cursor: pointer;
-  font-size: 1.8rem
-  height: 18px;
-  width: 24px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
-  svg {
-    transition: color 0.2s ease-in-out;
-  }
-
-  svg:hover {
-    color: #000000;
-  }
   @media screen and (min-width: 768px) {
     display: none;
   }
 `;
 
 const Header = () => {
-  const { setMenuOpen, toggleMenu } = useContext(GlobalContext);
+  const { menuOpen, setMenuOpen, toggleMenu } = useContext(GlobalContext);
+
+  console.log(menuOpen);
 
   return (
     <StyledHeader>
@@ -52,9 +43,10 @@ const Header = () => {
         alt='Transpiled Logo'
         onClick={() => setMenuOpen(false)}
       />
-      <MobileMenu onClick={toggleMenu}>
-        <Icon iconName='bars' size='3x' iconType='solid' />
+      <MobileMenu>
+        <Icon iconName='bars' size='3x' iconType='solid' onClick={toggleMenu} />
       </MobileMenu>
+      <NavBar />
       <NavMenu />
     </StyledHeader>
   );

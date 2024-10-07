@@ -1,43 +1,75 @@
-import { useContext } from 'react';
+// NavMenu.jsx
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
-import config from '../config';
-import { GlobalContext } from '../context/GlobalContext'; // Import GlobalContext
+import { GlobalContext } from '../context/GlobalContext';
+import Icon from './Icon';
 
-const StyledNav = styled.nav`
-  box-sizing: border-box;
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-  display: none;
-  color: black;
-  gap: 20px;
+import NavLinks from './NavLinks';
+
+// Styled component for the navigation menu
+const StyledNavMenu = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 4rem;
+  z-index: 1000;
+
+  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
+  transition: transform 0.3s ease-in-out;
 
   @media (min-width: 768px) {
-    display: flex;
+    display: none;
   }
 `;
 
-const StyledLink = styled.a`
-  color: black;
-  font-size: 1.8rem;
+// Styled component for the close button
+const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: #ccc;
+  }
+
+  &:focus {
+    outline: 2px solid #fff;
+  }
 `;
-const StyledLinkWrapper = styled.div``;
 
 const NavMenu = () => {
-  const { menuOpen, setMenuOpen } = useContext(GlobalContext); // Access context
-
-  const handleLinkClick = () => {
-    setMenuOpen(false);
-  };
+  const { menuOpen, setMenuOpen } = useContext(GlobalContext);
 
   return (
-    <StyledNav isOpen={menuOpen}>
-      {config.siteInfo.navLinks.map((link) => (
-        <StyledLinkWrapper key={link.name}>
-          <StyledLink href={link.url} onClick={handleLinkClick}>
-            {link.name}
-          </StyledLink>
-        </StyledLinkWrapper>
-      ))}
-    </StyledNav>
+    <StyledNavMenu open={menuOpen} aria-hidden={!menuOpen}>
+      <CloseButton
+        onClick={() => setMenuOpen(false)}
+        aria-label='Close Navigation Menu'
+      >
+        <Icon iconName='times' iconType='solid' size='2x' label='Close Menu' />
+      </CloseButton>
+
+      <NavLinks onLinkClick={() => setMenuOpen(false)} />
+    </StyledNavMenu>
   );
 };
 
