@@ -5,6 +5,16 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
+"@ampproject/remapping@npm:^2.2.0":
+  version: 2.3.0
+  resolution: "@ampproject/remapping@npm:2.3.0"
+  dependencies:
+    "@jridgewell/gen-mapping": "npm:^0.3.5"
+    "@jridgewell/trace-mapping": "npm:^0.3.24"
+  checksum: 10c0/81d63cca5443e0f0c72ae18b544cc28c7c0ec2cea46e7cb888bb0e0f411a1191d0d6b7af798d54e30777d8d1488b2ec0732aac2be342d3d7d3ffd271c6f489ed
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.25.7":
   version: 7.25.7
   resolution: "@babel/code-frame@npm:7.25.7"
@@ -12,6 +22,50 @@ __metadata:
     "@babel/highlight": "npm:^7.25.7"
     picocolors: "npm:^1.0.0"
   checksum: 10c0/14825c298bdec914caf3d24d1383b6d4cd6b030714686004992f4fc251831ecf432236652896f99d5d341f17170ae9a07b58d8d7b15aa0df8cfa1c5a7d5474bc
+  languageName: node
+  linkType: hard
+
+"@babel/compat-data@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/compat-data@npm:7.25.7"
+  checksum: 10c0/e5cc915abdd18d021236474a96606b2d4a915c4fb620c1ad776b8a08d91111e788cb3b7e9bad43593d4e0bfa4f06894357bcb0984102de1861b9e7322b6bc9f8
+  languageName: node
+  linkType: hard
+
+"@babel/core@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/core@npm:7.25.7"
+  dependencies:
+    "@ampproject/remapping": "npm:^2.2.0"
+    "@babel/code-frame": "npm:^7.25.7"
+    "@babel/generator": "npm:^7.25.7"
+    "@babel/helper-compilation-targets": "npm:^7.25.7"
+    "@babel/helper-module-transforms": "npm:^7.25.7"
+    "@babel/helpers": "npm:^7.25.7"
+    "@babel/parser": "npm:^7.25.7"
+    "@babel/template": "npm:^7.25.7"
+    "@babel/traverse": "npm:^7.25.7"
+    "@babel/types": "npm:^7.25.7"
+    convert-source-map: "npm:^2.0.0"
+    debug: "npm:^4.1.0"
+    gensync: "npm:^1.0.0-beta.2"
+    json5: "npm:^2.2.3"
+    semver: "npm:^6.3.1"
+  checksum: 10c0/dad20af39624086afc3a0910bd97ae712c9ad0e9dda09fc5da93876e8ea1802b63ddd81c44f4aa8a9834db46de801eaab1ce9b81ab54b4fe907ae052c24de136
+  languageName: node
+  linkType: hard
+
+"@babel/eslint-parser@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/eslint-parser@npm:7.25.7"
+  dependencies:
+    "@nicolo-ribaudo/eslint-scope-5-internals": "npm:5.1.1-v1"
+    eslint-visitor-keys: "npm:^2.1.0"
+    semver: "npm:^6.3.1"
+  peerDependencies:
+    "@babel/core": ^7.11.0
+    eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
+  checksum: 10c0/7609eda37e727b0ea70fc9f6175f13adf6d912d18f52430dd3acb88c403173a5b403a8f5a31158253b03fa2a4d7347475cc0d41cc3e9628386bd9cc12a139591
   languageName: node
   linkType: hard
 
@@ -27,13 +81,50 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.16.7":
+"@babel/helper-compilation-targets@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/helper-compilation-targets@npm:7.25.7"
+  dependencies:
+    "@babel/compat-data": "npm:^7.25.7"
+    "@babel/helper-validator-option": "npm:^7.25.7"
+    browserslist: "npm:^4.24.0"
+    lru-cache: "npm:^5.1.1"
+    semver: "npm:^6.3.1"
+  checksum: 10c0/705be7e5274a3fdade68e3e2cf42e2b600316ab52794e13b91299a16f16c926f15886b6e9d6df20eb943ccc1cdba5a363d4766f8d01e47b8e6f4e01175f5e66c
+  languageName: node
+  linkType: hard
+
+"@babel/helper-module-imports@npm:^7.16.7, @babel/helper-module-imports@npm:^7.25.7":
   version: 7.25.7
   resolution: "@babel/helper-module-imports@npm:7.25.7"
   dependencies:
     "@babel/traverse": "npm:^7.25.7"
     "@babel/types": "npm:^7.25.7"
   checksum: 10c0/0fd0c3673835e5bf75558e184bcadc47c1f6dd2fe2016d53ebe1e5a6ae931a44e093015c2f9a6651c1a89f25c76d9246710c2b0b460b95ee069c464f2837fa2c
+  languageName: node
+  linkType: hard
+
+"@babel/helper-module-transforms@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/helper-module-transforms@npm:7.25.7"
+  dependencies:
+    "@babel/helper-module-imports": "npm:^7.25.7"
+    "@babel/helper-simple-access": "npm:^7.25.7"
+    "@babel/helper-validator-identifier": "npm:^7.25.7"
+    "@babel/traverse": "npm:^7.25.7"
+  peerDependencies:
+    "@babel/core": ^7.0.0
+  checksum: 10c0/f37fa7d1d4df21690535b278468cbd5faf0133a3080f282000cfa4f3ffc9462a1458f866b04b6a2f2d1eec4691236cba9a867da61270dab3ab19846e62f05090
+  languageName: node
+  linkType: hard
+
+"@babel/helper-simple-access@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/helper-simple-access@npm:7.25.7"
+  dependencies:
+    "@babel/traverse": "npm:^7.25.7"
+    "@babel/types": "npm:^7.25.7"
+  checksum: 10c0/eed1b499bfb4f613c18debd61517e3de77b6da2727ca025aa05ac81599e0269f1dddb5237db04e8bb598115d015874752e0a7f11ff38672d74a4976097417059
   languageName: node
   linkType: hard
 
@@ -48,6 +139,23 @@ __metadata:
   version: 7.25.7
   resolution: "@babel/helper-validator-identifier@npm:7.25.7"
   checksum: 10c0/07438e5bf01ab2882a15027fdf39ac3b0ba1b251774a5130917907014684e2f70fef8fd620137ca062c4c4eedc388508d2ea7a3a7d9936a32785f4fe116c68c0
+  languageName: node
+  linkType: hard
+
+"@babel/helper-validator-option@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/helper-validator-option@npm:7.25.7"
+  checksum: 10c0/12ed418c8e3ed9ed44c8c80d823f4e42d399b5eb2e423adccb975e31a31a008cd3b5d8eab688b31f740caff4a1bb28fe06ea2fa7d635aee34cc0ad6995d50f0a
+  languageName: node
+  linkType: hard
+
+"@babel/helpers@npm:^7.25.7":
+  version: 7.25.7
+  resolution: "@babel/helpers@npm:7.25.7"
+  dependencies:
+    "@babel/template": "npm:^7.25.7"
+    "@babel/types": "npm:^7.25.7"
+  checksum: 10c0/3b3ae9e373bd785414195ef8f59976a69d5a6ebe0ef2165fdcc5165e5c3ee09e0fcee94bb457df2ddb8c0532e4146d0a9b7a96b3497399a4bff4ffe196b30228
   languageName: node
   linkType: hard
 
@@ -308,6 +416,52 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/fontawesome-common-types@npm:6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.6.0"
+  checksum: 10c0/f76e5959f6ce01355f599126a3a68facba578dc8ebb7ad40fbd22417b7056364a577c1887720ec9653d4efa5b704a01150f5064fc7de237d697fd80e3d9c83aa
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-svg-core@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.6.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:6.6.0"
+  checksum: 10c0/38e2840791711524a3c57d9ea48a5a2e99da6fa3c657ba6beaad7ec3b8da31489a9e38f42b23d70584c75b579dc1ff8c67e075bc9789032278e4da54bb86ecfe
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-brands-svg-icons@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/free-brands-svg-icons@npm:6.6.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:6.6.0"
+  checksum: 10c0/1135a22ff274939da477496f550b6750a1b5fd0ddd0c09bddb1874f2c183a5c8edb519de2cebf6454b12a8457c3eec587bdb6f68e96140cceeb6d02c1ec35479
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-solid-svg-icons@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/free-solid-svg-icons@npm:6.6.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:6.6.0"
+  checksum: 10c0/34828d5e682c6f9d19e3a892ff8a390128fa7dc68768b11c727c11b6a05e5efc929206bfbec83e9d3ae0590a6f6ea22fd5e447fea647e560650f7f3ef1cff543
+  languageName: node
+  linkType: hard
+
+"@fortawesome/react-fontawesome@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@fortawesome/react-fontawesome@npm:0.2.2"
+  dependencies:
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    "@fortawesome/fontawesome-svg-core": ~1 || ~6
+    react: ">=16.3"
+  checksum: 10c0/824f96cd9be2e637738de3073450b30fe6b5a91b4f95df804c162b47ddf7d1a43df5ed7439a01e7236e888edc093efad1e61322ac693ddc3ae01147b90318745
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.13.0":
   version: 0.13.0
   resolution: "@humanwhocodes/config-array@npm:0.13.0"
@@ -497,6 +651,15 @@ __metadata:
   version: 3.0.3
   resolution: "@msgpackr-extract/msgpackr-extract-win32-x64@npm:3.0.3"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1":
+  version: 5.1.1-v1
+  resolution: "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1"
+  dependencies:
+    eslint-scope: "npm:5.1.1"
+  checksum: 10c0/75dda3e623b8ad7369ca22552d6beee337a814b2d0e8a32d23edd13fcb65c8082b32c5d86e436f3860dd7ade30d91d5db55d4ef9a08fb5a976c718ecc0d88a74
   languageName: node
   linkType: hard
 
@@ -1888,7 +2051,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.6.6":
+"browserslist@npm:^4.24.0, browserslist@npm:^4.6.6":
   version: 4.24.0
   resolution: "browserslist@npm:4.24.0"
   dependencies:
@@ -2058,6 +2221,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"convert-source-map@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "convert-source-map@npm:2.0.0"
+  checksum: 10c0/8f2f7a27a1a011cc6cc88cc4da2d7d0cfa5ee0369508baae3d98c260bb3ac520691464e5bbe4ae7cdf09860c1d69ecc6f70c63c6e7c7f7e3f18ec08484dc7d9b
+  languageName: node
+  linkType: hard
+
 "cosmiconfig@npm:^7.0.0":
   version: 7.1.0
   resolution: "cosmiconfig@npm:7.1.0"
@@ -2185,7 +2355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
   version: 4.3.7
   resolution: "debug@npm:4.3.7"
   dependencies:
@@ -2769,6 +2939,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-scope@npm:5.1.1":
+  version: 5.1.1
+  resolution: "eslint-scope@npm:5.1.1"
+  dependencies:
+    esrecurse: "npm:^4.3.0"
+    estraverse: "npm:^4.1.1"
+  checksum: 10c0/d30ef9dc1c1cbdece34db1539a4933fe3f9b14e1ffb27ecc85987902ee663ad7c9473bbd49a9a03195a373741e62e2f807c4938992e019b511993d163450e70a
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^7.2.2":
   version: 7.2.2
   resolution: "eslint-scope@npm:7.2.2"
@@ -2776,6 +2956,13 @@ __metadata:
     esrecurse: "npm:^4.3.0"
     estraverse: "npm:^5.2.0"
   checksum: 10c0/613c267aea34b5a6d6c00514e8545ef1f1433108097e857225fed40d397dd6b1809dffd11c2fde23b37ca53d7bf935fe04d2a18e6fc932b31837b6ad67e1c116
+  languageName: node
+  linkType: hard
+
+"eslint-visitor-keys@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "eslint-visitor-keys@npm:2.1.0"
+  checksum: 10c0/9f0e3a2db751d84067d15977ac4b4472efd6b303e369e6ff241a99feac04da758f46d5add022c33d06b53596038dbae4b4aceb27c7e68b8dfc1055b35e495787
   languageName: node
   linkType: hard
 
@@ -2860,6 +3047,13 @@ __metadata:
   dependencies:
     estraverse: "npm:^5.2.0"
   checksum: 10c0/81a37116d1408ded88ada45b9fb16dbd26fba3aadc369ce50fcaf82a0bac12772ebd7b24cd7b91fc66786bf2c1ac7b5f196bc990a473efff972f5cb338877cf5
+  languageName: node
+  linkType: hard
+
+"estraverse@npm:^4.1.1":
+  version: 4.3.0
+  resolution: "estraverse@npm:4.3.0"
+  checksum: 10c0/9cb46463ef8a8a4905d3708a652d60122a0c20bb58dec7e0e12ab0e7235123d74214fc0141d743c381813e1b992767e2708194f6f6e0f9fd00c1b4e0887b8b6d
   languageName: node
   linkType: hard
 
@@ -3041,6 +3235,13 @@ __metadata:
   version: 1.2.3
   resolution: "functions-have-names@npm:1.2.3"
   checksum: 10c0/33e77fd29bddc2d9bb78ab3eb854c165909201f88c75faa8272e35899e2d35a8a642a15e7420ef945e1f64a9670d6aa3ec744106b2aa42be68ca5114025954ca
+  languageName: node
+  linkType: hard
+
+"gensync@npm:^1.0.0-beta.2":
+  version: 1.0.0-beta.2
+  resolution: "gensync@npm:1.0.0-beta.2"
+  checksum: 10c0/782aba6cba65b1bb5af3b095d96249d20edbe8df32dbf4696fd49be2583faf676173bf4809386588828e4dd76a3354fcbeb577bab1c833ccd9fc4577f26103f8
   languageName: node
   linkType: hard
 
@@ -3768,7 +3969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.2.0, json5@npm:^2.2.1":
+"json5@npm:^2.2.0, json5@npm:^2.2.1, json5@npm:^2.2.3":
   version: 2.2.3
   resolution: "json5@npm:2.2.3"
   bin:
@@ -4014,6 +4215,15 @@ __metadata:
   version: 10.4.3
   resolution: "lru-cache@npm:10.4.3"
   checksum: 10c0/ebd04fbca961e6c1d6c0af3799adcc966a1babe798f685bb84e6599266599cd95d94630b10262f5424539bc4640107e8a33aa28585374abf561d30d16f4b39fb
+  languageName: node
+  linkType: hard
+
+"lru-cache@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "lru-cache@npm:5.1.1"
+  dependencies:
+    yallist: "npm:^3.0.2"
+  checksum: 10c0/89b2ef2ef45f543011e38737b8a8622a2f8998cddf0e5437174ef8f1f70a8b9d14a918ab3e232cb3ba343b7abddffa667f0b59075b2b80e6b4d63c3de6127482
   languageName: node
   linkType: hard
 
@@ -5339,8 +5549,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "transpiled-web@workspace:."
   dependencies:
+    "@babel/core": "npm:^7.25.7"
+    "@babel/eslint-parser": "npm:^7.25.7"
     "@emotion/react": "npm:^11.13.3"
     "@emotion/styled": "npm:^11.13.0"
+    "@fortawesome/fontawesome-svg-core": "npm:^6.6.0"
+    "@fortawesome/free-brands-svg-icons": "npm:^6.6.0"
+    "@fortawesome/free-solid-svg-icons": "npm:^6.6.0"
+    "@fortawesome/react-fontawesome": "npm:^0.2.2"
     eslint: "npm:^8.2.0"
     eslint-config-airbnb: "npm:^19.0.4"
     eslint-config-prettier: "npm:^9.1.0"
@@ -5353,6 +5569,7 @@ __metadata:
     parcel: "npm:^2.12.0"
     prettier: "npm:^3.3.3"
     process: "npm:^0.11.10"
+    prop-types: "npm:^15.8.1"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
   languageName: unknown
@@ -5625,6 +5842,13 @@ __metadata:
   version: 1.0.2
   resolution: "wrappy@npm:1.0.2"
   checksum: 10c0/56fece1a4018c6a6c8e28fbc88c87e0fbf4ea8fd64fc6c63b18f4acc4bd13e0ad2515189786dd2c30d3eec9663d70f4ecf699330002f8ccb547e4a18231fc9f0
+  languageName: node
+  linkType: hard
+
+"yallist@npm:^3.0.2":
+  version: 3.1.1
+  resolution: "yallist@npm:3.1.1"
+  checksum: 10c0/c66a5c46bc89af1625476f7f0f2ec3653c1a1791d2f9407cfb4c2ba812a1e1c9941416d71ba9719876530e3340a99925f697142989371b72d93b9ee628afd8c1
   languageName: node
   linkType: hard
 

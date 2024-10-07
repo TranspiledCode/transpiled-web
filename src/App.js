@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Header from './components/Header';
+import { GlobalProvider } from './context/GlobalContext';
 
 const PageContainer = styled.div`
   display: flex;
@@ -8,9 +9,11 @@ const PageContainer = styled.div`
 `;
 
 const App = () => (
-  <PageContainer>
-    <Header />
-  </PageContainer>
+  <GlobalProvider>
+    <PageContainer>
+      <Header />
+    </PageContainer>
+  </GlobalProvider>
 );
 
 export default App;
