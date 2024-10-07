@@ -1,6 +1,10 @@
+// Hero.js
 import React from 'react';
 import styled from '@emotion/styled';
 import config from '../config';
+
+// Define an array of color keys from the theme corresponding to each index
+const titleColors = ['red', 'white', 'black', 'gray']; // Ensure these keys exist in your theme
 
 // Container for the Hero section
 const StyledHero = styled.section`
@@ -37,6 +41,14 @@ const StyledTitle = styled.div`
   max-width: 47.5rem;
 `;
 
+// Modified StyleTitleWords to accept color based on index and use theme colors
+const StyleTitleWords = styled.h1`
+  color: ${({ id, theme }) =>
+    theme.colors[titleColors[id]] || theme.colors.black};
+  font-weight: 700;
+  font-size: 5rem;
+`;
+
 // Styled subtitle
 const StyledSubtitle = styled.p`
   font-size: 2rem;
@@ -47,18 +59,14 @@ const StyledSubtitle = styled.p`
   }
 `;
 
-const StyleTitleWords = styled.h1`
-  color: ${({ theme }) => theme.colors.black};
-  font-weight: 700;
-  font-size: 5rem;
-`;
-
 const Hero = () => (
   <StyledHero>
     <StyleMessageWrapper>
       <StyledTitle>
         {config.heroSection.title.map((word, index) => (
-          <StyleTitleWords id={index}>{word}</StyleTitleWords>
+          <StyleTitleWords key={word} id={index}>
+            {word}
+          </StyleTitleWords>
         ))}
       </StyledTitle>
       <StyledSubtitle>{config.heroSection.subtitle}</StyledSubtitle>
