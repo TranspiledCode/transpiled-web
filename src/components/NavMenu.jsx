@@ -36,12 +36,15 @@ const CloseButton = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
-  background: transparent;
+  background: #4278a7;
   border: none;
   color: #fff;
   cursor: pointer;
   padding: 10px;
   outline: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 
   display: flex;
   align-items: center;

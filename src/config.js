@@ -35,6 +35,12 @@ const config = {
     profile:
       'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/profile/t.webp',
   },
+  heroSection: {
+    title: ['Web', 'and', 'Mobile App', 'Development'],
+    subtitle:
+      'We build modern, responsive, and scalable web and mobile applications',
+    buttonLabel: 'Get Started',
+  },
 };
 
 export default config;
