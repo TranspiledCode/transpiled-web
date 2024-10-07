@@ -40,7 +40,7 @@ const StyledTitle = styled.div`
 // Styled subtitle
 const StyledSubtitle = styled.p`
   font-size: 2rem;
-  color: #555;
+  color: ${({ theme }) => theme.colors.black};
 
   @media (min-width: 768px) {
     font-size: 1.5rem;
@@ -48,7 +48,7 @@ const StyledSubtitle = styled.p`
 `;
 
 const StyleTitleWords = styled.h1`
-  color: #000;
+  color: ${({ theme }) => theme.colors.black};
   font-weight: 700;
   font-size: 5rem;
 `;
