@@ -12,9 +12,9 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 20px;
   width: 100%;
-  height: 60px;
+  height: 100px;
   background-color: transparent;
 `;
 

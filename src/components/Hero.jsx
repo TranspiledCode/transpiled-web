@@ -2,139 +2,68 @@ import React from 'react';
 import styled from '@emotion/styled';
 import config from '../config';
 
-// Define specific colors
-const COLORS = {
-  blue: '#007BFF', // Bootstrap Primary Blue
-  orange: '#FFA500', // Standard Orange
-  black: '#000',
-};
-
-// Container for the entire Hero section
-const HeroContainer = styled.section`
-  background-color: #fff; /* Dark background for contrast */
-  padding: 2rem 1rem; /* Mobile padding */
-
-  @media (min-width: 768px) {
-    padding: 4rem 2rem; /* Increased padding for larger screens */
-  }
-`;
-
-// Wrapper that contains both the text and image
-const ContentWrapper = styled.div`
+// Container for the Hero section
+const StyledHero = styled.section`
   display: flex;
-  flex-direction: column; /* Stack vertically on mobile */
+  flex-direction: column;
   align-items: center;
-  text-align: center; /* Center text on mobile */
-
-  @media (min-width: 768px) {
-    flex-direction: row; /* Side by side on larger screens */
-    align-items: flex-start;
-    text-align: left; /* Align text to the left on larger screens */
-    justify-content: space-between;
-  }
-`;
-
-// Wrapper for the text section
-const TextWrapper = styled.div`
+  justify-content: flex-start;
   width: 100%;
-  max-width: 100%;
-  margin-bottom: 2rem; /* Space below text on mobile */
-
-  @media (min-width: 768px) {
-    width: 60%; /* 60% width on larger screens */
-    margin-bottom: 0; /* Remove bottom margin on larger screens */
-    padding-right: 2rem; /* Space between text and image */
-  }
+  min-height: 100vh;
+  padding: 10rem 1rem;
+  box-sizing: border-box;
 `;
 
-// Wrapper for the image section
-const ImageWrapper = styled.div`
+// Wrapper for the message content
+const StyleMessageWrapper = styled.div`
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  max-width: 100%;
-
-  @media (min-width: 768px) {
-    width: 40%; /* 40% width on larger screens */
-  }
+  max-width: 700px;
+  padding: 5px;
+  overflow: hidden;
 `;
 
-// Styled component for the title
-const HeroTitle = styled.h1`
-  font-size: 2rem;
-  color: ${COLORS.black};
+// Styled title with responsive font size
+const StyledTitle = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 1rem;
-  font-weight: bold;
+  max-width: 47.5rem;
+`;
+
+// Styled subtitle
+const StyledSubtitle = styled.p`
+  font-size: 2rem;
+  color: #555;
 
   @media (min-width: 768px) {
-    font-size: 3rem;
-  }
-
-  span {
-    display: inline; /* Keep words inline */
-    /* Optional: Add margin or padding if needed */
+    font-size: 1.5rem;
   }
 `;
 
-// Styled component for the subtitle
-const HeroSubtitle = styled.p`
-  font-size: 1rem;
-  color: ${COLORS.black};
-  margin-bottom: 1.5rem;
-
-  @media (min-width: 768px) {
-    font-size: 1.25rem;
-  }
+const StyleTitleWords = styled.h1`
+  color: #000;
+  font-weight: 700;
+  font-size: 5rem;
 `;
-
-// Styled component for the image
-const HeroImage = styled.img`
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto; /* Center the image on mobile */
-
-  @media (min-width: 768px) {
-    margin: 0; /* Remove auto margin on larger screens */
-  }
-`;
-
-// Helper function to get color based on word index
-const getColorByIndex = (index) => {
-  switch (index) {
-    case 0:
-      return COLORS.blue; // "Web" is blue
-    case 1:
-      return COLORS.black; // "and" is black
-    case 2:
-      return COLORS.orange; // "Mobile App" is orange
-    case 3:
-      return COLORS.black; // "Development" is black
-    default:
-      return COLORS.black;
-  }
-};
 
 const Hero = () => (
-  <HeroContainer>
-    <ContentWrapper>
-      <TextWrapper>
-        <HeroTitle>
-          {config.heroSection.title.map((word, index) => (
-            <span key={index} style={{ color: getColorByIndex(index) }}>
-              {word}{' '}
-            </span>
-          ))}
-        </HeroTitle>
-        <HeroSubtitle>{config.heroSection.subtitle}</HeroSubtitle>
-      </TextWrapper>
-      <ImageWrapper>
-        <HeroImage
-          src={config.siteImages.logoSquares}
-          alt='Company Logo'
-          loading='lazy'
-        />
-      </ImageWrapper>
-    </ContentWrapper>
-  </HeroContainer>
+  <StyledHero>
+    <StyleMessageWrapper>
+      <StyledTitle>
+        {config.heroSection.title.map((word, index) => (
+          <StyleTitleWords id={index}>{word}</StyleTitleWords>
+        ))}
+      </StyledTitle>
+      <StyledSubtitle>{config.heroSection.subtitle}</StyledSubtitle>
+    </StyleMessageWrapper>
+  </StyledHero>
 );
 
 export default Hero;
