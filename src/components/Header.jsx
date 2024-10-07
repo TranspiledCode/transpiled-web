@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import config from '../config';
 
 const StyledHeader = styled.header`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,6 +11,10 @@ const StyledHeader = styled.header`
   width: 100%;
   height: 60px;
   background-color: transparent;
+`;
+
+const StyledLogo = styled.img`
+  height: 40px;
 `;
 
 const StyledNav = styled.nav`
@@ -26,9 +31,7 @@ const StyledLinkWrapper = styled.div``;
 
 const Header = () => (
   <StyledHeader>
-    <div>
-      <img src={config.siteInfo.logoUrl} alt='Transpiled' />
-    </div>
+    <StyledLogo src={config.siteImages.headerLogo} alt='Transpiled Logo' />
     <StyledNav>
       {config.siteInfo.navLinks.map((link) => (
         <StyledLinkWrapper key={link.name}>
