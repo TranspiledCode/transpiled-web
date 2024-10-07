@@ -21,13 +21,11 @@ const SubHeading = styled.h2`
   white-space: nowrap;
 `;
 
-const App = () => {
-  return (
-    <PageContainer>
-      <Title>Transpiled</Title>
-      <SubHeading>Cutting-Edge Web and App Design and Development</SubHeading>
-    </PageContainer>
-  );
-};
+const App = () => (
+  <PageContainer>
+    <Title>Transpiled</Title>
+    <SubHeading>Cutting-Edge Design and Development</SubHeading>
+  </PageContainer>
+);
 
 export default App;

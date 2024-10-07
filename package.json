@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "node start.js",
-    "build": "parcel build public/index.html"
+    "build": "parcel build public/index.html",
+    "lint": "eslint ./src/**/*.{js,jsx} --quiet"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -14,8 +15,17 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "local-ip": "^2.0.0",
     "parcel": "^2.12.0",
+    "prettier": "^3.3.3",
     "process": "^0.11.10"
   },
   "packageManager": "yarn@4.5.0"
