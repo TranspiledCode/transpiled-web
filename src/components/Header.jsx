@@ -49,11 +49,11 @@ const Header = () => {
         alt='Transpiled Logo'
         onClick={() => setMenuOpen(false)}
       />
+      <NavBar />
+      <NavMenu />
       <MobileMenu>
         <Icon iconName='bars' size='3x' iconType='solid' onClick={toggleMenu} />
       </MobileMenu>
-      <NavBar />
-      <NavMenu />
     </StyledHeader>
   );
 };
