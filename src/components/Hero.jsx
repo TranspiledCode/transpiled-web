@@ -14,9 +14,17 @@ const StyledHero = styled.section`
   justify-content: flex-start;
   width: 100%;
   min-height: 100vh;
-  padding: 20rem 1rem;
+  padding: 1rem 2rem;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-image: url(${config.siteImages.backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  @media (min-width: 768px) {
+    padding: 1rem 3rem;
+  }
 `;
 
 // Wrapper for the message content
@@ -31,6 +39,16 @@ const StyleMessageWrapper = styled.div`
   max-width: 700px;
   padding: 5px;
   overflow: hidden;
+  margin-top: 15rem;
+
+  @media (min-width: 768px) {
+    width: 90%;
+    max-width: 1400px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 20rem;
+  }
 `;
 
 // Styled title with responsive font size
@@ -40,6 +58,14 @@ const StyledTitle = styled.div`
   gap: 0.5rem;
   margin-bottom: 1rem;
   max-width: 47.5rem;
+
+  @media (min-width: 768px) {
+    max-width: 45rem;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 50rem;
+  }
 `;
 
 // Modified StyleTitleWords to accept color based on index and use theme colors
@@ -48,15 +74,30 @@ const StyleTitleWords = styled.h1`
     theme.colors[titleColors[id]] || theme.colors.white};
   font-weight: 700;
   font-size: 5rem;
+
+  @media (min-width: 768px) {
+    font-size: 6rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 7rem;
+  }
 `;
 
 // Styled subtitle
 const StyledSubtitle = styled.p`
   font-size: 2rem;
   color: ${({ theme }) => theme.colors.white};
+  max-width: 35rem;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    max-width: 45rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+    max-width: 55rem;
   }
 `;
 
