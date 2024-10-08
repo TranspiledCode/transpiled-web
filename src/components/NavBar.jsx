@@ -7,7 +7,7 @@ const StyledNav = styled.nav`
   @media (min-width: 768px) {
     display: flex;
     gap: 20px;
-    color: #000000;
+    color: ${({ theme }) => theme.colors.white};
     font-size: 1.8rem;
   }
 `;

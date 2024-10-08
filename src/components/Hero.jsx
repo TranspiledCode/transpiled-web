@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import config from '../config';
 
 // Define an array of color keys from the theme corresponding to each index
-const titleColors = ['red', 'white', 'black', 'gray']; // Ensure these keys exist in your theme
+const titleColors = ['blue', 'white', 'orange', 'white']; // Ensure these keys exist in your theme
 
 // Container for the Hero section
 const StyledHero = styled.section`
@@ -14,8 +14,9 @@ const StyledHero = styled.section`
   justify-content: flex-start;
   width: 100%;
   min-height: 100vh;
-  padding: 10rem 1rem;
+  padding: 20rem 1rem;
   box-sizing: border-box;
+  background-color: ${({ theme }) => theme.colors.black};
 `;
 
 // Wrapper for the message content
@@ -44,7 +45,7 @@ const StyledTitle = styled.div`
 // Modified StyleTitleWords to accept color based on index and use theme colors
 const StyleTitleWords = styled.h1`
   color: ${({ id, theme }) =>
-    theme.colors[titleColors[id]] || theme.colors.black};
+    theme.colors[titleColors[id]] || theme.colors.white};
   font-weight: 700;
   font-size: 5rem;
 `;
@@ -52,7 +53,7 @@ const StyleTitleWords = styled.h1`
 // Styled subtitle
 const StyledSubtitle = styled.p`
   font-size: 2rem;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
 
   @media (min-width: 768px) {
     font-size: 1.5rem;

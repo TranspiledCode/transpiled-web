@@ -16,6 +16,11 @@ const StyledHeader = styled.header`
   width: 100%;
   height: 100px;
   background-color: transparent;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 `;
 
 const StyledLogo = styled.img`
@@ -25,6 +30,7 @@ const StyledLogo = styled.img`
 const MobileMenu = styled.div`
   cursor: pointer;
   display: flex;
+  color: ${({ theme }) => theme.colors.white};
 
   @media screen and (min-width: 768px) {
     display: none;
