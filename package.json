@@ -4,7 +4,7 @@
   "author": "Joshua Crass <joshua.crass@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel public/index.html",
+    "dev": "parcel public/index.html --port 3000",
     "build": "parcel build public/index.html"
   },
   "devDependencies": {
