@@ -4,8 +4,9 @@
   "author": "Joshua Crass <joshua.crass@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel public/index.html --port 3000",
+    "dev": "parcel public/index.html --port 3000 --no-cache",
     "build": "parcel build public/index.html",
+    "start": "yarn build && serve dist",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\""
   },
