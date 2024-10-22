@@ -34,26 +34,6 @@ const Subtitle = styled.h3`
   margin: 0;
 `;
 
-// Wrapper for the content below the Hero section
-const ContentWrapper = styled.section`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: #333;
-  padding: 20px;
-  text-align: center;
-  color: #fff;
-  height: 100vh;
-`;
-
-const Card = styled.div`
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-`;
-
 const Home = () => {
   return (
     <>
@@ -65,27 +45,6 @@ const Home = () => {
           </TitleWrapper>
         </AnimatedSection>
       </HeroWrapper>
-
-      <ContentWrapper>
-        <AnimatedSection direction="up">
-          <Card>
-            <h2>This section will fade in!</h2>
-            <p>More content that animates into view.</p>
-          </Card>
-        </AnimatedSection>
-        <AnimatedSection direction="up">
-          <Card>
-            <h2>Another section!</h2>
-            <p>This one also appears as you scroll down.</p>
-          </Card>
-        </AnimatedSection>
-        <AnimatedSection direction="up">
-          <Card>
-            <h2>Another section!</h2>
-            <p>This one also appears as you scroll down.</p>
-          </Card>
-        </AnimatedSection>
-      </ContentWrapper>
     </>
   );
 };
