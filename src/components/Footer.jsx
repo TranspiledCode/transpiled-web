@@ -207,8 +207,8 @@ const Footer = () => (
           <input type="hidden" name="form-name" value="contact-form" />
           <InputField type="text" name="name" label="Name" />
           <InputField type="email" name="email" label="Email" />
-          <InputField type="tel" name="phone" label="Phone" />
-          <InputField as="textarea" name="message" label="Message" rows="5" />
+          <InputField type="phone" name="phone" label="Phone" />
+          <textarea name="message" label="Message" />
           <button>Send</button>
         </ContactForm>
       </ContactFormWrapper>

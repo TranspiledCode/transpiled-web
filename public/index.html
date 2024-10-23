@@ -18,22 +18,10 @@
   </head>
   <body>
     <!-- Hidden form for Netlify to detect during build -->
-    <form
-      name="contact-form"
-      netlify
-      netlify-honeypot="bot-field"
-      hidden
-      data-netlify="true"
-    >
-      <input type="hidden" name="form-name" value="contact-form" />
-      <!-- Honeypot field -->
-      <div style="display: none">
-        <label>Don’t fill this out if you're human:</label>
-        <input name="bot-field" />
-      </div>
+    <form name="contact-form" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
-      <input type="tel" name="phone" />
+      <input type="phone" name="phone" />
       <textarea name="message"></textarea>
     </form>
 

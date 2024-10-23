@@ -81,7 +81,7 @@ const ClearButton = styled.button`
   }
 `;
 
-const Input = ({ label, type, showClearButton }) => {
+const Input = ({ name, label, type, showClearButton }) => {
   const [value, setValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
@@ -96,6 +96,7 @@ const Input = ({ label, type, showClearButton }) => {
     <InputContainer>
       <StyledInput
         id={inputId}
+        name={name}
         type={type}
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -127,6 +128,7 @@ const Input = ({ label, type, showClearButton }) => {
 
 Input.propTypes = {
   label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   showClearButton: PropTypes.bool,
 };
