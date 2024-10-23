@@ -284,7 +284,7 @@ const Footer = () => {
             {/* Optionally, you can include the honeypot field visibly hidden via CSS */}
             <div style={{ display: 'none' }}>
               <label htmlFor="bot-field">
-                Don’t fill this out if you're human:
+                Don’t fill this out if youre human:
               </label>
               <input
                 id="bot-field"
