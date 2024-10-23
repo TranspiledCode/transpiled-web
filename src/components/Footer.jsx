@@ -243,7 +243,7 @@ const Footer = () => {
             <InputField type="text" name="name" label="Name" />
             <InputField type="email" name="email" label="Email" />
             <InputField type="tel" name="phone" label="Phone" />
-            <TextareaField name="message" label="Message" />
+            <TextareaField name="message" label="Message" maxLength={120} />
             <button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send'}
             </button>
