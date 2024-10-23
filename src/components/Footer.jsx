@@ -234,14 +234,6 @@ const Footer = () => {
             <ContactDetailWrapper>
               <Social>
                 <SocialIcon
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <FaFacebookF />
-                </SocialIcon>
-                <SocialIcon
                   href="https://www.instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -270,7 +262,6 @@ const Footer = () => {
             data-netlify="true"
             onSubmit={handleSubmit} // Add the submit handler
           >
-            {/* Netlify hidden fields */}
             <input type="hidden" name="form-name" value="contact-form" />
             <InputField
               type="text"
