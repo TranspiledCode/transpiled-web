@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
@@ -146,199 +146,77 @@ const CopyRightContainer = styled.div`
   margin: 2rem auto;
 `;
 
-const SubmitButton = styled.button`
-  padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme.colors.orange};
-  color: ${({ theme }) => theme.colors.white};
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+const Footer = () => (
+  <FooterWrapper>
+    <ContactContainer>
+      <ContactInfoWrapper>
+        <ContactInfo>
+          <Title>Contact Us</Title>
+          <ContactDetailWrapper>
+            <Email>
+              <EmailTitle>Email</EmailTitle>
+              <EmailLink href="mailto:info@transpiled.com">
+                info@transpiled.com
+              </EmailLink>
+            </Email>
+          </ContactDetailWrapper>
+          <ContactDetailWrapper>
+            <Phone>
+              <PhoneTitle>Phone</PhoneTitle>
+              <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
+            </Phone>
+          </ContactDetailWrapper>
+          <ContactDetailWrapper>
+            <Social>
+              <SocialIcon
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FaFacebookF />
+              </SocialIcon>
+              <SocialIcon
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </SocialIcon>
+              <SocialIcon
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </SocialIcon>
+            </Social>
+          </ContactDetailWrapper>
+        </ContactInfo>
+      </ContactInfoWrapper>
 
-  &:disabled {
-    background-color: ${({ theme }) => theme.colors.gray};
-    cursor: not-allowed;
-  }
-
-  &:hover:enabled {
-    background-color: ${({ theme }) => theme.colors.darkOrange};
-  }
-`;
-
-const Footer = () => {
-  // State for form fields
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-
-  // State for button status: 'Send', 'Sending', 'Sent'
-  const [buttonStatus, setButtonStatus] = useState('Send');
-
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setButtonStatus('Sending');
-
-    // Prepare form data for Netlify
-    const formPayload = new FormData();
-    formPayload.append('form-name', 'contact-form');
-    Object.entries(formData).forEach(([key, value]) => {
-      formPayload.append(key, value);
-    });
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (response.ok) {
-        setButtonStatus('Sent');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-        });
-
-        // Reset button after 3 seconds
-        setTimeout(() => {
-          setButtonStatus('Send');
-        }, 3000);
-      } else {
-        // Handle server errors
-        setButtonStatus('Send');
-        alert('There was an error submitting the form. Please try again.');
-      }
-    } catch (error) {
-      // Handle network errors
-      setButtonStatus('Send');
-      alert('There was an error submitting the form. Please try again.');
-    }
-  };
-
-  return (
-    <FooterWrapper>
-      <ContactContainer>
-        <ContactInfoWrapper>
-          <ContactInfo>
-            <Title>Contact Us</Title>
-            <ContactDetailWrapper>
-              <Email>
-                <EmailTitle>Email</EmailTitle>
-                <EmailLink href="mailto:info@transpiled.com">
-                  info@transpiled.com
-                </EmailLink>
-              </Email>
-            </ContactDetailWrapper>
-            <ContactDetailWrapper>
-              <Phone>
-                <PhoneTitle>Phone</PhoneTitle>
-                <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
-              </Phone>
-            </ContactDetailWrapper>
-            <ContactDetailWrapper>
-              <Social>
-                <SocialIcon
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <FaFacebookF />
-                </SocialIcon>
-                <SocialIcon
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram />
-                </SocialIcon>
-                <SocialIcon
-                  href="https://www.linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedinIn />
-                </SocialIcon>
-              </Social>
-            </ContactDetailWrapper>
-          </ContactInfo>
-        </ContactInfoWrapper>
-
-        <ContactFormWrapper>
-          <ContactForm
-            name="contact-form"
-            aria-labelledby="contact-form"
-            method="post"
-            data-netlify="true"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="form-name" value="contact-form" />
-            <InputField
-              type="text"
-              name="name"
-              label="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <InputField
-              type="email"
-              name="email"
-              label="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <InputField
-              type="phone"
-              name="phone"
-              label="Phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              style={{
-                padding: '1rem',
-                borderRadius: '0.5rem',
-                border: '1px solid #ccc',
-                marginBottom: '2rem',
-                width: '100%',
-                minHeight: '150px',
-                resize: 'vertical',
-                fontSize: '1.6rem',
-              }}
-            />
-            <SubmitButton type="submit" disabled={buttonStatus === 'Sending'}>
-              {buttonStatus}
-            </SubmitButton>
-          </ContactForm>
-        </ContactFormWrapper>
-      </ContactContainer>
-      <CopyRightContainer>
-        <p>©Copyright 2023 Transpiled | All Rights Reserved</p>
-      </CopyRightContainer>
-    </FooterWrapper>
-  );
-};
+      <ContactFormWrapper>
+        <ContactForm
+          name="contact-form"
+          aria-labelledby="contact-form"
+          method="post"
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="contact-form" />
+          <InputField type="text" name="name" label="Name" />
+          <InputField type="email" name="email" label="Email" />
+          <InputField type="phone" name="phone" label="Phone" />
+          <textarea name="message" label="Message" />
+          <button>Send</button>
+        </ContactForm>
+      </ContactFormWrapper>
+    </ContactContainer>
+    <CopyRightContainer>
+      <p>©Copyright 2023 Transpiled | All Rights Reserved</p>
+    </CopyRightContainer>
+  </FooterWrapper>
+);
 
 export default Footer;
