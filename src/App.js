@@ -1,13 +1,18 @@
-import Home from 'pages/Home.jsx';
-import ContextProvider from 'context/GlobalProvider';
+// App.js
+import React from 'react';
 import { ThemeProvider } from '@emotion/react';
-import theme from 'style/theme';
+import theme from './style/theme';
+import ContextProvider from './context/GlobalProvider';
+import Home from './pages/Home';
+import { ToastProvider } from './context/ToastContext';
 
 const App = () => {
   return (
     <ContextProvider>
       <ThemeProvider theme={theme}>
-        <Home />
+        <ToastProvider position="bottom-left">
+          <Home />
+        </ToastProvider>
       </ThemeProvider>
     </ContextProvider>
   );

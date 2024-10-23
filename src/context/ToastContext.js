@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 
 const ToastContext = createContext();
 
-export const useToast = () => {
-  return useContext(ToastContext);
-};
+export const useToast = () => useContext(ToastContext);
 
-export const ToastProvider = ({ children }) => {
+export const ToastProvider = ({ children, position = 'top-right' }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback((message, variant = 'info', duration = 5000) => {
@@ -30,11 +28,18 @@ export const ToastProvider = ({ children }) => {
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
-      <ToastContainer toasts={toasts} />
+      <ToastContainer toasts={toasts} position={position} />{' '}
+      {/* Pass position prop */}
     </ToastContext.Provider>
   );
 };
 
 ToastProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  position: PropTypes.oneOf([
+    'top-left',
+    'top-right',
+    'bottom-left',
+    'bottom-right',
+  ]),
 };
