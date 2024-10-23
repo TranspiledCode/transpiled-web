@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
@@ -146,197 +146,77 @@ const CopyRightContainer = styled.div`
   margin: 2rem auto;
 `;
 
-const Footer = () => {
-  // State to manage form inputs
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    'bot-field': '', // Honeypot field
-  });
+const Footer = () => (
+  <FooterWrapper>
+    <ContactContainer>
+      <ContactInfoWrapper>
+        <ContactInfo>
+          <Title>Contact Us</Title>
+          <ContactDetailWrapper>
+            <Email>
+              <EmailTitle>Email</EmailTitle>
+              <EmailLink href="mailto:info@transpiled.com">
+                info@transpiled.com
+              </EmailLink>
+            </Email>
+          </ContactDetailWrapper>
+          <ContactDetailWrapper>
+            <Phone>
+              <PhoneTitle>Phone</PhoneTitle>
+              <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
+            </Phone>
+          </ContactDetailWrapper>
+          <ContactDetailWrapper>
+            <Social>
+              <SocialIcon
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FaFacebookF />
+              </SocialIcon>
+              <SocialIcon
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </SocialIcon>
+              <SocialIcon
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </SocialIcon>
+            </Social>
+          </ContactDetailWrapper>
+        </ContactInfo>
+      </ContactInfoWrapper>
 
-  // State to manage submission status
-  const [isSent, setIsSent] = useState(false);
-
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Encode the form data
-    const encode = (data) => {
-      return Object.keys(data)
-        .map(
-          (key) =>
-            encodeURIComponent(key) + '=' + encodeURIComponent(data[key]),
-        )
-        .join('&');
-    };
-
-    try {
-      // Send form data to Netlify
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact-form', ...formData }),
-      });
-
-      if (response.ok) {
-        // Clear form fields
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-          'bot-field': '', // Reset honeypot field
-        });
-
-        // Update submission status
-        setIsSent(true);
-
-        // Optionally, reset the button after a delay
-        // setTimeout(() => setIsSent(false), 5000);
-      } else {
-        console.error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
-  };
-
-  return (
-    <FooterWrapper>
-      <ContactContainer>
-        <ContactInfoWrapper>
-          <ContactInfo>
-            <Title>Contact Us</Title>
-            <ContactDetailWrapper>
-              <Email>
-                <EmailTitle>Email</EmailTitle>
-                <EmailLink href="mailto:info@transpiled.com">
-                  info@transpiled.com
-                </EmailLink>
-              </Email>
-            </ContactDetailWrapper>
-            <ContactDetailWrapper>
-              <Phone>
-                <PhoneTitle>Phone</PhoneTitle>
-                <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
-              </Phone>
-            </ContactDetailWrapper>
-            <ContactDetailWrapper>
-              <Social>
-                <SocialIcon
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <FaFacebookF />
-                </SocialIcon>
-                <SocialIcon
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram />
-                </SocialIcon>
-                <SocialIcon
-                  href="https://www.linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedinIn />
-                </SocialIcon>
-              </Social>
-            </ContactDetailWrapper>
-          </ContactInfo>
-        </ContactInfoWrapper>
-
-        <ContactFormWrapper>
-          <ContactForm
-            name="contact-form"
-            aria-labelledby="contact-form"
-            method="post"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            onSubmit={handleSubmit} // Add the submit handler
-          >
-            {/* Hidden fields */}
-            <input type="hidden" name="form-name" value="contact-form" />
-            <input
-              type="hidden"
-              name="bot-field"
-              value={formData['bot-field']}
-              onChange={handleChange}
-            />
-            {/* Optionally, you can include the honeypot field visibly hidden via CSS */}
-            <div style={{ display: 'none' }}>
-              <label htmlFor="bot-field">
-                Don’t fill this out if youre human:
-              </label>
-              <input
-                id="bot-field"
-                name="bot-field"
-                value={formData['bot-field']}
-                onChange={handleChange}
-              />
-            </div>
-
-            <InputField
-              type="text"
-              name="name"
-              label="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <InputField
-              type="email"
-              name="email"
-              label="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <InputField
-              type="tel"
-              name="phone"
-              label="Phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-            <InputField
-              as="textarea"
-              name="message"
-              label="Message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit" disabled={isSent}>
-              {isSent ? 'Sent' : 'Send'}
-            </button>
-          </ContactForm>
-        </ContactFormWrapper>
-      </ContactContainer>
-      <CopyRightContainer>
-        <p>©Copyright 2023 Transpiled | All Rights Reserved</p>
-      </CopyRightContainer>
-    </FooterWrapper>
-  );
-};
+      <ContactFormWrapper>
+        <ContactForm
+          name="contact-form"
+          aria-labelledby="contact-form"
+          method="post"
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="contact-form" />
+          <InputField type="text" name="name" label="Name" />
+          <InputField type="email" name="email" label="Email" />
+          <InputField type="tel" name="phone" label="Phone" />
+          <InputField as="textarea" name="message" label="Message" rows="5" />
+          <button>Send</button>
+        </ContactForm>
+      </ContactFormWrapper>
+    </ContactContainer>
+    <CopyRightContainer>
+      <p>©Copyright 2023 Transpiled | All Rights Reserved</p>
+    </CopyRightContainer>
+  </FooterWrapper>
+);
 
 export default Footer;
