@@ -27,6 +27,7 @@
     "react-dom": "^18.3.1"
   },
   "alias": {
-    "components": "./src/components"
+    "components": "./src/components",
+    "style": "./src/style"
   }
 }
