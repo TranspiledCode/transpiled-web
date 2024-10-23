@@ -1,5 +1,5 @@
 // src/App.js
-import Home from './pages/home.jsx';
+import Home from './pages/Home.jsx';
 import { ThemeProvider } from '@emotion/react';
 import theme from 'style/theme';
 
