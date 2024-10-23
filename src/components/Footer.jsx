@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 import Input from './Input';
-import FormContext from 'context/ContactForm';
+import Textarea from './Textarea'; // Import the new Textarea component
+import FormContext from 'context/ContactForm'; // Adjust the import path accordingly
 
 const FooterWrapper = styled.footer`
   display: flex;
@@ -147,6 +148,11 @@ const CopyRightContainer = styled.div`
   justify-content: center;
   margin: 2rem auto;
 `;
+
+const TextareaField = styled(Textarea)`
+  margin-bottom: 2rem;
+`;
+
 const encode = (data) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -154,7 +160,7 @@ const encode = (data) => {
 };
 
 const Footer = () => {
-  const { formData, updateFormData, resetFormData } = useContext(FormContext);
+  const { formData, resetFormData } = useContext(FormContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
@@ -168,7 +174,7 @@ const Footer = () => {
     })
       .then(() => {
         alert('Success!');
-        resetFormData(); // Reset the form fields
+        resetFormData();
       })
       .catch((error) => alert('Error: ' + error))
       .finally(() => setIsSubmitting(false));
@@ -231,18 +237,13 @@ const Footer = () => {
             aria-labelledby="contact-form"
             method="post"
             data-netlify="true"
-            onSubmit={handleSubmit} // Attach the handleSubmit function
+            onSubmit={handleSubmit}
           >
             <input type="hidden" name="form-name" value="contact-form" />
             <InputField type="text" name="name" label="Name" />
             <InputField type="email" name="email" label="Email" />
             <InputField type="tel" name="phone" label="Phone" />
-            <textarea
-              name="message"
-              value={formData['message'] || ''}
-              onChange={(e) => updateFormData('message', e.target.value)}
-              aria-label="Message"
-            />
+            <TextareaField name="message" label="Message" />
             <button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send'}
             </button>
