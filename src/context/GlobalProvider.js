@@ -1,13 +1,17 @@
+// ContextProvider.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContactFormProvider } from './ContactForm'; // Correct import
+import { ContactFormProvider } from './ContactForm'; // Existing ContactFormProvider
+import { ToastProvider } from './ToastContext'; // Import ToastProvider
 
 const ContextProvider = ({ children }) => {
   return (
-    <ContactFormProvider>
-      {/* Add other providers here */}
-      {children}
-    </ContactFormProvider>
+    <ToastProvider>
+      <ContactFormProvider>
+        {/* Add other providers here */}
+        {children}
+      </ContactFormProvider>
+    </ToastProvider>
   );
 };
 
