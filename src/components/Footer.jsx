@@ -248,8 +248,8 @@ const Footer = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              variant="secondary"
-              size="large"
+              variant="primary"
+              size="medium"
             >
               {isSubmitting ? 'Sending...' : 'Send'}
             </Button>
