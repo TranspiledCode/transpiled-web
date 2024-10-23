@@ -4,6 +4,7 @@ const theme = {
     blue: '#25B0D3',
     lightBlue: '#99D0E9',
     darkBlue: '#034C70',
+    blueAccent: '#197F9A',
     green: '#64DDBB',
     orange: '#FF9215',
     pink: '#FF6B6B',
@@ -28,6 +29,12 @@ const theme = {
     flexColCenter: {
       display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    flexRowCenter: {
+      display: 'flex',
+      flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
     },

@@ -1,8 +1,14 @@
 // src/App.js
-import Hero from 'components/Hero.jsx';
+import Hero from 'components/Hero';
+import Footer from 'components/Footer';
 
 const Home = () => {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <Footer />
+    </>
+  );
 };
 
 export default Home;
