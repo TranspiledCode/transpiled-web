@@ -23,6 +23,7 @@ const StyledTextarea = styled.textarea`
   color: ${({ theme }) => theme.colors.white};
   resize: none;
   height: 100px;
+  border-radius: 0;
 
   caret-color: ${({ theme }) => theme.colors.orange};
 

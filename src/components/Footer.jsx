@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 import Input from './Input';
+import Button from './Button';
 import Textarea from './Textarea'; // Import the new Textarea component
 import FormContext from 'context/ContactForm'; // Adjust the import path accordingly
 
@@ -244,9 +245,14 @@ const Footer = () => {
             <InputField type="email" name="email" label="Email" />
             <InputField type="tel" name="phone" label="Phone" />
             <TextareaField name="message" label="Message" maxLength={120} />
-            <button type="submit" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              variant="secondary"
+              size="large"
+            >
               {isSubmitting ? 'Sending...' : 'Send'}
-            </button>
+            </Button>
           </ContactForm>
         </ContactFormWrapper>
       </ContactContainer>
