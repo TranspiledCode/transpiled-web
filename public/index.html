@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Existing head content -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Transpiled Web" />
@@ -16,12 +17,26 @@
     />
   </head>
   <body>
-    <form name="contact-form" netlify netlify-honeypot="bot-field" hidden>
+    <!-- Hidden form for Netlify to detect during build -->
+    <form
+      name="contact-form"
+      netlify
+      netlify-honeypot="bot-field"
+      hidden
+      data-netlify="true"
+    >
+      <input type="hidden" name="form-name" value="contact-form" />
+      <!-- Honeypot field -->
+      <div style="display: none">
+        <label>Don’t fill this out if you're human:</label>
+        <input name="bot-field" />
+      </div>
       <input type="text" name="name" />
       <input type="email" name="email" />
-      <input type="phone" name="phone" />
+      <input type="tel" name="phone" />
       <textarea name="message"></textarea>
     </form>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="../src/index.js"></script>
     <div id="root"></div>

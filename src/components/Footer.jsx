@@ -153,6 +153,7 @@ const Footer = () => {
     email: '',
     phone: '',
     message: '',
+    'bot-field': '', // Honeypot field
   });
 
   // State to manage submission status
@@ -196,6 +197,7 @@ const Footer = () => {
           email: '',
           phone: '',
           message: '',
+          'bot-field': '', // Reset honeypot field
         });
 
         // Update submission status
@@ -234,6 +236,14 @@ const Footer = () => {
             <ContactDetailWrapper>
               <Social>
                 <SocialIcon
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FaFacebookF />
+                </SocialIcon>
+                <SocialIcon
                   href="https://www.instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -260,9 +270,30 @@ const Footer = () => {
             aria-labelledby="contact-form"
             method="post"
             data-netlify="true"
+            data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit} // Add the submit handler
           >
+            {/* Hidden fields */}
             <input type="hidden" name="form-name" value="contact-form" />
+            <input
+              type="hidden"
+              name="bot-field"
+              value={formData['bot-field']}
+              onChange={handleChange}
+            />
+            {/* Optionally, you can include the honeypot field visibly hidden via CSS */}
+            <div style={{ display: 'none' }}>
+              <label htmlFor="bot-field">
+                Don’t fill this out if you're human:
+              </label>
+              <input
+                id="bot-field"
+                name="bot-field"
+                value={formData['bot-field']}
+                onChange={handleChange}
+              />
+            </div>
+
             <InputField
               type="text"
               name="name"
