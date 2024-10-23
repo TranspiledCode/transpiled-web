@@ -1,7 +1,10 @@
-import { useState } from 'react';
+// Input.jsx
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { FaTimes } from 'react-icons/fa';
+
+import FormContext from 'context/ContactForm';
 
 const InputContainer = styled.div`
   position: relative;
@@ -81,16 +84,22 @@ const ClearButton = styled.button`
   }
 `;
 
-const Input = ({ name, label, type, showClearButton }) => {
-  const [value, setValue] = useState('');
+const Input = ({ name, label, type, showClearButton = true }) => {
+  const { formData, updateFormData } = useContext(FormContext);
   const [isFocused, setIsFocused] = useState(false);
+
+  const value = formData[name] || '';
 
   const inputId = `input-${label.replace(/\s+/g, '-').toLowerCase()}`;
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
-  const handleClear = () => setValue('');
+  const handleChange = (e) => {
+    updateFormData(name, e.target.value);
+  };
+
+  const handleClear = () => updateFormData(name, '');
 
   return (
     <InputContainer>
@@ -99,7 +108,7 @@ const Input = ({ name, label, type, showClearButton }) => {
         name={name}
         type={type}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
         aria-labelledby={`${inputId}-label`}
@@ -131,10 +140,6 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   showClearButton: PropTypes.bool,
-};
-
-Input.defaultProps = {
-  showClearButton: true,
 };
 
 export default Input;

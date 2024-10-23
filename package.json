@@ -29,6 +29,9 @@
   },
   "alias": {
     "components": "./src/components",
+    "hooks": "./src/hooks",
+    "pages": "./src/pages",
+    "context": "./src/context",
     "style": "./src/style"
   }
 }

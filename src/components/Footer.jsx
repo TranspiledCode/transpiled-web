@@ -1,8 +1,10 @@
-import React from 'react';
+// Footer.jsx
+import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 import Input from './Input';
+import FormContext from 'context/ContactForm';
 
 const FooterWrapper = styled.footer`
   display: flex;
@@ -44,7 +46,7 @@ const ContactInfo = styled.div`
   }
 `;
 
-const ContactDetailWrapper = styled.p`
+const ContactDetailWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
@@ -145,78 +147,113 @@ const CopyRightContainer = styled.div`
   justify-content: center;
   margin: 2rem auto;
 `;
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
 
-const Footer = () => (
-  <FooterWrapper>
-    <ContactContainer>
-      <ContactInfoWrapper>
-        <ContactInfo>
-          <Title>Contact Us</Title>
-          <ContactDetailWrapper>
-            <Email>
-              <EmailTitle>Email</EmailTitle>
-              <EmailLink href="mailto:info@transpiled.com">
-                info@transpiled.com
-              </EmailLink>
-            </Email>
-          </ContactDetailWrapper>
-          <ContactDetailWrapper>
-            <Phone>
-              <PhoneTitle>Phone</PhoneTitle>
-              <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
-            </Phone>
-          </ContactDetailWrapper>
-          <ContactDetailWrapper>
-            <Social>
-              <SocialIcon
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-              >
-                <FaFacebookF />
-              </SocialIcon>
-              <SocialIcon
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </SocialIcon>
-              <SocialIcon
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedinIn />
-              </SocialIcon>
-            </Social>
-          </ContactDetailWrapper>
-        </ContactInfo>
-      </ContactInfoWrapper>
+const Footer = () => {
+  const { formData, updateFormData, resetFormData } = useContext(FormContext);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-      <ContactFormWrapper>
-        <ContactForm
-          name="contact-form"
-          aria-labelledby="contact-form"
-          method="post"
-          data-netlify="true"
-        >
-          <input type="hidden" name="form-name" value="contact-form" />
-          <InputField type="text" name="name" label="Name" />
-          <InputField type="email" name="email" label="Email" />
-          <InputField type="phone" name="phone" label="Phone" />
-          <textarea name="message" label="Message" />
-          <button>Send</button>
-        </ContactForm>
-      </ContactFormWrapper>
-    </ContactContainer>
-    <CopyRightContainer>
-      <p>©Copyright 2023 Transpiled | All Rights Reserved</p>
-    </CopyRightContainer>
-  </FooterWrapper>
-);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact-form', ...formData }),
+    })
+      .then(() => {
+        alert('Success!');
+        resetFormData(); // Reset the form fields
+      })
+      .catch((error) => alert('Error: ' + error))
+      .finally(() => setIsSubmitting(false));
+  };
+
+  return (
+    <FooterWrapper>
+      <ContactContainer>
+        <ContactInfoWrapper>
+          <ContactInfo>
+            <Title>Contact Us</Title>
+            <ContactDetailWrapper>
+              <Email>
+                <EmailTitle>Email</EmailTitle>
+                <EmailLink href="mailto:info@transpiled.com">
+                  info@transpiled.com
+                </EmailLink>
+              </Email>
+            </ContactDetailWrapper>
+            <ContactDetailWrapper>
+              <Phone>
+                <PhoneTitle>Phone</PhoneTitle>
+                <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
+              </Phone>
+            </ContactDetailWrapper>
+            <ContactDetailWrapper>
+              <Social>
+                <SocialIcon
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FaFacebookF />
+                </SocialIcon>
+                <SocialIcon
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram />
+                </SocialIcon>
+                <SocialIcon
+                  href="https://www.linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedinIn />
+                </SocialIcon>
+              </Social>
+            </ContactDetailWrapper>
+          </ContactInfo>
+        </ContactInfoWrapper>
+
+        <ContactFormWrapper>
+          <ContactForm
+            name="contact-form"
+            aria-labelledby="contact-form"
+            method="post"
+            data-netlify="true"
+            onSubmit={handleSubmit} // Attach the handleSubmit function
+          >
+            <input type="hidden" name="form-name" value="contact-form" />
+            <InputField type="text" name="name" label="Name" />
+            <InputField type="email" name="email" label="Email" />
+            <InputField type="tel" name="phone" label="Phone" />
+            <textarea
+              name="message"
+              value={formData['message'] || ''}
+              onChange={(e) => updateFormData('message', e.target.value)}
+              aria-label="Message"
+            />
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send'}
+            </button>
+          </ContactForm>
+        </ContactFormWrapper>
+      </ContactContainer>
+      <CopyRightContainer>
+        ©Copyright 2023 Transpiled | All Rights Reserved
+      </CopyRightContainer>
+    </FooterWrapper>
+  );
+};
 
 export default Footer;
