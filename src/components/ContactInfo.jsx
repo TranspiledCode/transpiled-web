@@ -3,6 +3,31 @@ import React from 'react';
 import styled from '@emotion/styled';
 import SocialIcons from './SocialIcons';
 
+const ContactInfoComponent = () => (
+  <ContactInfoWrapper>
+    <ContactInfo>
+      <Title>Contact Us</Title>
+      <ContactDetailWrapper>
+        <Email>
+          <EmailTitle>Email</EmailTitle>
+          <EmailLink href="mailto:info@transpiled.com">
+            info@transpiled.com
+          </EmailLink>
+        </Email>
+      </ContactDetailWrapper>
+      <ContactDetailWrapper>
+        <Phone>
+          <PhoneTitle>Phone</PhoneTitle>
+          <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
+        </Phone>
+      </ContactDetailWrapper>
+      <ContactDetailWrapper>
+        <SocialIcons />
+      </ContactDetailWrapper>
+    </ContactInfo>
+  </ContactInfoWrapper>
+);
+
 const ContactInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,7 +76,7 @@ const EmailTitle = styled.p`
   font-size: 3rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.orange};
+  color: ${({ theme }) => theme.colors.green};
 `;
 
 const EmailLink = styled.a`
@@ -68,7 +93,7 @@ const PhoneTitle = styled.p`
   font-size: 3rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.orange};
+  color: ${({ theme }) => theme.colors.green};
 `;
 
 const PhoneLink = styled.a`
@@ -76,30 +101,5 @@ const PhoneLink = styled.a`
   font-weight: 300;
   color: ${({ theme }) => theme.colors.white};
 `;
-
-const ContactInfoComponent = () => (
-  <ContactInfoWrapper>
-    <ContactInfo>
-      <Title>Contact Us</Title>
-      <ContactDetailWrapper>
-        <Email>
-          <EmailTitle>Email</EmailTitle>
-          <EmailLink href="mailto:info@transpiled.com">
-            info@transpiled.com
-          </EmailLink>
-        </Email>
-      </ContactDetailWrapper>
-      <ContactDetailWrapper>
-        <Phone>
-          <PhoneTitle>Phone</PhoneTitle>
-          <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
-        </Phone>
-      </ContactDetailWrapper>
-      <ContactDetailWrapper>
-        <SocialIcons />
-      </ContactDetailWrapper>
-    </ContactInfo>
-  </ContactInfoWrapper>
-);
 
 export default ContactInfoComponent;

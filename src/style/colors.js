@@ -2,10 +2,10 @@
 const colors = {
   // Standard Colors
   blue: '#25B0D3',
-  lightBlue: '#99D0E9',
-  darkBlue: '#034C70',
+  lightBlue: '#15B5FA',
+  darkBlue: '#214EEA',
   blueAccent: '#197F9A',
-  green: '#64DDBB',
+  green: '#7FFF43',
   orange: '#FF9215',
   pink: '#FF6B6B',
 

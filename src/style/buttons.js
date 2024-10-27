@@ -39,23 +39,34 @@ const buttons = {
       hoverBgColor: colors.lightBlue,
       hoverTextColor: colors.white,
     },
+    outline: {
+      bgColor: 'transparent',
+      borderColor: colors.white,
+      textColor: colors.white,
+      hoverColor: colors.white,
+      hoverTextColor: colors.darkBlue,
+    },
   },
   sizes: {
     tiny: {
       padding: '4px 8px',
       fontSize: '12px',
+      iconSize: '12px',
     },
     small: {
       padding: '8px 16px',
       fontSize: '14px',
+      iconSize: '14px',
     },
     medium: {
       padding: '12px 24px',
       fontSize: '16px',
+      iconSize: '16px',
     },
     large: {
-      padding: '16px 32px',
-      fontSize: '18px',
+      padding: '6px 16px',
+      fontSize: '36px',
+      iconSize: '18px',
     },
   },
 };

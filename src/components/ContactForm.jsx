@@ -24,7 +24,7 @@ const ContactFormStyled = styled.form`
   width: 80%;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: ${({ theme }) => theme.colors.blueAccent};
+  background-color: ${({ theme }) => theme.colors.lightBlue};
   width: 95%;
 
   @media (min-width: 768px) {
