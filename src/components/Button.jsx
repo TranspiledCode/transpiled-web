@@ -2,6 +2,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import Icon from './Icon';
+import { useTheme } from '@emotion/react';
 
 const StyledButton = styled.button`
   background-color: ${({ variant, theme }) =>
@@ -40,21 +42,24 @@ const StyledButton = styled.button`
   }
 `;
 
-// Wrapper for the icon to add spacing
 const IconWrapper = styled.span`
   display: inline-flex;
-  margin-left: 8px; /* Adjust spacing as needed */
+  margin-left: 2rem;
 `;
 
 const Button = ({
   children,
-  icon, // New prop for icon
+  icon,
   variant = 'primary',
   size = 'medium',
   type = 'button',
   disabled = false,
   fullWidth = false,
 }) => {
+  const theme = useTheme();
+
+  const iconSize = theme.buttons.sizes[size].iconSize;
+
   return (
     <StyledButton
       variant={variant}
@@ -64,14 +69,18 @@ const Button = ({
       fullWidth={fullWidth}
     >
       {children}
-      {icon && <IconWrapper>{icon}</IconWrapper>}
+      {icon && (
+        <IconWrapper>
+          <Icon name={icon} size={iconSize} color="white" />
+        </IconWrapper>
+      )}
     </StyledButton>
   );
 };
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  icon: PropTypes.element, // New prop type for icon
+  icon: PropTypes.string,
   variant: PropTypes.oneOf([
     'primary',
     'secondary',

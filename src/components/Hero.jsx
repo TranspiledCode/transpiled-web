@@ -77,7 +77,7 @@ const Hero = () => {
           ))}
         </SubtitleText>
         <LearnMoreText>{config.learnMore}</LearnMoreText>
-        <Button variant="outline" size="large">
+        <Button icon="FaArrowDown" variant="outline" size="large">
           {config.buttonText}
         </Button>
       </TitleWrapper>

@@ -41,10 +41,11 @@ const buttons = {
     },
     outline: {
       bgColor: 'transparent',
+      hoverBgColor: 'transparent',
       borderColor: colors.white,
       textColor: colors.white,
       hoverColor: colors.white,
-      hoverTextColor: colors.darkBlue,
+      hoverTextColor: colors.green,
     },
   },
   sizes: {
@@ -66,7 +67,7 @@ const buttons = {
     large: {
       padding: '6px 16px',
       fontSize: '36px',
-      iconSize: '18px',
+      iconSize: '34px',
     },
   },
 };
