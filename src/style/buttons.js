@@ -61,8 +61,8 @@ const buttons = {
     },
     medium: {
       padding: '12px 24px',
-      fontSize: '16px',
-      iconSize: '16px',
+      fontSize: '26px',
+      iconSize: '26px',
     },
     large: {
       padding: '6px 16px',

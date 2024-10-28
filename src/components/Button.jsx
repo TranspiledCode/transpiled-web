@@ -26,19 +26,21 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  &:hover {
-    background-color: ${({ variant, theme }) =>
-      theme.buttons.variants[variant].hoverBgColor ||
-      theme.buttons.variants[variant].hoverColor ||
-      theme.buttons.variants[variant].bgColor};
-    color: ${({ variant, theme }) =>
-      theme.buttons.variants[variant].hoverTextColor ||
-      theme.buttons.variants[variant].textColor};
-  }
-
   &:disabled {
     background-color: ${({ theme }) => theme.colors.gray};
     cursor: not-allowed;
+  }
+
+  @media (min-width: 768px) {
+    &:hover {
+      background-color: ${({ variant, theme }) =>
+        theme.buttons.variants[variant].hoverBgColor ||
+        theme.buttons.variants[variant].hoverColor ||
+        theme.buttons.variants[variant].bgColor};
+      color: ${({ variant, theme }) =>
+        theme.buttons.variants[variant].hoverTextColor ||
+        theme.buttons.variants[variant].textColor};
+    }
   }
 `;
 
