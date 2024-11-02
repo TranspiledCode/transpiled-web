@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import NavBar from 'components/NavBar';
+import Header from 'components/SampleHeader';
 
 const ServicesWrapper = styled.section`
   display: flex;
@@ -10,31 +10,10 @@ const ServicesWrapper = styled.section`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const StyledHeading = styled.h1`
-  flex: 1;
-  color: ${({ theme }) => theme.colors.white};
-
-  border: 2px dashed red;
-`;
-
-const NavBarWrapper = styled.div`
-  flex: 1;
-
-  border: 2px dashed red;
-`;
-
-const links = [
-  { url: '/', label: 'Home' },
-  { url: '/services', label: 'Services' },
-];
-
 const Services = () => {
   return (
     <ServicesWrapper>
-      <StyledHeading>Services Page</StyledHeading>
-      <NavBarWrapper>
-        <NavBar links={links} />
-      </NavBarWrapper>
+      <Header />
     </ServicesWrapper>
   );
 };

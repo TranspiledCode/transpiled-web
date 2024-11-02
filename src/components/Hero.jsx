@@ -4,12 +4,12 @@ import Button from 'components/Button';
 import AnimatedSection from 'components/AnimatedSection';
 
 const HeroWrapper = styled.section`
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to bottom, #214eea, #15b5fa);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 20px;
+  padding-top: clamp(80px, 10vw, 10vh);
 
   @media (min-width: 768px) {
     padding-left: 60px;
