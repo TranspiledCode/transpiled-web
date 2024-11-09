@@ -12,10 +12,7 @@ const HeroWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   padding: clamp(2rem, 5vw, 4rem);
-  padding-top: max(
-    clamp(8rem, 10vw, 10vh),
-    80px
-  ); // Ensures minimum padding for header
+  padding-top: max(clamp(8rem, 10vw, 10vh), 80px);
 
   ${({ theme }) => theme.mediaQueries.md} {
     padding: clamp(4rem, 8vw, 6rem);
@@ -90,12 +87,13 @@ const StyledButton = styled(Button)`
 
 /**
  * Hero component for the landing page.
- * Features a responsive design with gradient background, animated title,
- * and call-to-action button.
+ * Responsive landing section with gradient background, animated title,
+ * subtitle with highlighted words, and call-to-action button.
  *
  * @component
  * @example
  * ```jsx
+ * // Requires config object with hero section content:
  * const config = {
  *   hero: {
  *     title: "Welcome",
@@ -145,10 +143,14 @@ const Hero = () => {
 };
 
 Hero.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  learnMore: PropTypes.string,
-  buttonText: PropTypes.string,
+  config: PropTypes.shape({
+    hero: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      subtitle: PropTypes.string.isRequired,
+      learnMore: PropTypes.string.isRequired,
+      buttonText: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default Hero;
