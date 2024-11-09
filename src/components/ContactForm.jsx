@@ -21,6 +21,10 @@ const FormInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  button {
+    align-self: flex-end;
+  }
 `;
 
 const InputField = styled(Input)``;
@@ -76,16 +80,16 @@ const ContactForm = () => {
           <InputField type="email" name="email" label="Email" />
           <InputField type="tel" name="phone" label="Phone" />
           <TextareaField name="message" label="Message" maxLength={120} />
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            variant="outline"
+            icon="FaArrowRight"
+            size="medium"
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </Button>
         </FormInputs>
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          variant="outline"
-          icon="FaArrowRight"
-          size="medium"
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </Button>
       </ContactFormStyled>
     </ContactFormWrapper>
   );

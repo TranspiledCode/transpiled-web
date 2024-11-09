@@ -8,56 +8,59 @@ import FormContext from 'context/ContactForm'; // Adjust the import path accordi
 
 const TextareaContainer = styled.div`
   position: relative;
-  width: 100%;
-  margin: 2rem 0;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
+
+  textarea,
+  label {
+    color: ${({ theme }) => theme.colors.white};
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
-  width: 100%;
   border: none;
   border-bottom: 1.5px solid ${({ theme }) => theme.colors.white};
-  padding: 0.8rem 2.5rem 2.5rem 0; /* Adjusted padding-bottom to make space for character count */
-  font-size: 1.6rem;
   outline: none;
-  background: transparent;
-  color: ${({ theme }) => theme.colors.white};
+  width: 100%;
+  background: none;
   resize: none;
-  height: 100px;
-  border-radius: 0;
 
   caret-color: ${({ theme }) => theme.colors.green};
 
   &:focus {
-    border-bottom: 1.5px solid ${({ theme }) => theme.colors.green};
+    border-color: 1.5px solid ${({ theme }) => theme.colors.green};
   }
 
-  @media (max-width: 600px) {
-    padding: 0.8rem 3rem 2.5rem 0; /* Adjusted padding-bottom */
-    font-size: 2rem;
-  }
+  // @media (max-width: 600px) {
+  //   padding: 0.8rem 3rem 2.5rem 0; /* Adjusted padding-bottom */
+  //   font-size: 2rem;
+  // }
 `;
 
 const StyledLabel = styled.label`
   position: absolute;
   left: 0;
-  bottom: ${({ isFocusedOrFilled }) =>
-    isFocusedOrFilled ? '12rem' : '0.8rem'};
-  font-size: ${({ isFocusedOrFilled }) =>
-    isFocusedOrFilled ? '1.2rem' : '1.6rem'};
-  color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
-  pointer-events: none;
-  transition: all 0.2s ease;
-
-  @media (max-width: 600px) {
-    font-size: ${({ isFocusedOrFilled }) =>
-      isFocusedOrFilled ? '1.4rem' : '2rem'};
-    bottom: ${({ isFocusedOrFilled }) =>
-      isFocusedOrFilled ? '12.5rem' : '1rem'};
-  }
+  font-size: 1.6rem;
 `;
+// const StyledLabel = styled.label`
+//   position: absolute;
+//   left: 0;
+//   bottom: ${({ isFocusedOrFilled }) =>
+//     isFocusedOrFilled ? '12rem' : '0.8rem'};
+//   font-size: ${({ isFocusedOrFilled }) =>
+//     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
+//   color: ${({ theme, isFocusedOrFilled }) =>
+//     isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+//   pointer-events: none;
+//   transition: all 0.2s ease;
+
+//   @media (max-width: 600px) {
+//     font-size: ${({ isFocusedOrFilled }) =>
+//       isFocusedOrFilled ? '1.4rem' : '2rem'};
+//     bottom: ${({ isFocusedOrFilled }) =>
+//       isFocusedOrFilled ? '12.5rem' : '1rem'};
+//   }
+// `;
 
 const ClearButton = styled.button`
   position: absolute;
