@@ -8,37 +8,17 @@ import FormContext from 'context/ContactForm';
 import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 const ContactFormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  flex: 1;
+  width: 100%;
 `;
-
 const ContactFormStyled = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 2rem auto;
-  width: 80%;
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: ${({ theme }) => theme.colors.lightBlue};
-  width: 95%;
-
-  @media (min-width: 768px) {
-    width: 80%;
-  }
+  align-items: flex-end;
 `;
 
-const InputField = styled(Input)`
-  margin-bottom: 2rem;
-`;
+const InputField = styled(Input)``;
 
-const TextareaField = styled(Textarea)`
-  margin-bottom: 2rem;
-`;
+const TextareaField = styled(Textarea)``;
 
 const encode = (data) => {
   return Object.keys(data)
@@ -94,7 +74,7 @@ const ContactFormComponent = () => {
           variant="primary"
           size="medium"
         >
-          {isSubmitting ? 'Sending...' : 'Send'}
+          {isSubmitting ? 'Sending...' : 'Send Message →'}
         </Button>
       </ContactFormStyled>
     </ContactFormWrapper>
