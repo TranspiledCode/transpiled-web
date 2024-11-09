@@ -7,7 +7,11 @@ import AnimatedSection from 'components/AnimatedSection';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
-  background: linear-gradient(to bottom, #214eea, #15b5fa);
+  background: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.darkBlue},
+    ${({ theme }) => theme.colors.lightBlue}
+  );
   display: flex;
   flex-direction: column;
   justify-content: center;
