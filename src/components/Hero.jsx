@@ -58,8 +58,12 @@ const SubtitleText = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: clamp(3rem, 8vw, 6rem);
+  line-height: 1.2;
+  max-width: 40rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
+    max-width: 60rem;
+
     font-size: clamp(2.6rem, 6vw, 3.6rem);
     gap: 1rem;
   }
