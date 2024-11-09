@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { FaBars } from 'react-icons/fa';
 import NavBar from './NavBar';
 
-const Header = () => {
+const SampleHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -64,4 +64,4 @@ const Hamburger = styled.div`
   }
 `;
 
-export default Header;
+export default SampleHeader;

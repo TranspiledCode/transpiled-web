@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Header from 'components/SampleHeader';
+import SampleHeader from 'components/SampleHeader';
 
 const ServicesWrapper = styled.section`
   display: flex;
@@ -13,7 +13,7 @@ const ServicesWrapper = styled.section`
 const Services = () => {
   return (
     <ServicesWrapper>
-      <Header />
+      <SampleHeader />
     </ServicesWrapper>
   );
 };
