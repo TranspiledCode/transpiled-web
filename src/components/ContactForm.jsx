@@ -16,6 +16,13 @@ const ContactFormStyled = styled.form`
   align-items: flex-end;
 `;
 
+const FormInputs = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
 const InputField = styled(Input)``;
 
 const TextareaField = styled(Textarea)``;
@@ -64,17 +71,20 @@ const ContactFormComponent = () => {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact-form" />
-        <InputField type="text" name="name" label="Name" />
-        <InputField type="email" name="email" label="Email" />
-        <InputField type="tel" name="phone" label="Phone" />
-        <TextareaField name="message" label="Message" maxLength={120} />
+        <FormInputs>
+          <InputField type="text" name="name" label="Name" />
+          <InputField type="email" name="email" label="Email" />
+          <InputField type="tel" name="phone" label="Phone" />
+          <TextareaField name="message" label="Message" maxLength={120} />
+        </FormInputs>
         <Button
           type="submit"
           disabled={isSubmitting}
-          variant="primary"
+          variant="outline"
+          icon="FaArrowRight"
           size="medium"
         >
-          {isSubmitting ? 'Sending...' : 'Send Message →'}
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </Button>
       </ContactFormStyled>
     </ContactFormWrapper>
