@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import config from '../config/home';
 import Button from 'components/Button';
@@ -148,17 +147,6 @@ const Hero = () => {
       </TitleWrapper>
     </HeroWrapper>
   );
-};
-
-Hero.propTypes = {
-  config: PropTypes.shape({
-    hero: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      subtitle: PropTypes.string.isRequired,
-      learnMore: PropTypes.string.isRequired,
-      buttonText: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
 };
 
 export default Hero;
