@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import config from '../../config/home';
 import ContactFormComponent from '../ContactForm';
 
 const Section = styled.div`
@@ -56,8 +57,8 @@ const ContactSection = () => {
   return (
     <Section>
       <SectionInfo>
-        <Title>CONTACT US</Title>
-        <Subtitle>Lets Build Your Digital Solution Together</Subtitle>
+        <Title>{config.contact.title}</Title>
+        <Subtitle>{config.contact.subtitle}</Subtitle>
       </SectionInfo>
       <ContactFormComponent />
     </Section>
