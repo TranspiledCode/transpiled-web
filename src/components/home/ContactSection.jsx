@@ -10,6 +10,7 @@ const Section = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4rem;
   padding: 6rem;
 `;
 const SectionInfo = styled.div`
@@ -21,12 +22,18 @@ const SectionInfo = styled.div`
   justify-content: center;
 `;
 const Title = styled.h2`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
   font-size: 6.4rem;
   line-height: 6.4rem;
+  letter-spacing: -2px;
 `;
 const Subtitle = styled.p`
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
   font-size: 2.4rem;
   line-height: 2.4rem;
+  letter-spacing: -0.1px;
 `;
 
 const ContactSection = () => {
