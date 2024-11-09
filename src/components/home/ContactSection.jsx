@@ -2,14 +2,15 @@ import styled from '@emotion/styled';
 import ContactFormComponent from '../ContactForm';
 
 const Section = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-image: linear-gradient(
     ${({ theme }) => theme.colors.darkBlue},
     #dd53ff
   );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem;
 `;
 const SectionInfo = styled.div`
   width: 100%;
