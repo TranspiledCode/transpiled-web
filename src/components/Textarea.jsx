@@ -10,10 +10,7 @@ const TextareaContainer = styled.div`
   position: relative;
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
-
-  textarea {
-    display: block;
-  }
+  margin-top: 1rem;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -35,9 +32,13 @@ const StyledTextarea = styled.textarea`
 
 const StyledLabel = styled.label`
   position: absolute;
-  left: 1rem;
+  display: grid;
+  place-content: center;
 
-  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.8rem' : '0.8rem')};
+  height: 2.5rem;
+
+  left: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '0.8rem' : '0.8rem')};
+  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.8rem' : '0.2rem')};
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
   color: ${({ theme, isFocusedOrFilled }) =>
@@ -55,19 +56,18 @@ const StyledLabel = styled.label`
 `;
 
 const ClearButton = styled.button`
+  display: grid;
+  place-content: center;
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 0rem;
+  top: 0rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.2rem;
+  height: 2.5rem;
+  width: 2.5rem;
 
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.green};
@@ -85,16 +85,15 @@ const ClearButton = styled.button`
 `;
 
 const CharacterCount = styled.div`
+  display: grid;
+  place-content: center;
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0;
   right: 0;
   font-size: 1.2rem;
+  height: 2.5rem;
   color: ${({ theme }) => theme.colors.white};
-  padding: 0 0.8rem;
-
-  @media (max-width: 600px) {
-    font-size: 1rem;
-  }
+  margin-right: 0.6rem;
 `;
 
 const Textarea = ({ name, label, showClearButton = true, maxLength = 200 }) => {

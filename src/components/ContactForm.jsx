@@ -9,6 +9,10 @@ import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 const ContactFormWrapper = styled.div`
   width: 100%;
+
+  @media (min-width: 1440px) {
+    max-width: 50%;
+  }
 `;
 const ContactFormStyled = styled.form`
   display: flex;
@@ -21,7 +25,6 @@ const FormInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
   button {
     align-self: flex-end;
   }
