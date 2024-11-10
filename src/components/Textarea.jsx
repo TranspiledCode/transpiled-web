@@ -25,6 +25,7 @@ const StyledTextarea = styled.textarea`
   height: 20rem;
   width: 100%;
   border: 1.5px solid ${({ theme }) => theme.colors.white};
+  border-radius: 0;
   color: ${({ theme }) => theme.colors.white};
   caret-color: ${({ theme }) => theme.colors.green};
   padding: 0.2rem 0.8rem;
@@ -38,7 +39,7 @@ const StyledLabel = styled.label`
   height: 2.5rem;
 
   left: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '0.8rem' : '0.8rem')};
-  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.8rem' : '0.2rem')};
+  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.6rem' : '0.2rem')};
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
   color: ${({ theme, isFocusedOrFilled }) =>
@@ -50,8 +51,6 @@ const StyledLabel = styled.label`
   @media (max-width: 600px) {
     font-size: ${({ isFocusedOrFilled }) =>
       isFocusedOrFilled ? '1.4rem' : '2rem'};
-    bottom: ${({ isFocusedOrFilled }) =>
-      isFocusedOrFilled ? '3.5rem' : '1rem'};
   }
 `;
 
