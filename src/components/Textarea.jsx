@@ -8,69 +8,64 @@ import FormContext from 'context/ContactForm'; // Adjust the import path accordi
 
 const TextareaContainer = styled.div`
   position: relative;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
 
-  textarea,
-  label {
-    color: ${({ theme }) => theme.colors.white};
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
+  textarea {
+    display: block;
   }
 `;
 
 const StyledTextarea = styled.textarea`
-  border: none;
-  border-bottom: 1.5px solid ${({ theme }) => theme.colors.white};
   outline: none;
-  width: 100%;
   background: none;
   resize: none;
 
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.6rem;
+
+  height: 20rem;
+  width: 100%;
+  border: 1.5px solid ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   caret-color: ${({ theme }) => theme.colors.green};
-
-  &:focus {
-    border-color: 1.5px solid ${({ theme }) => theme.colors.green};
-  }
-
-  // @media (max-width: 600px) {
-  //   padding: 0.8rem 3rem 2.5rem 0; /* Adjusted padding-bottom */
-  //   font-size: 2rem;
-  // }
+  padding: 0.2rem 0.8rem;
 `;
 
 const StyledLabel = styled.label`
   position: absolute;
-  left: 0;
-  font-size: 1.6rem;
-`;
-// const StyledLabel = styled.label`
-//   position: absolute;
-//   left: 0;
-//   bottom: ${({ isFocusedOrFilled }) =>
-//     isFocusedOrFilled ? '12rem' : '0.8rem'};
-//   font-size: ${({ isFocusedOrFilled }) =>
-//     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
-//   color: ${({ theme, isFocusedOrFilled }) =>
-//     isFocusedOrFilled ? theme.colors.green : theme.colors.white};
-//   pointer-events: none;
-//   transition: all 0.2s ease;
+  left: 1rem;
 
-//   @media (max-width: 600px) {
-//     font-size: ${({ isFocusedOrFilled }) =>
-//       isFocusedOrFilled ? '1.4rem' : '2rem'};
-//     bottom: ${({ isFocusedOrFilled }) =>
-//       isFocusedOrFilled ? '12.5rem' : '1rem'};
-//   }
-// `;
+  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.8rem' : '0.8rem')};
+  font-size: ${({ isFocusedOrFilled }) =>
+    isFocusedOrFilled ? '1.2rem' : '1.6rem'};
+  color: ${({ theme, isFocusedOrFilled }) =>
+    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+
+  pointer-events: none;
+  transition: all 0.2s ease;
+
+  @media (max-width: 600px) {
+    font-size: ${({ isFocusedOrFilled }) =>
+      isFocusedOrFilled ? '1.4rem' : '2rem'};
+    bottom: ${({ isFocusedOrFilled }) =>
+      isFocusedOrFilled ? '3.5rem' : '1rem'};
+  }
+`;
 
 const ClearButton = styled.button`
   position: absolute;
   right: 0;
-  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '1rem' : '50%')};
+  top: 50%;
   transform: translateY(-50%);
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.2rem;
 
@@ -95,7 +90,7 @@ const CharacterCount = styled.div`
   right: 0;
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.white};
-  padding: 0 0.5rem;
+  padding: 0 0.8rem;
 
   @media (max-width: 600px) {
     font-size: 1rem;

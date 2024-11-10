@@ -79,7 +79,7 @@ const ContactForm = () => {
           <InputField type="text" name="name" label="Name" />
           <InputField type="email" name="email" label="Email" />
           <InputField type="tel" name="phone" label="Phone" />
-          <TextareaField name="message" label="Message" maxLength={120} />
+          <TextareaField name="message" label="Message" maxLength={250} />
           <Button
             type="submit"
             disabled={isSubmitting}
