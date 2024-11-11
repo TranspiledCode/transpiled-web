@@ -10,7 +10,6 @@ import { ToastProvider } from './context/ToastContext';
 
 import RouteToTop from './utils/RouteToTop';
 import ScrollToHash from './utils/ScrollToHash';
-import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -23,7 +22,6 @@ const App = () => {
       <ContextProvider>
         <ThemeProvider theme={theme}>
           <ToastProvider position="bottom-left">
-            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />

@@ -59,7 +59,7 @@ const ScrollToTop = () => {
       onClick={scrollToTop}
     >
       <IconWrapper className="icon-wrapper" isVisible={isVisible}>
-        <Icon iconName="arrowUp" size="2x" iconType="solid" />
+        <Icon name="FaArrowUp" size={1.8} />
       </IconWrapper>
     </ScrollToTopButton>
   );
