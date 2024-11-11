@@ -12,6 +12,7 @@ const Section = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4rem;
+  max-width: 100vw;
   padding: 2rem;
 
   @media (min-width: 768px) {
