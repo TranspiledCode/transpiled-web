@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import Icon from './Icon';
-import { GlobalContext } from '../context/GlobalContext';
+import GlobalContext from '../context/GlobalContext'; // Ensure correct import
+
 import useScrollToTop from '../hooks/useScrollToTop';
 
 const ScrollToTopButton = styled.button`
@@ -18,9 +19,9 @@ const ScrollToTopButton = styled.button`
   border-radius: 50%;
   padding: 15px;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.scrollToTop.background};
-  color: ${({ theme }) => theme.colors.scrollToTop.icon};
-  box-shadow: 0 1px 2px ${({ theme }) => theme.colors.scrollToTop.shadow};
+  background-color: ${({ theme }) => theme.colors.green};
+  color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 1px 2px ${({ theme }) => theme.colors.orange};
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
   transform: ${({ isVisible }) => (isVisible ? 'scale(1)' : 'scale(0.5)')};
@@ -30,8 +31,7 @@ const ScrollToTopButton = styled.button`
 
   @media (hover: hover) {
     &:hover {
-      background-color: ${({ theme }) =>
-        theme.colors.scrollToTop.backgroundHover};
+      background-color: ${({ theme }) => theme.colors.white};
 
       .icon-wrapper {
         transform: scale(1.5);
