@@ -5,7 +5,7 @@ import ContactFormComponent from '../ContactForm';
 const Section = styled.div`
   background-image: linear-gradient(
     ${({ theme }) => theme.colors.darkBlue},
-    #dd53ff
+    ${({ theme }) => theme.colors.fuchsia}
   );
   display: flex;
   flex-direction: column;

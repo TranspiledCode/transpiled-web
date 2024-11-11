@@ -8,6 +8,7 @@ const colors = {
   green: '#7FFF43',
   orange: '#FF9215',
   pink: '#FF6B6B',
+  fuchsia: '#dd53ff',
 
   // Neutral Colors
   black: '#090909',
