@@ -10,14 +10,12 @@ const TextareaContainer = styled.div`
   position: relative;
   width: 100%;
   margin: 2rem 0;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
 `;
 
 const StyledTextarea = styled.textarea`
   width: 100%;
   border: none;
-  border-bottom: 1.5px solid ${({ theme }) => theme.colors.white};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white};
   padding: 0.8rem 2.5rem 2.5rem 0; /* Adjusted padding-bottom to make space for character count */
   font-size: 1.6rem;
   outline: none;
@@ -27,10 +25,10 @@ const StyledTextarea = styled.textarea`
   height: 100px;
   border-radius: 0;
 
-  caret-color: ${({ theme }) => theme.colors.green};
+  caret-color: ${({ theme }) => theme.colors.orange};
 
   &:focus {
-    border-bottom: 1.5px solid ${({ theme }) => theme.colors.green};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.orange};
   }
 
   @media (max-width: 600px) {
@@ -47,7 +45,7 @@ const StyledLabel = styled.label`
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
   color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+    isFocusedOrFilled ? theme.colors.orange : theme.colors.white};
   pointer-events: none;
   transition: all 0.2s ease;
 
@@ -72,12 +70,12 @@ const ClearButton = styled.button`
   font-size: 1.2rem;
 
   &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.green};
+    outline: 2px solid ${({ theme }) => theme.colors.orange};
     border-radius: 50%;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.orange};
   }
 
   @media (max-width: 600px) {
