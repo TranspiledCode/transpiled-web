@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import config from '../../config/home';
-import ContactForm from '../ContactForm';
+import config from '../config/home';
+import ContactForm from './ContactForm';
 
 const Section = styled.div`
   background-image: linear-gradient(
