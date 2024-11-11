@@ -33,7 +33,7 @@ const encode = (data) => {
     .join('&');
 };
 
-const ContactFormComponent = () => {
+const ContactForm = () => {
   const { formData, resetFormData } = useContext(FormContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { addToast } = useToast(); // Get the addToast function from ToastContext
@@ -91,4 +91,4 @@ const ContactFormComponent = () => {
   );
 };
 
-export default ContactFormComponent;
+export default ContactForm;

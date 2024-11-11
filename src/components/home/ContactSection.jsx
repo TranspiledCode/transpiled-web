@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import config from '../../config/home';
-import ContactFormComponent from '../ContactForm';
+import ContactForm from '../ContactForm';
 
 const Section = styled.div`
   background-image: linear-gradient(
@@ -60,7 +60,7 @@ const ContactSection = () => {
         <Title>{config.contact.title}</Title>
         <Subtitle>{config.contact.subtitle}</Subtitle>
       </SectionInfo>
-      <ContactFormComponent />
+      <ContactForm />
     </Section>
   );
 };
