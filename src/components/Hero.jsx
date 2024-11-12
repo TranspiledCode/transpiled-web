@@ -52,12 +52,11 @@ const SubtitleText = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   max-width: 80%;
-  margin-bottom: 4rem;
+  margin-bottom: clamp(2rem, 8vw, 8rem);
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 1rem;
     max-width: 60%;
-    margin-bottom: 8rem;
   }
 `;
 
