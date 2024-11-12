@@ -33,6 +33,8 @@
     "hooks": "./src/hooks",
     "pages": "./src/pages",
     "context": "./src/context",
-    "style": "./src/style"
+    "style": "./src/style",
+    "config": "./src/config",
+    "utils": "./src/utils"
   }
 }
