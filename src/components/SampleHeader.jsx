@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
-import { FaBars } from 'react-icons/fa';
+
+import GlobalContext from '../context/GlobalContext';
+import Icon from './Icon';
 import NavBar from './NavBar';
 
 const SampleHeader = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { scrolled, handleScroll } = useContext(GlobalContext);
+  const { menuOpen, toggleMenu } = useContext(GlobalContext);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -23,8 +24,12 @@ const SampleHeader = () => {
       <Logo>Transpiled</Logo>
       <Nav>
         <NavBar links={links} />
-        <Hamburger onClick={() => setMenuOpen(!menuOpen)}>
-          <FaBars />
+        <Hamburger>
+          <Icon
+            name={menuOpen ? 'FaTimes' : 'FaBars'}
+            size={1.8}
+            onClick={toggleMenu}
+          />
         </Hamburger>
       </Nav>
     </HeaderContainer>

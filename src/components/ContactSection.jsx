@@ -56,7 +56,7 @@ const Subtitle = styled.p`
 
 const ContactSection = () => {
   return (
-    <Section>
+    <Section id="contact">
       <SectionInfo>
         <Title>{config.contact.title}</Title>
         <Subtitle>{config.contact.subtitle}</Subtitle>

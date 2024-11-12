@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 import config from '../config/home';
 import Button from 'components/Button';
@@ -140,9 +142,11 @@ const Hero = () => {
         </SubtitleText>
         <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
         <AnimatedSection>
-          <StyledButton icon="FaArrowDown" variant="outline" size="medium">
-            {config.hero.buttonText}
-          </StyledButton>
+          <Link to="#contact">
+            <StyledButton icon="FaArrowDown" variant="outline" size="medium">
+              {config.hero.buttonText}
+            </StyledButton>
+          </Link>
         </AnimatedSection>
       </TitleWrapper>
     </HeroWrapper>
