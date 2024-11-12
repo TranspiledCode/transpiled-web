@@ -1,45 +1,45 @@
-// Footer.jsx
 import React from 'react';
 import styled from '@emotion/styled';
 
-import ContactInfo from './ContactInfo';
-import ContactForm from './ContactForm';
-
-const FooterWrapper = styled.footer`
+const Background = styled.div`
   display: flex;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.darkBlue};
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const ContactContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 8rem;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.black};
+  height: 7rem;
+  width: 100%;
+  padding: 0 2rem;
 
   @media (min-width: 768px) {
-    flex-direction: row;
+    padding: 0 6rem;
   }
 `;
 
-const CopyRightContainer = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  margin: 2rem auto;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
 `;
-
+const CopyRight = styled.div`
+  font-family: Manrope;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.white};
+`;
+const ScrollTop = styled.div`
+  font-family: Manrope;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.white};
+`;
 const Footer = () => {
   return (
-    <FooterWrapper>
-      <ContactContainer>
-        <ContactInfo />
-        <ContactForm />
-      </ContactContainer>
-      <CopyRightContainer>
-        ©Copyright 2023 Transpiled | All Rights Reserved
-      </CopyRightContainer>
-    </FooterWrapper>
+    <Background>
+      <ContentWrapper>
+        <CopyRight>&#169; Copyright 2024</CopyRight>
+        <ScrollTop>Scroll to Top &#8593;</ScrollTop>
+      </ContentWrapper>
+    </Background>
   );
 };
 

@@ -8,74 +8,73 @@ import FormContext from 'context/ContactForm'; // Adjust the import path accordi
 
 const TextareaContainer = styled.div`
   position: relative;
-  width: 100%;
-  margin: 2rem 0;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
 `;
 
 const StyledTextarea = styled.textarea`
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.white};
-  padding: 0.8rem 2.5rem 2.5rem 0; /* Adjusted padding-bottom to make space for character count */
-  font-size: 1.6rem;
   outline: none;
-  background: transparent;
-  color: ${({ theme }) => theme.colors.white};
+  background: none;
   resize: none;
-  height: 100px;
+
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.6rem;
+
+  height: 20rem;
+  width: 100%;
+  border: 1.5px solid ${({ theme }) => theme.colors.white};
   border-radius: 0;
-
-  caret-color: ${({ theme }) => theme.colors.orange};
-
-  &:focus {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.orange};
-  }
-
-  @media (max-width: 600px) {
-    padding: 0.8rem 3rem 2.5rem 0; /* Adjusted padding-bottom */
-    font-size: 2rem;
-  }
+  color: ${({ theme }) => theme.colors.white};
+  caret-color: ${({ theme }) => theme.colors.green};
+  padding: 0.2rem 0.8rem;
 `;
 
 const StyledLabel = styled.label`
   position: absolute;
-  left: 0;
-  bottom: ${({ isFocusedOrFilled }) =>
-    isFocusedOrFilled ? '12rem' : '0.8rem'};
+  display: grid;
+  place-content: center;
+
+  height: 2.5rem;
+
+  left: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '0.8rem' : '0.8rem')};
+  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.6rem' : '0.2rem')};
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
   color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.orange : theme.colors.white};
+    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+
   pointer-events: none;
   transition: all 0.2s ease;
 
   @media (max-width: 600px) {
     font-size: ${({ isFocusedOrFilled }) =>
       isFocusedOrFilled ? '1.4rem' : '2rem'};
-    bottom: ${({ isFocusedOrFilled }) =>
-      isFocusedOrFilled ? '12.5rem' : '1rem'};
   }
 `;
 
 const ClearButton = styled.button`
+  display: grid;
+  place-content: center;
   position: absolute;
-  right: 0;
-  top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '1rem' : '50%')};
-  transform: translateY(-50%);
+  right: 0rem;
+  top: 0rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.2rem;
+  height: 2.5rem;
+  width: 2.5rem;
 
   &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.orange};
+    outline: 2px solid ${({ theme }) => theme.colors.green};
     border-radius: 50%;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.orange};
+    color: ${({ theme }) => theme.colors.green};
   }
 
   @media (max-width: 600px) {
@@ -85,16 +84,15 @@ const ClearButton = styled.button`
 `;
 
 const CharacterCount = styled.div`
+  display: grid;
+  place-content: center;
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0;
   right: 0;
   font-size: 1.2rem;
+  height: 2.5rem;
   color: ${({ theme }) => theme.colors.white};
-  padding: 0 0.5rem;
-
-  @media (max-width: 600px) {
-    font-size: 1rem;
-  }
+  margin-right: 0.6rem;
 `;
 
 const Textarea = ({ name, label, showClearButton = true, maxLength = 200 }) => {

@@ -8,37 +8,31 @@ import FormContext from 'context/ContactForm';
 import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 const ContactFormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 
-  flex: 1;
+  @media (min-width: 1440px) {
+    max-width: 50%;
+  }
 `;
-
 const ContactFormStyled = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 2rem auto;
-  width: 80%;
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: ${({ theme }) => theme.colors.lightBlue};
-  width: 95%;
+  align-items: flex-end;
+`;
 
-  @media (min-width: 768px) {
-    width: 80%;
+const FormInputs = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  button {
+    align-self: flex-end;
   }
 `;
 
-const InputField = styled(Input)`
-  margin-bottom: 2rem;
-`;
+const InputField = styled(Input)``;
 
-const TextareaField = styled(Textarea)`
-  margin-bottom: 2rem;
-`;
+const TextareaField = styled(Textarea)``;
 
 const encode = (data) => {
   return Object.keys(data)
@@ -46,7 +40,7 @@ const encode = (data) => {
     .join('&');
 };
 
-const ContactFormComponent = () => {
+const ContactForm = () => {
   const { formData, resetFormData } = useContext(FormContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { addToast } = useToast(); // Get the addToast function from ToastContext
@@ -84,21 +78,24 @@ const ContactFormComponent = () => {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact-form" />
-        <InputField type="text" name="name" label="Name" />
-        <InputField type="email" name="email" label="Email" />
-        <InputField type="tel" name="phone" label="Phone" />
-        <TextareaField name="message" label="Message" maxLength={120} />
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          variant="primary"
-          size="medium"
-        >
-          {isSubmitting ? 'Sending...' : 'Send'}
-        </Button>
+        <FormInputs>
+          <InputField type="text" name="name" label="Name" />
+          <InputField type="email" name="email" label="Email" />
+          <InputField type="tel" name="phone" label="Phone" />
+          <TextareaField name="message" label="Message" maxLength={250} />
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            variant="outline"
+            icon="FaArrowRight"
+            size="medium"
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </Button>
+        </FormInputs>
       </ContactFormStyled>
     </ContactFormWrapper>
   );
 };
 
-export default ContactFormComponent;
+export default ContactForm;
