@@ -1,18 +1,6 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-const TestWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 6rem;
-  }
-`;
-
 const Container = styled.div`
   height: 100%;
   min-height: 50rem;
@@ -27,14 +15,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 1.5fr 1fr;
 `;
-// const Image = styled.div`
-//   background-image: url('https://images.unsplash.com/photo-1726137570078-1faa70beb6ad?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-//   background-position: center;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-// `;
-
-const Thumbnail = styled.img`
+const Image = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -58,24 +39,22 @@ const Description = styled.p`
   text-align: justify;
 `;
 
-const Card = ({ CardImage, CardHeading, CardDescription }) => {
+const Card = ({ CardImage, ImageLabel, CardHeading, CardDescription }) => {
   return (
-    <TestWrapper>
-      <Container>
-        {/* <Image></Image> */}
-        <Thumbnail src={CardImage}></Thumbnail>
-        <TextContainer>
-          <Heading>{CardHeading}</Heading>
-          <Description>{CardDescription}</Description>
-        </TextContainer>
-      </Container>
-    </TestWrapper>
+    <Container>
+      <Image src={CardImage} alt={ImageLabel} aria-label={ImageLabel}></Image>
+      <TextContainer>
+        <Heading>{CardHeading}</Heading>
+        <Description>{CardDescription}</Description>
+      </TextContainer>
+    </Container>
   );
 };
 export default Card;
 
 Card.propTypes = {
   CardImage: PropTypes.string.isRequired,
+  ImageLabel: PropTypes.string.isRequired,
   CardHeading: PropTypes.string.isRequired,
   CardDescription: PropTypes.string.isRequired,
 };
