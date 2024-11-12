@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
   height: 100%;
-  min-height: 50rem;
   width: 100%;
   border-image: linear-gradient(
       ${({ theme }) => theme.colors.lightBlue},
