@@ -39,13 +39,13 @@ const Description = styled.p`
   text-align: justify;
 `;
 
-const Card = ({ url, label, cardHead, cardDesc }) => {
+const Card = ({ url, label, heading, description }) => {
   return (
     <Container>
       <Image src={url} alt={label} aria-label={label}></Image>
       <TextContainer>
-        <Heading>{cardHead}</Heading>
-        <Description>{cardDesc}</Description>
+        <Heading>{heading}</Heading>
+        <Description>{description}</Description>
       </TextContainer>
     </Container>
   );
@@ -55,6 +55,6 @@ export default Card;
 Card.propTypes = {
   url: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  cardHead: PropTypes.string.isRequired,
-  cardDesc: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
