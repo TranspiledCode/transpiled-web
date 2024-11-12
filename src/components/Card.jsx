@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 const TestWrapper = styled.div`
   display: grid;
@@ -26,12 +27,17 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 1.5fr 1fr;
 `;
-const Image = styled.div`
-  background-image: url('https://images.unsplash.com/photo-1726137570078-1faa70beb6ad?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+// const Image = styled.div`
+//   background-image: url('https://images.unsplash.com/photo-1726137570078-1faa70beb6ad?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+//   background-position: center;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// `;
+
+const Thumbnail = styled.img`
+  height: 100%;
   width: 100%;
+  object-fit: cover;
 `;
 const TextContainer = styled.div`
   padding: 2rem;
@@ -39,7 +45,6 @@ const TextContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `;
-
 const Heading = styled.h3`
   color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
@@ -53,44 +58,24 @@ const Description = styled.p`
   text-align: justify;
 `;
 
-// const CardHeading = '';
-// const CardDescription = '';
-
-const Card = () => {
+const Card = ({ CardImage, CardHeading, CardDescription }) => {
   return (
     <TestWrapper>
       <Container>
-        <Image></Image>
+        {/* <Image></Image> */}
+        <Thumbnail src={CardImage}></Thumbnail>
         <TextContainer>
-          <Heading>Web Development</Heading>
-          <Description>
-            We build responsive, scalable websites with clean, future-proof
-            code, optimized for performance and built to grow with your
-            business.
-          </Description>
-        </TextContainer>
-      </Container>
-      <Container>
-        <Image></Image>
-        <TextContainer>
-          <Heading>Mobile App Development</Heading>
-          <Description>
-            Native and cross-platform mobile apps designed for performance and
-            user satisfaction, ensuring smooth navigation and fast load times.
-          </Description>
-        </TextContainer>
-      </Container>
-      <Container>
-        <Image></Image>
-        <TextContainer>
-          <Heading>Custom Solutions</Heading>
-          <Description>
-            Optimized, secure e-commerce platforms designed to convert visitors
-            into customers while delivering a smooth shopping experience.
-          </Description>
+          <Heading>{CardHeading}</Heading>
+          <Description>{CardDescription}</Description>
         </TextContainer>
       </Container>
     </TestWrapper>
   );
 };
 export default Card;
+
+Card.propTypes = {
+  CardImage: PropTypes.string.isRequired,
+  CardHeading: PropTypes.string.isRequired,
+  CardDescription: PropTypes.string.isRequired,
+};
