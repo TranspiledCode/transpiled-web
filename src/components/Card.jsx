@@ -39,13 +39,13 @@ const Description = styled.p`
   text-align: justify;
 `;
 
-const Card = ({ CardImage, ImageLabel, CardHeading, CardDescription }) => {
+const Card = ({ url, label, cardHead, cardDesc }) => {
   return (
     <Container>
-      <Image src={CardImage} alt={ImageLabel} aria-label={ImageLabel}></Image>
+      <Image src={url} alt={label} aria-label={label}></Image>
       <TextContainer>
-        <Heading>{CardHeading}</Heading>
-        <Description>{CardDescription}</Description>
+        <Heading>{cardHead}</Heading>
+        <Description>{cardDesc}</Description>
       </TextContainer>
     </Container>
   );
@@ -53,8 +53,8 @@ const Card = ({ CardImage, ImageLabel, CardHeading, CardDescription }) => {
 export default Card;
 
 Card.propTypes = {
-  CardImage: PropTypes.string.isRequired,
-  ImageLabel: PropTypes.string.isRequired,
-  CardHeading: PropTypes.string.isRequired,
-  CardDescription: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  cardHead: PropTypes.string.isRequired,
+  cardDesc: PropTypes.string.isRequired,
 };
