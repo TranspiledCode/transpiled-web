@@ -14,7 +14,7 @@ const Home = () => {
       <>
         <Card />
       </>
-      
+
       <ContactSection />
       <Footer />
     </>
