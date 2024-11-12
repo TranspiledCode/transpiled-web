@@ -1,22 +1,20 @@
 import styled from '@emotion/styled';
 
 const TestWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2rem;
-
   padding: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
-
+    grid-template-columns: repeat(3, 1fr);
     padding: 6rem;
   }
 `;
 
 const Container = styled.div`
-  height: 50rem;
+  height: 100%;
+  min-height: 50rem;
   width: 100%;
   border-image: linear-gradient(
       ${({ theme }) => theme.colors.lightBlue},
@@ -25,19 +23,21 @@ const Container = styled.div`
     1;
   border-width: 4px;
   border-style: solid;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
 `;
 const Image = styled.div`
   background-image: url('https://images.unsplash.com/photo-1726137570078-1faa70beb6ad?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 70%;
   width: 100%;
 `;
 const TextContainer = styled.div`
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 const Heading = styled.h3`
