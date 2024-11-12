@@ -8,12 +8,17 @@ import theme from './style/theme';
 import ContextProvider from './context/GlobalProvider';
 import { ToastProvider } from './context/ToastContext';
 
+import RouteToTop from './utils/RouteToTop';
+import ScrollToHash from './utils/ScrollToHash';
+
 import Home from './pages/Home';
 import Services from './pages/Services';
 
 const App = () => {
   return (
     <Router>
+      <RouteToTop />
+      <ScrollToHash />
       <ContextProvider>
         <ThemeProvider theme={theme}>
           <ToastProvider position="bottom-left">
