@@ -2,11 +2,11 @@
 import colors from './colors';
 import mixins from './mixins';
 import buttons from './buttons';
-import layout from './layouts';
+import layouts from './layouts';
 
 const theme = {
   colors,
-  layout,
+  layouts,
   mixins,
   buttons,
 };
