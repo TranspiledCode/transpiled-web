@@ -16,22 +16,20 @@ const HeroWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 5vw, 4rem);
-  padding-top: max(clamp(8rem, 10vw, 10vh), 80px);
+  padding: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    padding: clamp(4rem, 8vw, 6rem);
-    align-items: flex-start;
+    padding: 6rem;
   }
 `;
 
 const TitleWrapper = styled.div`
-  max-width: min(100%, 120rem);
-  width: 100%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    margin: 0;
+    gap: 2rem;
   }
 `;
 
@@ -39,34 +37,26 @@ const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.poppins};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
-  font-size: clamp(3.2rem, 8vw, 5rem);
-  line-height: 1.2;
-  margin-bottom: clamp(1.6rem, 4vw, 2rem);
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    font-size: clamp(5rem, 10vw, 9.6rem);
-    margin-bottom: 1rem;
-  }
+  font-size: clamp(4.8rem, 10vw, 9.6rem);
+  line-height: clamp(4.8rem, 10vw, 8.6rem);
 `;
 
 const SubtitleText = styled.div`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
-  font-weight: 500;
-  font-size: clamp(2rem, 5vw, 2.6rem);
-  max-width: min(100%, 60rem);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 3.6rem);
+  line-height: clamp(1.8rem, 4vw, 3.6rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: clamp(3rem, 8vw, 6rem);
-  line-height: 1.2;
-  max-width: 40rem;
+  max-width: 80%;
+  margin-bottom: 4rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    max-width: 60rem;
-
-    font-size: clamp(2.6rem, 6vw, 3.6rem);
     gap: 1rem;
+    max-width: 60%;
+    margin-bottom: 8rem;
   }
 `;
 
@@ -77,11 +67,10 @@ const Word = styled.span`
 
 const LearnMoreText = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
-  font-weight: 500;
-  font-size: clamp(1.4rem, 3vw, 1.6rem);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.white};
-  margin: clamp(4rem, 10vw, 10rem) 0 clamp(2rem, 5vw, 3rem) 0;
   max-width: 25rem;
 `;
 
