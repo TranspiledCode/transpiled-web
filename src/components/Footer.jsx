@@ -5,7 +5,7 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black};
   height: 7rem;
   width: 100%;
   padding: 0 2rem;
