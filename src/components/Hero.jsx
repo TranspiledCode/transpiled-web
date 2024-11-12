@@ -8,6 +8,7 @@ import AnimatedSection from 'components/AnimatedSection';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
+  max-width: 100vw;
   background: linear-gradient(
     to bottom,
     ${({ theme }) => theme.colors.darkBlue},
