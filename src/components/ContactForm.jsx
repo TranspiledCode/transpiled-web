@@ -9,6 +9,10 @@ import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 const ContactFormWrapper = styled.div`
   width: 100%;
+
+  @media (min-width: 1440px) {
+    max-width: 50%;
+  }
 `;
 const ContactFormStyled = styled.form`
   display: flex;
@@ -21,6 +25,9 @@ const FormInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  button {
+    align-self: flex-end;
+  }
 `;
 
 const InputField = styled(Input)``;
@@ -75,17 +82,17 @@ const ContactForm = () => {
           <InputField type="text" name="name" label="Name" />
           <InputField type="email" name="email" label="Email" />
           <InputField type="tel" name="phone" label="Phone" />
-          <TextareaField name="message" label="Message" maxLength={120} />
+          <TextareaField name="message" label="Message" maxLength={250} />
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            variant="outline"
+            icon="FaArrowRight"
+            size="medium"
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </Button>
         </FormInputs>
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          variant="outline"
-          icon="FaArrowRight"
-          size="medium"
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </Button>
       </ContactFormStyled>
     </ContactFormWrapper>
   );
