@@ -10,7 +10,7 @@ import { useToast } from 'context/ToastContext'; // Import useToast hook
 const ContactFormWrapper = styled.div`
   width: 100%;
 
-  @media (min-width: 1440px) {
+  ${({ theme }) => theme.mediaQueries.lg} {
     max-width: 50%;
   }
 `;

@@ -2,6 +2,16 @@ import styled from '@emotion/styled';
 import config from '../config/home';
 import ContactForm from './ContactForm';
 
+const ScrollTo = styled.div`
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(-4rem);
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    transform: translateY(-2rem);
+  }
+`;
+
 const Section = styled.div`
   background-image: linear-gradient(
     ${({ theme }) => theme.colors.darkBlue},
@@ -9,13 +19,20 @@ const Section = styled.div`
   );
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 4rem;
-  max-width: 100vw;
-  padding: 2rem;
+  align-items: center;
+`;
 
-  @media (min-width: 768px) {
+const SectionContent = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
+
+  padding: 4rem 2rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
     padding: 6rem;
   }
 `;
@@ -35,7 +52,7 @@ const Title = styled.h2`
   line-height: 5rem;
   letter-spacing: -2px;
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     font-size: 6.4rem;
     line-height: 6.4rem;
   }
@@ -47,7 +64,7 @@ const Subtitle = styled.p`
   line-height: 1.8rem;
   letter-spacing: 0.1px;
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     font-size: 2.4rem;
     line-height: 2.4rem;
     letter-spacing: -0.1px;
@@ -56,13 +73,18 @@ const Subtitle = styled.p`
 
 const ContactSection = () => {
   return (
-    <Section id="contact">
-      <SectionInfo>
-        <Title>{config.contact.title}</Title>
-        <Subtitle>{config.contact.subtitle}</Subtitle>
-      </SectionInfo>
-      <ContactForm />
-    </Section>
+    <>
+      <ScrollTo id="contact" aria-hidden={true}></ScrollTo>
+      <Section>
+        <SectionContent>
+          <SectionInfo>
+            <Title>{config.contact.title}</Title>
+            <Subtitle>{config.contact.subtitle}</Subtitle>
+          </SectionInfo>
+          <ContactForm />
+        </SectionContent>
+      </Section>
+    </>
   );
 };
 
