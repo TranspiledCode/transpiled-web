@@ -56,7 +56,7 @@ const SubtitleText = styled.div`
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 1rem;
-    max-width: 60%;
+    max-width: 60rem;
   }
 `;
 
