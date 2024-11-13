@@ -1,32 +1,46 @@
 import styled from '@emotion/styled';
 import Card from './Card';
+import Button from './Button';
 import config from '../config/home';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    gap: 4rem;
+    padding: 6rem;
+  }
 `;
 
-const Section = styled.div`
+const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  padding: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-    padding: 6rem;
   }
+`;
+
+const ButtonArea = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const ServicesSection = () => {
   const { cards } = config.services;
   return (
     <Container>
-      <Section>
+      <CardArea>
         {cards.map((card, index) => (
           <Card
             key={index}
@@ -36,7 +50,17 @@ const ServicesSection = () => {
             description={card.description}
           />
         ))}
-      </Section>
+      </CardArea>
+      <ButtonArea>
+        <Button
+          type="call to action"
+          icon="FaArrowRight"
+          variant="ghost"
+          size="medium"
+        >
+          Explore Services
+        </Button>
+      </ButtonArea>
     </Container>
   );
 };
