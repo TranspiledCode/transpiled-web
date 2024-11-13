@@ -16,12 +16,18 @@ const HeroWrapper = styled.section`
   );
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 6rem;
   }
+`;
+
+const HeroContent = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
 `;
 
 const TitleWrapper = styled.div`
@@ -120,24 +126,26 @@ const Hero = () => {
 
   return (
     <HeroWrapper>
-      <TitleWrapper>
-        <Title>{config.hero.title}</Title>
-        <SubtitleText>
-          {subtitleWords.map((word, index) => (
-            <Word key={`${word}-${index}`} color={getWordColor(index)}>
-              {word}
-            </Word>
-          ))}
-        </SubtitleText>
-        <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
-        <AnimatedSection>
-          <Link to="#contact">
-            <StyledButton icon="FaArrowDown" variant="outline" size="medium">
-              {config.hero.buttonText}
-            </StyledButton>
-          </Link>
-        </AnimatedSection>
-      </TitleWrapper>
+      <HeroContent>
+        <TitleWrapper>
+          <Title>{config.hero.title}</Title>
+          <SubtitleText>
+            {subtitleWords.map((word, index) => (
+              <Word key={`${word}-${index}`} color={getWordColor(index)}>
+                {word}
+              </Word>
+            ))}
+          </SubtitleText>
+          <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
+          <AnimatedSection>
+            <Link to="#contact">
+              <StyledButton icon="FaArrowDown" variant="outline" size="medium">
+                {config.hero.buttonText}
+              </StyledButton>
+            </Link>
+          </AnimatedSection>
+        </TitleWrapper>
+      </HeroContent>
     </HeroWrapper>
   );
 };
