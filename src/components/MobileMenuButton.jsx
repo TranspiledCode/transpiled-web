@@ -9,7 +9,6 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   align-items: space-between;
   justify-content: space-between;
-
   padding: 0.2rem 0;
 
   .MenuElements {
@@ -36,10 +35,6 @@ const ButtonWrapper = styled.div`
             
         .MenuElementBottom {
             transform: translateY(-6px) rotate(-45deg);
-        }
-            
-        :hover .MenuElements {
-            background-color: ${theme.colors.white};
         }
     `}
 
