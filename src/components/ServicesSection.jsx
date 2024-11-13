@@ -50,12 +50,13 @@ const Subtitle = styled.p`
 const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   }
 `;
 
