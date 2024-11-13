@@ -3,7 +3,7 @@ import Card from './Card';
 import Button from './Button';
 import config from '../config/home';
 
-const SectionContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +55,8 @@ const CardArea = styled.div`
   gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   }
 `;
 
@@ -69,7 +70,7 @@ const ButtonArea = styled.div`
 const ServicesSection = () => {
   const { cards } = config.services;
   return (
-    <SectionContainer>
+    <Container>
       <SectionInfo>
         <Title>{config.services.title}</Title>
         <Subtitle>{config.services.subtitle}</Subtitle>
@@ -95,7 +96,7 @@ const ServicesSection = () => {
           Explore Services
         </Button>
       </ButtonArea>
-    </SectionContainer>
+    </Container>
   );
 };
 export default ServicesSection;
