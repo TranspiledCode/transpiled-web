@@ -15,7 +15,7 @@ const Section = styled.div`
 `;
 
 const ServicesSection = () => {
-  const { cards } = config.servicesSection;
+  const { cards } = config.services;
   return (
     <Section>
       {cards.map((card, index) => (
