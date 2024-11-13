@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-  height: auto;
   width: 100%;
   border-image: linear-gradient(
       ${({ theme }) => theme.colors.lightBlue},
