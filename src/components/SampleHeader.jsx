@@ -2,8 +2,8 @@ import { useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
 
 import GlobalContext from '../context/GlobalContext';
-import Icon from './Icon';
 import NavBar from './NavBar';
+import MobileMenuButton from './MobileMenuButton';
 
 const SampleHeader = () => {
   const { scrolled, handleScroll } = useContext(GlobalContext);
@@ -24,13 +24,14 @@ const SampleHeader = () => {
       <Logo>Transpiled</Logo>
       <Nav>
         <NavBar links={links} />
-        <Hamburger>
+        {/* <Hamburger>
           <Icon
             name={menuOpen ? 'FaTimes' : 'FaBars'}
             size={1.8}
             onClick={toggleMenu}
           />
-        </Hamburger>
+        </Hamburger> */}
+        <MobileMenuButton onClick={toggleMenu} menuOpen={menuOpen} />
       </Nav>
     </HeaderContainer>
   );
@@ -60,13 +61,6 @@ const Logo = styled.div`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-`;
-
-const Hamburger = styled.div`
-  font-size: 1.8rem;
-  @media (min-width: 768px) {
-    display: none;
-  }
 `;
 
 export default SampleHeader;
