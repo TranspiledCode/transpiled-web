@@ -6,6 +6,9 @@ const config = {
     buttonText: 'Get Started',
   },
   services: {
+    title: 'OUR SERVICES',
+    subtitle:
+      'We provide custom web and mobile app development solutions, from responsive websites to intuitive mobile apps.',
     cards: [
       {
         url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
