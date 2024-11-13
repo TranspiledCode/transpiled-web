@@ -34,6 +34,7 @@ const Title = styled.h2`
   letter-spacing: -2px;
 `;
 const Subtitle = styled.p`
+  width: 100%;
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
