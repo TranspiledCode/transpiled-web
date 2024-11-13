@@ -22,19 +22,6 @@ const ButtonWrapper = styled.div`
     transition-timing-function: ease-in-out;
   }
 
-  /* Apply hover styles */
-  :hover .MenuElements {
-    background-color: ${({ theme }) => theme.colors.green};
-  }
-
-  :hover .MenuElementTop {
-    transform: translateY(6px);
-  }
-
-  :hover .MenuElementBottom {
-    transform: translateY(-6px);
-  }
-
   /* Apply isOpen styles */
   ${({ isOpen, theme }) =>
     isOpen &&
