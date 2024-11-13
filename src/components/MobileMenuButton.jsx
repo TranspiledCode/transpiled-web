@@ -23,18 +23,18 @@ const ButtonWrapper = styled.div`
     transition-timing-function: ease-in-out;
   }
 
-  /* Apply hover styles */
-  :hover .MenuElements {
-    background-color: ${({ theme }) => theme.colors.green};
-  }
+  //   /* Apply hover styles */
+  //   :hover .MenuElements {
+  //     background-color: ${({ theme }) => theme.colors.green};
+  //   }
 
-  :hover .MenuElementTop {
-    transform: translateY(5.5px);
-  }
+  //   :hover .MenuElementTop {
+  //     transform: translateY(5.5px);
+  //   }
 
-  :hover .MenuElementBottom {
-    transform: translateY(-5px);
-  }
+  //   :hover .MenuElementBottom {
+  //     transform: translateY(-5px);
+  //   }
 
   /* Apply isOpen styles */
   ${({ isOpen, theme }) =>
