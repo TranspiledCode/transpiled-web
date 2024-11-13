@@ -41,8 +41,8 @@ const Subtitle = styled.p`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
 
-  ${({ theme }) => theme.mediaQueries.md} {
-    max-width: 60%;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: clamp(60rem, 100%, 70rem);
     text-align: left;
   }
 `;
@@ -55,8 +55,7 @@ const CardArea = styled.div`
   gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    flex-direction: row;
   }
 `;
 
