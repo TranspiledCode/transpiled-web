@@ -2,6 +2,7 @@ import { useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
 
 import GlobalContext from '../context/GlobalContext';
+// import Icon from './Icon';
 import NavBar from './NavBar';
 import MobileMenuButton from './MobileMenuButton';
 
@@ -31,7 +32,7 @@ const SampleHeader = () => {
             onClick={toggleMenu}
           />
         </Hamburger> */}
-        <MobileMenuButton onClick={toggleMenu} menuOpen={menuOpen} />
+        <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
       </Nav>
     </HeaderContainer>
   );
@@ -62,5 +63,12 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
 `;
+
+// const Hamburger = styled.div`
+//   font-size: 1.8rem;
+//   @media (min-width: 768px) {
+//     display: none;
+//   }
+// `;
 
 export default SampleHeader;
