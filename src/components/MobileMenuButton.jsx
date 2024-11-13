@@ -1,58 +1,55 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.button`
   cursor: pointer;
   height: 1.8rem;
   width: 1.8rem;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  align-items: center;
   justify-content: space-between;
   padding: 0.2rem 0;
-
-  .MenuElements {
-    background-color: ${({ theme }) => theme.colors.white};
-    height: 0.2rem;
-    width: 100%;
-    transform-origin: center;
-    transition-property: color, transform;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
-  }
-
-  /* Apply isOpen styles */
-  ${({ isOpen, theme }) =>
-    isOpen &&
-    `
-        .MenuElements {
-            background-color: ${theme.colors.green};
-        }
-            
-        .MenuElementTop {
-            transform: translateY(6px) rotate(45deg);
-        }
-            
-        .MenuElementBottom {
-            transform: translateY(-6px) rotate(-45deg);
-        }
-    `}
+  background: none;
+  border: none;
+  outline: none;
 
   ${({ theme }) => theme.mediaQueries.md} {
     display: none;
   }
 `;
-const MobileMenuButton = ({ onClick, isOpen }) => {
-  return (
-    <ButtonWrapper onClick={onClick} isOpen={isOpen}>
-      <div className="MenuElements MenuElementTop" aria-hidden={true}></div>
-      <div className="MenuElements MenuElementBottom" aria-hidden={true}></div>
-    </ButtonWrapper>
-  );
-};
+
+const MenuElement = styled.div`
+  background-color: ${({ isOpen, theme }) =>
+    isOpen ? theme.colors.green : theme.colors.white};
+  height: 0.2rem;
+  width: 100%;
+  transform-origin: center;
+  transition:
+    background-color 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+`;
+
+const MenuElementTop = styled(MenuElement)`
+  transform: ${({ isOpen }) =>
+    isOpen ? 'translateY(6px) rotate(45deg)' : 'none'};
+`;
+
+const MenuElementBottom = styled(MenuElement)`
+  transform: ${({ isOpen }) =>
+    isOpen ? 'translateY(-6px) rotate(-45deg)' : 'none'};
+`;
+
+const MobileMenuButton = ({ onClick, isOpen }) => (
+  <ButtonWrapper onClick={onClick} aria-expanded={isOpen}>
+    <MenuElementTop isOpen={isOpen} aria-hidden="true" />
+    <MenuElementBottom isOpen={isOpen} aria-hidden="true" />
+  </ButtonWrapper>
+);
 
 MobileMenuButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
 };
+
 export default MobileMenuButton;
