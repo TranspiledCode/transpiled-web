@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const Section = styled.div`
-  max-width: 120rem;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
