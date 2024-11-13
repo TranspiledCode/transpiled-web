@@ -30,7 +30,6 @@ const NavWrapper = styled.div`
   padding: auto 5rem;
 `;
 
-<NavBar links={links} />;
 const NavBar = styled.div`
   display: none;
   @media (min-width: 768px) {
@@ -48,16 +47,19 @@ const StyledMenu = styled.div``;
 const Header = () => {
   const links = [
     { url: '/', label: 'Home' },
-    { url: '/services', label: 'Services' },
+    { url: '/', label: 'Services' },
+    { url: '/', label: 'Testimonials' },
+    { url: '/', label: 'Contact' },
+    { url: '/', label: 'About' },
   ];
   return (
     <HeaderWrapper>
-      <StyledLogo>Transpiled</StyledLogo>
+      <StyledLogo links={'Home'}>Transpiled</StyledLogo>
       <NavWrapper>
-        <NavBar>Services</NavBar>
-        <NavBar>Testimonials</NavBar>
-        <NavBar>Contact</NavBar>
-        <NavBar>About</NavBar>
+        <NavBar links={'Services'}>Services</NavBar>
+        <NavBar links={'Testimonials'}>Testimonials</NavBar>
+        <NavBar links={'Contact'}>Contact</NavBar>
+        <NavBar links={'About'}>About</NavBar>
       </NavWrapper>
     </HeaderWrapper>
   );
