@@ -46,28 +46,18 @@ const SectionInfo = styled.div`
   gap: 0.5rem;
 `;
 const Title = styled.h2`
-  font-family: 'Poppins', sans-serif;
+  font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: 5rem;
-  line-height: 5rem;
-  letter-spacing: -2px;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    font-size: 6.4rem;
-    line-height: 6.4rem;
-  }
+  font-size: clamp(5rem, 8vw, 6.4rem);
+  line-height: clamp(5rem, 8vw, 6.4rem);
 `;
 const Subtitle = styled.p`
-  font-family: 'Manrope', sans-serif;
+  width: 100%;
+  font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1.8rem;
-  letter-spacing: 0.1px;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
 
   ${({ theme }) => theme.mediaQueries.md} {
-    font-size: 2.4rem;
-    line-height: 2.4rem;
-    letter-spacing: -0.1px;
   }
 `;
 
