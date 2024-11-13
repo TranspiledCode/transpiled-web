@@ -7,7 +7,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
-  font-family: 'poppins', sans-serif;
+  font-family: ${({ theme }) => theme.fonts.poppins};
   border: 1px solid #214eea;
   background: #214eea;
   padding: 1rem 2rem;
@@ -56,10 +56,7 @@ const Header = () => {
     <HeaderWrapper>
       <StyledLogo links={'Home'}>Transpiled</StyledLogo>
       <NavWrapper>
-        <NavBar links={'Services'}>Services</NavBar>
-        <NavBar links={'Testimonials'}>Testimonials</NavBar>
-        <NavBar links={'Contact'}>Contact</NavBar>
-        <NavBar links={'About'}>About</NavBar>
+        <NavBar links={links} />
       </NavWrapper>
     </HeaderWrapper>
   );
