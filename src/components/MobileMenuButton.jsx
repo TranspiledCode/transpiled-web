@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-// styling is mobile by default, media query for desktops
 const ButtonWrapper = styled.div`
   cursor: pointer;
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 1.8rem;
+  width: 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: space-between;
@@ -15,7 +14,7 @@ const ButtonWrapper = styled.div`
 
   .MenuElements {
     background-color: ${({ theme }) => theme.colors.white};
-    height: 0.15rem;
+    height: 0.2rem;
     width: 100%;
     transform-origin: center;
     transition-property: color, transform;
@@ -23,18 +22,18 @@ const ButtonWrapper = styled.div`
     transition-timing-function: ease-in-out;
   }
 
-  //   /* Apply hover styles */
-  //   :hover .MenuElements {
-  //     background-color: ${({ theme }) => theme.colors.green};
-  //   }
+  /* Apply hover styles */
+  :hover .MenuElements {
+    background-color: ${({ theme }) => theme.colors.green};
+  }
 
-  //   :hover .MenuElementTop {
-  //     transform: translateY(5.5px);
-  //   }
+  :hover .MenuElementTop {
+    transform: translateY(6px);
+  }
 
-  //   :hover .MenuElementBottom {
-  //     transform: translateY(-5px);
-  //   }
+  :hover .MenuElementBottom {
+    transform: translateY(-6px);
+  }
 
   /* Apply isOpen styles */
   ${({ isOpen, theme }) =>
@@ -45,11 +44,11 @@ const ButtonWrapper = styled.div`
         }
             
         .MenuElementTop {
-            transform: translateY(5.5px) rotate(45deg);
+            transform: translateY(6px) rotate(45deg);
         }
             
         .MenuElementBottom {
-            transform: translateY(-5px) rotate(-45deg);
+            transform: translateY(-6px) rotate(-45deg);
         }
             
         :hover .MenuElements {
@@ -57,7 +56,7 @@ const ButtonWrapper = styled.div`
         }
     `}
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     display: none;
   }
 `;
