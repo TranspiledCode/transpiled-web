@@ -1,27 +1,26 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import NavBar from './NavBar';
 
 const HeaderWrapper = styled.div`
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    font-family: 'poppins', sans-serif;
-    border: 1px solid #214eea;
-    background: #214eea;
-    padding: 1rem 2rem;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    
-  }
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  color: ${({ theme }) => theme.colors.white};
+  font-family: 'poppins', sans-serif;
+  border: 1px solid #214eea;
+  background: #214eea;
+  padding: 1rem 2rem;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 `;
 
 const StyledLogo = styled.div`
   font-weight: Bold;
-  font-size: 30px;
+  font-size: 3rem;
 `;
 
 const NavWrapper = styled.div`
@@ -31,7 +30,8 @@ const NavWrapper = styled.div`
   padding: auto 5rem;
 `;
 
-const StyledNav = styled.div`
+<NavBar links={links} />;
+const NavBar = styled.div`
   display: none;
   @media (min-width: 768px) {
     display: flex;
@@ -46,14 +46,18 @@ const StyledNav = styled.div`
 const StyledMenu = styled.div``;
 
 const Header = () => {
+  const links = [
+    { url: '/', label: 'Home' },
+    { url: '/services', label: 'Services' },
+  ];
   return (
     <HeaderWrapper>
       <StyledLogo>Transpiled</StyledLogo>
       <NavWrapper>
-        <StyledNav>Services</StyledNav>
-        <StyledNav>Testimonials</StyledNav>
-        <StyledNav>Contact</StyledNav>
-        <StyledNav>About</StyledNav>
+        <NavBar>Services</NavBar>
+        <NavBar>Testimonials</NavBar>
+        <NavBar>Contact</NavBar>
+        <NavBar>About</NavBar>
       </NavWrapper>
     </HeaderWrapper>
   );
