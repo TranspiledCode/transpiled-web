@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
 
-import Input from './Input';
-import Button from './Button';
-import Textarea from './Textarea';
+import Input from 'atoms/Input';
+import Button from 'atoms/Button';
+import Textarea from 'atoms/Textarea';
 import FormContext from 'context/ContactForm';
 import { useToast } from 'context/ToastContext'; // Import useToast hook
 

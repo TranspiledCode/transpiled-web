@@ -1,11 +1,11 @@
 // ContactInfo.jsx
 import React from 'react';
 import styled from '@emotion/styled';
-import SocialIcons from './SocialIcons';
+import SocialIcons from '../SocialIcons';
 
-const ContactInfoComponent = () => (
+const ContactInfo = () => (
   <ContactInfoWrapper>
-    <ContactInfo>
+    <ContactInfoContainer>
       <Title>Contact Us</Title>
       <ContactDetailWrapper>
         <Email>
@@ -24,7 +24,7 @@ const ContactInfoComponent = () => (
       <ContactDetailWrapper>
         <SocialIcons />
       </ContactDetailWrapper>
-    </ContactInfo>
+    </ContactInfoContainer>
   </ContactInfoWrapper>
 );
 
@@ -38,7 +38,7 @@ const ContactInfoWrapper = styled.div`
   }
 `;
 
-const ContactInfo = styled.div`
+const ContactInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -102,4 +102,4 @@ const PhoneLink = styled.a`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export default ContactInfoComponent;
+export default ContactInfo;

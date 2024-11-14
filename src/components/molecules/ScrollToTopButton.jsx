@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
-import Icon from './Icon';
+import Icon from 'atoms/Icon';
 import GlobalContext from '../context/GlobalContext'; // Ensure correct import
 
 import useScrollToTop from '../hooks/useScrollToTop';
 
-const ScrollToTopButton = styled.button`
+const StyledButton = styled.button`
   z-index: ${({ theme }) => theme.zIndices.scrollToTop};
   position: fixed;
   display: flex;
@@ -48,12 +48,12 @@ const IconWrapper = styled.div`
 `;
 
 // ScrollToTop Component
-const ScrollToTop = () => {
+const ScrollToTopButton = () => {
   const { menuOpen } = useContext(GlobalContext);
   const { isVisible, scrollToTop } = useScrollToTop(menuOpen, 20);
 
   return (
-    <ScrollToTopButton
+    <StyledButton
       isVisible={isVisible}
       aria-label="Scroll to top"
       onClick={scrollToTop}
@@ -61,8 +61,8 @@ const ScrollToTop = () => {
       <IconWrapper className="icon-wrapper" isVisible={isVisible}>
         <Icon name="FaArrowUp" size={1.8} />
       </IconWrapper>
-    </ScrollToTopButton>
+    </StyledButton>
   );
 };
 
-export default ScrollToTop;
+export default ScrollToTopButton;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import config from '../config/home';
-import ContactForm from './ContactForm';
+import config from 'data/home';
+import ContactForm from 'organisms/ContactForm';
 
 const ScrollTo = styled.div`
   pointer-events: none;

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import GlobalContext from 'context/GlobalContext';
 import useScrollToTop from 'hooks/useScrollToTop';
-import Icon from 'components/Icon';
+import Icon from 'atoms/Icon';
 
 const Footer = () => {
   const { menuOpen } = useContext(GlobalContext);
