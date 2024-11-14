@@ -38,7 +38,7 @@ const getPositionStyles = (position) => {
 // Apply the position styles dynamically
 const ToastContainerWrapper = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndices.toast};
   display: flex;
   flex-direction: column;
   ${({ position }) => getPositionStyles(position)};

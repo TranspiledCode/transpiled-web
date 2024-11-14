@@ -6,7 +6,7 @@ import GlobalContext from '../context/GlobalContext'; // Ensure correct import
 import useScrollToTop from '../hooks/useScrollToTop';
 
 const ScrollToTopButton = styled.button`
-  z-index: 999;
+  z-index: ${({ theme }) => theme.zIndices.scrollToTop};
   position: fixed;
   display: flex;
   align-items: center;
