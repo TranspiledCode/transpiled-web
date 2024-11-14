@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Container = styled.section`
-  display: grid;
-  place-content: center;
+  ${({ theme }) => theme.mixins.flexColCenter};
   gap: 2rem;
   padding: 4rem 2rem;
 
@@ -55,7 +54,9 @@ const QuoteArea = styled.div`
 const QuoteBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  ${({ theme }) => theme.mediaQueries.md} {
+    gap: 2rem;
+  }
 `;
 const QuoteBody = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
