@@ -17,7 +17,7 @@ const Container = styled.div`
   background-size:
     100% 100%,
     100% 400%;
-  animation: move 10s linear infinite;
+  animation: move 10s linear infinite alternate;
 
   @keyframes move {
     from {
