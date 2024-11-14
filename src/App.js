@@ -19,16 +19,16 @@ const App = () => {
     <Router>
       <RouteToTop />
       <ScrollToHash />
-      <ContextProvider>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <ContextProvider>
           <ToastProvider position="bottom-left">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
             </Routes>
           </ToastProvider>
-        </ThemeProvider>
-      </ContextProvider>
+        </ContextProvider>
+      </ThemeProvider>
     </Router>
   );
 };

@@ -5,6 +5,7 @@ import buttons from './buttons';
 import layouts from './layouts';
 import mediaQueries from './mediaQueries';
 import fonts from './fonts';
+import zIndices from './indices';
 
 const theme = {
   colors,
@@ -13,6 +14,7 @@ const theme = {
   buttons,
   mediaQueries,
   fonts,
+  zIndices,
 };
 
 export default theme;

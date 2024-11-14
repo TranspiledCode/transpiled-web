@@ -13,6 +13,7 @@ const ButtonWrapper = styled.button`
   background: none;
   border: none;
   outline: none;
+  z-index: ${({ theme }) => theme.zIndices.mobileNavButton};
 
   ${({ theme }) => theme.mediaQueries.md} {
     display: none;
