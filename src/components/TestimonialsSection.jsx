@@ -7,7 +7,7 @@ const Container = styled.section`
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 4rem 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 4rem;
@@ -73,7 +73,6 @@ const QuoteName = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 700;
   font-size: 1.6rem;
-
   text-align: right;
 `;
 
