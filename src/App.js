@@ -6,8 +6,8 @@ const Container = styled.div`
   box-sizing: border-box;
   display: grid;
   place-content: center;
-  height: 100%;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   text-align: center;
 
   color: #f8f8f8;
