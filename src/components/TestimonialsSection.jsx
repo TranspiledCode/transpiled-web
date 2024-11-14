@@ -2,10 +2,8 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-content: center;
   gap: 2rem;
   padding: 4rem 2rem;
 
@@ -19,7 +17,6 @@ const SectionInfo = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.5rem;
 `;
 const Title = styled.h2`
