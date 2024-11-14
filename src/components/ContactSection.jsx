@@ -12,7 +12,7 @@ const ScrollTo = styled.div`
   }
 `;
 
-const Section = styled.div`
+const Section = styled.section`
   background-image: linear-gradient(
     ${({ theme }) => theme.colors.darkBlue},
     ${({ theme }) => theme.colors.fuchsia}
@@ -20,6 +20,11 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 4rem 2rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 6rem;
+  }
 `;
 
 const SectionContent = styled.div`
@@ -29,12 +34,6 @@ const SectionContent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 4rem;
-
-  padding: 4rem 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 6rem;
-  }
 `;
 const SectionInfo = styled.div`
   width: 100%;
