@@ -30,20 +30,6 @@ const NavWrapper = styled.div`
   padding: auto 5rem;
 `;
 
-const NavBar = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 12px;
-    margin: 0;
-    padding: 2rem;
-  }
-`;
-
-const StyledMenu = styled.div``;
-
 const Header = () => {
   const links = [
     { url: '/', label: 'Home' },
