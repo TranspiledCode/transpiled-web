@@ -49,15 +49,33 @@ const QuoteArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     flex-direction: row;
   }
 `;
-const QuoteBlock = styled.div``;
-const QuoteBody = styled.p``;
-const QuoteName = styled.p``;
+const QuoteBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+const QuoteBody = styled.p`
+  color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-align: justify;
+  flex: 1;
+`;
+const QuoteName = styled.p`
+  color: ${({ theme }) => theme.colors.lightBlue};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-weight: 700;
+  font-size: 1.6rem;
+
+  text-align: right;
+`;
 
 const TestimonialsSection = () => {
   const quotes = [
