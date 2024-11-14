@@ -3,31 +3,32 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
+  box-sizing: border-box;
   display: grid;
   place-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  min-height: 100dvh;
   text-align: center;
 
   color: #f8f8f8;
 
   background-image: linear-gradient(to top, transparent, #214eea),
-    linear-gradient(to right, #15b5fa, #dd53ff, #15b5fa);
+    linear-gradient(to bottom, #15b5fa, #dd53ff, #15b5fa);
   background-size:
     100% 100%,
-    1000% 100%;
+    100% 400%;
   animation: move 10s linear infinite;
 
   @keyframes move {
     from {
       background-position:
         center center,
-        left center;
+        top center;
     }
     to {
       background-position:
         center center,
-        right center;
+        bottom center;
     }
   }
 `;
@@ -36,7 +37,7 @@ const Title = styled.h1`
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 8rem;
+  font-size: clamp(5.6rem, 7vw, 8rem);
   letter-spacing: -2px;
 `;
 
@@ -45,7 +46,7 @@ const Subtitle = styled.h3`
   font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   letter-spacing: 1px;
 `;
 
