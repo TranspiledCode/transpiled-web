@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,14 +44,61 @@ const Subtitle = styled.p`
   }
 `;
 
+const QuoteArea = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    flex-direction: row;
+  }
+`;
+const QuoteBlock = styled.div``;
+const QuoteBody = styled.p``;
+const QuoteName = styled.p``;
+
 const TestimonialsSection = () => {
+  const quotes = [
+    {
+      body: '"Transpiled helped us develop an app that’s become integral to our customer experience. Their dedication to detail and performance shines through in every feature."',
+      name: '— Jessica, Founder of FitLife',
+    },
+    {
+      body: '"The team’s collaborative approach and technical expertise made our e-commerce platform a success. The site is smooth, fast, and brings our products to life."',
+      name: '— Mark, CEO of FreshWave',
+    },
+    {
+      body: '"I was impressed by the level of care and precision from Transpiled. They took the time to understand our goals and delivered beyond expectations."',
+      name: '— Alex, CTO  at StyleHub',
+    },
+  ];
+
   return (
     <Container>
       <SectionInfo>
         <Title>TESTIMONIALS</Title>
         <Subtitle>What Our Clients Say About Working with Transpiled</Subtitle>
       </SectionInfo>
+      <QuoteArea>
+        {quotes.map((quote, index) => (
+          <QuoteBlock key={index}>
+            <QuoteBody>{quote.body}</QuoteBody>
+            <QuoteName>{quote.name}</QuoteName>
+          </QuoteBlock>
+        ))}
+      </QuoteArea>
     </Container>
   );
 };
 export default TestimonialsSection;
+
+QuoteBlock.propTypes = {
+  quotes: PropTypes.arrayOf(
+    PropTypes.shape({
+      body: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ),
+};
