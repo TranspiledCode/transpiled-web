@@ -1,7 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import NavBar from './NavBar';
+import GlobalContext from '../context/GlobalContext';
+import MobileNavMenu from './MobileNavMenu';
+import MobileMenuButton from './MobileMenuButton';
+import links from 'config/navigation';
 
+const Header = () => {
+  const { scrolled, handleScroll } = useContext(GlobalContext);
+  const { menuOpen, toggleMenu } = useContext(GlobalContext);
+
+  // This array is causing window to crash
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
+
+  return (
+    <HeaderContainer scrolled={scrolled}>
+      <HeaderWrapper>
+        <StyledLogo links={'Home'}>Transpiled</StyledLogo>
+        <NavWrapper>
+          <NavBar links={links} />
+        </NavWrapper>
+      </HeaderWrapper>
+    </HeaderContainer>
+  );
+};
+
+const HeaderContainer = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: ${({ scrolled }) => (scrolled ? 'black' : 'transparent')};
+  color: ${({ theme }) => theme.colors.white};
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  z-index: ${({ theme }) => theme.zIndices.header};
+`;
 const HeaderWrapper = styled.div`
   position: fixed;
   display: flex;
@@ -29,23 +70,5 @@ const NavWrapper = styled.div`
   align-items: center;
   padding: auto 5rem;
 `;
-
-const Header = () => {
-  const links = [
-    { url: '/', label: 'Home' },
-    { url: '/', label: 'Services' },
-    { url: '/', label: 'Testimonials' },
-    { url: '/', label: 'Contact' },
-    { url: '/', label: 'About' },
-  ];
-  return (
-    <HeaderWrapper>
-      <StyledLogo links={'Home'}>Transpiled</StyledLogo>
-      <NavWrapper>
-        <NavBar links={links} />
-      </NavWrapper>
-    </HeaderWrapper>
-  );
-};
 
 export default Header;
