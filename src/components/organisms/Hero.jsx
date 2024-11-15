@@ -14,15 +14,8 @@ const HeroWrapper = styled.section`
     ${({ theme }) => theme.colors.darkBlue},
     ${({ theme }) => theme.colors.lightBlue}
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 6rem;
-  }
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.padding};
 `;
 
 const HeroContent = styled.div`
