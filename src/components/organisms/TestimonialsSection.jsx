@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
   gap: 2rem;
-  padding: 4rem 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 4rem;
-    padding: 6rem;
   }
 `;
 const SectionInfo = styled.div`

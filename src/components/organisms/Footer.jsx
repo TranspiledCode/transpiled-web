@@ -28,22 +28,16 @@ const Footer = () => {
 };
 
 const Background = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 100%;
-  height: 7rem;
-  padding: 0 2rem;
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 2vw, 1.8rem);
 
   background-color: ${({ theme }) => theme.colors.black};
-
-  @media (min-width: 768px) {
-    padding: 0 6rem;
-  }
 `;
 
 const ContentWrapper = styled.div`

@@ -3,17 +3,13 @@ import Card from 'molecules/Card';
 import Button from 'atoms/Button';
 import config from 'data/home';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const Container = styled.section`
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
   gap: 2rem;
-  padding: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 4rem;
-    padding: 6rem;
   }
 `;
 
