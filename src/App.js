@@ -8,22 +8,27 @@ import theme from './style/theme';
 import ContextProvider from './context/GlobalProvider';
 import { ToastProvider } from './context/ToastContext';
 
+import RouteToTop from './utils/RouteToTop';
+import ScrollToHash from './utils/ScrollToHash';
+
 import Home from './pages/Home';
 import Services from './pages/Services';
 
 const App = () => {
   return (
     <Router>
-      <ContextProvider>
-        <ThemeProvider theme={theme}>
+      <RouteToTop />
+      <ScrollToHash />
+      <ThemeProvider theme={theme}>
+        <ContextProvider>
           <ToastProvider position="bottom-left">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
             </Routes>
           </ToastProvider>
-        </ThemeProvider>
-      </ContextProvider>
+        </ContextProvider>
+      </ThemeProvider>
     </Router>
   );
 };

@@ -1,6 +1,6 @@
-// mixins.js
+// layouts.js
 const layouts = {
-  maxWidth: '1200px',
+  maxWidth: '2000px',
 };
 
 export default layouts;

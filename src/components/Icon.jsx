@@ -17,6 +17,7 @@ const IconWrapper = styled.span`
  * @component
  * @param {string} name - Icon name from react-icons/fa (e.g., 'FaBars', 'FaTimes')
  * @param {number} size - Icon size in rem units
+ * @param {function} onClick - Optional onClick handler
  *
  * @example
  * // Mobile menu toggle
@@ -24,9 +25,9 @@ const IconWrapper = styled.span`
  *
  * @example
  * // Navigation icon
- * <Icon name="FaHome" size={1.2} />
+ * <Icon name="FaHome" size={1.2}  onClick={() => console.log('Home clicked')} />
  */
-const Icon = ({ name, size = 1.5 }) => {
+const Icon = ({ name, size = 1.5, onClick }) => {
   const [IconComponent, setIconComponent] = useState(null);
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const Icon = ({ name, size = 1.5 }) => {
 
   return (
     <IconWrapper>
-      <RenderedIcon style={{ fontSize: `${size}rem` }} />
+      <RenderedIcon style={{ fontSize: `${size}rem` }} onClick={onClick} />
     </IconWrapper>
   );
 };
@@ -56,6 +57,7 @@ const Icon = ({ name, size = 1.5 }) => {
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 export default Icon;

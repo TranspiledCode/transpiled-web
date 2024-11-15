@@ -1,31 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
-import { FaBars } from 'react-icons/fa';
+
+import GlobalContext from '../context/GlobalContext';
 import NavBar from './NavBar';
+import MobileNavMenu from './MobileNavMenu';
+import MobileMenuButton from './MobileMenuButton';
+import links from 'config/navigation';
 
 const SampleHeader = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { scrolled, handleScroll } = useContext(GlobalContext);
+  const { menuOpen, toggleMenu } = useContext(GlobalContext);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = [
-    { url: '/', label: 'Home' },
-    { url: '/services', label: 'Services' },
-  ];
-
   return (
     <HeaderContainer scrolled={scrolled}>
+      <MobileNavMenu links={links} />
       <Logo>Transpiled</Logo>
       <Nav>
         <NavBar links={links} />
-        <Hamburger onClick={() => setMenuOpen(!menuOpen)}>
-          <FaBars />
-        </Hamburger>
+        <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
       </Nav>
     </HeaderContainer>
   );
@@ -44,7 +41,7 @@ const HeaderContainer = styled.header`
   transition:
     background-color 0.3s,
     color 0.3s;
-  z-index: 10;
+  z-index: ${({ theme }) => theme.zIndices.header};
 `;
 
 const Logo = styled.div`
@@ -55,13 +52,6 @@ const Logo = styled.div`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-`;
-
-const Hamburger = styled.div`
-  font-size: 1.8rem;
-  @media (min-width: 768px) {
-    display: none;
-  }
 `;
 
 export default SampleHeader;
