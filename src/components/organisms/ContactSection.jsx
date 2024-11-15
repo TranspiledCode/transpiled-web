@@ -17,14 +17,8 @@ const Section = styled.section`
     ${({ theme }) => theme.colors.darkBlue},
     ${({ theme }) => theme.colors.fuchsia}
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4rem 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 6rem;
-  }
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.padding};
 `;
 
 const SectionContent = styled.div`
