@@ -34,7 +34,11 @@
     "pages": "./src/pages",
     "context": "./src/context",
     "style": "./src/style",
-    "config": "./src/config",
-    "utils": "./src/utils"
+    "data": "./src/data",
+    "utils": "./src/utils",
+    "atoms": "./src/components/atoms",
+    "molecules": "./src/components/molecules",
+    "organisms": "./src/components/organisms",
+    "templates": "./src/components/templates"
   }
 }

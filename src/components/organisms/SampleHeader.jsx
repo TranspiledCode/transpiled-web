@@ -1,11 +1,11 @@
 import { useEffect, useContext } from 'react';
 import styled from '@emotion/styled';
 
-import GlobalContext from '../context/GlobalContext';
-import NavBar from './NavBar';
-import MobileNavMenu from './MobileNavMenu';
-import MobileMenuButton from './MobileMenuButton';
-import links from 'config/navigation';
+import GlobalContext from 'context/GlobalContext';
+import NavMenu from 'molecules/NavMenu';
+import MobileNavMenu from 'organisms/MobileNavMenu';
+import MobileMenuButton from 'atoms/MobileMenuButton';
+import links from 'data/navigation';
 
 const SampleHeader = () => {
   const { scrolled, handleScroll } = useContext(GlobalContext);
@@ -21,7 +21,7 @@ const SampleHeader = () => {
       <MobileNavMenu links={links} />
       <Logo>Transpiled</Logo>
       <Nav>
-        <NavBar links={links} />
+        <NavMenu links={links} />
         <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
       </Nav>
     </HeaderContainer>
