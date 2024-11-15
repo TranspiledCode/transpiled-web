@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 
 const HeaderWrapper = styled.div`
     position: fixed;
