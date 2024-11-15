@@ -8,8 +8,8 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.poppins};
-  border: 1px solid #214eea;
-  background: #214eea;
+  border: border: 1px solid ${({ theme }) => theme.colors.darkBlue};
+  background: border: 1px solid ${({ theme }) => theme.colors.darkBlue};;
   padding: 1rem 2rem;
   align-items: center;
   position: fixed;
