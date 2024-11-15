@@ -15,7 +15,7 @@ const HeroWrapper = styled.section`
     ${({ theme }) => theme.colors.lightBlue}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: ${({ theme }) => theme.layouts.padding};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
 `;
 
 const HeroContent = styled.div`

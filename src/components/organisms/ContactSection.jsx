@@ -18,7 +18,7 @@ const Section = styled.section`
     ${({ theme }) => theme.colors.fuchsia}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: ${({ theme }) => theme.layouts.padding};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
 `;
 
 const SectionContent = styled.div`

@@ -5,7 +5,7 @@ import config from 'data/home';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: ${({ theme }) => theme.layouts.padding};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
   gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {

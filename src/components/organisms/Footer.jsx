@@ -30,7 +30,7 @@ const Footer = () => {
 const Background = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: ${({ theme }) => theme.layouts.padding};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
   padding-top: 2rem;
   padding-bottom: 2rem;
 
