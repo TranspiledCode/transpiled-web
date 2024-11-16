@@ -1,16 +1,17 @@
-// src/hooks/useIntersectionObserver.js
 import { useState, useEffect } from 'react';
 
 const useIntersectionObserver = (ref, options) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { onIntersect, ...observerOptions } = options;
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(ref.current); // Stop observing after it's visible
+      const isIntersecting = entry.isIntersecting;
+      setIsVisible(isIntersecting);
+      if (onIntersect) {
+        onIntersect(isIntersecting);
       }
-    }, options);
+    }, observerOptions);
 
     if (ref.current) {
       observer.observe(ref.current);
@@ -21,7 +22,7 @@ const useIntersectionObserver = (ref, options) => {
         observer.unobserve(ref.current);
       }
     };
-  }, [ref, options]);
+  }, [ref, onIntersect, observerOptions]);
 
   return isVisible;
 };
