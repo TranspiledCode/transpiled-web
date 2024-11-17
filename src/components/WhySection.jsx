@@ -55,7 +55,7 @@ const CardArea = styled.h1`
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
   width: 50vw;
-  height: 20vh;
+  height: 20vw;
   gap: 2rem;
   @media screen and (max-width: 60em) {
     grid-template-rows: repeat(4, 1fr);
