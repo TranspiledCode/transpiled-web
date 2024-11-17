@@ -13,6 +13,7 @@ const Section = styled.section`
   transform: ${({ isVisible, initialTransform, finalTransform }) =>
     isVisible ? finalTransform : initialTransform};
   transition: ${({ transition }) => transition};
+  width: 100%;
 `;
 
 /**

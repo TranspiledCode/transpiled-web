@@ -1,51 +1,97 @@
-import React, { useContext } from 'react';
+// Footer.js
+import React, { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import GlobalContext from 'context/GlobalContext';
 import useScrollToTop from 'hooks/useScrollToTop';
 import ContactInfo from 'organisms/ContactInfo';
 import Icon from 'atoms/Icon';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const Footer = () => {
   const { isExpanded } = useContext(GlobalContext);
   const { isVisible, scrollToTop } = useScrollToTop(false, 20);
 
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Check if the user has scrolled to the bottom
+      if (scrollTop + windowHeight >= documentHeight - 1) {
+        setIsAtBottom(true);
+      } else {
+        setIsAtBottom(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Call handleScroll initially to set the correct state on load
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Determine if the footer should be static
+  const isFooterStatic = isExpanded || isAtBottom;
+
   return (
-    <Background isExpanded={isExpanded}>
-      {isExpanded && <ContactInfo />}
-      <ContentWrapper isExpanded={isExpanded}>
-        <CopyRight>
-          <Icon name="FaCopyright" size={1.5} /> Copyright 2024
-        </CopyRight>
-        <ScrollTop
-          aria-label="Scroll to top"
-          onClick={scrollToTop}
-          isVisible={isVisible}
-        >
-          Scroll to Top
-          <Icon name="FaArrowUp" size={1.5} />
-        </ScrollTop>
-      </ContentWrapper>
-    </Background>
+    <FooterWrapper isExpanded={isExpanded} isFooterStatic={isFooterStatic}>
+      {isExpanded && (
+        <RevealWrapper>
+          <ContactInfo />
+          <ContentWrapper isExpanded={isExpanded}>
+            <CopyRight>
+              <Icon name="FaCopyright" size={1.5} /> Transpiled 2024
+            </CopyRight>
+            <ScrollTop
+              aria-label="Scroll to top"
+              onClick={scrollToTop}
+              isVisible={isVisible}
+            >
+              Scroll to Top
+              <Icon name="FaArrowUp" size={1.5} />
+            </ScrollTop>
+          </ContentWrapper>
+        </RevealWrapper>
+      )}
+      {!isExpanded && (
+        <ContentWrapper isExpanded={isExpanded}>
+          <CopyRight>
+            <Icon name="FaCopyright" size={1.5} /> Transpiled 2024
+          </CopyRight>
+          <ScrollTop
+            aria-label="Scroll to top"
+            onClick={scrollToTop}
+            isVisible={isVisible}
+          >
+            Scroll to Top
+            <Icon name="FaArrowUp" size={1.5} />
+          </ScrollTop>
+        </ContentWrapper>
+      )}
+    </FooterWrapper>
   );
 };
 
 // Styled components
-const Background = styled.div`
+const FooterWrapper = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: 4rem;
+  padding: 2rem 4rem;
   background-color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: clamp(1.6rem, 2vw, 1.8rem);
 
-  position: fixed;
-  bottom: 0;
+  /* Adjust position based on isFooterStatic */
+  position: ${({ isFooterStatic }) => (isFooterStatic ? 'static' : 'fixed')};
+  bottom: ${({ isFooterStatic }) => (isFooterStatic ? 'auto' : '0')};
   left: 0;
   z-index: 1000;
 
-  max-height: ${({ isExpanded }) => (isExpanded ? '500px' : '60px')};
+  max-height: ${({ isExpanded }) => (isExpanded ? '200px' : '60px')};
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
 `;
 
 const ContentWrapper = styled.div`
@@ -57,7 +103,6 @@ const ContentWrapper = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
 
   padding-bottom: ${({ isExpanded }) => (isExpanded ? '1rem' : '0')};
-  transition: padding-bottom 0.5s ease-in-out;
 `;
 
 const CopyRight = styled.div`
@@ -75,26 +120,6 @@ const ScrollTop = styled.div`
 
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
-`;
-
-const ContactDetails = styled.div`
-  margin-top: 1rem;
-  color: ${({ theme }) => theme.colors.white};
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  transform: ${({ isExpanded }) =>
-    isExpanded ? 'translateY(0)' : 'translateY(-20px)'};
-  opacity: ${({ isExpanded }) => (isExpanded ? '1' : '0')};
-  transition:
-    opacity 0.5s ease-in-out,
-    transform 0.5s ease-in-out;
-`;
-
-const ContactItem = styled.div`
-  margin-bottom: 0.5rem;
 `;
 
 export default Footer;

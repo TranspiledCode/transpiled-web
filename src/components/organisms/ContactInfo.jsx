@@ -8,21 +8,6 @@ import links from 'data/navigation';
 const ContactInfo = () => (
   <FooterWrapper>
     <Column>
-      <CompanyInfo>
-        <CompanyName>Transpiled</CompanyName>
-        <SocialIconsWrapper>
-          <SocialIcons />
-        </SocialIconsWrapper>
-      </CompanyInfo>
-    </Column>
-
-    <Column>
-      <NavLinks>
-        <NavMenu links={links} />
-      </NavLinks>
-    </Column>
-
-    <Column>
       <ContactDetails>
         <ContactItem>
           <ContactLabel>Email:</ContactLabel>
@@ -39,6 +24,21 @@ const ContactInfo = () => (
           <ContactText>123 Main St, City, Country</ContactText>
         </ContactItem>
       </ContactDetails>
+    </Column>
+
+    <Column>
+      <NavLinks>
+        <NavMenu links={links} />
+      </NavLinks>
+    </Column>
+
+    <Column>
+      <CompanyInfo>
+        <CompanyName>Transpiled</CompanyName>
+        <SocialIconsWrapper>
+          <SocialIcons />
+        </SocialIconsWrapper>
+      </CompanyInfo>
     </Column>
   </FooterWrapper>
 );
@@ -60,7 +60,6 @@ const FooterWrapper = styled.div`
 const Column = styled.div`
   flex: 1;
   margin: 1rem 0;
-  border: 1px solid ${({ theme }) => theme.colors.white};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +82,7 @@ const CompanyInfo = styled.div`
   width: 100%;
 
   @media (min-width: 768px) {
-    align-items: flex-start;
+    align-items: flex-end;
   }
 `;
 
