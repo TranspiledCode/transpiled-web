@@ -3,8 +3,8 @@ import Card from './Card';
 // import Button from './Button';
 import config from '../config/home';
 
-const Container = Styled.div`
-display: flex;
+const Container = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@ const Title = styled.h2`
   letter-spacing: -2px;
 `;
 
-const SubTitle = styled.p`
+const Subtitle = styled.p`
   width: 100%;
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
@@ -38,6 +38,7 @@ const SubTitle = styled.p`
     text-align: left;
   }
 `;
+const SectionInfo = styled.div``;
 
 const CardArea = styled.h1`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
