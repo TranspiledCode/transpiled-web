@@ -76,12 +76,12 @@ const ButtonArea = styled.div`
 `;
 
 const WhySection = () => {
-  const { cards } = config.Why;
+  const { cards } = config.why;
   return (
     <Container>
       <SectionInfo>
-        <Title>{config.Why.title}</Title>
-        <Subtitle>{config.Why.subtitle}</Subtitle>
+        <Title>{config.why.title}</Title>
+        <Subtitle>{config.why.subtitle}</Subtitle>
       </SectionInfo>
       <CardArea>
         {cards.map((card, index) => (

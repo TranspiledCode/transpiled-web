@@ -33,7 +33,7 @@ const config = {
       },
     ],
   },
-  Why: {
+  why: {
     title: 'WHY CHOOSE US?',
     subtitle: 'Your Partner in Digital Innovation',
     cards: [
