@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import SampleHeader from 'organisms/SampleHeader';
+import ServicesHero from '../components/organisms/ServicesHero';
 
 const ServicesWrapper = styled.section`
   display: flex;
@@ -14,6 +15,7 @@ const Services = () => {
   return (
     <ServicesWrapper>
       <SampleHeader />
+      <ServicesHero />
     </ServicesWrapper>
   );
 };
