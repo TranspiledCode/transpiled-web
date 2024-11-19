@@ -85,7 +85,6 @@ const WhySection = () => {
       </SectionInfo>
       <CardArea>
         {cards.map((card, index) => (
-          //update "Card" tag to "WhyCard" when new "tile" is completed
           <WhyCard
             key={index}
             label={card.label}
