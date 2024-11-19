@@ -80,8 +80,19 @@ const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
   display: grid;
+<<<<<<< HEAD
   gap: 4rem;
   grid-template-rows: 1fr;
+=======
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  width: 50vw;
+  height: 20vw;
+  gap: 2rem;
+  @media screen and (max-width: 60em) {
+    grid-template-rows: repeat(4, 1fr);
+  }
+>>>>>>> 06ec056 (Updated WhySection - Created WhyCard.jsx and implemented into page)
 
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
@@ -105,6 +116,7 @@ const WhySection = () => {
   } = content;
 
   return (
+<<<<<<< HEAD
     <SectionContainer>
       <SectionContent>
         <SectionInfo>
@@ -137,6 +149,35 @@ const WhySection = () => {
         </ButtonArea>
       </SectionContent>
     </SectionContainer>
+=======
+    <Container>
+      <SectionInfo>
+        <Title>{config.why.title}</Title>
+        <Subtitle>{config.why.subtitle}</Subtitle>
+      </SectionInfo>
+      <CardArea>
+        {cards.map((card, index) => (
+          //update "Card" tag to "WhyCard" when new "tile" is completed
+          <WhyCard
+            key={index}
+            label={card.label}
+            heading={card.heading}
+            description={card.description}
+          />
+        ))}
+      </CardArea>
+      <ButtonArea>
+        <Button
+          type="call to action"
+          icon="FaArrowRight"
+          variant="ghost"
+          size="medium"
+        >
+          Learn More
+        </Button>
+      </ButtonArea>
+    </Container>
+>>>>>>> 06ec056 (Updated WhySection - Created WhyCard.jsx and implemented into page)
   );
 };
 
