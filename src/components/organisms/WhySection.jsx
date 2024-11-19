@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Card from './Card';
-import Button from './Button';
-import config from '../config/home';
+import Card from 'molecules/Card';
+import Button from 'atoms/Button';
+import config from 'data/home';
 
 const Container = styled.div`
   display: flex;

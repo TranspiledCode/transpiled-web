@@ -1,11 +1,10 @@
 // src/App.js
-import Hero from 'components/Hero';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import SampleHeader from 'components/SampleHeader';
-import ContactSection from '../components/ContactSection';
-import ServicesSection from '../components/ServicesSection';
-import WhySection from '../components/WhySection';
+import Hero from 'organisms/Hero';
+import Footer from 'organisms/Footer';
+import SampleHeader from 'organisms/SampleHeader';
+import ContactSection from 'organisms/ContactSection';
+import ServicesSection from 'organisms/ServicesSection';
+import WhySection from 'organisms/WhySection';
 
 const Home = () => {
   return (
