@@ -22,7 +22,8 @@ const Title = styled.h3`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
-  line-height: clamp(4.8rem, 10vw, 8.6rem);
+  line-height: 1em;
+  letter-spacing: -0.05em;
 `;
 const Subtitle = styled.p`
   width: 100%;
@@ -31,6 +32,8 @@ const Subtitle = styled.p`
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
+  line-height: 1.4em;
+  letter-spacing: -0.02em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     width: clamp(60rem, 100%, 70rem);
@@ -44,6 +47,8 @@ const Caption = styled.p`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.white};
   max-width: 25rem;
+  line-height: 1.4em;
+  letter-spacing: 0.02em;
 `;
 
 const ServicesHero = () => {
