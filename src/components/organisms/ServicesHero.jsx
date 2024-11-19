@@ -24,9 +24,15 @@ const Title = styled.h3`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
-  line-height: 1em;
+  line-height: 0.95em;
   letter-spacing: -0.04em;
-  max-width: 90rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    max-width: 80rem;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    max-width: 95rem;
+  }
 `;
 
 const SubtitleContainer = styled.div`
@@ -67,7 +73,7 @@ const Caption = styled.p`
 
 const ServicesHero = () => {
   // MOVE OUT TO CONFIG LATER //
-  const title = 'TODAYS SOLUTIONS FUTURE PROOFED';
+  const title = "TODAY'S SOLUTIONS FUTURE PROOFED";
   const subtitle =
     'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.';
   const caption =
