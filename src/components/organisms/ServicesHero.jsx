@@ -38,7 +38,7 @@ const Title = styled.h3`
 const SubtitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: clamp(2rem, 4vw, 4rem);
 `;
 const Subtitle = styled.p`
   width: 100%;
