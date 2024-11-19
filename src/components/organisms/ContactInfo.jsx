@@ -10,18 +10,12 @@ const ContactInfo = () => (
     <Column>
       <ContactDetails>
         <ContactItem>
-          <ContactLabel>Email:</ContactLabel>
           <ContactLink href="mailto:info@yourcompany.com">
-            info@yourcompany.com
+            info@transpiled.com
           </ContactLink>
         </ContactItem>
         <ContactItem>
-          <ContactLabel>Phone:</ContactLabel>
           <ContactLink href="tel:+14582569363">(458) 256-9363</ContactLink>
-        </ContactItem>
-        <ContactItem>
-          <ContactLabel>Address:</ContactLabel>
-          <ContactText>123 Main St, City, Country</ContactText>
         </ContactItem>
       </ContactDetails>
     </Column>
@@ -73,7 +67,6 @@ const Column = styled.div`
   }
 `;
 
-/* First Column Styles */
 const CompanyInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -102,7 +95,6 @@ const SocialIconsWrapper = styled.div`
   }
 `;
 
-/* Second Column Styles */
 const NavLinks = styled.nav`
   display: flex;
   flex-direction: column;
@@ -111,21 +103,16 @@ const NavLinks = styled.nav`
   height: 100%;
 `;
 
-/* Third Column Styles */
 const ContactDetails = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const ContactItem = styled.div`
   margin-bottom: 1rem;
   display: flex;
   gap: 1rem;
-`;
-
-const ContactLabel = styled.span`
-  font-weight: 700;
-  margin-right: 0.5rem;
 `;
 
 const ContactLink = styled.a`
@@ -136,11 +123,6 @@ const ContactLink = styled.a`
   &:hover {
     color: ${({ theme }) => theme.colors.green};
   }
-`;
-
-const ContactText = styled.span`
-  font-size: 1.8rem;
-  margin: 0;
 `;
 
 export default ContactInfo;
