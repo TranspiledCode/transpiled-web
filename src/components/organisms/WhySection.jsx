@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Card from 'molecules/Card';
+import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
 import config from 'data/home';
 
@@ -61,7 +61,7 @@ const CardArea = styled.h1`
   gap: 2rem;
   @media screen and (max-width: 60em) {
     grid-template-rows: repeat(4, 1fr);
-
+  }
 
   ${({ theme }) => theme.mediaQueries.md} {
     flex-direction: row;
@@ -85,7 +85,8 @@ const WhySection = () => {
       </SectionInfo>
       <CardArea>
         {cards.map((card, index) => (
-          <Card
+          //update "Card" tag to "WhyCard" when new "tile" is completed
+          <WhyCard
             key={index}
             label={card.label}
             heading={card.heading}
