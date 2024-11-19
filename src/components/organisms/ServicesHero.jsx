@@ -55,9 +55,14 @@ const Caption = styled.p`
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.white};
-  width: 40rem;
+  max-width: 35rem;
   line-height: 1.4em;
   letter-spacing: 0.015em;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: clamp(30rem, 40vw, 40rem);
+    max-width: 40rem;
+  }
 `;
 
 const ServicesHero = () => {
