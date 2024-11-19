@@ -50,17 +50,21 @@ const Subtitle = styled.p`
 `;
 
 const ServicesContact = () => {
+  // MOVE OUT TO CONFIG LATER //
+  const title = 'READY TO BUILD?';
+  const subtitle =
+    'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.';
+  const buttonText = 'Contact Us';
+  // MOVE OUT TO CONFIG LATER //
+
   return (
     <SectionContainer>
       <SectionContent>
-        <Title>READY TO BUILD?</Title>
+        <Title>{title}</Title>
         <SubtitleContainer>
-          <Subtitle>
-            From websites and apps to custom solutions, we’re here to bring your
-            ideas to life. Let’s create something extraordinary together.
-          </Subtitle>
+          <Subtitle>{subtitle}</Subtitle>
           <Button icon="FaArrowRight" variant="outline" size="medium">
-            Contact Us
+            {buttonText}
           </Button>
         </SubtitleContainer>
       </SectionContent>
