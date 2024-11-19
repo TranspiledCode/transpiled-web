@@ -66,18 +66,21 @@ const Caption = styled.p`
 `;
 
 const ServicesHero = () => {
+  // MOVE OUT TO CONFIG LATER //
+  const title = 'TODAYS SOLUTIONS FUTURE PROOFED';
+  const subtitle =
+    'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.';
+  const caption =
+    'explore our services in depth or schedule a consultation below.';
+  // MOVE OUT TO CONFIG LATER //
+
   return (
     <SectionContainer>
       <SectionContent>
-        <Title>TODAYS SOLUTIONS FUTURE PROOFED</Title>
+        <Title>{title}</Title>
         <SubtitleContainer>
-          <Subtitle>
-            Whether you need a dynamic website, a mobile app, or a custom-built
-            system, Transpiled delivers exceptional results.
-          </Subtitle>
-          <Caption>
-            explore our services in depth or schedule a consultation below.
-          </Caption>
+          <Subtitle>{subtitle}</Subtitle>
+          <Caption>{caption}</Caption>
         </SubtitleContainer>
       </SectionContent>
     </SectionContainer>
