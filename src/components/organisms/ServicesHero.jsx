@@ -13,17 +13,26 @@ const SectionContainer = styled.section`
 `;
 
 const SectionContent = styled.div`
-  max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  display: flex;
+  flex-direction: column;
+  padding: 8vw 0;
 `;
-
 const Title = styled.h3`
   font-family: ${({ theme }) => theme.fonts.poppins};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: 1em;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
+  max-width: 90rem;
+`;
+
+const SubtitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 `;
 const Subtitle = styled.p`
   width: 100%;
@@ -33,10 +42,10 @@ const Subtitle = styled.p`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
   line-height: 1.4em;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
+    width: clamp(60rem, 100%, 90rem);
     text-align: left;
   }
 `;
@@ -46,9 +55,9 @@ const Caption = styled.p`
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.white};
-  max-width: 25rem;
+  width: 40rem;
   line-height: 1.4em;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.015em;
 `;
 
 const ServicesHero = () => {
@@ -56,13 +65,15 @@ const ServicesHero = () => {
     <SectionContainer>
       <SectionContent>
         <Title>TODAYS SOLUTIONS FUTURE PROOFED</Title>
-        <Subtitle>
-          Whether you need a dynamic website, a mobile app, or a custom-built
-          system, Transpiled delivers exceptional results.
-        </Subtitle>
-        <Caption>
-          explore our services in depth or schedule a consultation below.
-        </Caption>
+        <SubtitleContainer>
+          <Subtitle>
+            Whether you need a dynamic website, a mobile app, or a custom-built
+            system, Transpiled delivers exceptional results.
+          </Subtitle>
+          <Caption>
+            explore our services in depth or schedule a consultation below.
+          </Caption>
+        </SubtitleContainer>
       </SectionContent>
     </SectionContainer>
   );
