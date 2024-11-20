@@ -11,13 +11,32 @@ const ServicesWrapper = styled.section`
   min-height: 100vh;
 `;
 
+// Remove After Debug //
+const TestWrapper = styled.div`
+  width: 100%;
+  max-width: 100vw;
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  padding: 2vw 0;
+`;
+// Remove After Debug //
+
 const Services = () => {
   return (
     <ServicesWrapper>
       <SampleHeader />
       <ServicesHero />
       <ServicesContact />
-      <InfoTab />
+      <TestWrapper>
+        <ContentWrapper>
+          <InfoTab />
+        </ContentWrapper>
+      </TestWrapper>
     </ServicesWrapper>
   );
 };
