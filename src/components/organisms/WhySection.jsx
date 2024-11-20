@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  background-color: ${({ theme }) => theme.colors.pink};
+  background-color: ${({ theme }) => theme.colors.black};
   background-image: url('https://images.pexels.com/photos/2514035/pexels-photo-2514035.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 
   ${({ theme }) => theme.mediaQueries.md} {
@@ -18,6 +18,7 @@ const Container = styled.div`
     padding: 6rem;
   }
 `;
+
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.green};
   font-family: ${({ theme }) => theme.fonts.poppins};
@@ -36,7 +37,7 @@ const Subtitle = styled.p`
   text-align: left;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
+    width: clamp (60rem, 100%, 70rem);
     text-align: left;
   }
 `;
@@ -49,7 +50,12 @@ const SectionInfo = styled.div`
   gap: 0.5rem;
 `;
 
-const CardArea = styled.h1`
+const CardGridWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+`;
+const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   color: ${({ theme }) => theme.colors.lightGray};
   width: 100%;
@@ -61,6 +67,7 @@ const CardArea = styled.h1`
   gap: 2rem;
   @media screen and (max-width: 60em) {
     grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
@@ -83,16 +90,18 @@ const WhySection = () => {
         <Title>{config.why.title}</Title>
         <Subtitle>{config.why.subtitle}</Subtitle>
       </SectionInfo>
-      <CardArea>
-        {cards.map((card, index) => (
-          <WhyCard
-            key={index}
-            label={card.label}
-            heading={card.heading}
-            description={card.description}
-          />
-        ))}
-      </CardArea>
+      <CardGridWrapper>
+        <CardArea>
+          {cards.map((card, index) => (
+            <WhyCard
+              key={index}
+              label={card.label}
+              heading={card.heading}
+              description={card.description}
+            />
+          ))}
+        </CardArea>
+      </CardGridWrapper>
       <ButtonArea>
         <Button
           type="call to action"
