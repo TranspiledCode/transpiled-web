@@ -33,7 +33,7 @@ const FeatureArea = styled.div`
   grid-template-columns: repeat(2, 1fr);
   column-gap: clamp(2rem, 6vw, 15rem);
   row-gap: clamp(2rem, 4vw, 8rem);
-  padding: 4vw 0;
+  padding: clamp(4rem, 4vw, 8rem) 0;
   ${({ theme }) => theme.mediaQueries.lg} {
     grid-template-columns: repeat(2, clamp(10rem, 30vw, 40rem));
   }
@@ -51,6 +51,7 @@ const FeatureTitle = styled.h4`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   line-height: 1.2em;
   letter-spacing: -0.015em;
+  width: 90%;
 `;
 const FeatureCaption = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
