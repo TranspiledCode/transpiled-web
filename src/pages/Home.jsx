@@ -4,7 +4,7 @@ import Footer from 'organisms/Footer';
 import SampleHeader from 'organisms/SampleHeader';
 import ContactSection from 'organisms/ContactSection';
 import ServicesSection from 'organisms/ServicesSection';
-import TestimonialsSection from 'organisms/TestimonialsSection';
+import WhySection from 'organisms/WhySection';
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       <SampleHeader />
       <Hero />
       <ServicesSection />
-      <TestimonialsSection />
+      <WhySection />
       <ContactSection />
       <Footer />
     </>
