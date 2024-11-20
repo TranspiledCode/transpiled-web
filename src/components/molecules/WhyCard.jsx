@@ -4,38 +4,24 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-  width: auto;
+  width: 100%;
 `;
-
-const Heading = styled.div`
+const Heading = styled.h1`
+  font-family: ${({ theme }) => theme.fonts.poppins};
+  font-size: 2rem;
   color: ${({ theme }) => theme.colors.lightBlue};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  line-height: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.4px;
 `;
-
-const Description = styled.div`
-  color: ${({ theme }) => theme.colors.darkGray};
+const Description = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: 1.6rem;
-  text-align: justify;
-`;
-
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.4rem 2rem 2rem;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
 
 const WhyCard = ({ heading, description }) => {
   return (
     <Container>
-      <TextContainer>
-        <Heading>{heading}</Heading>
-        <Description>{description}</Description>
-      </TextContainer>
+      <Heading>{heading}</Heading>
+      <Description>{description}</Description>
     </Container>
   );
 };
