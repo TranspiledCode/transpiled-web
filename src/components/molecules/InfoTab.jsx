@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 const TabContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.gray};
 `;
 const Title = styled.h3`
   color: ${({ theme }) => theme.colors.green};
@@ -20,17 +22,26 @@ const Subtitle = styled.p`
   text-align: justify;
   line-height: 1.4em;
   letter-spacing: -0.015em;
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: clamp(60rem, 100%, 85rem);
+    text-align: left;
+  }
 `;
 const FeatureArea = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 2vw 0;
+  column-gap: clamp(2rem, 6vw, 15rem);
+  row-gap: clamp(2rem, 4vw, 8rem);
+  padding: 4vw 0;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    grid-template-columns: repeat(2, clamp(10rem, 30vw, 40rem));
+  }
 `;
 const Feature = styled.div`
-  width: 30rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: clamp(0.8rem, 1vw, 1.4rem);
 `;
 
 const FeatureTitle = styled.h4`
@@ -38,8 +49,7 @@ const FeatureTitle = styled.h4`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 700;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: justify;
-  line-height: 1.4em;
+  line-height: 1.2em;
   letter-spacing: -0.015em;
 `;
 const FeatureCaption = styled.p`
@@ -47,7 +57,6 @@ const FeatureCaption = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: justify;
   line-height: 1.4em;
   letter-spacing: -0.015em;
 `;
