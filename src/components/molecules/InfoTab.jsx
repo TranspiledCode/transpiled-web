@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 const TabContainer = styled.div`
@@ -28,7 +29,12 @@ const Subtitle = styled.p`
     text-align: left;
   }
 `;
-const FeatureArea = styled.div`
+const FeatureTab = styled.div`
+  max-height: ${({ isVisible }) => (isVisible ? '1000px' : '0')};
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+`;
+const FeatureContent = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: clamp(2rem, 6vw, 15rem);
@@ -43,7 +49,6 @@ const Feature = styled.div`
   flex-direction: column;
   gap: clamp(0.8rem, 1vw, 1.4rem);
 `;
-
 const FeatureTitle = styled.h4`
   color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
@@ -60,6 +65,10 @@ const FeatureCaption = styled.p`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   line-height: 1.4em;
   letter-spacing: -0.015em;
+`;
+
+const ToggleButton = styled.button`
+  margin: 8px 0;
 `;
 
 const InfoTab = () => {
@@ -85,18 +94,27 @@ const InfoTab = () => {
       caption: 'Built to help your site rank higher on search engines.',
     },
   ];
+  const [isVisible, setIsVisible] = useState(false);
+  const toggleVisibility = () => {
+    setIsVisible((prev) => !prev);
+  };
   return (
     <TabContainer>
       <Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>
-      <FeatureArea>
-        {features.map((feature, index) => (
-          <Feature key={index}>
-            <FeatureTitle>{feature.title}</FeatureTitle>
-            <FeatureCaption>{feature.caption}</FeatureCaption>
-          </Feature>
-        ))}
-      </FeatureArea>
+      <ToggleButton onClick={toggleVisibility}>
+        {isVisible ? 'Hide Features' : 'Show Features'}
+      </ToggleButton>
+      <FeatureTab isVisible={isVisible}>
+        <FeatureContent>
+          {features.map((feature, index) => (
+            <Feature key={index}>
+              <FeatureTitle>{feature.title}</FeatureTitle>
+              <FeatureCaption>{feature.caption}</FeatureCaption>
+            </Feature>
+          ))}
+        </FeatureContent>
+      </FeatureTab>
     </TabContainer>
   );
 };
