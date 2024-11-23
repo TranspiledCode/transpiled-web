@@ -3,15 +3,28 @@ import styled from '@emotion/styled';
 
 const TabContainer = styled.div`
   width: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid ${({ theme }) => theme.colors.gray};
 `;
+
+const TabHead = styled.div`
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-bottom: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  position: relative;
+`;
+const HeadTitle = styled.div``;
+
 const Title = styled.h3`
   color: ${({ theme }) => theme.colors.green};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: clamp(5rem, 8vw, 6.4rem);
+  font-size: clamp(4.8rem, 8vw, 6.4rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
 `;
@@ -30,16 +43,16 @@ const Subtitle = styled.p`
   }
 `;
 const FeatureTab = styled.div`
-  max-height: ${({ isVisible }) => (isVisible ? '1000px' : '0')};
+  max-height: ${({ isVisible }) => (isVisible ? '100vh' : '0')};
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.6s ease-in-out;
 `;
 const FeatureContent = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: clamp(2rem, 6vw, 15rem);
   row-gap: clamp(2rem, 4vw, 8rem);
-  padding: clamp(4rem, 4vw, 8rem) 0;
+  padding: clamp(2rem, 2vw, 4rem) 0 clamp(4rem, 4vw, 8rem);
   ${({ theme }) => theme.mediaQueries.lg} {
     grid-template-columns: repeat(2, clamp(10rem, 30vw, 40rem));
   }
@@ -67,8 +80,10 @@ const FeatureCaption = styled.p`
   letter-spacing: -0.015em;
 `;
 
-const ToggleButton = styled.button`
-  margin: 8px 0;
+const ButtonIcon = styled.div`
+  width: 100%;
+  text-align: right;
+  position: absolute;
 `;
 
 const InfoTab = () => {
@@ -100,11 +115,13 @@ const InfoTab = () => {
   };
   return (
     <TabContainer>
-      <Title>{title}</Title>
-      <Subtitle>{subtitle}</Subtitle>
-      <ToggleButton onClick={toggleVisibility}>
-        {isVisible ? 'Hide Features' : 'Show Features'}
-      </ToggleButton>
+      <TabHead onClick={toggleVisibility}>
+        <HeadTitle>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
+        </HeadTitle>
+        <ButtonIcon>{isVisible ? 'Less' : 'More'}</ButtonIcon>
+      </TabHead>
       <FeatureTab isVisible={isVisible}>
         <FeatureContent>
           {features.map((feature, index) => (
