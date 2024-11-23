@@ -1,6 +1,6 @@
 // ToastContext.js
 import React, { createContext, useState, useContext, useCallback } from 'react';
-import ToastContainer from 'components/ToastContainer';
+import ToastContainer from 'organisms/ToastContainer';
 import PropTypes from 'prop-types';
 
 const ToastContext = createContext();

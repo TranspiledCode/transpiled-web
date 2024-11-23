@@ -1,9 +1,10 @@
 // src/App.js
-import Hero from 'components/Hero';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import ContactSection from '../components/ContactSection';
-import ServicesSection from '../components/ServicesSection';
+import Hero from 'organisms/Hero';
+import Footer from 'organisms/Footer';
+import Header from 'organisms/Header';
+import ContactSection from 'organisms/ContactSection';
+import ServicesSection from 'organisms/ServicesSection';
+import TestimonialsSection from 'organisms/TestimonialsSection';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Header />
       <Hero />
       <ServicesSection />
+      <TestimonialsSection />
       <ContactSection />
       <Footer />
     </>

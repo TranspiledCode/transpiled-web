@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import Icon from './Icon';
+import Icon from 'atoms/Icon';
 import { useTheme } from '@emotion/react';
 
 const StyledButton = styled.button`

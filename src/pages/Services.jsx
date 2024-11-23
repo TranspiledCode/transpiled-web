@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import SampleHeader from 'components/SampleHeader';
+import SampleHeader from 'organisms/SampleHeader';
 
 const ServicesWrapper = styled.section`
   display: flex;

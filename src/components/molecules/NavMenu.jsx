@@ -1,4 +1,4 @@
-// src/components/NavBar.jsx
+// src/components/molecules/NavMenu.jsx
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';

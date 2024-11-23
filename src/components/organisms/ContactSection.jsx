@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import config from '../config/home';
-import ContactForm from './ContactForm';
+import config from 'data/home';
+import ContactForm from 'organisms/ContactForm';
 
 const ScrollTo = styled.div`
   pointer-events: none;
@@ -17,14 +17,8 @@ const Section = styled.section`
     ${({ theme }) => theme.colors.darkBlue},
     ${({ theme }) => theme.colors.fuchsia}
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4rem 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 6rem;
-  }
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
 `;
 
 const SectionContent = styled.div`

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
-import config from '../config/home';
-import Button from 'components/Button';
-import AnimatedSection from 'components/AnimatedSection';
+import config from 'data/home';
+import Button from 'atoms/Button';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
@@ -14,15 +14,8 @@ const HeroWrapper = styled.section`
     ${({ theme }) => theme.colors.darkBlue},
     ${({ theme }) => theme.colors.lightBlue}
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 6rem;
-  }
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
 `;
 
 const HeroContent = styled.div`
@@ -137,13 +130,13 @@ const Hero = () => {
             ))}
           </SubtitleText>
           <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
-          <AnimatedSection>
+          <RevealWrapper>
             <Link to="#contact">
               <StyledButton icon="FaArrowDown" variant="outline" size="medium">
                 {config.hero.buttonText}
               </StyledButton>
             </Link>
-          </AnimatedSection>
+          </RevealWrapper>
         </TitleWrapper>
       </HeroContent>
     </HeroWrapper>
