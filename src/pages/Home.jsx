@@ -1,7 +1,7 @@
 // src/App.js
 import Hero from 'organisms/Hero';
 import Footer from 'organisms/Footer';
-import SampleHeader from 'organisms/SampleHeader';
+import Header from 'organisms/Header';
 import ContactSection from 'organisms/ContactSection';
 import ServicesSection from 'organisms/ServicesSection';
 import TestimonialsSection from 'organisms/TestimonialsSection';
@@ -9,7 +9,7 @@ import TestimonialsSection from 'organisms/TestimonialsSection';
 const Home = () => {
   return (
     <>
-      <SampleHeader />
+      <Header />
       <Hero />
       <ServicesSection />
       <TestimonialsSection />
