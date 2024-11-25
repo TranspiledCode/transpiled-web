@@ -21,7 +21,7 @@ const TabHead = styled.div`
 const TitleArea = styled.div``;
 
 const Title = styled.h3`
-  color: ${({ theme }) => theme.colors.green};
+  color: ${({ theme, titleColor }) => theme.colors[titleColor]};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
   font-size: clamp(4.8rem, 8vw, 6.4rem);
@@ -89,7 +89,7 @@ const FeatureCaption = styled.p`
   letter-spacing: -0.015em;
 `;
 
-const InfoTab = ({ title, subtitle, features }) => {
+const InfoTab = ({ title, subtitle, features, titleColor }) => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
@@ -98,10 +98,10 @@ const InfoTab = ({ title, subtitle, features }) => {
     <TabContainer>
       <TabHead onClick={toggleVisibility}>
         <TitleArea>
-          <Title>{title}</Title>
+          <Title titleColor={titleColor}>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
         </TitleArea>
-        <IconWrapper>
+        <IconWrapper aria-hidden="true">
           <Icon name={isVisible ? 'FaMinus' : 'FaPlus'} size={1.6} />
         </IconWrapper>
       </TabHead>
@@ -120,8 +120,9 @@ const InfoTab = ({ title, subtitle, features }) => {
 };
 
 InfoTab.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  features: PropTypes.array,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  features: PropTypes.arrayOf(PropTypes.string.isRequired),
+  titleColor: PropTypes.oneOf(['green', 'lightBlue', 'fuchsia']).isRequired,
 };
 export default InfoTab;

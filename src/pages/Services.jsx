@@ -49,6 +49,7 @@ const Services = () => {
       caption: 'Built to help your site rank higher on search engines.',
     },
   ];
+  const titleColor = 'green';
   // Remove After Debug //
 
   return (
@@ -57,7 +58,12 @@ const Services = () => {
       <ServicesHero />
       <TestWrapper>
         <ContentWrapper>
-          <InfoTab title={title} subtitle={subtitle} features={features} />
+          <InfoTab
+            title={title}
+            subtitle={subtitle}
+            features={features}
+            titleColor={titleColor}
+          />
         </ContentWrapper>
       </TestWrapper>
       <ServicesContact />
