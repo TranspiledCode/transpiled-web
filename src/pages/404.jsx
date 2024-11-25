@@ -12,7 +12,7 @@ const ServicesWrapper = styled.section`
 const Services = () => {
   return (
     <ServicesWrapper>
-      <h1>Services</h1>
+      <h1>404 - Page Not Found</h1>
     </ServicesWrapper>
   );
 };

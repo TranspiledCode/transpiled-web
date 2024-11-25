@@ -1,9 +1,9 @@
 const links = [
   { url: '/', label: 'Home' },
   { url: '/services', label: 'Services' },
-  { url: '/', label: 'Testimonials' },
-  { url: '/', label: 'Contact' },
-  { url: '/', label: 'About' },
+  { url: '/testimonials', label: 'Testimonials' },
+  { url: '/contact', label: 'Contact' },
+  { url: '/about', label: 'About' },
 ];
 
 export default links;

@@ -14,6 +14,7 @@ import ScrollToHash from './utils/ScrollToHash';
 import PageLayout from 'templates/PageLayout';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import NotFound from './pages/404';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </PageLayout>
           </ToastProvider>
