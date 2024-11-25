@@ -1,9 +1,12 @@
 import styled from '@emotion/styled';
+import ServicesHero from '../components/organisms/ServicesHero';
+import ServicesContact from '../components/organisms/ServicesContact';
 
 const ServicesWrapper = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
   min-height: 100vh;
   background-color: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
@@ -12,7 +15,8 @@ const ServicesWrapper = styled.section`
 const Services = () => {
   return (
     <ServicesWrapper>
-      <h1>Services</h1>
+      <ServicesHero />
+      <ServicesContact />
     </ServicesWrapper>
   );
 };
