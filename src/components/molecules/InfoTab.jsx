@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import Icon from '../atoms/Icon';
 
 const TabContainer = styled.div`
-  width: 100%;
   max-width: 100vw;
   display: flex;
   flex-direction: column;
@@ -12,14 +11,13 @@ const TabContainer = styled.div`
 
 const TabHead = styled.div`
   display: flex;
-  align-items: space-between;
-  justify-content: space-between;
+  flex-direction: row;
   cursor: pointer;
   padding-bottom: clamp(1rem, 2vw, 2rem);
-  width: 100%;
   position: relative;
 `;
-const HeadTitle = styled.div``;
+
+const TitleArea = styled.div``;
 
 const Title = styled.h3`
   color: ${({ theme }) => theme.colors.green};
@@ -43,6 +41,15 @@ const Subtitle = styled.p`
     text-align: left;
   }
 `;
+
+const IconWrapper = styled.div`
+  width: 100%;
+  position: absolute;
+  text-align: right;
+  padding: 0.6rem 0;
+  color: ${({ theme }) => theme.colors.darkGray};
+`;
+
 const FeatureTab = styled.div`
   max-height: ${({ isVisible }) => (isVisible ? '100vh' : '0')};
   overflow: hidden;
@@ -81,14 +88,6 @@ const FeatureCaption = styled.p`
   letter-spacing: -0.015em;
 `;
 
-const TabIcon = styled.div`
-  width: 100%;
-  text-align: right;
-  position: absolute;
-  padding: 0.6rem 0;
-  color: ${({ theme }) => theme.colors.darkGray};
-`;
-
 const InfoTab = () => {
   const title = 'WEB DEVELOPMENT';
   const subtitle =
@@ -119,13 +118,13 @@ const InfoTab = () => {
   return (
     <TabContainer>
       <TabHead onClick={toggleVisibility}>
-        <HeadTitle>
+        <TitleArea>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
-        </HeadTitle>
-        <TabIcon>
+        </TitleArea>
+        <IconWrapper>
           <Icon name={isVisible ? 'FaMinus' : 'FaPlus'} size={1.6} />
-        </TabIcon>
+        </IconWrapper>
       </TabHead>
       <FeatureTab isVisible={isVisible}>
         <FeatureContent>
