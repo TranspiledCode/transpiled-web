@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import Icon from '../atoms/Icon';
 
 const TabContainer = styled.div`
   width: 100%;
@@ -80,10 +81,12 @@ const FeatureCaption = styled.p`
   letter-spacing: -0.015em;
 `;
 
-const ButtonIcon = styled.div`
+const TabIcon = styled.div`
   width: 100%;
   text-align: right;
   position: absolute;
+  padding: 0.6rem 0;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 const InfoTab = () => {
@@ -120,7 +123,9 @@ const InfoTab = () => {
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
         </HeadTitle>
-        <ButtonIcon>{isVisible ? 'Less' : 'More'}</ButtonIcon>
+        <TabIcon>
+          <Icon name={isVisible ? 'FaMinus' : 'FaPlus'} size={1.6} />
+        </TabIcon>
       </TabHead>
       <FeatureTab isVisible={isVisible}>
         <FeatureContent>
