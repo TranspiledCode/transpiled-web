@@ -25,16 +25,39 @@ const ContentWrapper = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   padding: 2vw 0;
 `;
-// Remove After Debug //
 
 const Services = () => {
+  const title = 'WEB DEVELOPMENT';
+  const subtitle =
+    'A great website is the foundation of your online presence. We build responsive, high-performance sites designed to impress and convert.';
+  const features = [
+    {
+      title: 'Responsive Design',
+      caption: 'Websites that look and work beautifully on all devices.',
+    },
+    {
+      title: 'Optimized Performance',
+      caption: 'Fast load times and smooth functionality.',
+    },
+    {
+      title: 'E-Commerce',
+      caption:
+        'Secure, scalable online stores with payment and inventory systems.',
+    },
+    {
+      title: 'SEO-Ready',
+      caption: 'Built to help your site rank higher on search engines.',
+    },
+  ];
+  // Remove After Debug //
+
   return (
     <ServicesWrapper>
       <SampleHeader />
       <ServicesHero />
       <TestWrapper>
         <ContentWrapper>
-          <InfoTab />
+          <InfoTab title={title} subtitle={subtitle} features={features} />
         </ContentWrapper>
       </TestWrapper>
       <ServicesContact />
