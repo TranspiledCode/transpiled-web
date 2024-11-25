@@ -39,13 +39,14 @@ const ContactInfo = () => (
 
 const FooterWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   width: 100%;
   max-width: ${({ theme }) => theme.layouts.maxWidth};
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -53,17 +54,13 @@ const FooterWrapper = styled.div`
 
 const Column = styled.div`
   flex: 1;
-  margin: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 
-  &:not(:last-child) {
-    margin-right: 0;
-
-    @media (min-width: 768px) {
-      margin-right: 2rem;
-    }
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin: 1rem 0;
   }
 `;
 
@@ -71,10 +68,9 @@ const CompanyInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     align-items: flex-end;
   }
 `;
@@ -90,29 +86,35 @@ const SocialIconsWrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     justify-content: flex-start;
   }
 `;
 
 const NavLinks = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  display: none;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 `;
 
 const ContactDetails = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    align-items: flex-start;
+  }
 `;
 
 const ContactItem = styled.div`
   margin-bottom: 1rem;
   display: flex;
-  gap: 1rem;
 `;
 
 const ContactLink = styled.a`
