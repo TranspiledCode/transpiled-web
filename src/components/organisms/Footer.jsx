@@ -28,7 +28,7 @@ const Footer = () => {
 const BaseFooter = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: 2rem 4rem;
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
   background-color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: clamp(1.6rem, 2vw, 1.8rem);
