@@ -60,14 +60,14 @@ const CardArea = styled.div`
   color: ${({ theme }) => theme.colors.lightGray};
   width: 100%;
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   width: 50vw;
   height: 20vw;
   gap: 2rem;
-  @media screen and (max-width: 60em) {
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
