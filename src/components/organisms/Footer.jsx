@@ -1,70 +1,53 @@
-import React, { useContext } from 'react';
+// Footer.js
+import React from 'react';
 import styled from '@emotion/styled';
-import GlobalContext from 'context/GlobalContext';
-import useScrollToTop from 'hooks/useScrollToTop';
-import Icon from 'atoms/Icon';
+import useIsAtBottom from 'hooks/useIsAtBottom';
+import ContactInfo from 'organisms/ContactInfo';
+
+import MiniFooter from 'molecules/MiniFooter';
 
 const Footer = () => {
-  const { menuOpen } = useContext(GlobalContext);
-  const { isVisible, scrollToTop } = useScrollToTop(menuOpen, 20);
+  const isAtBottom = useIsAtBottom(16);
 
   return (
-    <Background>
-      <ContentWrapper>
-        <CopyRight>
-          <Icon name="FaCopyright" size={1.5} /> Copyright 2024
-        </CopyRight>
-        <ScrollTop
-          aria-label="Scroll to top"
-          onClick={scrollToTop}
-          isVisible={isVisible}
-        >
-          Scroll to Top
-          <Icon name="FaArrowUp" size={1.5} />
-        </ScrollTop>
-      </ContentWrapper>
-    </Background>
+    <>
+      {!isAtBottom && (
+        <MiniFooterWrapper>
+          <MiniFooter />
+        </MiniFooterWrapper>
+      )}
+      <MainFooter>
+        <ContactInfo />
+        <MiniFooter />
+      </MainFooter>
+    </>
   );
 };
 
-const Background = styled.div`
+// BaseFooter styles
+const BaseFooter = styled.div`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
+  background-color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: clamp(1.6rem, 2vw, 1.8rem);
-
-  background-color: ${({ theme }) => theme.colors.black};
+  z-index: 500;
 `;
 
-const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100%;
-  max-width: ${({ theme }) => theme.layouts.maxWidth};
+const MiniFooterWrapper = styled(BaseFooter)`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 6rem;
 `;
 
-const CopyRight = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+const MainFooter = styled(BaseFooter)`
+  position: relative;
 
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const ScrollTop = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  color: ${({ theme }) => theme.colors.white};
-
-  cursor: pointer;
+  ${({ theme }) => theme.mediaQueries.md} {
+    height: 17rem;
+  }
 `;
 
 export default Footer;

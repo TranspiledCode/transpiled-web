@@ -1,105 +1,130 @@
 // ContactInfo.jsx
 import React from 'react';
 import styled from '@emotion/styled';
-import SocialIcons from '../SocialIcons';
+import SocialIcons from 'molecules/SocialIcons';
+import NavMenu from 'molecules/NavMenu';
+import links from 'data/navigation';
 
 const ContactInfo = () => (
-  <ContactInfoWrapper>
-    <ContactInfoContainer>
-      <Title>Contact Us</Title>
-      <ContactDetailWrapper>
-        <Email>
-          <EmailTitle>Email</EmailTitle>
-          <EmailLink href="mailto:info@transpiled.com">
+  <FooterWrapper>
+    <Column>
+      <ContactDetails>
+        <ContactItem>
+          <ContactLink href="mailto:info@yourcompany.com">
             info@transpiled.com
-          </EmailLink>
-        </Email>
-      </ContactDetailWrapper>
-      <ContactDetailWrapper>
-        <Phone>
-          <PhoneTitle>Phone</PhoneTitle>
-          <PhoneLink href="tel:+14582569363">(458) 256-9363</PhoneLink>
-        </Phone>
-      </ContactDetailWrapper>
-      <ContactDetailWrapper>
-        <SocialIcons />
-      </ContactDetailWrapper>
-    </ContactInfoContainer>
-  </ContactInfoWrapper>
+          </ContactLink>
+        </ContactItem>
+        <ContactItem>
+          <ContactLink href="tel:+14582569363">(458) 256-9363</ContactLink>
+        </ContactItem>
+      </ContactDetails>
+    </Column>
+
+    <Column>
+      <NavLinks>
+        <NavMenu links={links} />
+      </NavLinks>
+    </Column>
+
+    <Column>
+      <CompanyInfo>
+        <CompanyName>Transpiled</CompanyName>
+        <SocialIconsWrapper>
+          <SocialIcons />
+        </SocialIconsWrapper>
+      </CompanyInfo>
+    </Column>
+  </FooterWrapper>
 );
 
-const ContactInfoWrapper = styled.div`
+const FooterWrapper = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
+  width: 100%;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const Column = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin: 1rem 0;
+  }
+`;
+
+const CompanyInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
-  @media (min-width: 768px) {
-    flex: 1;
+  ${({ theme }) => theme.mediaQueries.md} {
+    align-items: flex-end;
   }
 `;
 
-const ContactInfoContainer = styled.div`
+const CompanyName = styled.h3`
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+`;
+
+const SocialIconsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    justify-content: flex-start;
+  }
+`;
+
+const NavLinks = styled.nav`
+  display: none;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+`;
+
+const ContactDetails = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  align-items: flex-start;
-  margin: 3rem auto;
+  align-items: center;
+  width: 100%;
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     align-items: flex-start;
-    width: 80%;
   }
 `;
 
-const Title = styled.h3`
-  font-size: 4rem;
-  text-transform: uppercase;
-  font-weight: 700;
-
-  @media (min-width: 768px) {
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 5rem;
-  }
-`;
-
-const ContactDetailWrapper = styled.div`
+const ContactItem = styled.div`
+  margin-bottom: 1rem;
   display: flex;
-  flex-direction: column;
-  margin-top: 1.5rem;
 `;
 
-const Email = styled.div`
+const ContactLink = styled.a`
+  font-size: 1.8rem;
   color: ${({ theme }) => theme.colors.white};
-`;
+  text-decoration: none;
 
-const EmailTitle = styled.p`
-  font-size: 3rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.green};
-`;
-
-const EmailLink = styled.a`
-  font-size: 2rem;
-  font-weight: 300;
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const Phone = styled.div`
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const PhoneTitle = styled.p`
-  font-size: 3rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.green};
-`;
-
-const PhoneLink = styled.a`
-  font-size: 2rem;
-  font-weight: 300;
-  color: ${({ theme }) => theme.colors.white};
+  &:hover {
+    color: ${({ theme }) => theme.colors.green};
+  }
 `;
 
 export default ContactInfo;

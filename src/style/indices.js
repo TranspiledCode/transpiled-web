@@ -1,8 +1,9 @@
 const zIndices = {
-  header: 600,
+  header: 500,
+  footer: 300,
+  scrollToTop: 600,
   mobileNavOverlay: 700,
   mobileNavButton: 800,
-  scrollToTop: 900,
   toast: 1000,
 };
 

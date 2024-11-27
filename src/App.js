@@ -11,8 +11,10 @@ import { ToastProvider } from './context/ToastContext';
 import RouteToTop from './utils/RouteToTop';
 import ScrollToHash from './utils/ScrollToHash';
 
+import PageLayout from 'templates/PageLayout';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import NotFound from './pages/404';
 
 const App = () => {
   return (
@@ -22,10 +24,13 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <ContextProvider>
           <ToastProvider position="bottom-left">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-            </Routes>
+            <PageLayout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </PageLayout>
           </ToastProvider>
         </ContextProvider>
       </ThemeProvider>
