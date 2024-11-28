@@ -6,7 +6,7 @@ import config from 'data/home';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
@@ -35,18 +35,18 @@ const Subtitle = styled.p`
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: left;
+  width: 100%;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp (60rem, 100%, 70rem);
-    text-align: left;
+    width: clamp(60rem, 100%, 70rem);
   }
 `;
+
 const SectionInfo = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.5rem;
 `;
 
@@ -54,25 +54,26 @@ const CardGridWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 2rem;
-`;
-const CardArea = styled.div`
-  max-width: ${({ theme }) => theme.layouts.maxWidth};
-  color: ${({ theme }) => theme.colors.lightGray};
-  width: 100%;
-  display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(1, 1fr);
   width: 50vw;
+`;
+
+const CardArea = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: grid;
   gap: 2rem;
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(2, 1fr);
-  }
+  justify-items: left;
+
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
   }
 `;
 
@@ -85,6 +86,7 @@ const ButtonArea = styled.div`
 
 const WhySection = () => {
   const { cards } = config.why;
+
   return (
     <Container>
       <SectionInfo>
