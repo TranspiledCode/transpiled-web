@@ -54,6 +54,8 @@ const CardGridWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
 `;
 const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
@@ -63,7 +65,6 @@ const CardArea = styled.div`
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(1, 1fr);
   width: 50vw;
-  height: 20vw;
   gap: 2rem;
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-rows: repeat(2, 1fr);
@@ -71,7 +72,7 @@ const CardArea = styled.div`
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
