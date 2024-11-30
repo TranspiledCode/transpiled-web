@@ -14,7 +14,10 @@ const ServicesWrapper = styled.section`
 
 const TabAreaWrapper = styled.section`
   width: 100%;
-  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 4vw, 8rem);
 `;
 
 const Services = () => {
