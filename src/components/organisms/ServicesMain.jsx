@@ -33,14 +33,15 @@ const Header = styled.h1`
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: clamp(4.8rem, 10vw, 8.6rem);
   padding-bottom: clamp(1rem, 8vw, 6rem);
+  padding-right: 2rem;
 `;
 
 const SubHeader = styled.h2`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
-  font-size: clamp(1rem, 4vw, 3rem);
-  line-height: clamp(1.8rem, 4vw, 3.6rem);
+  font-size: clamp(0.5rem, 4vw, 1.6rem);
+  line-height: clamp(1.8rem, 4vw, 2.6rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -60,6 +61,7 @@ const Paragraph = styled.p`
   align-items: left;
   text-align: left;
   color: ${({ theme }) => theme.colors.white};
+  margin-right: 65vw;
 `;
 const ServicesMain = () => {
   return (
@@ -74,7 +76,7 @@ const ServicesMain = () => {
             SYSTEM, TRANSPILED DELIVERS EXCEPTIONALLY DELIVERED RESULTS
           </SubHeader>
           <Paragraph>
-            EXPLORE OUR SERVICES IN DEPTH OR SCHEDULE A CONSULTATION BELOW
+            EXPLORE OUR SERVICES IN DEPTH OR SCHEDULE A CONSULTATION BELOW.
           </Paragraph>
         </ContentWrapper>
       </MainWrapper>
