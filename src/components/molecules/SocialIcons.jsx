@@ -8,7 +8,6 @@ const Social = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 2rem;
 `;
 
 const SocialIcon = styled.a`

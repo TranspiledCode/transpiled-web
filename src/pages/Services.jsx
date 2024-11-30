@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import SampleHeader from 'organisms/SampleHeader';
 import ServicesHero from '../components/organisms/ServicesHero';
 import InfoTab from '../components/molecules/InfoTab';
 import ServicesContact from '../components/organisms/ServicesContact';
@@ -22,7 +21,6 @@ const Services = () => {
   const { infoTabs } = config.serviceTabs;
   return (
     <ServicesWrapper>
-      <SampleHeader />
       <ServicesHero />
       <TabAreaWrapper>
         {infoTabs.map((infoTab, index) => (
