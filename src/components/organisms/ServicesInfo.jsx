@@ -1,19 +1,26 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 import InfoTab from '../../components/molecules/InfoTab';
 import config from '../../data/services';
 
-const TabAreaWrapper = styled.section`
+const TabArea = styled.section`
   width: 100%;
+  ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
+`;
+
+const AreaContent = styled.div`
+  width: 100%;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
   display: flex;
   flex-direction: column;
   gap: clamp(4rem, 4vw, 8rem);
 `;
 
 const ServicesInfo = () => {
-    const { infoTabs } = config.serviceTabs;
-    return (
-        <TabAreaWrapper>
+  const { infoTabs } = config.serviceTabs;
+  return (
+    <TabArea>
+      <AreaContent>
         {infoTabs.map((infoTab, index) => (
           <InfoTab
             key={index}
@@ -23,7 +30,8 @@ const ServicesInfo = () => {
             titleColor={infoTab.titleColor}
           />
         ))}
-      </TabAreaWrapper>
-    )
-}
-export default ServicesInfo
+      </AreaContent>
+    </TabArea>
+  );
+};
+export default ServicesInfo;
