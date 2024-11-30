@@ -5,7 +5,6 @@ import Footer from 'organisms/Footer';
 
 const Layout = ({ children }) => {
 
-  
   return (
     <>
       <Header />
