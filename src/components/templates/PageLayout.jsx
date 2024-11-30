@@ -4,6 +4,8 @@ import Header from 'organisms/SampleHeader';
 import Footer from 'organisms/Footer';
 
 const Layout = ({ children }) => {
+
+  
   return (
     <>
       <Header />
