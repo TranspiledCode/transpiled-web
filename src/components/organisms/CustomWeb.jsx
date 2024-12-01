@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// import ExpandButton from 'atoms/ExpandButton';
+import ExpandButton from 'atoms/ExpandButton';
 
 const Container = styled.div`
   border-bottom: 0.3rem solid ${({ theme }) => theme.colors.darkGray};
@@ -32,7 +32,7 @@ const Subtitle = styled.p`
 const CustomWeb = () => {
   return (
     <Container>
-      {/* <ExpandButton /> */}
+      <ExpandButton />
       <Title>Custom Web Solutions</Title>
       <Subtitle>
         When off-the-shelf software isn’t enough, we build custom solutions

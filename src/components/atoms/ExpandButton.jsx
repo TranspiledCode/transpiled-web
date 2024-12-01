@@ -1,26 +1,23 @@
-import { useState } from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 
-const Menu = styled.div`
+const Container = styled.div`
   display: flex;
-
-  color: ${({ theme }) => theme.colors.white};
-  transition: top 0.5s ease-in-out;
-  z-index: 1;
+  width: 100%;
 `;
+const Button = styled.button`
+  margin-left: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 2rem;
+`;
+
 const ExpandButton = () => {
-  const [menuOpen, toggleMenu] = useState(false);
-
-  const handleClick = () => {
-    toggleMenu(!menuOpen);
-  };
-
   return (
-    <>
-      <Menu menuOpen={menuOpen}>
-        <Menu onClick={handleClick} />
-      </Menu>
-    </>
+    <Container>
+      <Button>{'\u2795'}</Button>
+    </Container>
   );
 };
 

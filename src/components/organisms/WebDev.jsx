@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// import ExpandButton from 'atoms/ExpandButton';
+import ExpandButton from 'atoms/ExpandButton';
 
 const Container = styled.div`
   border-bottom: 0.3rem solid ${({ theme }) => theme.colors.darkGray};
@@ -32,7 +32,7 @@ const Subtitle = styled.p`
 const WebDev = () => {
   return (
     <Container>
-      {/* <ExpandButton /> */}
+      <ExpandButton />
       <Title>Web Development</Title>
       <Subtitle>
         A great website is the foundation of your online presence. We build

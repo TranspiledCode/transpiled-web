@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// import ExpandButton from 'atoms/ExpandButton';
+import ExpandButton from 'atoms/ExpandButton';
 
 const Container = styled.div`
   border-bottom: 0.3rem solid ${({ theme }) => theme.colors.darkGray};
@@ -32,7 +32,7 @@ const Subtitle = styled.p`
 const WebAppDev = () => {
   return (
     <Container>
-      {/* <ExpandButton /> */}
+      <ExpandButton />
       <Title>Mobile & Web App Development</Title>
       <Subtitle>
         We create mobile and web apps that deliver seamless experiences, whether
