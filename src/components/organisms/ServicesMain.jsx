@@ -61,7 +61,11 @@ const Paragraph = styled.p`
   align-items: left;
   text-align: left;
   color: ${({ theme }) => theme.colors.white};
-  margin-right: 65vw;
+  margin-right: 40vw;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin-right: 65vw;
+  }
 `;
 const ServicesMain = () => {
   return (
