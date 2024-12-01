@@ -41,7 +41,7 @@ const SubHeader = styled.h2`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
   font-size: clamp(0.5rem, 4vw, 1.6rem);
-  line-height: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: clamp(2.6rem, 4vw, 3.4rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -58,6 +58,7 @@ const Paragraph = styled.p`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-weight: 500px;
   font-size: 1.6rem;
+  line-height: clamp(2.6rem, 4vw, 3.4rem);
   align-items: left;
   text-align: left;
   color: ${({ theme }) => theme.colors.white};
