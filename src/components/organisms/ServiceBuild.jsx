@@ -77,7 +77,7 @@ const ServiceBuild = () => {
             <Button
               type="call to action"
               icon="FaArrowRight"
-              variant="ghost"
+              variant="outline"
               size="medium"
             >
               Contact Us
