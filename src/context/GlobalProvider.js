@@ -1,17 +1,16 @@
-// ContextProvider.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GlobalProvider } from './GlobalContext';
 import { ContactFormProvider } from './ContactForm'; // Existing ContactFormProvider
-import { ToastProvider } from './ToastContext'; // Import ToastProvider
+import { ToastProvider } from './ToastContext'; // Existing ToastProvider
+import { AuthProvider } from './AuthContext'; // New AuthProvider
 
 const ContextProvider = ({ children }) => {
   return (
     <GlobalProvider>
       <ToastProvider>
         <ContactFormProvider>
-          {/* Add other providers here */}
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </ContactFormProvider>
       </ToastProvider>
     </GlobalProvider>

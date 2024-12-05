@@ -14,6 +14,7 @@ import ScrollToHash from './utils/ScrollToHash';
 import PageLayout from 'templates/PageLayout';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Testimonials from './pages/Testimonials';
 import NotFound from './pages/404';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/testimonials" element={<Testimonials />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </PageLayout>

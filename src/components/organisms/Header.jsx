@@ -5,10 +5,12 @@ import GlobalContext from 'context/GlobalContext';
 import MobileMenuButton from 'atoms/MobileMenuButton';
 import MobileNavMenu from 'organisms/MobileNavMenu';
 import links from 'data/navigation';
+import { useAuth } from 'context/AuthContext';
 
 const Header = () => {
   const { scrolled, handleScroll } = useContext(GlobalContext);
   const { menuOpen, toggleMenu } = useContext(GlobalContext);
+  const { isAuthenticated, login, logout } = useAuth();
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -22,6 +24,11 @@ const Header = () => {
       <NavWrapper>
         <NavMenu links={links} />
         <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
+        {isAuthenticated ? (
+          <button onClick={logout}>Logout</button>
+        ) : (
+          <button onClick={login}>Login</button>
+        )}
       </NavWrapper>
     </HeaderContainer>
   );
