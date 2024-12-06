@@ -1,73 +1,30 @@
-import { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import { useAuth } from 'context/AuthContext';
-import FullScreenOverlay from 'molecules/FullScreenOverlay';
+import withEditableText from 'organisms/withEditableText'; // Make sure the path matches your directory
+// Ensure AuthContext and other necessary providers are set at a higher level (e.g., in App.js)
 
 const StyledTestimonoals = styled.div`
   background-color: black;
   color: #fff;
+  min-height: 100vh;
   padding: 20rem;
   font-size: 2rem;
-  height: 100vh;
 `;
 
+// This component just displays whatever text is passed in
+function ParagraphContent({ text }) {
+  return <p>{text}</p>;
+}
+
+// Wrap the paragraph component with our HOC
+const EditableParagraph = withEditableText(ParagraphContent);
+
 const Testimonoals = () => {
-  const { isAuthenticated } = useAuth();
-  const [showModal, setShowModal] = useState(false);
-  const [text, setText] = useState('This is some editable text.');
-  const [editText, setEditText] = useState(text);
-
-  const handleSave = () => {
-    setText(editText);
-    setShowModal(false);
-  };
-
-  const handleCancel = () => {
-    setEditText(text);
-    setShowModal(false);
-  };
-
+  // Just render the editable paragraph.
+  // The user must be authenticated to see the edit icon, as handled by the HOC.
   return (
     <StyledTestimonoals>
-      <p>
-        {text}
-        {isAuthenticated && (
-          <span
-            style={{ cursor: 'pointer', marginLeft: '10px' }}
-            onClick={() => {
-              setEditText(text);
-              setShowModal(true);
-            }}
-          >
-            ✏️
-          </span>
-        )}
-      </p>
-
-      {showModal && isAuthenticated && (
-        <FullScreenOverlay>
-          <div
-            style={{
-              background: '#333',
-              padding: '2rem',
-              borderRadius: '0.5rem',
-              maxWidth: '600px',
-              width: '90vw',
-            }}
-          >
-            <h2 style={{ marginTop: 0, color: '#fff' }}>Edit Content</h2>
-            <textarea
-              value={editText}
-              onChange={(e) => setEditText(e.target.value)}
-              style={{ width: '100%', height: '10rem', marginBottom: '1rem' }}
-            />
-            <button onClick={handleSave}>Save</button>
-            <button onClick={handleCancel} style={{ marginLeft: '1rem' }}>
-              Cancel
-            </button>
-          </div>
-        </FullScreenOverlay>
-      )}
+      <EditableParagraph initialText="This is some editable text." />
     </StyledTestimonoals>
   );
 };
