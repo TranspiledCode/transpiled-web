@@ -33,6 +33,32 @@ const config = {
       },
     ],
   },
+  why: {
+    title: 'WHY CHOOSE US?',
+    subtitle: 'Your Partner in Digital Innovation',
+    cards: [
+      {
+        heading: 'Industry Expertise',
+        description:
+          'With a diverse portfolio we bring specialized insights that help each client achieve their unique goals',
+      },
+      {
+        heading: 'Agile Iterative Process',
+        description:
+          'Our flexible, client-focused process keeps projects efficient and aligned with your evolving needs',
+      },
+      {
+        heading: 'Quality & Performance',
+        description:
+          'We build with the future in mind, using top tech and best practices for a lasting, scalable solution',
+      },
+      {
+        heading: 'Transparency',
+        description:
+          'From project updates to pricing, we ensure clarity, so youre always in the loop-no hidden costs',
+      },
+    ],
+  },
   contact: {
     title: 'CONTACT US',
     subtitle: "Let's Build Your Digital Solution Together",
