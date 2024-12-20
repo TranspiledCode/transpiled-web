@@ -8,7 +8,8 @@ import links from 'data/navigation';
 import { useAuth } from 'context/AuthContext';
 
 const Header = () => {
-  const { scrolled, handleScroll } = useContext(GlobalContext);
+  const { scrolled, handleScroll, editable, handleEditable } =
+    useContext(GlobalContext);
   const { menuOpen, toggleMenu } = useContext(GlobalContext);
   const { isAuthenticated, login, logout } = useAuth();
 
@@ -25,7 +26,12 @@ const Header = () => {
         <NavMenu links={links} />
         <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
         {isAuthenticated ? (
-          <button onClick={logout}>Logout</button>
+          <>
+            <button onClick={logout}>Logout</button>
+            <button onClick={() => handleEditable(!editable)}>
+              {editable ? 'Stop Editing' : 'Start Editing'}
+            </button>
+          </>
         ) : (
           <button onClick={login}>Login</button>
         )}

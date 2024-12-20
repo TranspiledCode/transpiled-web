@@ -57,6 +57,7 @@ const Button = ({
   type = 'button',
   disabled = false,
   fullWidth = false,
+  onClick = () => {},
 }) => {
   const theme = useTheme();
 
@@ -69,6 +70,7 @@ const Button = ({
       type={type}
       disabled={disabled}
       fullWidth={fullWidth}
+      onClick={onClick}
     >
       {children}
       {icon && (

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import EditableContent from 'organisms/EditableContent';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -92,14 +93,24 @@ const TestimonialsSection = () => {
   return (
     <Container>
       <SectionInfo>
-        <Title>TESTIMONIALS</Title>
-        <Subtitle>What Our Clients Say About Working with Transpiled</Subtitle>
+        <EditableContent>
+          <Title>TESTIMONIALS</Title>
+        </EditableContent>
+        <EditableContent>
+          <Subtitle>
+            What Our Clients Say About Working with Transpiled
+          </Subtitle>
+        </EditableContent>
       </SectionInfo>
       <QuoteArea>
         {quotes.map((quote, index) => (
           <QuoteBlock key={index}>
-            <QuoteBody>{quote.body}</QuoteBody>
-            <QuoteName>{quote.name}</QuoteName>
+            <EditableContent>
+              <QuoteBody>{quote.body}</QuoteBody>
+            </EditableContent>
+            <EditableContent>
+              <QuoteName>{quote.name}</QuoteName>
+            </EditableContent>
           </QuoteBlock>
         ))}
       </QuoteArea>

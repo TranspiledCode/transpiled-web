@@ -5,17 +5,16 @@ import PropTypes from 'prop-types';
 const GlobalContext = createContext({
   menuOpen: false,
   scrolled: false,
-  isExpanded: false,
+  editable: true,
   toggleMenu: () => {},
   closeMenu: () => {},
   handleScroll: () => {},
-  setIsExpanded: () => {},
 });
 
 export const GlobalProvider = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [editable, setEditable] = useState(false);
 
   // Function to toggle the menu state
   const toggleMenu = () => {
@@ -32,6 +31,11 @@ export const GlobalProvider = ({ children }) => {
     setScrolled(window.scrollY > 50);
   };
 
+  // Update the editable state
+  const handleEditable = () => {
+    setEditable(!editable);
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -40,8 +44,8 @@ export const GlobalProvider = ({ children }) => {
         closeMenu,
         scrolled,
         handleScroll,
-        isExpanded,
-        setIsExpanded,
+        editable,
+        handleEditable,
       }}
     >
       {children}
