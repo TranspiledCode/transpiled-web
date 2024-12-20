@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
@@ -123,14 +124,16 @@ const WhySection = () => {
         </CardArea>
       </CardGridWrapper>
       <ButtonArea>
-        <Button
-          type="call to action"
-          icon="FaArrowRight"
-          variant="outline"
-          size="medium"
-        >
-          Learn More
-        </Button>
+        <Link to="/about">
+          <Button
+            type="call to action"
+            icon="FaArrowRight"
+            variant="outline"
+            size="medium"
+          >
+            Learn More
+          </Button>
+        </Link>
       </ButtonArea>
     </Container>
   );

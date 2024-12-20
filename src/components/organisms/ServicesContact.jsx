@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Button from '../atoms/Button';
 
@@ -63,9 +64,11 @@ const ServicesContact = () => {
         <Title>{title}</Title>
         <SubtitleContainer>
           <Subtitle>{subtitle}</Subtitle>
-          <Button icon="FaArrowRight" variant="outline" size="medium">
-            {buttonText}
-          </Button>
+          <Link to="/contact">
+            <Button icon="FaArrowRight" variant="outline" size="medium">
+              {buttonText}
+            </Button>
+          </Link>
         </SubtitleContainer>
       </SectionContent>
     </SectionContainer>
