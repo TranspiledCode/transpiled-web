@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Card from 'molecules/Card';
 import Button from 'atoms/Button';
@@ -82,14 +83,16 @@ const ServicesSection = () => {
         ))}
       </CardArea>
       <ButtonArea>
-        <Button
-          type="call to action"
-          icon="FaArrowRight"
-          variant="ghost"
-          size="medium"
-        >
-          Explore Services
-        </Button>
+        <Link to="/services">
+          <Button
+            type="call to action"
+            icon="FaArrowRight"
+            variant="ghost"
+            size="medium"
+          >
+            Explore Services
+          </Button>
+        </Link>
       </ButtonArea>
     </Container>
   );
