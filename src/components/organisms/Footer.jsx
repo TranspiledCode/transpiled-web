@@ -32,7 +32,7 @@ const BaseFooter = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: clamp(1.6rem, 2vw, 1.8rem);
-  z-index: 500;
+  z-index: ${({ theme }) => theme.zIndices.footer};
 `;
 
 const MiniFooterWrapper = styled(BaseFooter)`
