@@ -1,8 +1,8 @@
 // src/App.js
-import Hero from 'components/Hero';
-import ContactSection from '../components/ContactSection';
-import ServicesSection from '../components/ServicesSection';
-import WhySection from '../components/WhySection';
+import Hero from 'organisms/Hero';
+import ContactSection from 'organisms/ContactSection';
+import ServicesSection from 'organisms/ServicesSection';
+import WhySection from 'organisms/WhySection';
 
 const Home = () => {
   return (

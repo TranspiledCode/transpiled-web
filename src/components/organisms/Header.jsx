@@ -1,58 +1,45 @@
-import { useEffect, useContext } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
-import NavMenu from 'molecules/NavMenu';
-import GlobalContext from 'context/GlobalContext';
-import MobileMenuButton from 'atoms/MobileMenuButton';
-import MobileNavMenu from 'organisms/MobileNavMenu';
-import links from 'data/navigation';
 
-const Header = () => {
-  const { scrolled, handleScroll } = useContext(GlobalContext);
-  const { menuOpen, toggleMenu } = useContext(GlobalContext);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <HeaderContainer scrolled={scrolled}>
-      <MobileNavMenu links={links} />
-      <StyledLogo links={'Home'}>Transpiled</StyledLogo>
-      <NavWrapper>
-        <NavMenu links={links} />
-        <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
-      </NavWrapper>
-    </HeaderContainer>
-  );
-};
-
-const HeaderContainer = styled.header`
+const HeaderWrapper = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-family: 'poppins', sans-serif;
+  border: 1px solid #214eea;
+  background: #214eea;
+  padding: 1rem 2rem;
+  align-items: center;
   position: fixed;
   top: 0;
+  z-index: 2;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: ${({ scrolled }) => (scrolled ? 'black' : 'transparent')};
-  color: ${({ theme }) => theme.colors.white};
-  transition:
-    background-color 0.3s,
-    color 0.3s;
-  z-index: ${({ theme }) => theme.zIndices.header};
 `;
 
 const StyledLogo = styled.div`
   font-weight: Bold;
-  font-size: 3rem;
+  font-size: 30px;
 `;
 
-const NavWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: auto 5rem;
+const StyledNav = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 12px;
+    margin: 0;
+  }
 `;
+
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <StyledLogo>Transpiled</StyledLogo>
+      <StyledNav>Services</StyledNav>
+    </HeaderWrapper>
+  );
+};
 
 export default Header;
