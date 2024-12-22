@@ -2,19 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GlobalProvider } from './GlobalContext';
-import { ContactFormProvider } from './ContactForm'; // Existing ContactFormProvider
-import { ToastProvider } from './ToastContext'; // Import ToastProvider
+import { ContactFormProvider } from './ContactForm';
+import { ToastProvider } from './ToastContext';
+import { AuthProvider } from './AuthContext';
 
 const ContextProvider = ({ children }) => {
   return (
-    <GlobalProvider>
-      <ToastProvider>
-        <ContactFormProvider>
-          {/* Add other providers here */}
-          {children}
-        </ContactFormProvider>
-      </ToastProvider>
-    </GlobalProvider>
+    <AuthProvider>
+      <GlobalProvider>
+        <ToastProvider>
+          <ContactFormProvider>{children}</ContactFormProvider>
+        </ToastProvider>
+      </GlobalProvider>
+    </AuthProvider>
   );
 };
 
