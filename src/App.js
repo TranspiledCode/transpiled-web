@@ -10,6 +10,7 @@ import { ToastProvider } from './context/ToastContext';
 
 import RouteToTop from './utils/RouteToTop';
 import ScrollToHash from './utils/ScrollToHash';
+import ProtectedRoute from './utils/ProtectedRoute';
 
 import Layout from 'components/templates/PageLayout'; // Ensure correct import path
 import Home from './pages/Home';
@@ -35,7 +36,14 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="*" element={<NotFound />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
+                  }
+                />
               </Route>
             </Routes>
           </ToastProvider>
