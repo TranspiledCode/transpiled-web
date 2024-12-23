@@ -1,10 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
 
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ProfileDropdown from 'organisms/ProfileDropdown';
 
 const NavMenu = styled.nav`
   display: none;
@@ -12,7 +11,6 @@ const NavMenu = styled.nav`
   @media (min-width: 768px) {
     display: flex;
     align-items: center;
-    gap: 2rem;
 
     a {
       color: ${({ theme }) => theme.colors.white};
@@ -37,17 +35,6 @@ const NavLinks = styled.div`
 
 const NavBar = ({ links }) => {
   const { currentUser } = useContext(AuthContext);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate checking the currentUser state
-    if (currentUser !== undefined) {
-      setIsLoading(false);
-    }
-  }, [currentUser]);
-
-  // Show nothing until loading is complete
-  if (isLoading) return null;
 
   return (
     <NavMenu>
@@ -58,7 +45,7 @@ const NavBar = ({ links }) => {
           </Link>
         ))}
       </NavLinks>
-      {currentUser ? <ProfileDropdown /> : <Link to="/login">Login</Link>}
+      {!currentUser && <Link to="/login">Login</Link>}
     </NavMenu>
   );
 };
