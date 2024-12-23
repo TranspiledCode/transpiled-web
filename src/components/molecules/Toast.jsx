@@ -51,6 +51,15 @@ const CloseButton = styled.button`
   margin-left: 12px;
 `;
 
+/**
+ * A single toast notification.
+ *
+ * @param {string} id Unique id for the toast, used to remove it.
+ * @param {string} message The message to display in the toast.
+ * @param {string} variant The variant of the toast, can be one of "success", "danger", "info", or "warning".
+ *
+ * @return {React.ReactElement} The toast element.
+ */
 const Toast = ({ id, message, variant }) => {
   const { removeToast } = useToast(); // Get removeToast function
 

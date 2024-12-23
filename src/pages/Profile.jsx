@@ -6,118 +6,103 @@ import {
   updateEmail,
   updateProfile,
 } from 'firebase/auth';
+import Button from 'atoms/Button';
+import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 // Reusable container for the page
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
   min-height: 100vh;
-  padding-top: 10rem;
-  background-color: ${({ theme }) => theme.colors.lightBlue};
+  max-width: 100vw;
+  background: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.darkBlue},
+    ${({ theme }) => theme.colors.lightBlue}
+  );
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
 `;
 
 const Card = styled.div`
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  width: 600px;
+  width: 800px;
   max-width: 90%;
 `;
 
 const Title = styled.h1`
-  font-size: 1.8rem;
+  font-size: 3rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-align: center;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
-const Form = styled.form`
-  margin-top: 1.5rem;
-`;
-
-const FormGroup = styled.div`
-  margin-bottom: 1.5rem;
+const FieldRow = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1rem;
 `;
 
-const Label = styled.label`
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+const FieldLabelWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const FieldLabel = styled.strong`
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+const FieldValue = styled.span`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+const EditAction = styled.button`
+  margin-left: 0.5rem;
+  border: none;
+  background: none;
+  color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.orange};
+  }
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 0.5rem;
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
-  font-size: 1rem;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
-
-  &:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-  }
-`;
-
-// Profile image preview container
-const ImagePreview = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-
-  img {
-    border-radius: 50%;
-    object-fit: cover;
-    width: 120px;
-    height: 120px;
-    border: 2px solid #e5e7eb;
-  }
-`;
-
-const Button = styled.button`
-  width: auto;
-  padding: 0.75rem 1.2rem;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  font-size: 1rem;
-  margin-right: 1rem;
-
-  &:hover {
-    background-color: #2563eb;
-  }
-
-  &:disabled {
-    background-color: #93c5fd;
-    cursor: not-allowed;
-  }
-`;
-
-// Alert styling component for success/error messages
-const Alert = styled.div`
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border-radius: 6px;
-  background-color: ${({ isSuccess }) => (isSuccess ? '#dcfce7' : '#fee2e2')};
-  color: ${({ isSuccess }) => (isSuccess ? '#166534' : '#991b1b')};
-  text-align: center;
+  border: 1px solid ${({ theme }) => theme.colors.white};
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 1.6rem;
   font-weight: 500;
 `;
 
-// Spinner component for loading state
 const Spinner = styled.div`
   display: inline-block;
   width: 1rem;
@@ -137,20 +122,33 @@ const Spinner = styled.div`
 
 const ProfilePage = () => {
   const auth = getAuth();
+
+  // Master state for user info
   const [formData, setFormData] = useState({
     displayName: '',
     email: '',
     photoURL: '',
   });
+
+  // Local states for editing each field
+  const [localDisplayName, setLocalDisplayName] = useState('');
+  const [localEmail, setLocalEmail] = useState('');
+  const [localPhotoURL, setLocalPhotoURL] = useState('');
+
+  // Each field has its own edit mode
+  const [isEditingDisplayName, setIsEditingDisplayName] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [isEditingPhotoURL, setIsEditingPhotoURL] = useState(false);
+
+  const { addToast } = useToast(); // Get the addToast function from ToastContext
+
   const [status, setStatus] = useState({
     message: '',
     isSuccess: false,
     isLoading: false,
   });
-  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    // Subscribe to onAuthStateChanged
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setFormData({
@@ -158,165 +156,248 @@ const ProfilePage = () => {
           email: user.email || '',
           photoURL: user.photoURL || '',
         });
-      } else {
-        setFormData({
-          displayName: '',
-          email: '',
-          photoURL: '',
-        });
       }
     });
-
     return () => unsubscribe();
   }, [auth]);
 
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const user = auth.currentUser;
-    if (!user) return;
-
-    setStatus({ message: '', isSuccess: false, isLoading: true });
-
-    try {
-      // Update profile info
-      await updateProfile(user, {
-        displayName: formData.displayName,
-        photoURL: formData.photoURL,
-      });
-
-      // Update email if changed
-      if (user.email !== formData.email) {
-        await updateEmail(user, formData.email);
-      }
-
-      setStatus({
-        message: 'Profile updated successfully!',
-        isSuccess: true,
-        isLoading: false,
-      });
-
-      // Done editing, if you want to auto-close editing mode
-      setIsEditing(false);
-    } catch (error) {
-      console.error('Error updating profile:', error);
-      setStatus({
-        message: error.message || 'Failed to update profile',
-        isSuccess: false,
-        isLoading: false,
-      });
-    }
-  };
-
+  // Optionally check for valid images
   const isValidImage = (url) => {
-    // Quick check for typical image file extensions
     return /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg)$/i.test(url);
   };
 
-  const handleCancel = () => {
-    // Optional: you might want to revert formData to the original user data here
-    // e.g. re-fetch from auth.currentUser or store original in separate state
-    setIsEditing(false);
+  /* --------------------------------------------------
+   *  Display Name Handlers
+   * -------------------------------------------------- */
+  const handleEditDisplayName = () => {
+    setLocalDisplayName(formData.displayName);
+    setIsEditingDisplayName(true);
+  };
+
+  const handleSaveDisplayName = async () => {
+    setStatus({ message: '', isSuccess: false, isLoading: true });
+    try {
+      const user = auth.currentUser;
+      await updateProfile(user, { displayName: localDisplayName });
+      setFormData((prev) => ({ ...prev, displayName: localDisplayName }));
+
+      setIsEditingDisplayName(false);
+      setStatus({
+        message: 'Display name updated successfully',
+        isSuccess: true,
+        isLoading: false,
+      });
+      addToast('Display name updated successfully', 'success');
+    } catch (error) {
+      setStatus({
+        message: error.message || 'Failed to update display name',
+        isSuccess: false,
+        isLoading: false,
+      });
+      addToast(error.message || 'Failed to update display name', 'danger');
+    }
+  };
+
+  const handleCancelDisplayName = () => {
+    setLocalDisplayName('');
+    setIsEditingDisplayName(false);
+  };
+
+  /* --------------------------------------------------
+   *  Email Handlers
+   * -------------------------------------------------- */
+  const handleEditEmail = () => {
+    setLocalEmail(formData.email);
+    setIsEditingEmail(true);
+  };
+
+  const handleSaveEmail = async () => {
+    setStatus({ message: '', isSuccess: false, isLoading: true });
+    try {
+      const user = auth.currentUser;
+      await updateEmail(user, localEmail);
+      setFormData((prev) => ({ ...prev, email: localEmail }));
+
+      setIsEditingEmail(false);
+      setStatus({
+        message: 'Email updated successfully',
+        isSuccess: true,
+        isLoading: false,
+      });
+      addToast('Email updated successfully', 'success');
+    } catch (error) {
+      setStatus({
+        message: error.message || 'Failed to update email',
+        isSuccess: false,
+        isLoading: false,
+      });
+      addToast(error.message || 'Failed to update email', 'danger');
+    }
+  };
+
+  const handleCancelEmail = () => {
+    setLocalEmail('');
+    setIsEditingEmail(false);
+  };
+
+  /* --------------------------------------------------
+   *  Photo URL Handlers
+   * -------------------------------------------------- */
+  const handleEditPhotoURL = () => {
+    setLocalPhotoURL(formData.photoURL);
+    setIsEditingPhotoURL(true);
+  };
+
+  const handleSavePhotoURL = async () => {
+    setStatus({ message: '', isSuccess: false, isLoading: true });
+    try {
+      const user = auth.currentUser;
+      await updateProfile(user, { photoURL: localPhotoURL });
+      setFormData((prev) => ({ ...prev, photoURL: localPhotoURL }));
+
+      setIsEditingPhotoURL(false);
+      setStatus({
+        message: 'Photo URL updated successfully',
+        isSuccess: true,
+        isLoading: false,
+      });
+      addToast('Photo URL updated successfully', 'success');
+    } catch (error) {
+      setStatus({
+        message: error.message || 'Failed to update photo URL',
+        isSuccess: false,
+        isLoading: false,
+      });
+      addToast(error.message || 'Failed to update photo URL', 'danger');
+    }
+  };
+
+  const handleCancelPhotoURL = () => {
+    setLocalPhotoURL('');
+    setIsEditingPhotoURL(false);
   };
 
   return (
     <Container>
       <Card>
-        <Title>Manage Your Profile</Title>
+        <Title>Profile Info</Title>
 
+        {/* Image Preview (if valid) */}
         {isValidImage(formData.photoURL) && (
-          <ImagePreview>
-            <img src={formData.photoURL} alt="Profile Preview" />
-          </ImagePreview>
-        )}
-
-        {/* 
-          =============
-          READ-ONLY VIEW
-          ============= 
-        */}
-        {!isEditing && (
-          <div>
-            <p>
-              <strong>Display Name:</strong> {formData.displayName}
-            </p>
-            <p>
-              <strong>Email:</strong> {formData.email}
-            </p>
-            <p>
-              <strong>Photo URL:</strong> {formData.photoURL}
-            </p>
-            <Button type="button" onClick={() => setIsEditing(true)}>
-              Edit
-            </Button>
+          <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+            <img
+              src={formData.photoURL}
+              alt="Profile"
+              style={{ width: '120px', borderRadius: '50%' }}
+            />
           </div>
         )}
 
-        {/* 
-          ============
-          EDITING VIEW
-          ============ 
-        */}
-        {isEditing && (
-          <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label htmlFor="displayName">Display Name</Label>
-              <Input
-                id="displayName"
-                type="text"
-                value={formData.displayName}
-                onChange={handleInputChange}
-                placeholder="Enter your display name"
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Enter your email"
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="photoURL">Profile Image URL</Label>
-              <Input
-                id="photoURL"
-                type="text"
-                value={formData.photoURL}
-                onChange={handleInputChange}
-                placeholder="Enter a valid image URL"
-              />
-            </FormGroup>
-
-            <Button type="submit" disabled={status.isLoading}>
-              {status.isLoading && <Spinner />}
-              {status.isLoading ? 'Updating...' : 'Save Changes'}
-            </Button>
-
-            <Button
-              type="button"
-              onClick={handleCancel}
-              disabled={status.isLoading}
+        {/* -------------- Display Name Field -------------- */}
+        <FieldRow>
+          <FieldLabelWrapper>
+            <FieldLabel>Display Name:</FieldLabel>
+            <EditAction
+              onClick={
+                isEditingDisplayName
+                  ? handleCancelDisplayName
+                  : handleEditDisplayName
+              }
             >
-              Cancel
-            </Button>
-          </Form>
-        )}
+              {isEditingDisplayName ? 'Cancel' : 'Edit'}
+            </EditAction>
+          </FieldLabelWrapper>
 
-        {status.message && (
-          <Alert isSuccess={status.isSuccess}>{status.message}</Alert>
-        )}
+          {!isEditingDisplayName ? (
+            <FieldValue>{formData.displayName}</FieldValue>
+          ) : (
+            <InputWrapper>
+              <Input
+                type="text"
+                name="displayName"
+                value={localDisplayName}
+                onChange={(e) => setLocalDisplayName(e.target.value)}
+              />
+              <Button
+                onClick={handleSaveDisplayName}
+                disabled={status.isLoading}
+                size="small"
+                variant="outline"
+              >
+                {status.isLoading && <Spinner />}
+                Save
+              </Button>
+            </InputWrapper>
+          )}
+        </FieldRow>
+
+        {/* -------------- Email Field -------------- */}
+        <FieldRow>
+          <FieldLabelWrapper>
+            <FieldLabel>Email:</FieldLabel>
+            <EditAction
+              onClick={isEditingEmail ? handleCancelEmail : handleEditEmail}
+            >
+              {isEditingEmail ? 'Cancel' : 'Edit'}
+            </EditAction>
+          </FieldLabelWrapper>
+
+          {!isEditingEmail ? (
+            <FieldValue>{formData.email}</FieldValue>
+          ) : (
+            <InputWrapper>
+              <Input
+                type="email"
+                value={localEmail}
+                onChange={(e) => setLocalEmail(e.target.value)}
+              />
+              <Button
+                onClick={handleSaveEmail}
+                disabled={status.isLoading}
+                size="small"
+                variant="outline"
+              >
+                {status.isLoading && <Spinner />}
+                Save
+              </Button>
+            </InputWrapper>
+          )}
+        </FieldRow>
+
+        {/* -------------- Photo URL Field -------------- */}
+        <FieldRow>
+          <FieldLabelWrapper>
+            <FieldLabel>Photo URL:</FieldLabel>
+            <EditAction
+              onClick={
+                isEditingPhotoURL ? handleCancelPhotoURL : handleEditPhotoURL
+              }
+            >
+              {isEditingPhotoURL ? 'Cancel' : 'Edit'}
+            </EditAction>
+          </FieldLabelWrapper>
+
+          {!isEditingPhotoURL ? (
+            <FieldValue>{formData.photoURL}</FieldValue>
+          ) : (
+            <InputWrapper>
+              <Input
+                type="text"
+                value={localPhotoURL}
+                onChange={(e) => setLocalPhotoURL(e.target.value)}
+              />
+              <Button
+                onClick={handleSavePhotoURL}
+                disabled={status.isLoading}
+                size="small"
+                variant="outline"
+              >
+                {status.isLoading && <Spinner />}
+                Save
+              </Button>
+            </InputWrapper>
+          )}
+        </FieldRow>
       </Card>
     </Container>
   );
