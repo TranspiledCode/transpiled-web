@@ -67,7 +67,7 @@ const FieldLabel = styled.strong`
 
 const FieldValue = styled.span`
   font-size: 1.6rem;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
 
 const EditAction = styled.button`

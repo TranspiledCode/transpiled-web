@@ -45,8 +45,9 @@ const MenuItem = styled.div`
 
 const UserName = styled.div`
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
+  font-weight: 400;
   border-bottom: 1px solid #e0e0e0;
 `;
 
