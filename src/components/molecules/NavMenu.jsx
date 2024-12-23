@@ -12,6 +12,7 @@ const NavMenu = styled.nav`
   @media (min-width: 768px) {
     display: flex;
     align-items: center;
+    gap: 2rem;
 
     a {
       color: ${({ theme }) => theme.colors.white};
@@ -26,6 +27,12 @@ const NavMenu = styled.nav`
       }
     }
   }
+`;
+
+const NavLinks = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 const NavBar = ({ links }) => {
@@ -44,11 +51,13 @@ const NavBar = ({ links }) => {
 
   return (
     <NavMenu>
-      {links.map((link) => (
-        <Link key={link.url} to={link.url}>
-          {link.label}
-        </Link>
-      ))}
+      <NavLinks>
+        {links.map((link) => (
+          <Link key={link.url} to={link.url}>
+            {link.label}
+          </Link>
+        ))}
+      </NavLinks>
       {currentUser ? <ProfileDropdown /> : <Link to="/login">Login</Link>}
     </NavMenu>
   );
