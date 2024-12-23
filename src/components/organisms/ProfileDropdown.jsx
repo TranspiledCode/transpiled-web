@@ -1,8 +1,11 @@
+import { useContext, useRef, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
-import { useContext, useEffect, useRef } from 'react';
-import Avatar from 'molecules/Avatar';
+import { signOut } from 'firebase/auth';
+
 import GlobalContext from 'context/GlobalContext';
+import { auth } from '../../../firebase';
+import Avatar from 'molecules/Avatar';
 
 const ProfileContainer = styled.div`
   position: relative;
@@ -15,7 +18,7 @@ const DropdownMenu = styled.div`
   right: 0;
   margin-top: 8px;
   width: 200px;
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -44,41 +47,75 @@ const AvatarWrapper = styled.div`
   height: 30px;
 `;
 
-const ProfileDropdown = ({ avatarImage, avatarName, menuItems }) => {
+const ProfileDropdown = () => {
   const { profileMenuOpen, toggleProfileMenu, closeProfileMenu } =
     useContext(GlobalContext);
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
-  const handleDocumentClick = (event) => {
-    if (containerRef.current && !containerRef.current.contains(event.target)) {
-      closeProfileMenu();
-    }
-  };
+  const handleOutsideClick = useCallback(
+    (event) => {
+      if (
+        profileMenuOpen &&
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        closeProfileMenu();
+      }
+    },
+    [profileMenuOpen, closeProfileMenu],
+  );
 
   useEffect(() => {
     if (profileMenuOpen) {
-      document.addEventListener('mousedown', handleDocumentClick);
-    } else {
-      document.removeEventListener('mousedown', handleDocumentClick);
+      document.addEventListener('click', handleOutsideClick);
     }
 
-    // Cleanup the event listener on unmount
     return () => {
-      document.removeEventListener('mousedown', handleDocumentClick);
+      document.removeEventListener('click', handleOutsideClick);
     };
-  }, [profileMenuOpen]);
+  }, [profileMenuOpen, handleOutsideClick]);
 
-  const toggleDropdown = () => toggleProfileMenu();
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/');
+    } catch (err) {
+      console.error('Logout Error:', err);
+    }
+  };
+
+  const menuItems = [
+    { label: 'View Profile', onClick: () => console.log('View Profile') },
+    { label: 'Settings', onClick: () => console.log('Settings') },
+    { label: 'Logout', onClick: handleLogout },
+  ];
 
   return (
     <ProfileContainer ref={containerRef}>
-      <AvatarWrapper onClick={toggleDropdown}>
-        <Avatar image={avatarImage} name={avatarName} />
+      <AvatarWrapper
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleProfileMenu();
+        }}
+      >
+        <Avatar
+          image="https://storage.googleapis.com/transpiled-web/images/joshua.jpg"
+          name="Joshua Crass"
+        />
       </AvatarWrapper>
+
       {profileMenuOpen && (
         <DropdownMenu>
           {menuItems.map((item, index) => (
-            <MenuItem key={index} onClick={item.onClick}>
+            <MenuItem
+              key={index}
+              onClick={(e) => {
+                e.stopPropagation();
+                item.onClick();
+                closeProfileMenu();
+              }}
+            >
               {item.label}
             </MenuItem>
           ))}
@@ -86,17 +123,6 @@ const ProfileDropdown = ({ avatarImage, avatarName, menuItems }) => {
       )}
     </ProfileContainer>
   );
-};
-
-ProfileDropdown.propTypes = {
-  avatarImage: PropTypes.string.isRequired,
-  avatarName: PropTypes.string.isRequired,
-  menuItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      onClick: PropTypes.func.isRequired,
-    }),
-  ).isRequired,
 };
 
 export default ProfileDropdown;
