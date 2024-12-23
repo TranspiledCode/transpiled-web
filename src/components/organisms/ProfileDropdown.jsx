@@ -114,7 +114,10 @@ const ProfileDropdown = () => {
           toggleProfileMenu();
         }}
       >
-        <Avatar image={currentUser?.photoURL} name={currentUser?.displayName} />
+        <Avatar
+          image={currentUser?.photoURL}
+          name={currentUser?.displayName || ''}
+        />
       </AvatarWrapper>
 
       {profileMenuOpen && (
