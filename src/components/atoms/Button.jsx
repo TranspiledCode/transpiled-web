@@ -57,6 +57,7 @@ const Button = ({
   type = 'button',
   disabled = false,
   fullWidth = false,
+  onClick,
 }) => {
   const theme = useTheme();
 
@@ -69,6 +70,7 @@ const Button = ({
       type={type}
       disabled={disabled}
       fullWidth={fullWidth}
+      onClick={onClick}
     >
       {children}
       {icon && (
@@ -96,6 +98,7 @@ Button.propTypes = {
   type: PropTypes.string,
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default Button;

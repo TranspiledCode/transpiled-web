@@ -2,6 +2,7 @@ import { useContext, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { signOut } from 'firebase/auth';
+import AuthContext from 'context/AuthContext';
 
 import GlobalContext from 'context/GlobalContext';
 import { auth } from '../../../firebase';
@@ -42,6 +43,13 @@ const MenuItem = styled.div`
   }
 `;
 
+const UserName = styled.div`
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+`;
+
 const AvatarWrapper = styled.div`
   width: 30px;
   height: 30px;
@@ -52,6 +60,7 @@ const ProfileDropdown = () => {
     useContext(GlobalContext);
   const containerRef = useRef(null);
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
   const handleOutsideClick = useCallback(
     (event) => {
@@ -85,8 +94,13 @@ const ProfileDropdown = () => {
     }
   };
 
+  const handleProfileClick = () => {
+    navigate('/profile');
+    closeProfileMenu();
+  };
+
   const menuItems = [
-    { label: 'View Profile', onClick: () => console.log('View Profile') },
+    { label: 'View Profile', onClick: handleProfileClick },
     { label: 'Settings', onClick: () => console.log('Settings') },
     { label: 'Logout', onClick: handleLogout },
   ];
@@ -99,14 +113,12 @@ const ProfileDropdown = () => {
           toggleProfileMenu();
         }}
       >
-        <Avatar
-          image="https://storage.googleapis.com/transpiled-web/images/joshua.jpg"
-          name="Joshua Crass"
-        />
+        <Avatar image={currentUser?.photoURL} name={currentUser?.displayName} />
       </AvatarWrapper>
 
       {profileMenuOpen && (
         <DropdownMenu>
+          <UserName>{currentUser?.displayName}</UserName>
           {menuItems.map((item, index) => (
             <MenuItem
               key={index}

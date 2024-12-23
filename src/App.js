@@ -16,6 +16,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import NotFound from './pages/404';
 import LoginPage from './pages/Login';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
             </Routes>
           </ToastProvider>
