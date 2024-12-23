@@ -41,7 +41,8 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: ${({ scrolled }) => (scrolled ? 'black' : 'transparent')};
+  background-color: ${({ scrolled }) =>
+    scrolled ? '${({ theme }) => theme.colors.black}' : 'transparent'};
   color: ${({ theme }) => theme.colors.white};
   transition:
     background-color 0.3s,

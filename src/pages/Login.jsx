@@ -35,13 +35,6 @@ const Title = styled.h2`
   color: ${({ theme }) => theme.colors.darkBlue};
 `;
 
-const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.colors.red};
-  margin-bottom: 1rem;
-  text-align: center;
-  font-size: 1.4rem;
-`;
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -98,7 +91,6 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
   const { addToast } = useToast();
 
   const handleSubmit = async (e) => {
@@ -135,7 +127,7 @@ function LoginPage() {
     <Container>
       <FormWrapper>
         <Title>Login</Title>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        {error && addToast(error, 'danger')}
 
         <Form onSubmit={handleSubmit}>
           <Label htmlFor="email">Email</Label>
