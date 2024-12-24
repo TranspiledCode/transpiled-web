@@ -17,7 +17,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import NotFound from './pages/404';
 import LoginPage from './pages/Login';
-import Profile from './pages/Profile';
+import ProfilePage from './pages/Profile';
 
 const App = () => {
   return (
@@ -40,7 +40,7 @@ const App = () => {
                   path="/profile"
                   element={
                     <ProtectedRoute>
-                      <Profile />
+                      <ProfilePage />
                     </ProtectedRoute>
                   }
                 />
