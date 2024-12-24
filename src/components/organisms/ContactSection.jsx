@@ -13,10 +13,6 @@ const ScrollTo = styled.div`
 `;
 
 const Section = styled.section`
-  background-image: linear-gradient(
-    ${({ theme }) => theme.colors.darkBlue},
-    ${({ theme }) => theme.colors.fuchsia}
-  );
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPaddingNoTop};
   padding-top: clamp(6rem, 6vw, 8rem);
