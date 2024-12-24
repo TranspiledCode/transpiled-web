@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const SectionContainer = styled.section`
-  min-height: 80vh;
+  min-height: 68vh;
   width: 100%;
   max-width: 100vw;
   background: linear-gradient(
