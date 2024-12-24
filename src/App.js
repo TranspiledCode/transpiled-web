@@ -13,6 +13,7 @@ import ScrollToHash from './utils/ScrollToHash';
 
 import Home from './pages/Home';
 import Services from './pages/Services';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/AboutUs" element={<AboutUs />} />
             </Routes>
           </ToastProvider>
         </ContextProvider>
