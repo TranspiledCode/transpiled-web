@@ -1,5 +1,6 @@
-// src/components/molecules/NavMenu.jsx
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from 'context/AuthContext';
+
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -26,14 +27,25 @@ const NavMenu = styled.nav`
   }
 `;
 
+const NavLinks = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 const NavBar = ({ links }) => {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <NavMenu>
-      {links.map((link) => (
-        <Link key={link.url} to={link.url}>
-          {link.label}
-        </Link>
-      ))}
+      <NavLinks>
+        {links.map((link) => (
+          <Link key={link.url} to={link.url}>
+            {link.label}
+          </Link>
+        ))}
+      </NavLinks>
+      {!currentUser && <Link to="/login">Login</Link>}
     </NavMenu>
   );
 };

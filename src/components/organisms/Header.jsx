@@ -1,4 +1,6 @@
 import { useEffect, useContext } from 'react';
+
+import AuthContext from 'context/AuthContext';
 import styled from '@emotion/styled';
 
 import GlobalContext from 'context/GlobalContext';
@@ -6,10 +8,12 @@ import NavMenu from 'molecules/NavMenu';
 import MobileNavMenu from 'organisms/MobileNavMenu';
 import MobileMenuButton from 'atoms/MobileMenuButton';
 import links from 'data/navigation';
+import ProfileDropdown from 'organisms/ProfileDropdown';
 
 const SampleHeader = () => {
   const { scrolled, handleScroll } = useContext(GlobalContext);
   const { menuOpen, toggleMenu } = useContext(GlobalContext);
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -23,6 +27,7 @@ const SampleHeader = () => {
       <Nav>
         <NavMenu links={links} />
         <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
+        {currentUser && <ProfileDropdown />}
       </Nav>
     </HeaderContainer>
   );
@@ -36,7 +41,8 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: ${({ scrolled }) => (scrolled ? 'black' : 'transparent')};
+  background-color: ${({ scrolled }) =>
+    scrolled ? '${({ theme }) => theme.colors.black}' : 'transparent'};
   color: ${({ theme }) => theme.colors.white};
   transition:
     background-color 0.3s,
@@ -52,6 +58,7 @@ const Logo = styled.div`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
+  gap: 2rem;
 `;
 
 export default SampleHeader;

@@ -10,11 +10,14 @@ import { ToastProvider } from './context/ToastContext';
 
 import RouteToTop from './utils/RouteToTop';
 import ScrollToHash from './utils/ScrollToHash';
+import ProtectedRoute from './utils/ProtectedRoute';
 
-import PageLayout from 'templates/PageLayout';
+import Layout from 'components/templates/PageLayout'; // Ensure correct import path
 import Home from './pages/Home';
 import Services from './pages/Services';
 import NotFound from './pages/404';
+import LoginPage from './pages/Login';
+import ProfilePage from './pages/Profile';
 
 const App = () => {
   return (
@@ -24,13 +27,25 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <ContextProvider>
           <ToastProvider position="bottom-left">
-            <PageLayout>
-              <Routes>
+            <Routes>
+              {/* Routes without Layout */}
+              <Route path="/login" element={<LoginPage />} />
+
+              {/* Routes with Layout */}
+              <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="*" element={<NotFound />} />
-              </Routes>
-            </PageLayout>
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <ProfilePage />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
+            </Routes>
           </ToastProvider>
         </ContextProvider>
       </ThemeProvider>
