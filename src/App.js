@@ -18,6 +18,7 @@ import Services from './pages/Services';
 import NotFound from './pages/404';
 import LoginPage from './pages/Login';
 import ProfilePage from './pages/Profile';
+import ContactPage from './pages/Contact';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/contact" element={<ContactPage />} />
                 <Route path="*" element={<NotFound />} />
                 <Route
                   path="/profile"

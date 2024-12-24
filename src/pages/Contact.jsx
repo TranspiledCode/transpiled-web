@@ -1,10 +1,10 @@
 import ContactSection from '../components/organisms/ContactSection';
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <>
       <ContactSection />
     </>
   );
 };
-export default Contact;
+export default ContactPage;
