@@ -2,21 +2,19 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const HeaderWrapper = styled.div`
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    font-family: 'poppins', sans-serif;
-    border: 1px solid #214eea;
-    background: #214eea;
-    padding: 1rem 2rem;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    
-  }
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-family: 'poppins', sans-serif;
+  border: 1px solid #214eea;
+  background: #214eea;
+  padding: 1rem 2rem;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 `;
 
 const StyledLogo = styled.div`
@@ -35,13 +33,12 @@ const StyledNav = styled.div`
   }
 `;
 
-const StyledMenu = styled.div``;
-
 const Header = () => {
   return (
     <HeaderWrapper>
       <StyledLogo>Transpiled</StyledLogo>
       <StyledNav>Services</StyledNav>
+      <StyledNav>About Us</StyledNav>
     </HeaderWrapper>
   );
 };
