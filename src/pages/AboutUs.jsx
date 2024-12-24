@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 // import AboutCard from 'molecules/AboutCard';
-// import SampleHeader from '../components/organisms/SampleHeader';
+import SampleHeader from '../components/organisms/SampleHeader';
+
+const PageWrapper = styled.div``;
 
 const AboutUsWrapper = styled.div`
   min-height: 100vh;
@@ -15,11 +17,12 @@ const AboutUsWrapper = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-left: 5rem;
+  gap: 3rem;
+  padding-top: 20rem;
+  padding-left: 4rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    gap: 2rem;
+    gap: 3rem;
   }
 `;
 
@@ -60,16 +63,19 @@ const StyledParagraph = styled.p`
 
 const AboutUs = () => {
   return (
-    <AboutUsWrapper>
-      <TitleWrapper>
-        <StyledTitle>WERE NOT JUST DEVELOPERS </StyledTitle>
-        <Subsubtitle>
-          Our mission is to drive business growth through high-quality,
-          cutting-edge digital products built for today and the future.
-        </Subsubtitle>
-        <StyledParagraph>LEARN MORE ABOUT WHO WE ARE</StyledParagraph>
-      </TitleWrapper>
-    </AboutUsWrapper>
+    <PageWrapper>
+      <SampleHeader />
+      <AboutUsWrapper>
+        <TitleWrapper>
+          <StyledTitle>WERE NOT JUST DEVELOPERS </StyledTitle>
+          <Subsubtitle>
+            Our mission is to drive business growth through high-quality,
+            cutting-edge digital products built for today and the future.
+          </Subsubtitle>
+          <StyledParagraph>LEARN MORE ABOUT WHO WE ARE</StyledParagraph>
+        </TitleWrapper>
+      </AboutUsWrapper>
+    </PageWrapper>
   );
 };
 
