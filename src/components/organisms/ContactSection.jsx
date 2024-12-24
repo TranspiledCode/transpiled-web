@@ -24,9 +24,11 @@ const Section = styled.section`
 const SectionContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   gap: 4rem;
 `;
 const SectionInfo = styled.div`
