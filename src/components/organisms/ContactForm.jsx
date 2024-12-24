@@ -8,15 +8,7 @@ import FormContext from 'context/ContactForm';
 import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 const ContactFormWrapper = styled.div`
-  // width: 100%;
-  width: clamp(0rem, 100%, 100rem);
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    // max-width: 75%;
-  }
-  // ${({ theme }) => theme.mediaQueries.xl} {
-  //   max-width: 50%;
-  // }
+  width: clamp(0rem, 100%, 160rem);
 `;
 const ContactFormStyled = styled.form`
   display: flex;

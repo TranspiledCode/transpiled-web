@@ -18,13 +18,14 @@ const Section = styled.section`
     ${({ theme }) => theme.colors.fuchsia}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: ${({ theme }) => theme.layouts.sectionPadding};
+  padding: ${({ theme }) => theme.layouts.sectionPaddingNoTop};
+  padding-top: clamp(6rem, 6vw, 8rem);
+  padding-bottom: clamp(4rem, 4vw, 6rem);
 `;
 
 const SectionContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
