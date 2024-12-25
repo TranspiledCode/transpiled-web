@@ -5,7 +5,7 @@ import Button from '../atoms/Button';
 const PageWrapper = styled.div``;
 
 const ContentWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 70vh;
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
@@ -17,7 +17,7 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding-top: 4rem;
+  padding-top: 7rem;
   padding-left: 4rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
@@ -64,11 +64,10 @@ const AboutUs = () => {
             From websites and apps to custom solutions, we’re here to bring your
             ideas to life. Let’s create something extraordinary together.
           </Subsubtitle>
-
-          <StyledButton icon="FaArrowRight" variant="outline" size="medium">
-            CONTACT US
-          </StyledButton>
         </TitleWrapper>
+        <StyledButton icon="FaArrowRight" variant="outline" size="medium">
+          CONTACT US
+        </StyledButton>
       </ContentWrapper>
     </PageWrapper>
   );

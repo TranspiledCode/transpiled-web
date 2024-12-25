@@ -66,7 +66,10 @@ const content = {
     btnText: 'Contact Us',
     btnUrl: '/Contact',
   },
-  OurApproach: {
+  approach: {
+    title: 'OUR APPROACH',
+    subtitle:
+      'Every project begins with a deep understanding of your business and goals. We don’t just build websites—we build experiences ',
     cards: [
       {
         heading: 'Web Development',

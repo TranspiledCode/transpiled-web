@@ -1,43 +1,68 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import ApproachCard from 'molecules/ApproachCard';
 import config from 'data/home';
 
-const PageWrapper = styled.div``;
-const TitleWrapper = styled.div`
+const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  padding-top: 4rem;
-  padding-left: 4rem;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  background-color: ${({ theme }) => theme.colors.white};
+
+  z-index: 1;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    gap: 3rem;
+    gap: 4rem;
+    padding: 6rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${({ theme }) => theme.colors.black};
+    opacity: 0.8;
+    z-index: -1;
   }
 `;
 
-const Title = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.poppins};
+const Title = styled.h2`
   color: ${({ theme }) => theme.colors.green};
+  font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: clamp(4.8rem, 10vw, 9.6rem);
-  line-height: clamp(4.8rem, 10vw, 8.6rem);
+  font-size: clamp(5rem, 8vw, 6.4rem);
+  line-height: clamp(5rem, 8vw, 6.4rem);
+  letter-spacing: -2px;
 `;
 
-const SubTitle = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.manrope};
+const Subtitle = styled.p`
+  width: 100%;
   color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3.6rem);
-  line-height: clamp(1.8rem, 4vw, 3.6rem);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  max-width: 80%;
-  margin-bottom: clamp(2rem, 8vw, 8rem);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-align: left;
+  width: 100%;
 
-  ${({ theme }) => theme.mediaQueries.md}
-  gap: 1rem;
-  max-width: 95rem;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: clamp(60rem, 100%, 70rem);
+  }
+`;
+
+const SectionInfo = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 const CardGridWrapper = styled.div`
@@ -70,24 +95,27 @@ const CardArea = styled.div`
 `;
 
 const OurApproach = () => {
-  const { cards } = config.why;
+  const { cards } = config.approach;
+
   return (
-    <PageWrapper>
-      <TitleWrapper>
-        <Title>Our Approach</Title>
-        <SubTitle>
-          Every project begins with a deep understanding of your business and
-          goals. We don’t just build websites—we build experiences.
-        </SubTitle>
-      </TitleWrapper>
+    <Container>
+      <SectionInfo>
+        <Title>{config.approach.title}</Title>
+        <Subtitle>{config.approach.subtitle}</Subtitle>
+      </SectionInfo>
       <CardGridWrapper>
         <CardArea>
           {cards.map((card, index) => (
-            <OurApproach key={index} label={card.label} />
+            <ApproachCard
+              key={index}
+              label={card.label}
+              heading={card.heading}
+              description={card.description}
+            />
           ))}
         </CardArea>
       </CardGridWrapper>
-    </PageWrapper>
+    </Container>
   );
 };
 

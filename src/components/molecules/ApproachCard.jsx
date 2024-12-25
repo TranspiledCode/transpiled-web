@@ -1,4 +1,4 @@
-//create why card (Basic) - Pass data into About Section
+//create why card (Basic) - Pass data into WhySection
 //300 width (refer to figma)
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
@@ -14,7 +14,7 @@ const Heading = styled.h1`
 const Description = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: 2rem;
-  color: ${({ theme }) => theme.colors.lightGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 const WhyCard = ({ heading, description }) => {
