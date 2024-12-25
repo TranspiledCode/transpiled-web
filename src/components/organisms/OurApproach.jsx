@@ -13,12 +13,12 @@ const Container = styled.div`
   background-size: cover;
   background-position: center;
   background-color: ${({ theme }) => theme.colors.white};
-
+  margin-left: 4rem;
   z-index: 1;
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 4rem;
-    padding: 6rem;
+    justify-content: center;
   }
 
   &::before {

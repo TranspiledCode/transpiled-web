@@ -30,7 +30,7 @@ const StyledTitle = styled.h1`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
-  line-height: clamp(4.8rem, 10vw, 8.6rem);
+  line-height: clamp(5rem, 8vw, 6.4rem);
 `;
 
 const Subsubtitle = styled.h2`

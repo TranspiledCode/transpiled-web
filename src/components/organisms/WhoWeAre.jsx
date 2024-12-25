@@ -43,7 +43,7 @@ const Subtitle = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: center;
+  text-align: left;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     width: clamp(60rem, 100%, 70rem);
