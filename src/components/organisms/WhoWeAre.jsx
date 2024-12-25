@@ -1,53 +1,90 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import WhoCard from 'molecules/WhoCard';
+import config from 'data/home';
 
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding-top: 4rem;
-  padding-left: 6rem;
+const Container = styled.section`
+  ${({ theme }) => theme.mixins.flexColCenter};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
+  gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    gap: 3rem;
+    gap: 4rem;
   }
 `;
 
-const Title = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.poppins};
+const SectionInfo = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+`;
+const Title = styled.h2`
   color: ${({ theme }) => theme.colors.lightBlue};
+  font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
   font-size: clamp(5rem, 8vw, 6.4rem);
   line-height: clamp(5rem, 8vw, 6.4rem);
+  letter-spacing: -2px;
 `;
-
-const SubTitle = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.manrope};
+const Position = styled.p`
+  width: 100%;
   color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: left;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  max-width: 80%;
-  margin-bottom: clamp(2rem, 8vw, 8rem);
-
-  ${({ theme }) => theme.mediaQueries.md}
-  gap: 1rem;
-  max-width: 95rem;
+  text-align: justify;
 `;
 
-const WhoWeAre = () => {
+const Subtitle = styled.p`
+  width: 100%;
+  color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-align: center;
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: clamp(60rem, 100%, 70rem);
+    text-align: left;
+  }
+`;
+
+const CardArea = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    flex-direction: row;
+  }
+`;
+
+const ServicesSection = () => {
+  const { cards } = config.who;
   return (
-    <TitleWrapper>
-      <Title>Who We Are</Title>
-      <SubTitle>
-        Our team is made up of creative thinkers, technical experts, and problem
-        solvers who thrive on challenges.
-      </SubTitle>
-    </TitleWrapper>
+    <Container>
+      <SectionInfo>
+        <Title>{config.who.title}</Title>
+        <Position>{config.who.position}</Position>
+        <Subtitle>{config.who.subtitle}</Subtitle>
+      </SectionInfo>
+      <CardArea>
+        {cards.map((card, index) => (
+          <WhoCard
+            key={index}
+            url={card.url}
+            label={card.label}
+            heading={card.heading}
+            position={card.position}
+            description={card.description}
+          />
+        ))}
+      </CardArea>
+    </Container>
   );
 };
-
-export default WhoWeAre;
+export default ServicesSection;
