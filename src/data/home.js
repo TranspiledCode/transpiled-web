@@ -66,6 +66,27 @@ const content = {
     btnText: 'Contact Us',
     btnUrl: '/Contact',
   },
+  OurApproach: {
+    cards: [
+      {
+        heading: 'Web Development',
+        description: 'Websites that look and work beautifully on all devices.',
+      },
+      {
+        heading: 'Mobile App Development',
+        description: 'Fast load times and smooth functionality.',
+      },
+      {
+        heading: 'Web App Development',
+        description:
+          'Secure, scalable online stores with payment and inventory systems.',
+      },
+      {
+        heading: 'Custom Solutions',
+        description: 'Built to help your site rank higher on search engines.',
+      },
+    ],
+  },
 };
 
 export default content;

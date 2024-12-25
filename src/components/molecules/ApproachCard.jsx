@@ -1,40 +1,34 @@
-import React from 'react';
+//create why card (Basic) - Pass data into About Section
+//300 width (refer to figma)
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-const CardWrapper = styled.div`
+const Container = styled.div`
   width: 100%;
-  display: grid;
-  grid-auto-rows: max-content;
 `;
-
-const Header = styled.h4`
+const Heading = styled.h1`
+  font-family: ${({ theme }) => theme.fonts.poppins};
+  font-size: 2rem;
   color: ${({ theme }) => theme.colors.black};
+`;
+const Description = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  line-height: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.4px;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
 
-const Paragraph = styled.p`
-  color: ${({ theme }) => theme.colors.darkGray};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: 1.6rem;
-  text-align: justify;
-`;
-
-const ApproachCard = ({ header, paragraph }) => {
+const WhyCard = ({ heading, description }) => {
   return (
-    <CardWrapper>
-      <Header>{header}</Header>
-      <Paragraph>{paragraph}</Paragraph>
-    </CardWrapper>
+    <Container>
+      <Heading>{heading}</Heading>
+      <Description>{description}</Description>
+    </Container>
   );
 };
 
-ApproachCard.propTypes = {
-  header: PropTypes.string.isRequired,
-  paragraph: PropTypes.string.isRequired,
-};
+export default WhyCard;
 
-export default ApproachCard;
+WhyCard.propTypes = {
+  heading: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};

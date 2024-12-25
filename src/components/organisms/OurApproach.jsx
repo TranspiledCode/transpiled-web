@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import config from 'data/home';
 
+const PageWrapper = styled.div``;
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,15 +40,54 @@ const SubTitle = styled.h2`
   max-width: 95rem;
 `;
 
+const CardGridWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 2rem;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  width: 90vw;
+`;
+
+const CardArea = styled.div`
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  width: 100%;
+  display: grid;
+  gap: 4rem;
+  justify-items: left;
+
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 60vw;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+  }
+`;
+
 const OurApproach = () => {
+  const { cards } = config.why;
   return (
-    <TitleWrapper>
-      <Title>Our Approach</Title>
-      <SubTitle>
-        Every project begins with a deep understanding of your business and
-        goals. We don’t just build websites—we build experiences.
-      </SubTitle>
-    </TitleWrapper>
+    <PageWrapper>
+      <TitleWrapper>
+        <Title>Our Approach</Title>
+        <SubTitle>
+          Every project begins with a deep understanding of your business and
+          goals. We don’t just build websites—we build experiences.
+        </SubTitle>
+      </TitleWrapper>
+      <CardGridWrapper>
+        <CardArea>
+          {cards.map((card, index) => (
+            <OurApproach key={index} label={card.label} />
+          ))}
+        </CardArea>
+      </CardGridWrapper>
+    </PageWrapper>
   );
 };
 
