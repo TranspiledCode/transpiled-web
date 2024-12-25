@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 // import AboutCard from 'molecules/AboutCard';
 import SampleHeader from '../components/organisms/SampleHeader';
+import WhoWeAre from '../components/organisms/WhoWeAre';
 
 const PageWrapper = styled.div``;
 
@@ -75,6 +76,7 @@ const AboutUs = () => {
           <StyledParagraph>LEARN MORE ABOUT WHO WE ARE</StyledParagraph>
         </TitleWrapper>
       </AboutUsWrapper>
+      <WhoWeAre />
     </PageWrapper>
   );
 };
