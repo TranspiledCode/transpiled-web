@@ -5,7 +5,7 @@ import Button from '../atoms/Button';
 const PageWrapper = styled.div``;
 
 const ContentWrapper = styled.div`
-  min-height: 70vh;
+  min-height: 60vh;
   max-width: 100vw;
   background: linear-gradient(
     to bottom,

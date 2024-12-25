@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const AboutUsWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 80vh;
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
