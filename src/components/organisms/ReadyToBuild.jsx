@@ -18,7 +18,7 @@ const TitleWrapper = styled.div`
   flex-direction: column;
   gap: 3rem;
   padding-top: 7rem;
-  padding-left: 4rem;
+  padding-left: 6rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 3rem;
@@ -37,17 +37,16 @@ const Subsubtitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3.6rem);
-  line-height: clamp(1.8rem, 4vw, 3.6rem);
-  display: flex;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-align: left;
   flex-wrap: wrap;
   gap: 0.5rem;
-  max-width: 80%;
+  max-width: 90%;
   margin-bottom: clamp(2rem, 8vw, 8rem);
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 1rem;
-    max-width: 60rem;
+    max-width: 90rem;
   }
 `;
 
