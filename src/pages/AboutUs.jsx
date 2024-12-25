@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 // import AboutCard from 'molecules/AboutCard';
 import SampleHeader from '../components/organisms/SampleHeader';
 import WhoWeAre from '../components/organisms/WhoWeAre';
+import OurApproach from '../components/organisms/OurApproach';
 
 const PageWrapper = styled.div``;
 
@@ -77,6 +78,7 @@ const AboutUs = () => {
         </TitleWrapper>
       </AboutUsWrapper>
       <WhoWeAre />
+      <OurApproach />
     </PageWrapper>
   );
 };
