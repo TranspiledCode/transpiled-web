@@ -5,6 +5,7 @@ import SampleHeader from '../components/organisms/SampleHeader';
 import WhoWeAre from '../components/organisms/WhoWeAre';
 import OurApproach from '../components/organisms/OurApproach';
 import TranspiledVision from '../components/organisms/TranspiledVision';
+import ReadyToBuild from '../components/organisms/ReadyToBuild';
 import Footer from '../components/organisms/Footer';
 
 const PageWrapper = styled.div``;
@@ -82,6 +83,7 @@ const AboutUs = () => {
       <WhoWeAre />
       <OurApproach />
       <TranspiledVision />
+      <ReadyToBuild />
       <Footer />
     </PageWrapper>
   );
