@@ -50,9 +50,10 @@ const Subsubtitle = styled.h2`
   }
 `;
 
-const StyledButton = styled(Button)`
-  margin-left: 4rem;
+const ButtonWrapper = styled.div`
+  margin-left: 5rem;
 `;
+const StyledButton = styled(Button)``;
 const AboutUs = () => {
   return (
     <PageWrapper>
@@ -64,9 +65,11 @@ const AboutUs = () => {
             ideas to life. Let’s create something extraordinary together.
           </Subsubtitle>
         </TitleWrapper>
-        <StyledButton icon="FaArrowRight" variant="outline" size="medium">
-          CONTACT US
-        </StyledButton>
+        <ButtonWrapper>
+          <StyledButton icon="FaArrowRight" variant="outline" size="medium">
+            CONTACT US
+          </StyledButton>
+        </ButtonWrapper>
       </ContentWrapper>
     </PageWrapper>
   );
