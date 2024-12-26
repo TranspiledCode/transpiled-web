@@ -12,8 +12,8 @@ import ProfileDropdown from 'organisms/ProfileDropdown';
 
 const HeaderContainer = styled.header`
   width: 100%;
-  background-color: ${({ scrolled }) =>
-    scrolled ? '${({ theme }) => theme.colors.black}' : 'transparent'};
+  background-color: ${({ scrolled, theme }) =>
+    scrolled ? theme.colors.black : 'transparent'};
   color: ${({ theme }) => theme.colors.white};
   transition:
     background-color 0.3s,
