@@ -7,14 +7,19 @@ const Container = styled.div`
   width: 100%;
 `;
 const Heading = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-size: 2rem;
   color: ${({ theme }) => theme.colors.lightBlue};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
 `;
 const Description = styled.p`
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: 2rem;
   color: ${({ theme }) => theme.colors.lightGray};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-size: 1.6rem;
+  text-align: justify;
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
 `;
 
 const WhyCard = ({ heading, description }) => {
