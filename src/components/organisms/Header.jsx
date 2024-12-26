@@ -10,44 +10,31 @@ import MobileMenuButton from 'atoms/MobileMenuButton';
 import links from 'data/navigation';
 import ProfileDropdown from 'organisms/ProfileDropdown';
 
-const SampleHeader = () => {
-  const { scrolled, handleScroll } = useContext(GlobalContext);
-  const { menuOpen, toggleMenu } = useContext(GlobalContext);
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <HeaderContainer scrolled={scrolled}>
-      <MobileNavMenu links={links} />
-      <Logo>Transpiled</Logo>
-      <Nav>
-        <NavMenu links={links} />
-        <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
-        {currentUser && <ProfileDropdown />}
-      </Nav>
-    </HeaderContainer>
-  );
-};
-
 const HeaderContainer = styled.header`
-  position: fixed;
-  top: 0;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
   background-color: ${({ scrolled }) =>
     scrolled ? '${({ theme }) => theme.colors.black}' : 'transparent'};
   color: ${({ theme }) => theme.colors.white};
   transition:
     background-color 0.3s,
     color 0.3s;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
   z-index: ${({ theme }) => theme.zIndices.header};
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+`;
+
+const HeaderContent = styled.div`
+  height: 6rem;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Logo = styled.div`
@@ -60,5 +47,30 @@ const Nav = styled.nav`
   align-items: center;
   gap: 2rem;
 `;
+
+const SampleHeader = () => {
+  const { scrolled, handleScroll } = useContext(GlobalContext);
+  const { menuOpen, toggleMenu } = useContext(GlobalContext);
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <HeaderContainer scrolled={scrolled}>
+      <HeaderContent>
+        <MobileNavMenu links={links} />
+        <Logo>Transpiled</Logo>
+        <Nav>
+          <NavMenu links={links} />
+          <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
+          {currentUser && <ProfileDropdown />}
+        </Nav>
+      </HeaderContent>
+    </HeaderContainer>
+  );
+};
 
 export default SampleHeader;
