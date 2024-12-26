@@ -38,7 +38,7 @@ const Subtitle = styled.p`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
   line-height: 1.4em;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     width: clamp(60rem, 100%, 70rem);

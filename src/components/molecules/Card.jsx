@@ -27,14 +27,16 @@ const Heading = styled.h3`
   color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: clamp(1.8rem, 4vw, 2.4rem);
-  line-height: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.4px;
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
 `;
 const Description = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: 1.6rem;
   text-align: justify;
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
 `;
 
 const Card = ({ url, label, heading, description }) => {
