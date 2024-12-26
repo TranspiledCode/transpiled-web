@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-
+import { Link } from 'react-router-dom';
 import AuthContext from 'context/AuthContext';
 import styled from '@emotion/styled';
 
@@ -37,7 +37,7 @@ const HeaderContent = styled.div`
   justify-content: space-between;
 `;
 
-const Logo = styled.div`
+const Logo = styled.h1`
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
   font-size: clamp(2.4rem, 3vw, 3.4rem);
@@ -64,7 +64,9 @@ const SampleHeader = () => {
     <HeaderContainer scrolled={scrolled}>
       <HeaderContent>
         <MobileNavMenu links={links} />
-        <Logo>Transpiled</Logo>
+        <Logo>
+          <Link to="/">Transpiled</Link>
+        </Logo>
         <Nav>
           <NavMenu links={links} />
           <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
