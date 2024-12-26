@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
-    width: clamp(0rem, 100%, 30rem);
+    width: clamp(0rem, 100%, 38rem);
   }
 `;
 const Heading = styled.h1`

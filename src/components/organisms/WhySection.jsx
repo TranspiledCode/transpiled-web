@@ -81,14 +81,14 @@ const CardArea = styled.div`
   width: 100%;
   display: grid;
   gap: 4rem;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 1fr;
 
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: 60vw;
-    gap: 2rem;
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    max-width: 60vw;
   }
 `;
 
