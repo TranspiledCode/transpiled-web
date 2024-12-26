@@ -1,5 +1,5 @@
 import ServicesHero from '../components/organisms/ServicesHero';
-import ServicesContact from '../components/organisms/ServicesContact';
+import ContactCTA from '../components/organisms/ContactCTA';
 import ServicesInfo from '../components/organisms/ServicesInfo';
 
 const Services = () => {
@@ -7,7 +7,7 @@ const Services = () => {
     <>
       <ServicesHero />
       <ServicesInfo />
-      <ServicesContact />
+      <ContactCTA />
     </>
   );
 };
