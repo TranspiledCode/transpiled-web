@@ -8,29 +8,27 @@ import PropTypes from 'prop-types';
 const NavMenu = styled.nav`
   display: none;
 
-  @media (min-width: 768px) {
+  ${({ theme }) => theme.mediaQueries.md} {
     display: flex;
     align-items: center;
 
     a {
-      color: ${({ theme }) => theme.colors.white};
-      text-decoration: none;
-      font-size: 1.6rem;
-      font-weight: 400;
       transition: color 0.3s;
-      padding: 0 1rem;
-
       &:hover {
-        color: ${({ theme }) => theme.colors.orange};
+        color: ${({ theme }) => theme.colors.green};
       }
     }
   }
 `;
 
 const NavLinks = styled.div`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-weight: 400;
+  font-size: clamp(2rem, 2vw, 2.4rem);
+  letter-spacing: -0.015em;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  gap: 2rem;
 `;
 
 const NavBar = ({ links }) => {
@@ -44,8 +42,8 @@ const NavBar = ({ links }) => {
             {link.label}
           </Link>
         ))}
+        {!currentUser && <Link to="/login">Login</Link>}
       </NavLinks>
-      {!currentUser && <Link to="/login">Login</Link>}
     </NavMenu>
   );
 };

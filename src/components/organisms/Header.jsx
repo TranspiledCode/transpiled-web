@@ -40,7 +40,6 @@ const HeaderContent = styled.div`
 const Logo = styled.div`
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: 2rem;
   font-size: clamp(2.4rem, 3vw, 3.4rem);
   letter-spacing: -0.04em;
 `;
