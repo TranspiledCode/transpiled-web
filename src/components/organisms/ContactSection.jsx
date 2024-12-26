@@ -13,12 +13,10 @@ const ScrollTo = styled.div`
 `;
 
 const Section = styled.section`
-  background-image: linear-gradient(
-    ${({ theme }) => theme.colors.darkBlue},
-    ${({ theme }) => theme.colors.fuchsia}
-  );
   ${({ theme }) => theme.mixins.flexColCenter};
-  padding: ${({ theme }) => theme.layouts.sectionPadding};
+  padding: ${({ theme }) => theme.layouts.sectionPaddingNoTop};
+  padding-top: clamp(6rem, 6vw, 8rem);
+  padding-bottom: clamp(4rem, 4vw, 6rem);
 `;
 
 const SectionContent = styled.div`
@@ -27,6 +25,7 @@ const SectionContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   gap: 4rem;
 `;
 const SectionInfo = styled.div`
