@@ -67,13 +67,13 @@ const Subtitle = styled.p`
 `;
 
 const CardGridWrapper = styled.div`
+  width: 100%;
+  max-width: 90vw;
   display: flex;
   justify-content: flex-start;
-  width: 100%;
   gap: 2rem;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(1, 1fr);
-  width: 90vw;
 `;
 
 const CardArea = styled.div`
@@ -81,8 +81,6 @@ const CardArea = styled.div`
   width: 100%;
   display: grid;
   gap: 4rem;
-  justify-items: left;
-
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(4, 1fr);
 
@@ -91,7 +89,6 @@ const CardArea = styled.div`
     gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    justify-items: center;
   }
 `;
 

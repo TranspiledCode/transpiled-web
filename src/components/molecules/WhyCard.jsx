@@ -4,7 +4,9 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-  width: 100%;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: clamp(0rem, 100%, 30rem);
+  }
 `;
 const Heading = styled.h1`
   color: ${({ theme }) => theme.colors.lightBlue};
