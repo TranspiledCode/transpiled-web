@@ -49,7 +49,7 @@ const Subtitle = styled.p`
   }
 `;
 
-const ContactCTA = () => {
+const PageCTA = () => {
   // MOVE OUT TO CONFIG LATER //
   const title = 'READY TO BUILD?';
   const subtitle =
@@ -73,4 +73,4 @@ const ContactCTA = () => {
     </SectionContainer>
   );
 };
-export default ContactCTA;
+export default PageCTA;
