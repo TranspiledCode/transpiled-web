@@ -1,10 +1,10 @@
+// HomeHero.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import styled from '@emotion/styled';
-import config from 'data/home';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
+import useContent from 'hooks/useContent';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
@@ -28,7 +28,6 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 2rem;
   }
@@ -53,7 +52,6 @@ const SubtitleText = styled.div`
   gap: 0.5rem;
   max-width: 80%;
   margin-bottom: clamp(2rem, 8vw, 8rem);
-
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 1rem;
     max-width: 60rem;
@@ -77,14 +75,19 @@ const LearnMoreText = styled.div`
 const StyledButton = styled(Button)`
   font-size: clamp(2rem, 4vw, 5rem);
   width: 100%;
-
   ${({ theme }) => theme.mediaQueries.md} {
     width: auto;
   }
 `;
 
 const HomeHero = () => {
-  const subtitleWords = config.hero.subtitle.split(' ');
+  const { data, loading, error } = useContent('home'); // Fetch 'home' document
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error loading hero section: {error}</div>;
+
+  const { hero } = data;
+  const subtitleWords = hero.subtitle.split(' ');
 
   const getWordColor = (index) => {
     switch (index) {
@@ -101,23 +104,21 @@ const HomeHero = () => {
     <HeroWrapper>
       <HeroContent>
         <TitleWrapper>
-          <Title>{config.hero.title}</Title>
+          <Title>{hero.title}</Title>
           <SubtitleText>
             {subtitleWords.map((word, index) => (
-              <Word key={`${word}-${index}`} color={getWordColor(index)}>
+              <Word key={index} color={getWordColor(index)}>
                 {word}
               </Word>
             ))}
           </SubtitleText>
-          <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
-          <RevealWrapper>
-            <Link to="#contact">
-              <StyledButton icon="FaArrowDown" variant="outline" size="medium">
-                {config.hero.buttonText}
-              </StyledButton>
-            </Link>
-          </RevealWrapper>
         </TitleWrapper>
+        <RevealWrapper>
+          <Link to="/learn-more">
+            <StyledButton>{hero.buttonText}</StyledButton>
+          </Link>
+          <LearnMoreText>{hero.learnMore}</LearnMoreText>
+        </RevealWrapper>
       </HeroContent>
     </HeroWrapper>
   );
