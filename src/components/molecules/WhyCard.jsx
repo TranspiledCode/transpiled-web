@@ -15,6 +15,11 @@ const Description = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: 2rem;
   color: ${({ theme }) => theme.colors.lightGray};
+  text-align: justify;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    text-align: left;
+  }
 `;
 
 const WhyCard = ({ heading, description }) => {
