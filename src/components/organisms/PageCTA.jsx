@@ -71,6 +71,7 @@ const PageCTA = ({
   title,
   subtitle,
   btnText,
+  btnUrl,
 }) => {
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
@@ -78,7 +79,7 @@ const PageCTA = ({
         <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
           <Subtitle textColor={textColor}>{subtitle}</Subtitle>
-          <Link to="/contact">
+          <Link to={btnUrl}>
             <Button icon="FaArrowRight" variant="outline" size="medium">
               {btnText}
             </Button>
@@ -98,5 +99,6 @@ PageCTA.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   btnText: PropTypes.string.isRequired,
+  btnUrl: PropTypes.string.isRequired,
 };
 export default PageCTA;

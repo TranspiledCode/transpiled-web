@@ -6,7 +6,7 @@ import PageCTA from '../components/organisms/PageCTA';
 import config from '../data/home';
 
 const Home = () => {
-  const { title, subtitle, btnText } = config.cta;
+  const { title, subtitle, btnText, btnUrl } = config.cta;
   return (
     <>
       <HomeHero />
@@ -19,6 +19,7 @@ const Home = () => {
         title={title}
         subtitle={subtitle}
         btnText={btnText}
+        btnUrl={btnUrl}
       />
     </>
   );
