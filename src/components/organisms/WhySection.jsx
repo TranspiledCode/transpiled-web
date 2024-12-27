@@ -38,7 +38,7 @@ const Title = styled.h2`
   color: ${({ theme }) => theme.colors.green};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: clamp(5rem, 8vw, 6.4rem);
+  font-size: clamp(4rem, 8vw, 6.4rem);
   line-height: clamp(5rem, 8vw, 6.4rem);
   letter-spacing: -2px;
 `;
