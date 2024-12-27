@@ -1,6 +1,6 @@
 // src/App.js
 import Hero from 'organisms/Hero';
-import ContactSection from 'organisms/ContactSection';
+import ContactCTA from '../components/organisms/ContactCTA';
 import ServicesSection from 'organisms/ServicesSection';
 import WhySection from 'organisms/WhySection';
 
@@ -10,7 +10,7 @@ const Home = () => {
       <Hero />
       <ServicesSection />
       <WhySection />
-      <ContactSection />
+      <ContactCTA />
     </>
   );
 };
