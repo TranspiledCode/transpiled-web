@@ -16,7 +16,6 @@ const SectionContainer = styled.section`
 const SectionContent = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.layouts.maxWidth};
-  padding: 2vw 0;
 `;
 const Title = styled.h3`
   color: ${({ theme }) => theme.colors.white};
@@ -42,7 +41,7 @@ const Subtitle = styled.p`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
   line-height: 1.4em;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     width: clamp(60rem, 100%, 90rem);
