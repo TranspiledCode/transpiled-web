@@ -23,7 +23,7 @@ const SectionContent = styled.div`
 `;
 const Title = styled.h3`
   font-family: ${({ theme }) => theme.fonts.poppins};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: 0.95em;
@@ -44,8 +44,8 @@ const SubtitleContainer = styled.div`
 `;
 const Subtitle = styled.p`
   width: 100%;
-  color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.manrope};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
@@ -59,10 +59,10 @@ const Subtitle = styled.p`
 `;
 const Caption = styled.p`
   font-family: ${({ theme }) => theme.fonts.mono};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.white};
   max-width: 35rem;
   line-height: 1.4em;
   letter-spacing: 0.015em;
@@ -76,6 +76,7 @@ const Caption = styled.p`
 const InnerPageHero = ({
   gradTopCol,
   gradBotCol,
+  textColor,
   title,
   subtitle,
   caption,
@@ -83,10 +84,10 @@ const InnerPageHero = ({
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
-        <Title>{title}</Title>
+        <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
-          <Subtitle>{subtitle}</Subtitle>
-          <Caption>{caption}</Caption>
+          <Subtitle textColor={textColor}>{subtitle}</Subtitle>
+          <Caption textColor={textColor}>{caption}</Caption>
         </SubtitleContainer>
       </SectionContent>
     </SectionContainer>
@@ -98,8 +99,15 @@ InnerPageHero.propTypes = {
     .isRequired,
   gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
     .isRequired,
+  textColor: PropTypes.oneOf([
+    'black',
+    'white',
+    'gray',
+    'lightGray',
+    'darkGray',
+  ]).isRequired,
   title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   caption: PropTypes.string,
 };
 export default InnerPageHero;

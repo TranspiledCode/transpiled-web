@@ -9,6 +9,7 @@ const Services = () => {
       <InnerPageHero
         gradTopCol="lightBlue"
         gradBotCol="green"
+        textColor="white"
         title={title}
         subtitle={subtitle}
         caption={caption}
