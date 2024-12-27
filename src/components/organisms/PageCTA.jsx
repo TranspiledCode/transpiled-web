@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Button from '../atoms/Button';
+import PropTypes from 'prop-types';
 
 const SectionContainer = styled.section`
   width: 100%;
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.fuchsia},
-    ${({ theme }) => theme.colors.darkBlue}
+    ${({ theme, gradTopCol }) => theme.colors[gradTopCol]},
+    ${({ theme, gradBotCol }) => theme.colors[gradBotCol]}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -18,7 +19,7 @@ const SectionContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
 `;
 const Title = styled.h3`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
   font-size: clamp(4.2rem, 8vw, 6.4rem);
@@ -35,7 +36,7 @@ const SubtitleContainer = styled.div`
 
 const Subtitle = styled.p`
   width: 100%;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
@@ -49,7 +50,7 @@ const Subtitle = styled.p`
   }
 `;
 
-const PageCTA = () => {
+const PageCTA = ({ gradTopCol, gradBotCol, textColor }) => {
   // MOVE OUT TO CONFIG LATER //
   const title = 'READY TO BUILD?';
   const subtitle =
@@ -58,11 +59,11 @@ const PageCTA = () => {
   // MOVE OUT TO CONFIG LATER //
 
   return (
-    <SectionContainer>
+    <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
-        <Title>{title}</Title>
+        <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
-          <Subtitle>{subtitle}</Subtitle>
+          <Subtitle textColor={textColor}>{subtitle}</Subtitle>
           <Link to="/contact">
             <Button icon="FaArrowRight" variant="outline" size="medium">
               {buttonText}
@@ -72,5 +73,16 @@ const PageCTA = () => {
       </SectionContent>
     </SectionContainer>
   );
+};
+
+PageCTA.propTypes = {
+  gradTopCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  textColor: PropTypes.oneOf(['black', 'white']).isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  btnText: PropTypes.string.isRequired,
 };
 export default PageCTA;
