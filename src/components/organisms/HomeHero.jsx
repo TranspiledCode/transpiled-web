@@ -21,6 +21,7 @@ const HeroWrapper = styled.section`
 const HeroContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
+  padding: 4rem 0;
 `;
 
 const TitleWrapper = styled.div`
@@ -82,28 +83,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-/**
- * Hero component for the landing page.
- * Responsive landing section with gradient background, animated title,
- * subtitle with highlighted words, and call-to-action button.
- *
- * @component
- * @example
- * ```jsx
- * // Requires config object with hero section content:
- * const config = {
- *   hero: {
- *     title: "Welcome",
- *     subtitle: "Build something amazing with us",
- *     learnMore: "Discover more",
- *     buttonText: "Get Started"
- *   }
- * };
- *
- * <Hero />
- * ```
- */
-const Hero = () => {
+const HomeHero = () => {
   const subtitleWords = config.hero.subtitle.split(' ');
 
   const getWordColor = (index) => {
@@ -143,4 +123,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HomeHero;
