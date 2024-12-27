@@ -64,7 +64,7 @@ const config = {
     subtitle:
       'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.',
     btnText: 'Contact Us',
-    btnUrl: '/contact',
+    btnUrl: '/Contact',
   },
 };
 
