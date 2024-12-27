@@ -5,14 +5,17 @@ import { GlobalProvider } from './GlobalContext';
 import { ContactFormProvider } from './ContactForm';
 import { ToastProvider } from './ToastContext';
 import { AuthProvider } from './AuthContext';
+import { FirestoreProvider } from './FirestoreContext';
 
 const ContextProvider = ({ children }) => {
   return (
     <AuthProvider>
       <GlobalProvider>
-        <ToastProvider>
-          <ContactFormProvider>{children}</ContactFormProvider>
-        </ToastProvider>
+        <ContactFormProvider>
+          <ToastProvider>
+            <FirestoreProvider>{children}</FirestoreProvider>
+          </ToastProvider>
+        </ContactFormProvider>
       </GlobalProvider>
     </AuthProvider>
   );
