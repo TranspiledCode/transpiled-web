@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 const SectionContainer = styled.section`
+  min-height: 68vh;
   width: 100%;
   max-width: 100vw;
   background: linear-gradient(
@@ -17,7 +18,7 @@ const SectionContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   display: flex;
   flex-direction: column;
-  padding: 8vw 0;
+  padding: 4rem 0;
 `;
 const Title = styled.h3`
   font-family: ${({ theme }) => theme.fonts.poppins};
