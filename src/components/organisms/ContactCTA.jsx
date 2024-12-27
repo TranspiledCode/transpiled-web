@@ -58,7 +58,7 @@ const ContactCTA = () => {
   // MOVE OUT TO CONFIG LATER //
 
   return (
-    <SectionContainer>
+    <SectionContainer id="contact-cta">
       <SectionContent>
         <Title>{title}</Title>
         <SubtitleContainer>
