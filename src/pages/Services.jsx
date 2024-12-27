@@ -1,4 +1,4 @@
-import InnerPageHero from '../components/organisms/InnerPageHero';
+import PageHero from '../components/organisms/PageHero';
 import ContactCTA from '../components/organisms/ContactCTA';
 import ServicesInfo from '../components/organisms/ServicesInfo';
 import config from '../data/services';
@@ -6,7 +6,7 @@ const Services = () => {
   const { title, subtitle, caption } = config.hero;
   return (
     <>
-      <InnerPageHero
+      <PageHero
         gradTopCol="lightBlue"
         gradBotCol="green"
         textColor="white"

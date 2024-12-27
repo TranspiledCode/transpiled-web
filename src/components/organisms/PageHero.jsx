@@ -86,7 +86,7 @@ const Caption = styled.p`
   }
 `;
 
-const InnerPageHero = ({
+const PageHero = ({
   gradTopCol,
   gradBotCol,
   textColor,
@@ -107,7 +107,7 @@ const InnerPageHero = ({
   );
 };
 
-InnerPageHero.propTypes = {
+PageHero.propTypes = {
   gradTopCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
     .isRequired,
   gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
@@ -117,4 +117,4 @@ InnerPageHero.propTypes = {
   subtitle: PropTypes.string,
   caption: PropTypes.string,
 };
-export default InnerPageHero;
+export default PageHero;
