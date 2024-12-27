@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 const SectionContainer = styled.section`
   min-height: 68vh;
@@ -6,8 +7,8 @@ const SectionContainer = styled.section`
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.lightBlue},
-    ${({ theme }) => theme.colors.green}
+    ${({ theme, gradTopCol }) => theme.colors[gradTopCol]},
+    ${({ theme, gradBotCol }) => theme.colors[gradBotCol]}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -72,17 +73,23 @@ const Caption = styled.p`
   }
 `;
 
-const ServicesHero = () => {
+const InnerPageHero = ({
+  gradTopCol,
+  gradBotCol,
+  title,
+  subtitle,
+  caption,
+}) => {
   // MOVE OUT TO CONFIG LATER //
-  const title = "TODAY'S SOLUTIONS FUTURE PROOFED";
-  const subtitle =
-    'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.';
-  const caption =
-    'explore our services in depth or schedule a consultation below.';
+  // const title = "TODAY'S SOLUTIONS FUTURE PROOFED";
+  // const subtitle =
+  //   'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.';
+  // const caption =
+  //   'explore our services in depth or schedule a consultation below.';
   // MOVE OUT TO CONFIG LATER //
 
   return (
-    <SectionContainer>
+    <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
         <Title>{title}</Title>
         <SubtitleContainer>
@@ -93,4 +100,14 @@ const ServicesHero = () => {
     </SectionContainer>
   );
 };
-export default ServicesHero;
+
+InnerPageHero.propTypes = {
+  gradTopCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  caption: PropTypes.string,
+};
+export default InnerPageHero;
