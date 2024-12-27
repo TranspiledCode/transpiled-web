@@ -50,7 +50,7 @@ const Nav = styled.nav`
   gap: 2rem;
 `;
 
-const SampleHeader = () => {
+const Header = () => {
   const { scrolled, handleScroll } = useContext(GlobalContext);
   const { menuOpen, toggleMenu } = useContext(GlobalContext);
   const { currentUser } = useContext(AuthContext);
@@ -77,4 +77,4 @@ const SampleHeader = () => {
   );
 };
 
-export default SampleHeader;
+export default Header;
