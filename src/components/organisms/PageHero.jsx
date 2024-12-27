@@ -41,6 +41,7 @@ const Title = styled.h3`
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
+  text-transform: uppercase;
 
   ${({ theme }) => theme.mediaQueries.md} {
     max-width: 80rem;
