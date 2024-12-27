@@ -58,8 +58,8 @@ const Subtitle = styled.p`
   line-height: 1.4em;
   letter-spacing: -0.01em;
 
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 90rem);
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: clamp(0rem, 100%, 80rem);
     text-align: left;
   }
 `;
