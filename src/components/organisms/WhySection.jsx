@@ -4,23 +4,13 @@ import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
 import config from 'data/home';
 
-const Container = styled.div`
+const SectionContainer = styled.section`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
   background-image: url('https://images.pexels.com/photos/2514035/pexels-photo-2514035.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-size: cover;
   background-position: center;
   z-index: 1;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    gap: 4rem;
-    padding: 6rem;
-  }
 
   &::before {
     content: '';
@@ -35,26 +25,15 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.green};
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-weight: 700;
-  font-size: clamp(5rem, 8vw, 6.4rem);
-  line-height: clamp(5rem, 8vw, 6.4rem);
-  letter-spacing: -2px;
-`;
-
-const Subtitle = styled.p`
+const SectionContent = styled.div`
   width: 100%;
-  color: ${({ theme }) => theme.colors.lightGray};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: left;
-  width: 100%;
+  max-width: ${({ theme }) => theme.layouts.maxWidth};
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
+  ${({ theme }) => theme.mediaQueries.md} {
+    gap: 4rem;
   }
 `;
 
@@ -65,15 +44,36 @@ const SectionInfo = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `;
+const Title = styled.h2`
+  color: ${({ theme }) => theme.colors.green};
+  font-family: ${({ theme }) => theme.fonts.poppins};
+  font-weight: 700;
+  font-size: clamp(4.8rem, 8vw, 6.4rem);
+  line-height: 0.95em;
+  letter-spacing: -0.04em;
+`;
+const Subtitle = styled.p`
+  width: 100%;
+  color: ${({ theme }) => theme.colors.lightGray};
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: clamp(60rem, 100%, 70rem);
+  }
+`;
 
 const CardGridWrapper = styled.div`
+  width: 100%;
+  max-width: 90vw;
   display: flex;
   justify-content: flex-start;
-  width: 100%;
   gap: 2rem;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(1, 1fr);
-  width: 90vw;
 `;
 
 const CardArea = styled.div`
@@ -81,17 +81,14 @@ const CardArea = styled.div`
   width: 100%;
   display: grid;
   gap: 4rem;
-  justify-items: left;
+  grid-template-rows: 1fr;
 
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: 60vw;
-    gap: 2rem;
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    justify-items: center;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    max-width: 60vw;
   }
 `;
 
@@ -106,36 +103,38 @@ const WhySection = () => {
   const { cards } = config.why;
 
   return (
-    <Container>
-      <SectionInfo>
-        <Title>{config.why.title}</Title>
-        <Subtitle>{config.why.subtitle}</Subtitle>
-      </SectionInfo>
-      <CardGridWrapper>
-        <CardArea>
-          {cards.map((card, index) => (
-            <WhyCard
-              key={index}
-              label={card.label}
-              heading={card.heading}
-              description={card.description}
-            />
-          ))}
-        </CardArea>
-      </CardGridWrapper>
-      <ButtonArea>
-        <Link to="/about">
-          <Button
-            type="call to action"
-            icon="FaArrowRight"
-            variant="outline"
-            size="medium"
-          >
-            Learn More
-          </Button>
-        </Link>
-      </ButtonArea>
-    </Container>
+    <SectionContainer>
+      <SectionContent>
+        <SectionInfo>
+          <Title>{config.why.title}</Title>
+          <Subtitle>{config.why.subtitle}</Subtitle>
+        </SectionInfo>
+        <CardGridWrapper>
+          <CardArea>
+            {cards.map((card, index) => (
+              <WhyCard
+                key={index}
+                label={card.label}
+                heading={card.heading}
+                description={card.description}
+              />
+            ))}
+          </CardArea>
+        </CardGridWrapper>
+        <ButtonArea>
+          <Link to="/about">
+            <Button
+              type="call to action"
+              icon="FaArrowRight"
+              variant="outline"
+              size="medium"
+            >
+              Learn More
+            </Button>
+          </Link>
+        </ButtonArea>
+      </SectionContent>
+    </SectionContainer>
   );
 };
 
