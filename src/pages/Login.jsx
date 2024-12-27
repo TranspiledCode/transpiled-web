@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth } from 'config/firebase';
 import { useToast } from 'context/ToastContext'; // Import useToast hook
 
 // Main container with background gradient

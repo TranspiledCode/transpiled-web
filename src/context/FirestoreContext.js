@@ -1,7 +1,7 @@
 // FirestoreContext.js
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { db } from '../../firebase/config'; // Adjust the path as necessary
+import { db } from 'config/firebase';
 
 const FirestoreContext = createContext();
 
