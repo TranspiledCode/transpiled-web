@@ -1,6 +1,19 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
+/**
+ * Inner page hero component.
+ * Allowed colors are hinted with PropTypes.
+ *
+ * @component
+ * @param {string} gradTopCol - The upper half of the background gradient.
+ * @param {string} gradBotCol - The lower half of the background gradient.
+ * @param {string} textColor - The color of all text.
+ * @param {string} title - The large, bold text at the top.
+ * @param {string} subtitle - The medium, normal weight text in the middle.
+ * @param {string} caption - The small, monospaced text at the bottom.
+ */
+
 const SectionContainer = styled.section`
   min-height: 68vh;
   width: 100%;
@@ -99,13 +112,7 @@ InnerPageHero.propTypes = {
     .isRequired,
   gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
     .isRequired,
-  textColor: PropTypes.oneOf([
-    'black',
-    'white',
-    'gray',
-    'lightGray',
-    'darkGray',
-  ]).isRequired,
+  textColor: PropTypes.oneOf(['black', 'white']).isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   caption: PropTypes.string,
