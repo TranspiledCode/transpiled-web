@@ -1,4 +1,10 @@
 const config = {
+  hero: {
+    title: "TODAY'S SOLUTIONS FUTURE PROOFED",
+    subtitle:
+      'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.',
+    caption: 'explore our services in depth or schedule a consultation below.',
+  },
   serviceTabs: {
     infoTabs: [
       {
@@ -37,12 +43,12 @@ const config = {
           },
           {
             title: 'Web Apps',
-            caption: 'Accessible, feature-rich applications that work across devices.',
+            caption:
+              'Accessible, feature-rich applications that work across devices.',
           },
           {
             title: 'User-Centered Design',
-            caption:
-              'Interfaces that are intuitive and engaging.',
+            caption: 'Interfaces that are intuitive and engaging.',
           },
           {
             title: 'Reliable Performance',
@@ -66,8 +72,7 @@ const config = {
           },
           {
             title: 'Data Visualizations',
-            caption:
-              'Interactive dashboards for actionable insights.',
+            caption: 'Interactive dashboards for actionable insights.',
           },
           {
             title: 'Workflow Automation',

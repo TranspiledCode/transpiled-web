@@ -80,14 +80,6 @@ const InnerPageHero = ({
   subtitle,
   caption,
 }) => {
-  // MOVE OUT TO CONFIG LATER //
-  // const title = "TODAY'S SOLUTIONS FUTURE PROOFED";
-  // const subtitle =
-  //   'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.';
-  // const caption =
-  //   'explore our services in depth or schedule a consultation below.';
-  // MOVE OUT TO CONFIG LATER //
-
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
