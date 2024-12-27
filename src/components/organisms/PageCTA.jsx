@@ -3,6 +3,19 @@ import styled from '@emotion/styled';
 import Button from '../atoms/Button';
 import PropTypes from 'prop-types';
 
+/**
+ * Page call to action component.
+ * Allowed colors are hinted with PropTypes.
+ *
+ * @component
+ * @param {string} gradTopCol - The upper half of the background gradient.
+ * @param {string} gradBotCol - The lower half of the background gradient.
+ * @param {string} textColor - The color of all text.
+ * @param {string} title - The large, bold text at the top.
+ * @param {string} subtitle - The medium, normal weight text in the middle.
+ * @param {string} btnText - The contents of the button at the bottom.
+ */
+
 const SectionContainer = styled.section`
   width: 100%;
   max-width: 100vw;
@@ -25,6 +38,7 @@ const Title = styled.h3`
   font-size: clamp(4.2rem, 8vw, 6.4rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
+  text-transform: uppercase;
 `;
 
 const SubtitleContainer = styled.div`
@@ -50,14 +64,14 @@ const Subtitle = styled.p`
   }
 `;
 
-const PageCTA = ({ gradTopCol, gradBotCol, textColor }) => {
-  // MOVE OUT TO CONFIG LATER //
-  const title = 'READY TO BUILD?';
-  const subtitle =
-    'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.';
-  const buttonText = 'Contact Us';
-  // MOVE OUT TO CONFIG LATER //
-
+const PageCTA = ({
+  gradTopCol,
+  gradBotCol,
+  textColor,
+  title,
+  subtitle,
+  btnText,
+}) => {
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
@@ -66,7 +80,7 @@ const PageCTA = ({ gradTopCol, gradBotCol, textColor }) => {
           <Subtitle textColor={textColor}>{subtitle}</Subtitle>
           <Link to="/contact">
             <Button icon="FaArrowRight" variant="outline" size="medium">
-              {buttonText}
+              {btnText}
             </Button>
           </Link>
         </SubtitleContainer>

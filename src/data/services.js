@@ -37,12 +37,12 @@ const config = {
           },
           {
             title: 'Web Apps',
-            caption: 'Accessible, feature-rich applications that work across devices.',
+            caption:
+              'Accessible, feature-rich applications that work across devices.',
           },
           {
             title: 'User-Centered Design',
-            caption:
-              'Interfaces that are intuitive and engaging.',
+            caption: 'Interfaces that are intuitive and engaging.',
           },
           {
             title: 'Reliable Performance',
@@ -66,8 +66,7 @@ const config = {
           },
           {
             title: 'Data Visualizations',
-            caption:
-              'Interactive dashboards for actionable insights.',
+            caption: 'Interactive dashboards for actionable insights.',
           },
           {
             title: 'Workflow Automation',
@@ -77,6 +76,12 @@ const config = {
         titleColor: 'fuchsia',
       },
     ],
+  },
+  cta: {
+    title: 'Ready to Build?',
+    subtitle:
+      'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.',
+    btnText: 'Contact Us',
   },
 };
 export default config;

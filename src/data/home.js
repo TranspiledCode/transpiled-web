@@ -59,9 +59,11 @@ const config = {
       },
     ],
   },
-  contact: {
-    title: 'CONTACT US',
-    subtitle: "Let's Build Your Digital Solution Together",
+  cta: {
+    title: 'Ready to Build?',
+    subtitle:
+      'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.',
+    btnText: 'Contact Us',
   },
 };
 
