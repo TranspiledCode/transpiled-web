@@ -9,7 +9,6 @@ const Services = () => {
       <PageHero
         gradTopCol="lightBlue"
         gradBotCol="green"
-        textColor="white"
         title={title}
         subtitle={subtitle}
         caption={caption}

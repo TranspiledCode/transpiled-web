@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * Inner page hero component.
- * Allowed colors are hinted with PropTypes.
+ * Allowed colors are hinted with PropTypes, defaults are assigned to required props as an example.
  *
  * @component
  * @param {string} gradTopCol - The upper half of the background gradient.
@@ -88,10 +88,10 @@ const Caption = styled.p`
 `;
 
 const PageHero = ({
-  gradTopCol,
-  gradBotCol,
-  textColor,
-  title,
+  gradTopCol = 'darkBlue',
+  gradBotCol = 'lightBlue',
+  textColor = 'white',
+  title = 'title',
   subtitle,
   caption,
 }) => {
