@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 /**
  * Page call to action component.
- * Allowed colors are hinted with PropTypes.
+ * Allowed colors are hinted with PropTypes, defaults are assigned as an example.
  *
  * @component
  * @param {string} gradTopCol - The upper half of the background gradient.
