@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * @param {string} subtitle - The medium size, normal weight text at the bottom.
  * @param {string} titleColor - The color of the title.
  * @param {string} subtitleColor - The color of the subtitle.
- * @param {string} stMaxWidth - The maximum width of the subtitle. Only adjust for specific typesetting purposes.
+ * @param {string} stMaxWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
  */
 
 const Container = styled.div`
