@@ -113,7 +113,7 @@ PageHero.propTypes = {
     .isRequired,
   gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
     .isRequired,
-  textColor: PropTypes.oneOf(['black', 'white']).isRequired,
+  textColor: PropTypes.oneOf(['black', 'white']),
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   caption: PropTypes.string,
