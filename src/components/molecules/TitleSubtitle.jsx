@@ -10,7 +10,7 @@ const Container = styled.div`
   gap: 0.5rem;
 `;
 const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.lightBlue};
+  color: ${({ theme, titleColor }) => theme.colors[titleColor]};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
   font-size: clamp(4.8rem, 8vw, 6.4rem);
@@ -19,7 +19,7 @@ const Title = styled.h2`
 `;
 const Subtitle = styled.p`
   width: 100%;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme, subtitleColor }) => theme.colors[subtitleColor]};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
@@ -32,16 +32,19 @@ const Subtitle = styled.p`
     text-align: left;
   }
 `;
-const TitleSubtitle = ({ title, subtitle }) => {
+const TitleSubtitle = ({ title, subtitle, titleColor, subtitleColor }) => {
   return (
     <Container>
-      <Title>{title}</Title>
-      <Subtitle>{subtitle}</Subtitle>
+      <Title titleColor={titleColor}>{title}</Title>
+      <Subtitle subtitleColor={subtitleColor}>{subtitle}</Subtitle>
     </Container>
   );
 };
 TitleSubtitle.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  titleColor: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  subtitleColor: PropTypes.oneOf(['white', 'darkGray']).isRequired,
 };
 export default TitleSubtitle;
