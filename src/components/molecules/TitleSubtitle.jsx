@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
  * @param {string} subtitle - The medium size, normal weight text at the bottom.
  * @param {string} titleColor - The color of the title.
  * @param {string} subtitleColor - The color of the subtitle.
+ * @param {string} stMaxWidth - The maximum width of the subtitle. Only adjust for specific typesetting purposes.
  */
 
 const Container = styled.div`
@@ -40,7 +41,7 @@ const Subtitle = styled.p`
   letter-spacing: -0.01em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
+    width: clamp(0rem, 100%, ${({ stMaxWidth }) => stMaxWidth}rem);
     text-align: left;
   }
 `;
@@ -49,11 +50,14 @@ const TitleSubtitle = ({
   subtitle = 'Section Subtitle',
   titleColor = 'darkBlue',
   subtitleColor = 'darkGray',
+  stMaxWidth = 70,
 }) => {
   return (
     <Container>
       <Title titleColor={titleColor}>{title}</Title>
-      <Subtitle subtitleColor={subtitleColor}>{subtitle}</Subtitle>
+      <Subtitle subtitleColor={subtitleColor} stMaxWidth={stMaxWidth}>
+        {subtitle}
+      </Subtitle>
     </Container>
   );
 };
@@ -62,5 +66,6 @@ TitleSubtitle.propTypes = {
   subtitle: PropTypes.string.isRequired,
   titleColor: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia']),
   subtitleColor: PropTypes.oneOf(['white', 'darkGray']),
+  stMaxWidth: PropTypes.number,
 };
 export default TitleSubtitle;
