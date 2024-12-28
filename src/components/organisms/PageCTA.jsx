@@ -65,13 +65,13 @@ const Subtitle = styled.p`
 `;
 
 const PageCTA = ({
-  gradTopCol,
-  gradBotCol,
-  textColor,
-  title,
+  gradTopCol = 'darkBlue',
+  gradBotCol = 'lightBlue',
+  textColor = 'white',
+  title = 'Title',
   subtitle,
-  btnText,
-  btnUrl,
+  btnText = 'Button Text',
+  btnUrl = '*',
 }) => {
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
@@ -95,7 +95,7 @@ PageCTA.propTypes = {
     .isRequired,
   gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
     .isRequired,
-  textColor: PropTypes.oneOf(['black', 'white']).isRequired,
+  textColor: PropTypes.oneOf(['black', 'white']),
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   btnText: PropTypes.string.isRequired,
