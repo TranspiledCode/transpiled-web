@@ -44,7 +44,12 @@ const Subtitle = styled.p`
     text-align: left;
   }
 `;
-const TitleSubtitle = ({ title, subtitle, titleColor, subtitleColor }) => {
+const TitleSubtitle = ({
+  title = 'Section Title',
+  subtitle = 'Section Subtitle',
+  titleColor = 'darkBlue',
+  subtitleColor = 'darkGray',
+}) => {
   return (
     <Container>
       <Title titleColor={titleColor}>{title}</Title>
@@ -57,11 +62,5 @@ TitleSubtitle.propTypes = {
   subtitle: PropTypes.string.isRequired,
   titleColor: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia']),
   subtitleColor: PropTypes.oneOf(['white', 'darkGray']),
-};
-TitleSubtitle.defaultProps = {
-  title: 'Section Title',
-  subtitle: 'Section Subtitle',
-  titleColor: 'lightBlue',
-  subtitleColor: 'darkGray',
 };
 export default TitleSubtitle;
