@@ -15,7 +15,6 @@ const Home = () => {
       <PageCTA
         gradTopCol="darkBlue"
         gradBotCol="fuchsia"
-        textColor="white"
         title={title}
         subtitle={subtitle}
         btnText={btnText}
