@@ -1,6 +1,17 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
+/**
+ * Section title & subtitle component.
+ * Allowed colors are hinted with PropTypes, defaults are assigned as an example.
+ *
+ * @component
+ * @param {string} title - The large size, bold text at the top.
+ * @param {string} subtitle - The medium size, normal weight text at the bottom.
+ * @param {string} titleColor - The color of the title.
+ * @param {string} subtitleColor - The color of the subtitle.
+ */
+
 const Container = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
