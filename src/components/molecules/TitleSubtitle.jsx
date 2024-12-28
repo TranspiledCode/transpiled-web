@@ -16,6 +16,7 @@ const Title = styled.h2`
   font-size: clamp(4.8rem, 8vw, 6.4rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
+  text-transform: uppercase;
 `;
 const Subtitle = styled.p`
   width: 100%;
@@ -43,8 +44,13 @@ const TitleSubtitle = ({ title, subtitle, titleColor, subtitleColor }) => {
 TitleSubtitle.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  titleColor: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
-    .isRequired,
-  subtitleColor: PropTypes.oneOf(['white', 'darkGray']).isRequired,
+  titleColor: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia']),
+  subtitleColor: PropTypes.oneOf(['white', 'darkGray']),
+};
+TitleSubtitle.defaultProps = {
+  title: 'Section Title',
+  subtitle: 'Section Subtitle',
+  titleColor: 'lightBlue',
+  subtitleColor: 'darkGray',
 };
 export default TitleSubtitle;
