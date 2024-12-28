@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
   width: 100%;
+  border-image: linear-gradient(
+      ${({ theme }) => theme.colors.lightBlue},
+      ${({ theme }) => theme.colors.green}
+    )
+    1;
   border-width: 4px;
-  border-style: none;
+  border-style: solid;
   display: grid;
   grid-auto-rows: max-content;
 `;
