@@ -54,14 +54,18 @@ const Subtitle = styled.p`
 `;
 
 const ContactSection = () => {
+  const {
+    cta: { title, subtitle },
+  } = config;
+
   return (
     <>
       <ScrollTo id="contact" aria-hidden={true}></ScrollTo>
       <Section>
         <SectionContent>
           <SectionInfo>
-            <Title>{config.contact.title}</Title>
-            <Subtitle>{config.contact.subtitle}</Subtitle>
+            <Title>{title}</Title>
+            <Subtitle>{subtitle}</Subtitle>
           </SectionInfo>
           <ContactForm />
         </SectionContent>
