@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Card from 'molecules/Card';
 import Button from 'atoms/Button';
-import config from 'data/home';
+import content from 'data/home';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -66,12 +66,15 @@ const ButtonArea = styled.div`
 `;
 
 const ServicesSection = () => {
-  const { cards } = config.services;
+  const {
+    services: { title, subtitle, cards },
+  } = content;
+
   return (
     <Container>
       <SectionInfo>
-        <Title>{config.services.title}</Title>
-        <Subtitle>{config.services.subtitle}</Subtitle>
+        <Title>{title}</Title>
+        <Subtitle>{subtitle}</Subtitle>
       </SectionInfo>
       <CardArea>
         {cards.map((card, index) => (

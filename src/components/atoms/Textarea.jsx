@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { FaTimes } from 'react-icons/fa';
 
-import FormContext from 'context/ContactForm'; // Adjust the import path accordingly
+import FormContext from 'context/ContactForm';
 
 const TextareaContainer = styled.div`
   position: relative;

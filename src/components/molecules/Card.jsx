@@ -42,7 +42,7 @@ const Description = styled.p`
 const Card = ({ url, label, heading, description }) => {
   return (
     <Container>
-      {/* Replace after Image compoent is built */}
+      {/* TODO:Replace after Image compoent is built */}
       <Image src={url} alt={label} aria-label={label} loading="lazy" />
       <TextContainer>
         <Heading>{heading}</Heading>

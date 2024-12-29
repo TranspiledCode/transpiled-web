@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import config from 'data/home';
+import content from 'data/home';
 import ContactForm from 'organisms/ContactForm';
 
 const ScrollTo = styled.div`
@@ -56,7 +56,7 @@ const Subtitle = styled.p`
 const ContactSection = () => {
   const {
     cta: { title, subtitle },
-  } = config;
+  } = content;
 
   return (
     <>

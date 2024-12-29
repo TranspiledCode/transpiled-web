@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import InfoTab from '../../components/molecules/InfoTab';
-import config from '../../data/services';
+import InfoTab from 'molecules/InfoTab';
+import content from 'data/services';
 
 const TabArea = styled.section`
   width: 100%;
@@ -17,7 +17,10 @@ const AreaContent = styled.div`
 `;
 
 const ServicesInfo = () => {
-  const { infoTabs } = config.serviceTabs;
+  const {
+    serviceTabs: { infoTabs },
+  } = content;
+
   return (
     <TabArea>
       <AreaContent>

@@ -1,4 +1,4 @@
-const config = {
+const content = {
   hero: {
     title: "TODAY'S SOLUTIONS FUTURE PROOFED",
     subtitle:
@@ -91,4 +91,4 @@ const config = {
     btnUrl: '/Contact',
   },
 };
-export default config;
+export default content;

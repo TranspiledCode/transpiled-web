@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
-import config from 'data/home';
+import content from 'data/home';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
 
@@ -84,24 +84,20 @@ const StyledButton = styled(Button)`
 `;
 
 const HomeHero = () => {
-  const subtitleWords = config.hero.subtitle.split(' ');
+  const {
+    hero: { title, subtitle, learnMore, buttonText },
+  } = content;
 
-  const getWordColor = (index) => {
-    switch (index) {
-      case 2:
-      case 4:
-      case 5:
-        return 'green';
-      default:
-        return 'white';
-    }
-  };
+  const subtitleWords = subtitle.split(' ');
+
+  const greenIndices = useMemo(() => new Set([2, 4, 5]), []);
+  const getWordColor = (index) => (greenIndices.has(index) ? 'green' : 'white');
 
   return (
     <HeroWrapper>
       <HeroContent>
         <TitleWrapper>
-          <Title>{config.hero.title}</Title>
+          <Title>{title}</Title>
           <SubtitleText>
             {subtitleWords.map((word, index) => (
               <Word key={`${word}-${index}`} color={getWordColor(index)}>
@@ -109,11 +105,11 @@ const HomeHero = () => {
               </Word>
             ))}
           </SubtitleText>
-          <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
+          <LearnMoreText>{learnMore}</LearnMoreText>
           <RevealWrapper>
             <Link to="#contact-cta">
               <StyledButton icon="FaArrowDown" variant="outline" size="medium">
-                {config.hero.buttonText}
+                {buttonText}
               </StyledButton>
             </Link>
           </RevealWrapper>
