@@ -20,10 +20,12 @@ const useContent = (docId) => {
         if (docSnap.exists()) {
           setData(docSnap.data());
         } else {
+          // eslint-disable-next-line no-console
           console.warn(`No such document: content/${docId}`);
           setError('No data found');
         }
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.error(`Error fetching document content/${docId}:`, err);
         setError(err.message);
       } finally {

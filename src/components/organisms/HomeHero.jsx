@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from '@emotion/styled';
+import config from 'data/home';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
-import useContent from 'hooks/useContent';
-import Content from 'atoms/Content';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
@@ -35,7 +34,7 @@ const TitleWrapper = styled.div`
   }
 `;
 
-const Title = styled(Content)`
+const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.poppins};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
@@ -43,7 +42,7 @@ const Title = styled(Content)`
   line-height: clamp(4.8rem, 10vw, 8.6rem);
 `;
 
-const SubtitleText = styled(Content)`
+const SubtitleText = styled.div`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
@@ -66,7 +65,7 @@ const Word = styled.span`
     theme.colors[color] || color || theme.colors.white};
 `;
 
-const LearnMoreText = styled(Content)`
+const LearnMoreText = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
@@ -85,9 +84,7 @@ const StyledButton = styled(Button)`
 `;
 
 const HomeHero = () => {
-  const { data } = useContent('home');
-
-  const subtitleWords = data?.hero?.subtitle.split(' ');
+  const subtitleWords = config.hero.subtitle.split(' ');
 
   const getWordColor = (index) => {
     switch (index) {
@@ -104,29 +101,22 @@ const HomeHero = () => {
     <HeroWrapper>
       <HeroContent>
         <TitleWrapper>
-          <Title type="h1">{data?.hero?.title}</Title>
-          <SubtitleText type="div">
-            {data &&
-              subtitleWords.map((word, index) => (
-                <Word key={`${word}-${index}`} color={getWordColor(index)}>
-                  {word}
-                </Word>
-              ))}
+          <Title>{config.hero.title}</Title>
+          <SubtitleText>
+            {subtitleWords.map((word, index) => (
+              <Word key={`${word}-${index}`} color={getWordColor(index)}>
+                {word}
+              </Word>
+            ))}
           </SubtitleText>
-          <LearnMoreText type="div">{data?.hero?.learnMore}</LearnMoreText>
-          {data && (
-            <RevealWrapper>
-              <Link to="#contact-cta">
-                <StyledButton
-                  icon="FaArrowDown"
-                  variant="outline"
-                  size="medium"
-                >
-                  {data?.hero?.buttonText}
-                </StyledButton>
-              </Link>
-            </RevealWrapper>
-          )}
+          <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
+          <RevealWrapper>
+            <Link to="#contact-cta">
+              <StyledButton icon="FaArrowDown" variant="outline" size="medium">
+                {config.hero.buttonText}
+              </StyledButton>
+            </Link>
+          </RevealWrapper>
         </TitleWrapper>
       </HeroContent>
     </HeroWrapper>

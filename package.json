@@ -42,6 +42,6 @@
     "molecules": "./src/components/molecules",
     "organisms": "./src/components/organisms",
     "templates": "./src/components/templates",
-    "config": "./config"
+    "config": "./src/config"
   }
 }
