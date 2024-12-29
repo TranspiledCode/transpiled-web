@@ -1,7 +1,8 @@
+import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 import PropTypes from 'prop-types';
 import useContent from 'hooks/useContent';
+import Shimmer from 'atoms/Shimmer';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -12,6 +13,7 @@ const Container = styled.section`
     gap: 4rem;
   }
 `;
+
 const SectionInfo = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
@@ -19,6 +21,7 @@ const SectionInfo = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `;
+
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.fuchsia};
   font-family: ${({ theme }) => theme.fonts.poppins};
@@ -26,7 +29,9 @@ const Title = styled.h2`
   font-size: clamp(5rem, 8vw, 6.4rem);
   line-height: clamp(5rem, 8vw, 6.4rem);
   letter-spacing: -2px;
+  min-height: 64px;
 `;
+
 const Subtitle = styled.p`
   width: 100%;
   color: ${({ theme }) => theme.colors.darkGray};
@@ -34,7 +39,7 @@ const Subtitle = styled.p`
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
-
+  min-height: 24px;
   ${({ theme }) => theme.mediaQueries.lg} {
     width: clamp(60rem, 100%, 70rem);
     text-align: left;
@@ -52,13 +57,16 @@ const QuoteArea = styled.div`
     flex-direction: row;
   }
 `;
+
 const QuoteBlock = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 2rem;
   }
 `;
+
 const QuoteBody = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
@@ -66,78 +74,21 @@ const QuoteBody = styled.p`
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
   flex: 1;
+  min-height: 200px;
 `;
+
 const QuoteName = styled.p`
   color: ${({ theme }) => theme.colors.lightBlue};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 700;
   font-size: 1.6rem;
   text-align: right;
+  min-height: 24px;
 `;
-const shimmer = keyframes`
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-`;
-
-const ShimmerBlock = styled.div`
-  animation: ${shimmer} 2s infinite linear;
-  background: linear-gradient(to right, #f6f7f8 4%, #edeef1 25%, #f6f7f8 36%);
-  background-size: 1000px 100%;
-  border-radius: 4px;
-`;
-
-const SkeletonQuoteBlock = styled(ShimmerBlock)`
-  height: 200px;
-  width: 100%;
-  margin-bottom: 16px;
-`;
-
-const SkeletonAuthor = styled(ShimmerBlock)`
-  height: 24px;
-  width: 150px;
-  margin-left: auto;
-`;
-
-const SkeletonQuoteArea = styled(QuoteArea)`
-  opacity: 0.7;
-`;
-
-const SkeletonTitle = styled(ShimmerBlock)`
-  height: 64px;
-  width: 300px;
-  margin-bottom: 16px;
-`;
-
-const SkeletonSubtitle = styled(ShimmerBlock)`
-  height: 24px;
-  width: 80%;
-`;
-
-const LoadingState = () => (
-  <Container>
-    <SectionInfo>
-      <SkeletonTitle />
-      <SkeletonSubtitle />
-    </SectionInfo>
-    <SkeletonQuoteArea>
-      {[1, 2, 3].map((index) => (
-        <QuoteBlock key={index}>
-          <SkeletonQuoteBlock />
-          <SkeletonAuthor />
-        </QuoteBlock>
-      ))}
-    </SkeletonQuoteArea>
-  </Container>
-);
 
 const TestimonialsSection = () => {
   const { entries, loading, error } = useContent('testimonials', 'entries');
 
-  if (loading) return <LoadingState />;
   if (error) return <div>Error loading testimonials</div>;
 
   const testimonials = entries
@@ -153,6 +104,9 @@ const TestimonialsSection = () => {
         .sort((a, b) => a.dateCreated - b.dateCreated)
     : [];
 
+  // Create placeholder testimonials for loading state
+  const placeholderTestimonials = loading ? [1, 2, 3] : testimonials;
+
   return (
     <Container>
       <SectionInfo>
@@ -160,18 +114,18 @@ const TestimonialsSection = () => {
         <Subtitle>What Our Clients Say About Working with Transpiled</Subtitle>
       </SectionInfo>
       <QuoteArea>
-        {testimonials.map((testimonial) => (
-          <QuoteBlock key={testimonial.id}>
-            <QuoteBody>{testimonial.message}</QuoteBody>
-            <QuoteName>{testimonial.author}</QuoteName>
+        {placeholderTestimonials.map((testimonial) => (
+          <QuoteBlock key={loading ? testimonial : testimonial.id}>
+            <QuoteBody>
+              {loading ? <Shimmer lines={5} gap={15} /> : testimonial.message}
+            </QuoteBody>
+            <QuoteName>{loading ? <Shimmer /> : testimonial.author}</QuoteName>
           </QuoteBlock>
         ))}
       </QuoteArea>
     </Container>
   );
 };
-
-export default TestimonialsSection;
 
 TestimonialsSection.propTypes = {
   quotes: PropTypes.arrayOf(
@@ -185,3 +139,5 @@ TestimonialsSection.propTypes = {
     }),
   ),
 };
+
+export default TestimonialsSection;
