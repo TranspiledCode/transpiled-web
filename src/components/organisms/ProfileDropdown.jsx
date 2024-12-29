@@ -5,7 +5,7 @@ import { signOut } from 'firebase/auth';
 import AuthContext from 'context/AuthContext';
 
 import GlobalContext from 'context/GlobalContext';
-import { auth } from '../../../firebase';
+import { auth } from 'config/firebase';
 import Avatar from 'molecules/Avatar';
 
 const ProfileContainer = styled.div`
