@@ -1,4 +1,3 @@
-// Input.jsx
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
@@ -85,22 +84,44 @@ const ClearButton = styled.button`
   }
 `;
 
-const Input = ({ name, label, type, showClearButton = true }) => {
-  const { formData, updateFormData } = useContext(FormContext);
+const Input = ({
+  name,
+  label,
+  type,
+  value: propValue,
+  onChange: propOnChange,
+  showClearButton = true,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
+  const formContext = useContext(FormContext);
 
-  const value = formData[name] || '';
+  // Determine if we're using context or props
+  const isUsingContext = formContext && !propValue && !propOnChange;
+
+  const value = isUsingContext
+    ? formContext.formData[name] || ''
+    : propValue || '';
+
+  const handleChange = (e) => {
+    if (isUsingContext) {
+      formContext.updateFormData(name, e.target.value);
+    } else {
+      propOnChange?.(e);
+    }
+  };
 
   const inputId = `input-${label.replace(/\s+/g, '-').toLowerCase()}`;
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
-  const handleChange = (e) => {
-    updateFormData(name, e.target.value);
+  const handleClear = () => {
+    if (isUsingContext) {
+      formContext.updateFormData(name, '');
+    } else {
+      propOnChange?.({ target: { value: '', name } });
+    }
   };
-
-  const handleClear = () => updateFormData(name, '');
 
   return (
     <InputContainer>
@@ -140,6 +161,8 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   showClearButton: PropTypes.bool,
 };
 

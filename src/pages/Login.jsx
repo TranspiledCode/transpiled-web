@@ -28,6 +28,15 @@ const LoginFormStyled = styled.form`
   width: 300px;
 `;
 
+const Title = styled.h1`
+  font-family: ${({ theme }) => theme.fonts.poppins};
+  font-weight: 700;
+  font-size: clamp(3.4rem, 4vw, 5.4rem);
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: 2rem;
+`;
+
 const FormInputs = styled.div`
   width: 100%;
   display: flex;
@@ -42,14 +51,13 @@ const Navigation = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+  width: 100%;
+  align-items: center;
 `;
 
 const NavigationLink = styled(Link)`
   margin-top: 2rem;
-  color: ${({ theme }) => theme.colors.darkBlue};
   text-decoration: none;
-  align-self: center;
-
   font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.white};
 
@@ -67,6 +75,12 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email.trim() || !password.trim()) {
+      addToast('Please fill in all fields', 'warning');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -81,10 +95,10 @@ function LoginPage() {
           errorMessage = 'Invalid email address.';
           break;
         case 'auth/user-disabled':
-          errorMessage = 'User account is disabled.';
+          errorMessage = 'This account has been disabled.';
           break;
         case 'auth/user-not-found':
-          errorMessage = 'No user found with this email.';
+          errorMessage = 'No account found with this email.';
           break;
         case 'auth/wrong-password':
           errorMessage = 'Incorrect password.';
@@ -101,6 +115,7 @@ function LoginPage() {
 
   return (
     <LoginFormWrapper>
+      <Title>Transpiled</Title>
       <LoginFormStyled onSubmit={handleSubmit}>
         <FormInputs>
           <Input
