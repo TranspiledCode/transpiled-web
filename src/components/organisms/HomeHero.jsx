@@ -111,7 +111,7 @@ const HomeHero = () => {
           </SubtitleText>
           <LearnMoreText>{config.hero.learnMore}</LearnMoreText>
           <RevealWrapper>
-            <Link to="#contact">
+            <Link to="#contact-cta">
               <StyledButton icon="FaArrowDown" variant="outline" size="medium">
                 {config.hero.buttonText}
               </StyledButton>
