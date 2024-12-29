@@ -1,13 +1,13 @@
-import ServicesInfo from '../components/organisms/ServicesInfo';
-import PageCTA from '../components/organisms/PageCTA';
-import PageHero from '../components/organisms/PageHero';
-import config from '../data/services';
+import ServicesInfo from 'organisms/ServicesInfo';
+import PageCTA from 'organisms/PageCTA';
+import PageHero from 'organisms/PageHero';
+import content from 'data/services';
 
 const Services = () => {
   const {
     hero: { title: heroTitle, subtitle: heroSubtitle, caption: heroCaption },
     cta: { title: ctaTitle, subtitle: ctaSubtitle, btnText, btnUrl },
-  } = config;
+  } = content;
 
   return (
     <>

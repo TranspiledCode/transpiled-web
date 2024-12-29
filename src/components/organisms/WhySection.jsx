@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
-import config from 'data/home';
+import content from 'data/home';
 
 const SectionContainer = styled.section`
   position: relative;
@@ -100,14 +100,16 @@ const ButtonArea = styled.div`
 `;
 
 const WhySection = () => {
-  const { cards } = config.why;
+  const {
+    why: { title, subtitle, cards },
+  } = content;
 
   return (
     <SectionContainer>
       <SectionContent>
         <SectionInfo>
-          <Title>{config.why.title}</Title>
-          <Subtitle>{config.why.subtitle}</Subtitle>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
         </SectionInfo>
         <CardGridWrapper>
           <CardArea>

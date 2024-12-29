@@ -36,26 +36,20 @@ const DEFAULT_AVATAR_URL =
   'https://storage.googleapis.com/transpiled-web/images/default-user-image.png';
 
 function Avatar({ image, name = '' }) {
-  // This state holds the *current* image source (which might change on error).
   const [imgSrc, setImgSrc] = useState(image || DEFAULT_AVATAR_URL);
-
-  // Keep track if we have already tried the default image.
   const [triedDefault, setTriedDefault] = useState(!image);
 
   const getInitial = (fullName) => (fullName ? fullName[0].toUpperCase() : '');
 
   const handleError = () => {
     if (!triedDefault) {
-      // We tried user-provided first; now let's try default.
       setTriedDefault(true);
       setImgSrc(DEFAULT_AVATAR_URL);
     } else {
-      // We already tried default => fallback to initials.
       setImgSrc(null);
     }
   };
 
-  // If imgSrc is null, it means both user and default failed ⇒ initials.
   if (!imgSrc) {
     return (
       <AvatarContainer>
@@ -64,7 +58,6 @@ function Avatar({ image, name = '' }) {
     );
   }
 
-  // Otherwise, attempt to load imgSrc.
   return (
     <AvatarContainer>
       <AvatarImage src={imgSrc} alt={name} onError={handleError} />

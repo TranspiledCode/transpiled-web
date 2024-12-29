@@ -2,11 +2,14 @@
 import HomeHero from 'organisms/HomeHero';
 import ServicesSection from 'organisms/ServicesSection';
 import WhySection from 'organisms/WhySection';
-import PageCTA from '../components/organisms/PageCTA';
-import config from '../data/home';
+import PageCTA from 'components/organisms/PageCTA';
+import content from 'data/home';
 
 const Home = () => {
-  const { title, subtitle, btnText, btnUrl } = config.cta;
+  const {
+    cta: { title, subtitle, btnText, btnUrl },
+  } = content;
+
   return (
     <>
       <HomeHero />

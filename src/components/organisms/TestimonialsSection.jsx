@@ -76,16 +76,31 @@ const QuoteName = styled.p`
 const TestimonialsSection = () => {
   const quotes = [
     {
-      body: '"Transpiled helped us develop an app that’s become integral to our customer experience. Their dedication to detail and performance shines through in every feature."',
-      name: '— Jessica, Founder of FitLife',
+      id: 1,
+      dateCreated: '2023-06-01',
+      dateUpdated: '2023-06-01',
+      updatedBy: 'John Doe',
+      message:
+        '"Transpiled helped us develop an app that’s become integral to our customer experience. Their dedication to detail and performance shines through in every feature."',
+      author: '— Jessica, Founder of FitLife',
     },
     {
-      body: '"The team’s collaborative approach and technical expertise made our e-commerce platform a success. The site is smooth, fast, and brings our products to life."',
-      name: '— Mark, CEO of FreshWave',
+      id: 2,
+      dateCreated: '2023-06-01',
+      dateUpdated: '2023-06-01',
+      updatedBy: 'John Doe',
+      message:
+        '"The team’s collaborative approach and technical expertise made our e-commerce platform a success. The site is smooth, fast, and brings our products to life."',
+      author: '— Mark, CEO of FreshWave',
     },
     {
-      body: '"I was impressed by the level of care and precision from Transpiled. They took the time to understand our goals and delivered beyond expectations."',
-      name: '— Alex, CTO  at StyleHub',
+      id: 3,
+      dateCreated: '2023-06-01',
+      dateUpdated: '2023-06-01',
+      updatedBy: 'John Doe',
+      message:
+        '"I was impressed by the level of care and precision from Transpiled. They took the time to understand our goals and delivered beyond expectations."',
+      author: '— Alex, CTO  at StyleHub',
     },
   ];
 
@@ -96,10 +111,10 @@ const TestimonialsSection = () => {
         <Subtitle>What Our Clients Say About Working with Transpiled</Subtitle>
       </SectionInfo>
       <QuoteArea>
-        {quotes.map((quote, index) => (
-          <QuoteBlock key={index}>
-            <QuoteBody>{quote.body}</QuoteBody>
-            <QuoteName>{quote.name}</QuoteName>
+        {quotes.map((quote) => (
+          <QuoteBlock key={quote.id}>
+            <QuoteBody>{quote.message}</QuoteBody>
+            <QuoteName>{quote.author}</QuoteName>
           </QuoteBlock>
         ))}
       </QuoteArea>

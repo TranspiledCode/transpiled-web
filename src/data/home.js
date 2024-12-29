@@ -1,4 +1,4 @@
-const config = {
+const content = {
   hero: {
     title: 'BUILD YOUR FUTURE',
     subtitle: 'With our Web and Mobile App Development Services',
@@ -68,4 +68,4 @@ const config = {
   },
 };
 
-export default config;
+export default content;
