@@ -1,6 +1,3 @@
-import React, { useContext } from 'react';
-import AuthContext from 'context/AuthContext';
-
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -32,8 +29,6 @@ const NavLinks = styled.div`
 `;
 
 const NavBar = ({ links }) => {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <NavMenu>
       <NavLinks>
@@ -42,7 +37,6 @@ const NavBar = ({ links }) => {
             {link.label}
           </Link>
         ))}
-        {!currentUser && <Link to="/login">Login</Link>}
       </NavLinks>
     </NavMenu>
   );

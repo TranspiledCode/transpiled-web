@@ -1,41 +1,46 @@
 // ContactInfo.jsx
 import React from 'react';
+
 import styled from '@emotion/styled';
 import SocialIcons from 'molecules/SocialIcons';
 import NavMenu from 'molecules/NavMenu';
 import links from 'data/navigation';
+import AuthLink from 'atoms/AuthLink';
 
-const ContactInfo = () => (
-  <FooterWrapper>
-    <Column>
-      <ContactDetails>
-        <ContactItem>
-          <ContactLink href="mailto:info@yourcompany.com">
-            info@transpiled.com
-          </ContactLink>
-        </ContactItem>
-        <ContactItem>
-          <ContactLink href="tel:+14582569363">(458) 256-9363</ContactLink>
-        </ContactItem>
-      </ContactDetails>
-    </Column>
+const ContactInfo = () => {
+  return (
+    <FooterWrapper>
+      <Column>
+        <ContactDetails>
+          <ContactItem>
+            <ContactLink href="mailto:info@yourcompany.com">
+              info@transpiled.com
+            </ContactLink>
+          </ContactItem>
+          <ContactItem>
+            <ContactLink href="tel:+14582569363">(458) 256-9363</ContactLink>
+          </ContactItem>
+        </ContactDetails>
+      </Column>
 
-    <Column>
-      <NavLinks>
-        <NavMenu links={links} />
-      </NavLinks>
-    </Column>
+      <Column>
+        <NavLinks>
+          <NavMenu links={links} />
+          <AuthLink />
+        </NavLinks>
+      </Column>
 
-    <Column>
-      <CompanyInfo>
-        <CompanyName>Transpiled</CompanyName>
-        <SocialIconsWrapper>
-          <SocialIcons />
-        </SocialIconsWrapper>
-      </CompanyInfo>
-    </Column>
-  </FooterWrapper>
-);
+      <Column>
+        <CompanyInfo>
+          <CompanyName>Transpiled</CompanyName>
+          <SocialIconsWrapper>
+            <SocialIcons />
+          </SocialIconsWrapper>
+        </CompanyInfo>
+      </Column>
+    </FooterWrapper>
+  );
+};
 
 const FooterWrapper = styled.div`
   display: flex;
