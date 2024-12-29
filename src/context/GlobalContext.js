@@ -43,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
 
   // Update the scrolled state
   const handleScroll = () => {
-    setScrolled(window.scrollY > 50);
+    setScrolled(window.scrollY > 0);
   };
 
   return (
