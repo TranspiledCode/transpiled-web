@@ -18,3 +18,7 @@
 
 #Yarn
 yarn-error.log
+
+# Firebase
+serviceAccountKey.json
+upload.js

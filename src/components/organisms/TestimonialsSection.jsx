@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import PropTypes from 'prop-types';
+import useContent from 'hooks/useContent';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -72,37 +74,84 @@ const QuoteName = styled.p`
   font-size: 1.6rem;
   text-align: right;
 `;
+const shimmer = keyframes`
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+`;
+
+const ShimmerBlock = styled.div`
+  animation: ${shimmer} 2s infinite linear;
+  background: linear-gradient(to right, #f6f7f8 4%, #edeef1 25%, #f6f7f8 36%);
+  background-size: 1000px 100%;
+  border-radius: 4px;
+`;
+
+const SkeletonQuoteBlock = styled(ShimmerBlock)`
+  height: 200px;
+  width: 100%;
+  margin-bottom: 16px;
+`;
+
+const SkeletonAuthor = styled(ShimmerBlock)`
+  height: 24px;
+  width: 150px;
+  margin-left: auto;
+`;
+
+const SkeletonQuoteArea = styled(QuoteArea)`
+  opacity: 0.7;
+`;
+
+const SkeletonTitle = styled(ShimmerBlock)`
+  height: 64px;
+  width: 300px;
+  margin-bottom: 16px;
+`;
+
+const SkeletonSubtitle = styled(ShimmerBlock)`
+  height: 24px;
+  width: 80%;
+`;
+
+const LoadingState = () => (
+  <Container>
+    <SectionInfo>
+      <SkeletonTitle />
+      <SkeletonSubtitle />
+    </SectionInfo>
+    <SkeletonQuoteArea>
+      {[1, 2, 3].map((index) => (
+        <QuoteBlock key={index}>
+          <SkeletonQuoteBlock />
+          <SkeletonAuthor />
+        </QuoteBlock>
+      ))}
+    </SkeletonQuoteArea>
+  </Container>
+);
 
 const TestimonialsSection = () => {
-  const quotes = [
-    {
-      id: 1,
-      dateCreated: '2023-06-01',
-      dateUpdated: '2023-06-01',
-      updatedBy: 'John Doe',
-      message:
-        '"Transpiled helped us develop an app that’s become integral to our customer experience. Their dedication to detail and performance shines through in every feature."',
-      author: '— Jessica, Founder of FitLife',
-    },
-    {
-      id: 2,
-      dateCreated: '2023-06-01',
-      dateUpdated: '2023-06-01',
-      updatedBy: 'John Doe',
-      message:
-        '"The team’s collaborative approach and technical expertise made our e-commerce platform a success. The site is smooth, fast, and brings our products to life."',
-      author: '— Mark, CEO of FreshWave',
-    },
-    {
-      id: 3,
-      dateCreated: '2023-06-01',
-      dateUpdated: '2023-06-01',
-      updatedBy: 'John Doe',
-      message:
-        '"I was impressed by the level of care and precision from Transpiled. They took the time to understand our goals and delivered beyond expectations."',
-      author: '— Alex, CTO  at StyleHub',
-    },
-  ];
+  const { entries, loading, error } = useContent('testimonials', 'entries');
+
+  if (loading) return <LoadingState />;
+  if (error) return <div>Error loading testimonials</div>;
+
+  const testimonials = entries
+    ? Object.entries(entries)
+        .map(([id, entry]) => ({
+          id,
+          message: `"${entry.content.text}"`,
+          author: `— ${entry.author.name}, ${entry.author.title} at ${entry.author.company}`,
+          dateCreated: entry.metadata.createdAt,
+          dateUpdated: entry.metadata.updatedAt,
+          updatedBy: entry.metadata.updatedBy,
+        }))
+        .sort((a, b) => a.dateCreated - b.dateCreated)
+    : [];
 
   return (
     <Container>
@@ -111,23 +160,28 @@ const TestimonialsSection = () => {
         <Subtitle>What Our Clients Say About Working with Transpiled</Subtitle>
       </SectionInfo>
       <QuoteArea>
-        {quotes.map((quote) => (
-          <QuoteBlock key={quote.id}>
-            <QuoteBody>{quote.message}</QuoteBody>
-            <QuoteName>{quote.author}</QuoteName>
+        {testimonials.map((testimonial) => (
+          <QuoteBlock key={testimonial.id}>
+            <QuoteBody>{testimonial.message}</QuoteBody>
+            <QuoteName>{testimonial.author}</QuoteName>
           </QuoteBlock>
         ))}
       </QuoteArea>
     </Container>
   );
 };
+
 export default TestimonialsSection;
 
-QuoteBlock.propTypes = {
+TestimonialsSection.propTypes = {
   quotes: PropTypes.arrayOf(
     PropTypes.shape({
-      body: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      message: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      dateCreated: PropTypes.object.isRequired,
+      dateUpdated: PropTypes.object.isRequired,
+      updatedBy: PropTypes.string.isRequired,
     }),
   ),
 };
