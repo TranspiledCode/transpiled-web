@@ -74,7 +74,11 @@ const PageCTA = ({
   btnUrl = '*',
 }) => {
   return (
-    <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
+    <SectionContainer
+      id="contact-cta"
+      gradTopCol={gradTopCol}
+      gradBotCol={gradBotCol}
+    >
       <SectionContent>
         <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
