@@ -1,4 +1,18 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+
+/**
+ * Inner page hero component.
+ * Allowed colors are hinted with PropTypes, defaults are assigned to required props as an example.
+ *
+ * @component
+ * @param {string} gradTopCol - The upper half of the background gradient.
+ * @param {string} gradBotCol - The lower half of the background gradient.
+ * @param {string} textColor - The color of all text.
+ * @param {string} title - The large, bold text at the top.
+ * @param {string} subtitle - The medium, normal weight text in the middle.
+ * @param {string} caption - The small, monospaced text at the bottom.
+ */
 
 const SectionContainer = styled.section`
   min-height: 68vh;
@@ -6,8 +20,8 @@ const SectionContainer = styled.section`
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.lightBlue},
-    ${({ theme }) => theme.colors.green}
+    ${({ theme, gradTopCol }) => theme.colors[gradTopCol]},
+    ${({ theme, gradBotCol }) => theme.colors[gradBotCol]}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -22,11 +36,12 @@ const SectionContent = styled.div`
 `;
 const Title = styled.h3`
   font-family: ${({ theme }) => theme.fonts.poppins};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
+  text-transform: uppercase;
 
   ${({ theme }) => theme.mediaQueries.md} {
     max-width: 80rem;
@@ -43,8 +58,8 @@ const SubtitleContainer = styled.div`
 `;
 const Subtitle = styled.p`
   width: 100%;
-  color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.manrope};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
@@ -58,10 +73,10 @@ const Subtitle = styled.p`
 `;
 const Caption = styled.p`
   font-family: ${({ theme }) => theme.fonts.mono};
+  color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.white};
   max-width: 35rem;
   line-height: 1.4em;
   letter-spacing: 0.015em;
@@ -72,25 +87,35 @@ const Caption = styled.p`
   }
 `;
 
-const ServicesHero = () => {
-  // MOVE OUT TO CONFIG LATER //
-  const title = "TODAY'S SOLUTIONS FUTURE PROOFED";
-  const subtitle =
-    'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.';
-  const caption =
-    'explore our services in depth or schedule a consultation below.';
-  // MOVE OUT TO CONFIG LATER //
-
+const PageHero = ({
+  gradTopCol = 'darkBlue',
+  gradBotCol = 'lightBlue',
+  textColor = 'white',
+  title = 'title',
+  subtitle,
+  caption,
+}) => {
   return (
-    <SectionContainer>
+    <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
-        <Title>{title}</Title>
+        <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
-          <Subtitle>{subtitle}</Subtitle>
-          <Caption>{caption}</Caption>
+          <Subtitle textColor={textColor}>{subtitle}</Subtitle>
+          <Caption textColor={textColor}>{caption}</Caption>
         </SubtitleContainer>
       </SectionContent>
     </SectionContainer>
   );
 };
-export default ServicesHero;
+
+PageHero.propTypes = {
+  gradTopCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia'])
+    .isRequired,
+  textColor: PropTypes.oneOf(['black', 'white']),
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  caption: PropTypes.string,
+};
+export default PageHero;

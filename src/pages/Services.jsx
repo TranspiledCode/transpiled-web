@@ -1,11 +1,18 @@
-import ServicesHero from '../components/organisms/ServicesHero';
+import PageHero from '../components/organisms/PageHero';
 import ContactCTA from '../components/organisms/ContactCTA';
 import ServicesInfo from '../components/organisms/ServicesInfo';
-
+import config from '../data/services';
 const Services = () => {
+  const { title, subtitle, caption } = config.hero;
   return (
     <>
-      <ServicesHero />
+      <PageHero
+        gradTopCol="lightBlue"
+        gradBotCol="green"
+        title={title}
+        subtitle={subtitle}
+        caption={caption}
+      />
       <ServicesInfo />
       <ContactCTA />
     </>
