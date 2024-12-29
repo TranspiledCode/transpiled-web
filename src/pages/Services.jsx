@@ -1,19 +1,29 @@
-import ServicesHero from '../components/organisms/ServicesHero';
 import ServicesInfo from '../components/organisms/ServicesInfo';
 import PageCTA from '../components/organisms/PageCTA';
+import PageHero from '../components/organisms/PageHero';
 import config from '../data/services';
 
 const Services = () => {
-  const { title, subtitle, btnText, btnUrl } = config.cta;
+  const {
+    hero: { title: heroTitle, subtitle: heroSubtitle, caption: heroCaption },
+    cta: { title: ctaTitle, subtitle: ctaSubtitle, btnText, btnUrl },
+  } = config;
+
   return (
     <>
-      <ServicesHero />
+      <PageHero
+        gradTopCol="lightBlue"
+        gradBotCol="green"
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        caption={heroCaption}
+      />
       <ServicesInfo />
       <PageCTA
         gradTopCol="darkBlue"
         gradBotCol="fuchsia"
-        title={title}
-        subtitle={subtitle}
+        title={ctaTitle}
+        subtitle={ctaSubtitle}
         btnText={btnText}
         btnUrl={btnUrl}
       />

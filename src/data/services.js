@@ -1,4 +1,10 @@
 const config = {
+  hero: {
+    title: "TODAY'S SOLUTIONS FUTURE PROOFED",
+    subtitle:
+      'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.',
+    caption: 'explore our services in depth or schedule a consultation below.',
+  },
   serviceTabs: {
     infoTabs: [
       {
