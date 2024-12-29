@@ -61,6 +61,25 @@ const ShimmerLine = ({ width, height }) => (
   <ShimmerLineWrapper $width={width} $height={height} />
 );
 
+/**
+ * A component that renders a shimmer effect, typically used as a placeholder
+ * for content that is being loaded.
+ *
+ * @param {object} props
+ * @prop {number} [lines=1] - The number of shimmer lines to render.
+ * @prop {string|number|Array<string|number>} [width] - The width of the shimmer
+ * lines. Can be a number (px), string (e.g. '100%'), or an array of values for
+ * each line.
+ * @prop {string|number|Array<string|number>} [height] - The height of the shimmer
+ * lines. Can be a number (px), string (e.g. '20px'), or an array of values for
+ * each line.
+ * @prop {string|number} [gap] - The gap between shimmer lines. Can be a number (px)
+ * or a string (e.g. '8px').
+ * @returns {ReactElement} - The shimmer component.
+ *
+ * @example
+ * <Shimmer lines={3} width="100%" height="20px" gap="8px" />
+ */
 const Shimmer = ({ lines = 1, width, height, gap }) => {
   return (
     <ShimmerContainer $gap={gap}>
