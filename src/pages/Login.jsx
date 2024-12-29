@@ -1,163 +1,139 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'config/firebase';
-import { useToast } from 'context/ToastContext'; // Import useToast hook
+import { useToast } from 'context/ToastContext';
 
-// Main container with background gradient
-const Container = styled.div`
-  min-height: 100vh;
-  max-width: 100vw;
-  background: linear-gradient(
-    to bottom,
-    ${({ theme }) => theme.colors.darkBlue},
-    ${({ theme }) => theme.colors.lightBlue}
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import Input from 'atoms/Input';
+import Button from 'atoms/Button';
 
-// Form card
-const FormWrapper = styled.div`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: 8px;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  padding: 3rem 2rem;
-`;
-
-const Title = styled.h2`
-  margin-bottom: 2rem;
-  text-align: center;
-  font-size: 2.4rem;
-  color: ${({ theme }) => theme.colors.darkBlue};
-`;
-
-const Form = styled.form`
+const LoginFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    ${({ theme }) => theme.colors.darkBlue},
+    ${({ theme }) => theme.colors.fuchsia}
+  );
 `;
 
-const Label = styled.label`
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: ${({ theme }) => theme.colors.darkBlue};
+const LoginFormStyled = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 300px;
 `;
 
-const Input = styled.input`
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.grayLight};
-  border-radius: 4px;
-  font-size: 1.4rem;
-
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.orange};
-    outline: none;
+const FormInputs = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  button {
+    align-self: flex-end;
   }
 `;
 
-const Button = styled.button`
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.orange};
-  color: ${({ theme }) => theme.colors.white};
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+const Navigation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+`;
+
+const NavigationLink = styled(Link)`
+  margin-top: 2rem;
+  color: ${({ theme }) => theme.colors.darkBlue};
+  text-decoration: none;
+  align-self: center;
+
   font-size: 1.6rem;
-  font-weight: 500;
+  color: ${({ theme }) => theme.colors.white};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.orangeDark};
-  }
-`;
-
-const SignupLink = styled.p`
-  margin-top: 1.5rem;
-  text-align: center;
-  font-size: 1.4rem;
-
-  a {
-    color: ${({ theme }) => theme.colors.darkBlue};
-    text-decoration: none;
+    color: ${({ theme }) => theme.colors.green};
   }
 `;
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const { addToast } = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setIsSubmitting(true);
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Redirect to home page after successful login
+      addToast('Successfully logged in!', 'success');
       navigate('/');
     } catch (err) {
-      // Handle errors
+      let errorMessage;
+
       switch (err.code) {
         case 'auth/invalid-email':
-          setError('Invalid email address.');
+          errorMessage = 'Invalid email address.';
           break;
         case 'auth/user-disabled':
-          setError('User account is disabled.');
+          errorMessage = 'User account is disabled.';
           break;
         case 'auth/user-not-found':
-          setError('No user found with this email.');
+          errorMessage = 'No user found with this email.';
           break;
         case 'auth/wrong-password':
-          setError('Incorrect password.');
+          errorMessage = 'Incorrect password.';
           break;
         default:
-          setError('Failed to sign in. Please try again.');
+          errorMessage = 'Failed to sign in. Please try again.';
       }
-      addToast(err.code, 'danger');
+
+      addToast(errorMessage, 'danger');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <Container>
-      <FormWrapper>
-        <Title>Login</Title>
-        {error && addToast(error, 'danger')}
-
-        <Form onSubmit={handleSubmit}>
-          <Label htmlFor="email">Email</Label>
+    <LoginFormWrapper>
+      <LoginFormStyled onSubmit={handleSubmit}>
+        <FormInputs>
           <Input
             type="email"
-            id="email"
-            placeholder="Enter your email"
+            name="email"
+            label="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-
-          <Label htmlFor="password">Password</Label>
           <Input
             type="password"
-            id="password"
-            placeholder="Enter your password"
+            name="password"
+            label="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-          <Button type="submit">Sign In</Button>
-        </Form>
-
-        <SignupLink>
-          <Link to="/ ">Back to Home</Link>
-        </SignupLink>
-      </FormWrapper>
-    </Container>
+          <Navigation>
+            <NavigationLink to="/">Back to Home</NavigationLink>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              variant="outline"
+              icon="FaArrowRight"
+              size="small"
+            >
+              {isSubmitting ? 'Signing in...' : 'Sign In'}
+            </Button>
+          </Navigation>
+        </FormInputs>
+      </LoginFormStyled>
+    </LoginFormWrapper>
   );
 }
 
