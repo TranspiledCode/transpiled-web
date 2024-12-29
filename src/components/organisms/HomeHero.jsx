@@ -1,10 +1,11 @@
-// HomeHero.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
 import useContent from 'hooks/useContent';
+import Content from 'atoms/Content';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
@@ -28,12 +29,13 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 2rem;
   }
 `;
 
-const Title = styled.h1`
+const Title = styled(Content)`
   font-family: ${({ theme }) => theme.fonts.poppins};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
@@ -41,7 +43,7 @@ const Title = styled.h1`
   line-height: clamp(4.8rem, 10vw, 8.6rem);
 `;
 
-const SubtitleText = styled.div`
+const SubtitleText = styled(Content)`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
@@ -52,6 +54,7 @@ const SubtitleText = styled.div`
   gap: 0.5rem;
   max-width: 80%;
   margin-bottom: clamp(2rem, 8vw, 8rem);
+
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 1rem;
     max-width: 60rem;
@@ -63,7 +66,7 @@ const Word = styled.span`
     theme.colors[color] || color || theme.colors.white};
 `;
 
-const LearnMoreText = styled.div`
+const LearnMoreText = styled(Content)`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
@@ -75,19 +78,16 @@ const LearnMoreText = styled.div`
 const StyledButton = styled(Button)`
   font-size: clamp(2rem, 4vw, 5rem);
   width: 100%;
+
   ${({ theme }) => theme.mediaQueries.md} {
     width: auto;
   }
 `;
 
 const HomeHero = () => {
-  const { data, loading, error } = useContent('home'); // Fetch 'home' document
+  const { data } = useContent('home');
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error loading hero section: {error}</div>;
-
-  const { hero } = data;
-  const subtitleWords = hero.subtitle.split(' ');
+  const subtitleWords = data?.hero?.subtitle.split(' ');
 
   const getWordColor = (index) => {
     switch (index) {
@@ -104,21 +104,30 @@ const HomeHero = () => {
     <HeroWrapper>
       <HeroContent>
         <TitleWrapper>
-          <Title>{hero.title}</Title>
-          <SubtitleText>
-            {subtitleWords.map((word, index) => (
-              <Word key={index} color={getWordColor(index)}>
-                {word}
-              </Word>
-            ))}
+          <Title type="h1">{data?.hero?.title}</Title>
+          <SubtitleText type="div">
+            {data &&
+              subtitleWords.map((word, index) => (
+                <Word key={`${word}-${index}`} color={getWordColor(index)}>
+                  {word}
+                </Word>
+              ))}
           </SubtitleText>
+          <LearnMoreText type="div">{data?.hero?.learnMore}</LearnMoreText>
+          {data && (
+            <RevealWrapper>
+              <Link to="#contact-cta">
+                <StyledButton
+                  icon="FaArrowDown"
+                  variant="outline"
+                  size="medium"
+                >
+                  {data?.hero?.buttonText}
+                </StyledButton>
+              </Link>
+            </RevealWrapper>
+          )}
         </TitleWrapper>
-        <RevealWrapper>
-          <Link to="/learn-more">
-            <StyledButton>{hero.buttonText}</StyledButton>
-          </Link>
-          <LearnMoreText>{hero.learnMore}</LearnMoreText>
-        </RevealWrapper>
       </HeroContent>
     </HeroWrapper>
   );
