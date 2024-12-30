@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Card from 'molecules/Card';
 import Button from 'atoms/Button';
 import content from 'data/home';
+import TitleSubtitle from '../molecules/TitleSubtitle';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -11,38 +12,6 @@ const Container = styled.section`
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 4rem;
-  }
-`;
-
-const SectionInfo = styled.div`
-  max-width: ${({ theme }) => theme.layouts.maxWidth};
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-`;
-const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.lightBlue};
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-weight: 700;
-  font-size: clamp(4.8rem, 8vw, 6.4rem);
-  line-height: 0.95em;
-  letter-spacing: -0.04em;
-`;
-const Subtitle = styled.p`
-  width: 100%;
-  color: ${({ theme }) => theme.colors.darkGray};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: justify;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
-    text-align: left;
   }
 `;
 
@@ -72,10 +41,7 @@ const ServicesSection = () => {
 
   return (
     <Container>
-      <SectionInfo>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-      </SectionInfo>
+      <TitleSubtitle title={title} subtitle={subtitle} titleColor="lightBlue" />
       <CardArea>
         {cards.map((card, index) => (
           <Card
