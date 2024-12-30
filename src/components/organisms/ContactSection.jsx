@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import content from 'data/home';
+import PropTypes from 'prop-types';
 import ContactForm from 'organisms/ContactForm';
 import TitleSubtitle from '../molecules/TitleSubtitle';
 
@@ -30,11 +30,7 @@ const SectionContent = styled.div`
   gap: 4rem;
 `;
 
-const ContactSection = () => {
-  const {
-    cta: { title, subtitle },
-  } = content;
-
+const ContactSection = ({ title, subtitle }) => {
   return (
     <>
       <ScrollTo id="contact" aria-hidden={true}></ScrollTo>
@@ -51,5 +47,8 @@ const ContactSection = () => {
     </>
   );
 };
-
+ContactSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
 export default ContactSection;

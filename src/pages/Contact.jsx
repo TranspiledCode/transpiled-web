@@ -12,7 +12,7 @@ const ContactPage = () => {
         subtitle="Whether you need a website refresh or something totally custom, we're here to make it happen."
         caption="Ask about your upcoming project or schedule a consultation below."
       />
-      <ContactSection />
+      <ContactSection title={title} subtitle={subtitle} />
       <PageCTA
         gradTopCol="lightBlue"
         gradBotCol="darkBlue"
