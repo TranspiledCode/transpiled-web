@@ -5,49 +5,53 @@ import PropTypes from 'prop-types';
 import Icon from 'atoms/Icon';
 import { useTheme } from '@emotion/react';
 
-const StyledButton = styled.button`
-  background-color: ${({ variant, theme }) =>
-    theme.buttons.variants[variant].bgColor || 'transparent'};
-  color: ${({ variant, theme }) => theme.buttons.variants[variant].textColor};
-  padding: ${({ size, theme }) => theme.buttons.sizes[size].padding};
-  font-size: ${({ size, theme }) => theme.buttons.sizes[size].fontSize};
-  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
-  border: ${({ variant, theme }) =>
-    theme.buttons.variants[variant].borderColor
-      ? `2px solid ${theme.buttons.variants[variant].borderColor}`
-      : 'none'};
-  border-radius: 0px;
-  cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  &:disabled {
-    background-color: ${({ theme }) => theme.colors.gray};
-    cursor: not-allowed;
-  }
-
-  @media (min-width: 768px) {
-    &:hover {
-      background-color: ${({ variant, theme }) =>
-        theme.buttons.variants[variant].hoverBgColor ||
-        theme.buttons.variants[variant].hoverColor ||
-        theme.buttons.variants[variant].bgColor};
-      color: ${({ variant, theme }) =>
-        theme.buttons.variants[variant].hoverTextColor ||
-        theme.buttons.variants[variant].textColor};
-    }
-  }
-`;
-
+// Styled components
 const IconWrapper = styled.span`
   display: inline-flex;
   margin-left: 2rem;
 `;
+
+const getButtonStyles = ({ variant, theme, size, fullWidth }) => ({
+  backgroundColor: theme.buttons.variants[variant].bgColor || 'transparent',
+  color: theme.buttons.variants[variant].textColor,
+  padding: theme.buttons.sizes[size].padding,
+  fontSize: theme.buttons.sizes[size].fontSize,
+  width: fullWidth ? '100%' : 'auto',
+  border: theme.buttons.variants[variant].borderColor
+    ? `2px solid ${theme.buttons.variants[variant].borderColor}`
+    : 'none',
+});
+
+const getHoverStyles = ({ variant, theme }) => ({
+  backgroundColor:
+    theme.buttons.variants[variant].hoverBgColor ||
+    theme.buttons.variants[variant].hoverColor ||
+    theme.buttons.variants[variant].bgColor,
+  color:
+    theme.buttons.variants[variant].hoverTextColor ||
+    theme.buttons.variants[variant].textColor,
+});
+
+const StyledButton = styled.button(({ variant, theme, size, fullWidth }) => ({
+  ...getButtonStyles({ variant, theme, size, fullWidth }),
+  borderRadius: '0px',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease, color 0.3s ease',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  '&:disabled': {
+    backgroundColor: theme.colors.gray,
+    cursor: 'not-allowed',
+  },
+
+  '@media (min-width: 768px)': {
+    '&:hover': {
+      ...getHoverStyles({ variant, theme }),
+    },
+  },
+}));
 
 const Button = ({
   children,
@@ -60,8 +64,7 @@ const Button = ({
   onClick,
 }) => {
   const theme = useTheme();
-
-  const iconSize = theme.buttons.sizes[size].iconSize;
+  const iconSize = Number(theme.buttons.sizes[size].iconSize);
 
   return (
     <StyledButton
