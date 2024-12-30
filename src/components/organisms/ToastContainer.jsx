@@ -6,13 +6,26 @@ import PropTypes from 'prop-types';
 
 // Utility function to get position styles
 const getPositionStyles = (position) => {
-  const positions = {
-    'top-left': { top: '20px', left: '20px' },
-    'top-right': { top: '20px', right: '20px' },
-    'bottom-left': { bottom: '20px', left: '20px' },
-    'bottom-right': { bottom: '20px', right: '20px' },
+  // Desktop positions (1024px and up)
+  const desktopPositions = {
+    'top-left': { top: '80px', left: '80px' },
+    'top-right': { top: '80px', right: '80px' },
+    'bottom-left': { bottom: '40px', left: '80px' },
+    'bottom-right': { bottom: '40px', right: '80px' },
   };
-  return positions[position] || positions['top-right'];
+
+  return {
+    // Mobile styles (default)
+    bottom: '0',
+    left: '50%',
+    transform: 'translateX(-50%)',
+
+    // Desktop styles
+    '@media (min-width: 1024px)': {
+      transform: 'none',
+      ...desktopPositions[position],
+    },
+  };
 };
 
 // Styled component for the toast container
@@ -21,7 +34,26 @@ const ToastContainerWrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndices.toast};
   display: flex;
   flex-direction: column;
-  ${({ position }) => getPositionStyles(position)};
+  gap: 8px;
+  pointer-events: none;
+
+  // Mobile styles (default)
+  width: calc(
+    100% - 32px
+  ); // Full viewport width minus 16px margin on each side
+  margin-bottom: 16px;
+  align-items: center;
+
+  // Desktop styles
+  @media (min-width: 1024px) {
+    width: auto;
+    min-width: 400px;
+    max-width: 560px;
+    gap: 16px;
+    margin-bottom: 0;
+    align-items: stretch;
+    ${({ position }) => getPositionStyles(position)};
+  }
 `;
 
 const ToastContainer = React.memo(({ toasts, position = 'top-right' }) => (

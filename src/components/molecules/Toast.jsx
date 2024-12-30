@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { useToast } from 'context/ToastContext'; // Import useToast hook
+import { useToast } from 'context/ToastContext';
 import PropTypes from 'prop-types';
 
 const slideUpFadeIn = keyframes`
@@ -39,6 +39,7 @@ const ToastWrapper = styled.div`
 `;
 
 const ToastMessage = styled.div`
+  font-size: 1.6rem;
   flex-grow: 1;
 `;
 

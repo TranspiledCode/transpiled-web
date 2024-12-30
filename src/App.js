@@ -12,7 +12,7 @@ import RouteToTop from './utils/RouteToTop';
 import ScrollToHash from './utils/ScrollToHash';
 import ProtectedRoute from './utils/ProtectedRoute';
 
-import Layout from 'components/templates/PageLayout'; // Ensure correct import path
+import Layout from 'components/templates/PageLayout';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import NotFound from './pages/404';
