@@ -15,12 +15,12 @@ const InputContainer = styled.div`
 const StyledInput = styled.input`
   width: 100%;
   border: none;
-  border-bottom: 1.5px solid ${({ theme }) => theme.colors.white};
+  border-bottom: 1.5px solid ${({ theme }) => theme.colors.darkGray};
   padding: 0.8rem 2.5rem 0.8rem 0;
   font-size: 1.6rem;
   outline: none;
   background: transparent;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkGray};
   border-radius: 0;
 
   caret-color: ${({ theme }) => theme.colors.green};
@@ -42,7 +42,7 @@ const StyledLabel = styled.label`
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
   color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+    isFocusedOrFilled ? theme.colors.green : theme.colors.darkGray};
   pointer-events: none;
   transition: all 0.2s ease;
 

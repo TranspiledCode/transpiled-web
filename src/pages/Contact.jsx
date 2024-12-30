@@ -1,19 +1,10 @@
-import styled from '@emotion/styled';
 import ContactSection from '../components/organisms/ContactSection';
 import PageHero from '../components/organisms/PageHero';
 import PageCTA from '../components/organisms/PageCTA';
 
-const PageWrapper = styled.div`
-  min-height: 100vh;
-  background-image: linear-gradient(
-    ${({ theme }) => theme.colors.darkBlue},
-    ${({ theme }) => theme.colors.fuchsia}
-  );
-`;
-
 const ContactPage = () => {
   return (
-    <PageWrapper>
+    <>
       <PageHero
         gradTopCol="darkBlue"
         gradBotCol="fuchsia"
@@ -30,7 +21,7 @@ const ContactPage = () => {
         btnText="About Us"
         btnUrl="/about"
       />
-    </PageWrapper>
+    </>
   );
 };
 export default ContactPage;

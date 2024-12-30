@@ -24,9 +24,9 @@ const StyledTextarea = styled.textarea`
 
   height: 20rem;
   width: 100%;
-  border: 1.5px solid ${({ theme }) => theme.colors.white};
+  border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 0;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkGray};
   caret-color: ${({ theme }) => theme.colors.green};
   padding: 0.2rem 0.8rem;
 `;
@@ -43,7 +43,7 @@ const StyledLabel = styled.label`
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
   color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+    isFocusedOrFilled ? theme.colors.green : theme.colors.darkGray};
 
   pointer-events: none;
   transition: all 0.2s ease;
@@ -63,7 +63,7 @@ const ClearButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-size: 1.2rem;
   height: 2.5rem;
   width: 2.5rem;
@@ -91,7 +91,7 @@ const CharacterCount = styled.div`
   right: 0;
   font-size: 1.2rem;
   height: 2.5rem;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkGray};
   margin-right: 0.6rem;
 `;
 
