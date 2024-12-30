@@ -52,22 +52,22 @@ const buttons = {
     tiny: {
       padding: '4px 8px',
       fontSize: '12px',
-      iconSize: 12,
+      iconSize: '12px',
     },
     small: {
       padding: '8px 16px',
       fontSize: '14px',
-      iconSize: 14,
+      iconSize: '14px',
     },
     medium: {
       padding: '12px 24px',
       fontSize: '26px',
-      iconSize: 26,
+      iconSize: '26px',
     },
     large: {
       padding: '6px 16px',
       fontSize: '36px',
-      iconSize: 34,
+      iconSize: '34px',
     },
   },
 };
