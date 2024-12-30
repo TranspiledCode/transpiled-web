@@ -122,7 +122,7 @@ const InfoTab = ({ title, subtitle, features, titleColor }) => {
 InfoTab.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  features: PropTypes.arrayOf(PropTypes.string.isRequired),
+  features: PropTypes.arrayOf(PropTypes.object).isRequired,
   titleColor: PropTypes.oneOf(['green', 'lightBlue', 'fuchsia']).isRequired,
 };
 export default InfoTab;
