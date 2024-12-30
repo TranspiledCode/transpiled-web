@@ -27,6 +27,7 @@ const ContactPage = () => {
         subtitle={ctaSubtitle}
         btnText={btnText}
         btnUrl={btnUrl}
+        stMaxWidth={75}
       />
     </>
   );
