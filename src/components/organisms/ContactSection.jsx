@@ -30,15 +30,15 @@ const SectionContent = styled.div`
   gap: 4rem;
 `;
 
-const ContactSection = ({ title, subtitle }) => {
+const ContactSection = ({ formTitle, formSubtitle }) => {
   return (
     <>
       <ScrollTo id="contact" aria-hidden={true}></ScrollTo>
       <Section>
         <SectionContent>
           <TitleSubtitle
-            title={title}
-            subtitle={subtitle}
+            title={formTitle}
+            subtitle={formSubtitle}
             titleColor="fuchsia"
           />
           <ContactForm />
@@ -48,7 +48,7 @@ const ContactSection = ({ title, subtitle }) => {
   );
 };
 ContactSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  formTitle: PropTypes.string.isRequired,
+  formSubtitle: PropTypes.string.isRequired,
 };
 export default ContactSection;
