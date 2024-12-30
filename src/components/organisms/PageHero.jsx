@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
  * @param {string} title - The large, bold text at the top.
  * @param {string} subtitle - The medium, normal weight text in the middle.
  * @param {string} caption - The small, monospaced text at the bottom.
+ * @param {string} stMaxWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
  */
 
 const SectionContainer = styled.section`
@@ -67,7 +68,7 @@ const Subtitle = styled.p`
   letter-spacing: -0.015em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 90rem);
+    width: clamp(0rem, 100%, ${({ stMaxWidth }) => stMaxWidth}rem);
     text-align: left;
   }
 `;
@@ -94,13 +95,16 @@ const PageHero = ({
   title = 'title',
   subtitle,
   caption,
+  stMaxWidth = 90,
 }) => {
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
       <SectionContent>
         <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
-          <Subtitle textColor={textColor}>{subtitle}</Subtitle>
+          <Subtitle textColor={textColor} stMaxWidth={stMaxWidth}>
+            {subtitle}
+          </Subtitle>
           <Caption textColor={textColor}>{caption}</Caption>
         </SubtitleContainer>
       </SectionContent>
@@ -117,5 +121,6 @@ PageHero.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   caption: PropTypes.string,
+  stMaxWidth: PropTypes.number,
 };
 export default PageHero;
