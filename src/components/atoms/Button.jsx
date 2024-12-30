@@ -61,7 +61,11 @@ const Button = ({
 }) => {
   const theme = useTheme();
 
-  const iconSize = theme.buttons.sizes[size].iconSize;
+  const {
+    buttons: { sizes },
+  } = theme;
+
+  let iconSize = Number(sizes[size].iconSize);
 
   return (
     <StyledButton
