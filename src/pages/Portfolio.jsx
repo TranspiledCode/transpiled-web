@@ -12,6 +12,7 @@ const Portfolio = () => {
         subtitle="From responsive designs to user-friendly interfaces, our work reflects our commitment to quality and innovation."
         caption="Take a look at our past projects below"
         stMaxWidth={70}
+        capMaxWidth={20}
       />
       <PortfolioList
         title="Featured Work"

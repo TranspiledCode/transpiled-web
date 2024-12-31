@@ -74,18 +74,18 @@ const Subtitle = styled.p`
   }
 `;
 const Caption = styled.p`
+  width: 80vw;
+  max-width: ${({ capMaxWidth }) => capMaxWidth}rem;
   font-family: ${({ theme }) => theme.fonts.mono};
   color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
-  max-width: ${({ capMaxWidth }) => [capMaxWidth]}rem;
   line-height: 1.4em;
   letter-spacing: 0.015em;
 
-  ${({ theme }) => theme.mediaQueries.md} {
-    width: clamp(30rem, 40vw, 40rem);
-    max-width: 40rem;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 50vw;
   }
 `;
 
@@ -97,7 +97,7 @@ const PageHero = ({
   subtitle,
   caption,
   stMaxWidth = 90,
-  capMaxWidth = 35,
+  capMaxWidth = 40,
 }) => {
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
