@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
  * @param {string} subtitle - The medium, normal weight text in the middle.
  * @param {string} caption - The small, monospaced text at the bottom.
  * @param {string} stMaxWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
+ * @param {string} capMaxWidth - The maximum width of the caption. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
  */
 
 const SectionContainer = styled.section`
@@ -78,7 +79,7 @@ const Caption = styled.p`
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
-  max-width: 35rem;
+  max-width: ${({ capMaxWidth }) => [capMaxWidth]}rem;
   line-height: 1.4em;
   letter-spacing: 0.015em;
 
@@ -96,6 +97,7 @@ const PageHero = ({
   subtitle,
   caption,
   stMaxWidth = 90,
+  capMaxWidth = 35,
 }) => {
   return (
     <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
@@ -105,7 +107,9 @@ const PageHero = ({
           <Subtitle textColor={textColor} stMaxWidth={stMaxWidth}>
             {subtitle}
           </Subtitle>
-          <Caption textColor={textColor}>{caption}</Caption>
+          <Caption textColor={textColor} capMaxWidth={capMaxWidth}>
+            {caption}
+          </Caption>
         </SubtitleContainer>
       </SectionContent>
     </SectionContainer>
@@ -120,5 +124,6 @@ PageHero.propTypes = {
   subtitle: PropTypes.string,
   caption: PropTypes.string,
   stMaxWidth: PropTypes.number,
+  capMaxWidth: PropTypes.number,
 };
 export default PageHero;
