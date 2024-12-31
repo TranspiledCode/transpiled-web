@@ -47,6 +47,14 @@ const buttons = {
       hoverColor: colors.white,
       hoverTextColor: colors.green,
     },
+    outlineGray: {
+      bgColor: 'transparent',
+      hoverBgColor: 'transparent',
+      borderColor: colors.darkGray,
+      textColor: colors.darkGray,
+      hoverColor: colors.green,
+      hoverTextColor: colors.green,
+    },
   },
   sizes: {
     tiny: {

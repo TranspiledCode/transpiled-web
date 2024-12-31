@@ -82,7 +82,7 @@ const ContactForm = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            variant="outline"
+            variant="outlineGray"
             icon="FaArrowRight"
             size="medium"
           >
