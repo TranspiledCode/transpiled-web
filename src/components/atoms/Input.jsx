@@ -23,10 +23,11 @@ const StyledInput = styled.input`
   color: ${({ theme, color }) => theme.colors[color]};
   border-radius: 0;
 
-  caret-color: ${({ theme }) => theme.colors.green};
+  caret-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
 
   &:focus {
-    border-bottom: 1.5px solid ${({ theme }) => theme.colors.green};
+    border-bottom: 1.5px solid
+      ${({ theme, hoverColor }) => theme.colors[hoverColor]};
   }
 
   @media (max-width: 600px) {
@@ -41,8 +42,8 @@ const StyledLabel = styled.label`
   bottom: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '3rem' : '0.8rem')};
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
-  color: ${({ theme, isFocusedOrFilled, color }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors[color]};
+  color: ${({ theme, isFocusedOrFilled, color, hoverColor }) =>
+    isFocusedOrFilled ? theme.colors[hoverColor] : theme.colors[color]};
   pointer-events: none;
   transition: all 0.2s ease;
 
@@ -70,12 +71,12 @@ const ClearButton = styled.button`
   font-size: 1.2rem;
 
   &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.green};
+    outline: 2px solid ${({ theme, hoverColor }) => theme.colors[hoverColor]};
     border-radius: 50%;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
   }
 
   @media (max-width: 600px) {
@@ -92,6 +93,7 @@ const Input = ({
   onChange: propOnChange,
   showClearButton = true,
   color = 'darkGray',
+  hoverColor = 'green',
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const formContext = useContext(FormContext);
@@ -138,12 +140,14 @@ const Input = ({
         autoCapitalize="none"
         autoCorrect="off"
         color={color}
+        hoverColor={hoverColor}
       />
       <StyledLabel
         id={`${inputId}-label`}
         htmlFor={inputId}
         isFocusedOrFilled={isFocused || value}
         color={color}
+        hoverColor={hoverColor}
       >
         {label}
       </StyledLabel>
@@ -153,6 +157,7 @@ const Input = ({
           onClick={handleClear}
           aria-label={`Clear ${label}`}
           color={color}
+          hoverColor={hoverColor}
         >
           <FaTimes aria-hidden="true" />
         </ClearButton>
@@ -169,6 +174,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   showClearButton: PropTypes.bool,
   color: PropTypes.oneOf(['darkGray', 'white']),
+  hoverColor: PropTypes.string,
 };
 
 export default Input;
