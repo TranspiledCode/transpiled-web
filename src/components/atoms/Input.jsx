@@ -15,12 +15,12 @@ const InputContainer = styled.div`
 const StyledInput = styled.input`
   width: 100%;
   border: none;
-  border-bottom: 1.5px solid ${({ theme }) => theme.colors.darkGray};
+  border-bottom: 1.5px solid ${({ theme, color }) => theme.colors[color]};
   padding: 0.8rem 2.5rem 0.8rem 0;
   font-size: 1.6rem;
   outline: none;
   background: transparent;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme, color }) => theme.colors[color]};
   border-radius: 0;
 
   caret-color: ${({ theme }) => theme.colors.green};
@@ -41,8 +41,8 @@ const StyledLabel = styled.label`
   bottom: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '3rem' : '0.8rem')};
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
-  color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors.darkGray};
+  color: ${({ theme, isFocusedOrFilled, color }) =>
+    isFocusedOrFilled ? theme.colors.green : theme.colors[color]};
   pointer-events: none;
   transition: all 0.2s ease;
 
@@ -66,7 +66,7 @@ const ClearButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, color }) => theme.colors[color]};
   font-size: 1.2rem;
 
   &:focus {
@@ -91,6 +91,7 @@ const Input = ({
   value: propValue,
   onChange: propOnChange,
   showClearButton = true,
+  color = 'darkGray',
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const formContext = useContext(FormContext);
@@ -136,11 +137,13 @@ const Input = ({
         aria-labelledby={`${inputId}-label`}
         autoCapitalize="none"
         autoCorrect="off"
+        color={color}
       />
       <StyledLabel
         id={`${inputId}-label`}
         htmlFor={inputId}
         isFocusedOrFilled={isFocused || value}
+        color={color}
       >
         {label}
       </StyledLabel>
@@ -149,6 +152,7 @@ const Input = ({
           type="button"
           onClick={handleClear}
           aria-label={`Clear ${label}`}
+          color={color}
         >
           <FaTimes aria-hidden="true" />
         </ClearButton>
@@ -164,6 +168,7 @@ Input.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   showClearButton: PropTypes.bool,
+  color: PropTypes.oneOf(['darkGray', 'white']),
 };
 
 export default Input;
