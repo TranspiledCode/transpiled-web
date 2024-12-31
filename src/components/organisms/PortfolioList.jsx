@@ -11,6 +11,14 @@ const SectionContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   ${({ theme }) => theme.mixins.flexColCenter}
 `;
+const ImageArea = styled.div``;
+
+const CoverImage = styled.div``;
+const CoverTitle = styled.h3``;
+const CoverIndustry = styled.p``;
+const CoverSummary = styled.p``;
+
+const Image = styled.img``;
 
 const PortfolioList = ({ title, subtitle }) => {
   return (
@@ -22,6 +30,14 @@ const PortfolioList = ({ title, subtitle }) => {
           titleColor="orange"
           stMaxWidth={60}
         />
+        <ImageArea>
+          <CoverImage>
+            <CoverTitle>Fitlife inc.</CoverTitle>
+            <CoverIndustry>Healthcare</CoverIndustry>
+            <CoverSummary>Mobile app redesign & Rebuild</CoverSummary>
+            <Image></Image>
+          </CoverImage>
+        </ImageArea>
       </SectionContent>
     </SectionContainer>
   );
