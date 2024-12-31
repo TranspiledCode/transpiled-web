@@ -8,7 +8,7 @@ import FormContext from 'context/ContactForm';
 const InputContainer = styled.div`
   position: relative;
   width: 100%;
-  font-family: 'Manrope', sans-serif;
+  font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 500;
 `;
 
