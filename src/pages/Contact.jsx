@@ -1,19 +1,35 @@
-import styled from '@emotion/styled';
 import ContactSection from '../components/organisms/ContactSection';
-
-const PageWrapper = styled.div`
-  min-height: 100vh;
-  background-image: linear-gradient(
-    ${({ theme }) => theme.colors.darkBlue},
-    ${({ theme }) => theme.colors.fuchsia}
-  );
-`;
+import PageHero from '../components/organisms/PageHero';
+import PageCTA from '../components/organisms/PageCTA';
+import content from '../data/contact';
 
 const ContactPage = () => {
+  const {
+    hero: { title, subtitle, caption },
+    form: { formTitle, formSubtitle },
+    cta: { ctaTitle, ctaSubtitle, btnText, btnUrl },
+  } = content;
   return (
-    <PageWrapper>
-      <ContactSection />
-    </PageWrapper>
+    <>
+      <PageHero
+        gradTopCol="darkBlue"
+        gradBotCol="fuchsia"
+        title={title}
+        subtitle={subtitle}
+        caption={caption}
+        stMaxWidth={70}
+      />
+      <ContactSection formTitle={formTitle} formSubtitle={formSubtitle} />
+      <PageCTA
+        gradTopCol="lightBlue"
+        gradBotCol="darkBlue"
+        title={ctaTitle}
+        subtitle={ctaSubtitle}
+        btnText={btnText}
+        btnUrl={btnUrl}
+        stMaxWidth={75}
+      />
+    </>
   );
 };
 export default ContactPage;

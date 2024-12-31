@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
  * @param {string} title - The large, bold text at the top.
  * @param {string} subtitle - The medium, normal weight text in the middle.
  * @param {string} btnText - The contents of the button at the bottom.
+ * @param {string} stMaxWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
  */
 
 const SectionContainer = styled.section`
@@ -58,8 +59,8 @@ const Subtitle = styled.p`
   line-height: 1.4em;
   letter-spacing: -0.01em;
 
-  ${({ theme }) => theme.mediaQueries.md} {
-    width: clamp(0rem, 100%, 80rem);
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: clamp(0rem, 100%, ${({ stMaxWidth }) => stMaxWidth}rem);
     text-align: left;
   }
 `;
@@ -72,6 +73,7 @@ const PageCTA = ({
   subtitle,
   btnText = 'Button Text',
   btnUrl = '*',
+  stMaxWidth = 80,
 }) => {
   return (
     <SectionContainer
@@ -82,7 +84,9 @@ const PageCTA = ({
       <SectionContent>
         <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
-          <Subtitle textColor={textColor}>{subtitle}</Subtitle>
+          <Subtitle stMaxWidth={stMaxWidth} textColor={textColor}>
+            {subtitle}
+          </Subtitle>
           <Link to={btnUrl}>
             <Button icon="FaArrowRight" variant="outline" size="medium">
               {btnText}
@@ -104,5 +108,6 @@ PageCTA.propTypes = {
   subtitle: PropTypes.string,
   btnText: PropTypes.string.isRequired,
   btnUrl: PropTypes.string.isRequired,
+  stMaxWidth: PropTypes.number,
 };
 export default PageCTA;

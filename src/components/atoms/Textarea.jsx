@@ -24,10 +24,10 @@ const StyledTextarea = styled.textarea`
 
   height: 20rem;
   width: 100%;
-  border: 1.5px solid ${({ theme }) => theme.colors.white};
+  border: 1.5px solid ${({ theme, color }) => theme.colors[color]};
   border-radius: 0;
-  color: ${({ theme }) => theme.colors.white};
-  caret-color: ${({ theme }) => theme.colors.green};
+  color: ${({ theme, color }) => theme.colors[color]};
+  caret-color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
   padding: 0.2rem 0.8rem;
 `;
 
@@ -42,8 +42,8 @@ const StyledLabel = styled.label`
   top: ${({ isFocusedOrFilled }) => (isFocusedOrFilled ? '17.6rem' : '0.2rem')};
   font-size: ${({ isFocusedOrFilled }) =>
     isFocusedOrFilled ? '1.2rem' : '1.6rem'};
-  color: ${({ theme, isFocusedOrFilled }) =>
-    isFocusedOrFilled ? theme.colors.green : theme.colors.white};
+  color: ${({ theme, isFocusedOrFilled, color, hoverColor }) =>
+    isFocusedOrFilled ? theme.colors[hoverColor] : theme.colors[color]};
 
   pointer-events: none;
   transition: all 0.2s ease;
@@ -63,18 +63,18 @@ const ClearButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, color }) => theme.colors[color]};
   font-size: 1.2rem;
   height: 2.5rem;
   width: 2.5rem;
 
   &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.green};
+    outline: 2px solid ${({ theme, hoverColor }) => theme.colors[hoverColor]};
     border-radius: 50%;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme, hoverColor }) => theme.colors[hoverColor]};
   }
 
   @media (max-width: 600px) {
@@ -91,11 +91,18 @@ const CharacterCount = styled.div`
   right: 0;
   font-size: 1.2rem;
   height: 2.5rem;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, color }) => theme.colors[color]};
   margin-right: 0.6rem;
 `;
 
-const Textarea = ({ name, label, showClearButton = true, maxLength = 200 }) => {
+const Textarea = ({
+  name,
+  label,
+  showClearButton = true,
+  maxLength = 200,
+  color = 'darkGray',
+  hoverColor = 'green',
+}) => {
   const { formData, updateFormData } = useContext(FormContext);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -123,11 +130,15 @@ const Textarea = ({ name, label, showClearButton = true, maxLength = 200 }) => {
         onBlur={handleBlur}
         aria-labelledby={`${textareaId}-label`}
         maxLength={maxLength}
+        color={color}
+        hoverColor={hoverColor}
       />
       <StyledLabel
         id={`${textareaId}-label`}
         htmlFor={textareaId}
         isFocusedOrFilled={isFocused || value}
+        color={color}
+        hoverColor={hoverColor}
       >
         {label}
       </StyledLabel>
@@ -137,6 +148,8 @@ const Textarea = ({ name, label, showClearButton = true, maxLength = 200 }) => {
           onClick={handleClear}
           aria-label={`Clear ${label}`}
           isFocusedOrFilled={isFocused || value}
+          color={color}
+          hoverColor={hoverColor}
         >
           <FaTimes aria-hidden="true" />
         </ClearButton>
@@ -151,6 +164,8 @@ Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   showClearButton: PropTypes.bool,
   maxLength: PropTypes.number,
+  color: PropTypes.oneOf(['darkGray', 'white']),
+  hoverColor: PropTypes.string,
 };
 
 export default Textarea;
