@@ -40,6 +40,8 @@ const StyledButton = styled.button(({ variant, theme, size, fullWidth }) => ({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+  fontFamily: theme.fonts.manrope,
+  fontWeight: '500',
 
   '&:disabled': {
     backgroundColor: theme.colors.gray,

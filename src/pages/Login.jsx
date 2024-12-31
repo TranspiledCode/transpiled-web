@@ -38,6 +38,7 @@ const Title = styled.h1`
 `;
 
 const FormInputs = styled.div`
+  font-family: ${({ theme }) => theme.fonts.manrope};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -125,6 +126,7 @@ function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            color="white"
           />
           <Input
             type="password"
@@ -133,6 +135,7 @@ function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            color="white"
           />
           <Navigation>
             <NavigationLink to="/">Back to Home</NavigationLink>

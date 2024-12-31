@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import content from 'data/home';
+import PropTypes from 'prop-types';
 import ContactForm from 'organisms/ContactForm';
+import TitleSubtitle from '../molecules/TitleSubtitle';
 
 const ScrollTo = styled.div`
   pointer-events: none;
@@ -28,50 +29,26 @@ const SectionContent = styled.div`
   justify-content: center;
   gap: 4rem;
 `;
-const SectionInfo = styled.div`
-  width: 100%;
-  color: ${({ theme }) => theme.colors.white};
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.5rem;
-`;
-const Title = styled.h2`
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-weight: 700;
-  font-size: clamp(5rem, 8vw, 6.4rem);
-  line-height: clamp(5rem, 8vw, 6.4rem);
-`;
-const Subtitle = styled.p`
-  width: 100%;
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
 
-  ${({ theme }) => theme.mediaQueries.md} {
-  }
-`;
-
-const ContactSection = () => {
-  const {
-    cta: { title, subtitle },
-  } = content;
-
+const ContactSection = ({ formTitle, formSubtitle }) => {
   return (
     <>
       <ScrollTo id="contact" aria-hidden={true}></ScrollTo>
       <Section>
         <SectionContent>
-          <SectionInfo>
-            <Title>{title}</Title>
-            <Subtitle>{subtitle}</Subtitle>
-          </SectionInfo>
+          <TitleSubtitle
+            title={formTitle}
+            subtitle={formSubtitle}
+            titleColor="fuchsia"
+          />
           <ContactForm />
         </SectionContent>
       </Section>
     </>
   );
 };
-
+ContactSection.propTypes = {
+  formTitle: PropTypes.string.isRequired,
+  formSubtitle: PropTypes.string.isRequired,
+};
 export default ContactSection;
