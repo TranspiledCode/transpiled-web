@@ -1,5 +1,5 @@
 import PageHero from '../components/organisms/PageHero';
-import PortfolioList from '../components/organisms/PortfolioList';
+import PortfolioSection from '../components/organisms/PortfolioSection';
 import PageCTA from '../components/organisms/PageCTA';
 
 const Portfolio = () => {
@@ -14,9 +14,33 @@ const Portfolio = () => {
         stMaxWidth={70}
         capMaxWidth={20}
       />
-      <PortfolioList
+      <PortfolioSection
         title="Featured Work"
         subtitle="Our portfolio is a showcase of how we transform ideas into impactful websites."
+        projects={[
+          {
+            url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
+            label: 'test image',
+            title: 'FitLife',
+            category: 'Healthcare',
+            caption: 'Web and Mobile App Design',
+          },
+          {
+            url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
+            label: 'test image',
+            title: 'TechFlow Solutions',
+            category: 'Technology Services',
+            caption: 'AI Systems Design & Engineering',
+          },
+          {
+            url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
+            label: 'test image',
+            title: 'InnovateCo',
+            category: 'E-Commerce',
+            caption:
+              'Digital Point of Sale System Design, Production & Deployment',
+          },
+        ]}
       />
       <PageCTA
         gradTopCol="lightBlue"
@@ -24,6 +48,7 @@ const Portfolio = () => {
         title="Want Something Else?"
         subtitle="Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results."
         btnText="Explore Services"
+        btnUrl="/services"
         stMaxWidth={90}
       />
     </>

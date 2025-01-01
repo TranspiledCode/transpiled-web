@@ -23,14 +23,14 @@ const Title = styled.h3`
 const SubtitleContainer = styled.div`
   ${({ theme }) => theme.mixins.flexColCenter};
 `;
-const Industry = styled.p`
+const Category = styled.p`
   font-family: ${({ theme }) => theme.fonts.mono};
   text-transform: uppercase;
   font-size: 1.2rem;
   line-height: 1.4em;
   letter-spacing: -0.01em;
 `;
-const Summary = styled.p`
+const Caption = styled.p`
   font-family: ${({ theme }) => theme.fonts.mono};
   text-transform: uppercase;
   font-size: 1.2rem;
@@ -46,14 +46,14 @@ const Overlay = styled.div`
   z-index: -1;
 `;
 
-const CoverImage = ({ url, label, title, industry, summary }) => {
+const CoverImage = ({ url, label, title, category, caption }) => {
   return (
     <Container>
       <TextContainer>
         <Title>{title}</Title>
         <SubtitleContainer>
-          <Industry>{industry}</Industry>
-          <Summary>{summary}</Summary>
+          <Category>{category}</Category>
+          <Caption>{caption}</Caption>
         </SubtitleContainer>
       </TextContainer>
       <Overlay></Overlay>
@@ -65,7 +65,7 @@ CoverImage.propTypes = {
   url: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  industry: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
 };
 export default CoverImage;

@@ -14,15 +14,7 @@ const SectionContent = styled.div`
   gap: clamp(2rem, 4vw, 4rem);
 `;
 
-const PortfolioList = ({
-  title,
-  subtitle,
-  url = 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-  label = 'test image',
-  coverTitle = 'Fitlife Inc.',
-  industry = 'Healthcare',
-  summary = 'Web and Mobile App Design',
-}) => {
+const PortfolioSection = ({ title, subtitle, projects }) => {
   return (
     <SectionContainer>
       <SectionContent>
@@ -32,21 +24,25 @@ const PortfolioList = ({
           titleColor="orange"
           stMaxWidth={60}
         />
-        <CoverImage
-          url={url}
-          label={label}
-          title={coverTitle}
-          industry={industry}
-          summary={summary}
-        />
+        <>
+          {projects.map((project, index) => (
+            <CoverImage
+              key={index}
+              url={project.url}
+              label={project.label}
+              title={project.title}
+              category={project.category}
+              caption={project.caption}
+            />
+          ))}
+        </>
       </SectionContent>
     </SectionContainer>
   );
 };
-PortfolioList.propTypes = {
+PortfolioSection.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  url: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  projects: PropTypes.array.isRequired,
 };
-export default PortfolioList;
+export default PortfolioSection;
