@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import TitleSubtitle from '../molecules/TitleSubtitle';
-import Image from '../atoms/Image';
 
 const SectionContainer = styled.section`
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -13,57 +12,6 @@ const SectionContent = styled.div`
   ${({ theme }) => theme.mixins.flexColCenter};
   gap: clamp(2rem, 4vw, 4rem);
 `;
-
-const CoverImage = styled.div`
-  position: relative;
-  height: clamp(30rem, 50vw, 60rem);
-  width: 100%;
-  ${({ theme }) => theme.mixins.flexColCenter};
-`;
-const CoverTextContainer = styled.div`
-  color: ${({ theme }) => theme.colors.white};
-  position: absolute;
-  ${({ theme }) => theme.mixins.flexColCenter};
-  gap: 1rem;
-`;
-const CoverTitle = styled.h3`
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: clamp(2.4rem, 8vw, 4.8rem);
-  line-height: 0.95em;
-  letter-spacing: -0.04em;
-`;
-const CoverSubtitleArea = styled.div`
-  ${({ theme }) => theme.mixins.flexColCenter};
-`;
-const Industry = styled.p`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
-`;
-const Summary = styled.p`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
-`;
-const Overlay = styled.div`
-  background-color: ${({ theme }) => theme.colors.black};
-  opacity: 0.8;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-`;
-// const Image = styled.img`
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   z-index: -2;
-// `;
 
 const PortfolioList = ({
   title,
@@ -80,18 +28,7 @@ const PortfolioList = ({
           titleColor="orange"
           stMaxWidth={60}
         />
-        <CoverImage>
-          <CoverTextContainer>
-            <CoverTitle>Fitlife Inc.</CoverTitle>
-            <CoverSubtitleArea>
-              <Industry>Healthcare</Industry>
-              <Summary>Mobile app redesign & Rebuild</Summary>
-            </CoverSubtitleArea>
-          </CoverTextContainer>
-          <Overlay></Overlay>
-          <Image url={url} label={label} zIndex={-2} />
-        </CoverImage>
-        <CoverImage>
+        {/* <CoverImage>
           <CoverTextContainer>
             <CoverTitle>StyleHub</CoverTitle>
             <CoverSubtitleArea>
@@ -112,7 +49,7 @@ const PortfolioList = ({
           </CoverTextContainer>
           <Overlay></Overlay>
           <Image url={url} label={label} zIndex={-2} />
-        </CoverImage>
+        </CoverImage> */}
       </SectionContent>
     </SectionContainer>
   );

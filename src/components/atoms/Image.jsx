@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const StyledImage = styled.img`
-  position: ${({ position }) => position};
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: ${({ objFit }) => objFit};
+  position: ${({ position }) => position};
   z-index: ${({ zIndex }) => zIndex};
 `;
 
