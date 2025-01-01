@@ -7,20 +7,69 @@ const SectionContainer = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter}
 `;
 const SectionContent = styled.div`
-  min-width: 100%;
+  width: 100%;
   max-width: ${({ theme }) => theme.layouts.maxWidth};
-  ${({ theme }) => theme.mixins.flexColCenter}
+  ${({ theme }) => theme.mixins.flexColCenter};
+  gap: 4rem;
 `;
-const ImageArea = styled.div``;
 
-const CoverImage = styled.div``;
-const CoverTitle = styled.h3``;
-const CoverIndustry = styled.p``;
-const CoverSummary = styled.p``;
+const CoverImage = styled.div`
+  position: relative;
+  height: 60rem;
+  width: 100%;
+  ${({ theme }) => theme.mixins.flexColCenter};
+`;
+const CoverTextContainer = styled.div`
+  color: ${({ theme }) => theme.colors.white};
+  position: absolute;
+  ${({ theme }) => theme.mixins.flexColCenter};
+  gap: 1rem;
+`;
+const CoverTitle = styled.h3`
+  font-family: ${({ theme }) => theme.fonts.manrope};
+  font-size: clamp(4.8rem, 8vw, 6.4rem);
+  line-height: 0.95em;
+  letter-spacing: -0.04em;
+`;
+const CoverSubtitleArea = styled.div`
+  ${({ theme }) => theme.mixins.flexColCenter};
+`;
+const Industry = styled.p`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
+`;
+const Summary = styled.p`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
+`;
+const Overlay = styled.div`
+  background-color: ${({ theme }) => theme.colors.black};
+  opacity: 0.8;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+`;
+const Image = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+`;
 
-const Image = styled.img``;
-
-const PortfolioList = ({ title, subtitle }) => {
+const PortfolioList = ({
+  title,
+  subtitle,
+  url = 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
+  label = 'test image',
+}) => {
   return (
     <SectionContainer>
       <SectionContent>
@@ -30,14 +79,17 @@ const PortfolioList = ({ title, subtitle }) => {
           titleColor="orange"
           stMaxWidth={60}
         />
-        <ImageArea>
-          <CoverImage>
-            <CoverTitle>Fitlife inc.</CoverTitle>
-            <CoverIndustry>Healthcare</CoverIndustry>
-            <CoverSummary>Mobile app redesign & Rebuild</CoverSummary>
-            <Image></Image>
-          </CoverImage>
-        </ImageArea>
+        <CoverImage>
+          <CoverTextContainer>
+            <CoverTitle>Fitlife Inc.</CoverTitle>
+            <CoverSubtitleArea>
+              <Industry>Healthcare</Industry>
+              <Summary>Mobile app redesign & Rebuild</Summary>
+            </CoverSubtitleArea>
+          </CoverTextContainer>
+          <Overlay></Overlay>
+          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+        </CoverImage>
       </SectionContent>
     </SectionContainer>
   );
@@ -45,5 +97,7 @@ const PortfolioList = ({ title, subtitle }) => {
 PortfolioList.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  label: PropTypes.string.isRequired,
 };
 export default PortfolioList;
