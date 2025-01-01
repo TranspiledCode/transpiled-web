@@ -15,7 +15,7 @@ const SectionContent = styled.div`
 
 const CoverImage = styled.div`
   position: relative;
-  height: 50vw;
+  height: clamp(30rem, 50vw, 60rem);
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
 `;
