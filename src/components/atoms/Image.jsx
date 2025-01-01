@@ -13,8 +13,8 @@ const Image = ({
   url,
   label = 'image',
   objFit = 'cover',
-  position = 'relative',
-  zIndex = 0,
+  position,
+  zIndex,
 }) => {
   return (
     <StyledImage
