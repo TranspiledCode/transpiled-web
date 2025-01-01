@@ -13,7 +13,7 @@ const Image = ({
   url,
   label = 'image',
   objFit = 'cover',
-  position = 'static',
+  position = 'relative',
   zIndex = 0,
 }) => {
   return (
@@ -33,6 +33,12 @@ Image.propTypes = {
   url: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   objFit: PropTypes.oneOf(['cover', 'contain']),
-  position: PropTypes.oneOf(['relative', 'absolute', 'static']),
+  position: PropTypes.oneOf([
+    'relative',
+    'absolute',
+    'static',
+    'absolute',
+    'sticky',
+  ]),
   zIndex: PropTypes.number,
 };
