@@ -1,57 +1,42 @@
 import PageHero from '../components/organisms/PageHero';
-import PortfolioSection from '../components/organisms/PortfolioSection';
+import ProjectList from '../components/organisms/ProjectList';
 import PageCTA from '../components/organisms/PageCTA';
+import content from '../data/portfolio';
 
 const Portfolio = () => {
+  const {
+    hero: { title: heroTitle, subtitle: heroSubtitle, caption: heroCaption },
+    projectList: { title: sectionTitle, subtitle: sectionSubtitle, projects },
+    cta: {
+      title: ctaTitle,
+      subtitle: ctaSubtitle,
+      btnText: ctaText,
+      btnUrl: ctaUrl,
+    },
+  } = content;
   return (
     <>
       <PageHero
         gradTopCol="fuchsia"
         gradBotCol="orange"
-        title="Work that speaks for itself"
-        subtitle="From responsive designs to user-friendly interfaces, our work reflects our commitment to quality and innovation."
-        caption="Take a look at our past projects below"
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        caption={heroCaption}
         stMaxWidth={70}
         capMaxWidth={20}
       />
-      <PortfolioSection
-        title="Featured Work"
-        subtitle="Our portfolio is a showcase of how we transform ideas into impactful websites."
-        projects={[
-          {
-            url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-            label: 'test image',
-            title: 'FitLife',
-            category: 'Healthcare',
-            caption: 'Web and Mobile App Design',
-            catColor: 'orange',
-          },
-          {
-            url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-            label: 'test image',
-            title: 'TechFlow Solutions',
-            category: 'Technology Services',
-            caption: 'AI Systems Design & Engineering',
-            catColor: 'green',
-          },
-          {
-            url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-            label: 'test image',
-            title: 'InnovateCo',
-            category: 'E-Commerce',
-            caption:
-              'Digital Point of Sale System Design, Production & Deployment',
-            catColor: 'lightBlue',
-          },
-        ]}
+      <ProjectList
+        title={sectionTitle}
+        subtitle={sectionSubtitle}
+        projects={projects}
       />
       <PageCTA
         gradTopCol="lightBlue"
         gradBotCol="green"
-        title="Want Something Else?"
-        subtitle="Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results."
-        btnText="Explore Services"
-        btnUrl="/services"
+        title={ctaTitle}
+        subtitle={ctaSubtitle}
+        btnText={ctaText}
+        btnUrl={ctaUrl}
         stMaxWidth={90}
       />
     </>

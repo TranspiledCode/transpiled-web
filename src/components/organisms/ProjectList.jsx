@@ -14,7 +14,7 @@ const SectionContent = styled.div`
   gap: clamp(2rem, 4vw, 4rem);
 `;
 
-const PortfolioSection = ({ title, subtitle, projects }) => {
+const ProjectList = ({ title, subtitle, projects }) => {
   return (
     <SectionContainer>
       <SectionContent>
@@ -41,9 +41,9 @@ const PortfolioSection = ({ title, subtitle, projects }) => {
     </SectionContainer>
   );
 };
-PortfolioSection.propTypes = {
+ProjectList.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   projects: PropTypes.array.isRequired,
 };
-export default PortfolioSection;
+export default ProjectList;
