@@ -89,7 +89,7 @@ const PortfolioList = ({
             </CoverSubtitleArea>
           </CoverTextContainer>
           <Overlay></Overlay>
-          <Image url={url} label={label} />
+          <Image url={url} label={label} zIndex={-2} />
         </CoverImage>
         <CoverImage>
           <CoverTextContainer>
@@ -100,7 +100,7 @@ const PortfolioList = ({
             </CoverSubtitleArea>
           </CoverTextContainer>
           <Overlay></Overlay>
-          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+          <Image url={url} label={label} zIndex={-2} />
         </CoverImage>
         <CoverImage>
           <CoverTextContainer>
@@ -111,7 +111,7 @@ const PortfolioList = ({
             </CoverSubtitleArea>
           </CoverTextContainer>
           <Overlay></Overlay>
-          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+          <Image url={url} label={label} zIndex={-2} />
         </CoverImage>
       </SectionContent>
     </SectionContainer>

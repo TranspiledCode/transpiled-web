@@ -6,7 +6,7 @@ const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: ${({ objFit }) => objFit};
-  z-index: -2;
+  z-index: ${({ zIndex }) => zIndex};
 `;
 
 const Image = ({
@@ -14,6 +14,7 @@ const Image = ({
   label = 'image',
   objFit = 'cover',
   position = 'static',
+  zIndex = 0,
 }) => {
   return (
     <StyledImage
@@ -23,6 +24,7 @@ const Image = ({
       loading="lazy"
       objFit={objFit}
       position={position}
+      zIndex={zIndex}
     />
   );
 };
@@ -32,4 +34,5 @@ Image.propTypes = {
   label: PropTypes.string.isRequired,
   objFit: PropTypes.oneOf(['cover', 'contain']),
   position: PropTypes.oneOf(['relative', 'absolute', 'static']),
+  zIndex: PropTypes.number,
 };
