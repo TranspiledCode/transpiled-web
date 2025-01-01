@@ -10,12 +10,12 @@ const SectionContent = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   ${({ theme }) => theme.mixins.flexColCenter};
-  gap: 4rem;
+  gap: clamp(2rem, 4vw, 4rem);
 `;
 
 const CoverImage = styled.div`
   position: relative;
-  height: 60rem;
+  height: 50vw;
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
 `;
@@ -27,7 +27,7 @@ const CoverTextContainer = styled.div`
 `;
 const CoverTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: clamp(4.8rem, 8vw, 6.4rem);
+  font-size: clamp(2.4rem, 8vw, 4.8rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
 `;
@@ -85,6 +85,28 @@ const PortfolioList = ({
             <CoverSubtitleArea>
               <Industry>Healthcare</Industry>
               <Summary>Mobile app redesign & Rebuild</Summary>
+            </CoverSubtitleArea>
+          </CoverTextContainer>
+          <Overlay></Overlay>
+          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+        </CoverImage>
+        <CoverImage>
+          <CoverTextContainer>
+            <CoverTitle>StyleHub</CoverTitle>
+            <CoverSubtitleArea>
+              <Industry>E-Commerce</Industry>
+              <Summary>Web Store Engineering</Summary>
+            </CoverSubtitleArea>
+          </CoverTextContainer>
+          <Overlay></Overlay>
+          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+        </CoverImage>
+        <CoverImage>
+          <CoverTextContainer>
+            <CoverTitle>Fresh Wave LLC.</CoverTitle>
+            <CoverSubtitleArea>
+              <Industry>Tech</Industry>
+              <Summary>Digital Ecosystem Design & Build</Summary>
             </CoverSubtitleArea>
           </CoverTextContainer>
           <Overlay></Overlay>
