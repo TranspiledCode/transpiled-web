@@ -99,8 +99,20 @@ const PageCTA = ({
 };
 
 PageCTA.propTypes = {
-  gradTopCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia']),
-  gradBotCol: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia']),
+  gradTopCol: PropTypes.oneOf([
+    'darkBlue',
+    'lightBlue',
+    'green',
+    'fuchsia',
+    'orange',
+  ]),
+  gradBotCol: PropTypes.oneOf([
+    'darkBlue',
+    'lightBlue',
+    'green',
+    'fuchsia',
+    'orange',
+  ]),
   textColor: PropTypes.oneOf(['black', 'white']),
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,

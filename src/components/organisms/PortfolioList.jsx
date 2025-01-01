@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import TitleSubtitle from '../molecules/TitleSubtitle';
+import Image from '../atoms/Image';
 
 const SectionContainer = styled.section`
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -56,13 +57,13 @@ const Overlay = styled.div`
   width: 100%;
   z-index: -1;
 `;
-const Image = styled.img`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-`;
+// const Image = styled.img`
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   z-index: -2;
+// `;
 
 const PortfolioList = ({
   title,
@@ -88,7 +89,7 @@ const PortfolioList = ({
             </CoverSubtitleArea>
           </CoverTextContainer>
           <Overlay></Overlay>
-          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+          <Image url={url} label={label} />
         </CoverImage>
         <CoverImage>
           <CoverTextContainer>
