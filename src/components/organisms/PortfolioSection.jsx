@@ -33,6 +33,7 @@ const PortfolioSection = ({ title, subtitle, projects }) => {
               title={project.title}
               category={project.category}
               caption={project.caption}
+              catColor={project.catColor}
             />
           ))}
         </>

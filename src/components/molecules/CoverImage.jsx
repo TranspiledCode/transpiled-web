@@ -9,34 +9,35 @@ const Container = styled.div`
   ${({ theme }) => theme.mixins.flexColCenter};
 `;
 const TextContainer = styled.div`
-  color: ${({ theme }) => theme.colors.white};
   position: absolute;
   ${({ theme }) => theme.mixins.flexColCenter};
   gap: 1rem;
 `;
 const Title = styled.h3`
+  color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: clamp(2.4rem, 8vw, 4.8rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
 `;
 const SubtitleContainer = styled.div`
+  max-width: 30rem;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.4em;
+  letter-spacing: -0.01em;
   ${({ theme }) => theme.mixins.flexColCenter};
+  gap: 0.4rem;
 `;
 const Category = styled.p`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
+  color: ${({ theme, catColor }) => theme.colors[catColor]};
 `;
 const Caption = styled.p`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
+  color: ${({ theme }) => theme.colors.lightGray};
 `;
+
 const Overlay = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
   opacity: 0.8;
@@ -46,13 +47,20 @@ const Overlay = styled.div`
   z-index: -1;
 `;
 
-const CoverImage = ({ url, label, title, category, caption }) => {
+const CoverImage = ({
+  url,
+  label,
+  title,
+  category,
+  caption,
+  catColor = 'lightBlue',
+}) => {
   return (
     <Container>
       <TextContainer>
         <Title>{title}</Title>
         <SubtitleContainer>
-          <Category>{category}</Category>
+          <Category catColor={catColor}>{category}</Category>
           <Caption>{caption}</Caption>
         </SubtitleContainer>
       </TextContainer>
@@ -67,5 +75,12 @@ CoverImage.propTypes = {
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired,
+  catColor: PropTypes.oneOf([
+    'darkBlue',
+    'lightBlue',
+    'green',
+    'fuchsia',
+    'orange',
+  ]),
 };
 export default CoverImage;

@@ -24,6 +24,7 @@ const Portfolio = () => {
             title: 'FitLife',
             category: 'Healthcare',
             caption: 'Web and Mobile App Design',
+            catColor: 'orange',
           },
           {
             url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
@@ -31,6 +32,7 @@ const Portfolio = () => {
             title: 'TechFlow Solutions',
             category: 'Technology Services',
             caption: 'AI Systems Design & Engineering',
+            catColor: 'green',
           },
           {
             url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
@@ -39,6 +41,7 @@ const Portfolio = () => {
             category: 'E-Commerce',
             caption:
               'Digital Point of Sale System Design, Production & Deployment',
+            catColor: 'lightBlue',
           },
         ]}
       />
