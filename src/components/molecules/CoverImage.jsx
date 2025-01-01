@@ -2,6 +2,19 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import Image from '../atoms/Image';
 
+/**
+ * Cover image component.
+ * An expansion of the image component with additional styling for images with a text overlay.
+ * Lists of allowed settings for applicable fields are hinted.
+ *
+ * @component
+ * @param {string} url - URL to link the image. Must be a web link. Required.
+ * @param {string} label - Accessibility description for the image. Required.
+ * @param {string} title - Main big size text overlay that describes the project title or client name. Required.
+ * @param {string} category - Small colored text overlay below the title that describes the project category.
+ * @param {string} caption - Small text overlay below the category that describes the project.
+ */
+
 const Container = styled.div`
   position: relative;
   height: clamp(30rem, 50vw, 60rem);
@@ -73,8 +86,8 @@ CoverImage.propTypes = {
   url: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  caption: PropTypes.string.isRequired,
+  category: PropTypes.string,
+  caption: PropTypes.string,
   catColor: PropTypes.oneOf([
     'darkBlue',
     'lightBlue',
