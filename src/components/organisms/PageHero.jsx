@@ -1,29 +1,16 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-/**
- * Inner page hero component.
- * Allowed colors are hinted with PropTypes, defaults are assigned to required props as an example.
- *
- * @component
- * @param {string} gradTopCol - The upper half of the background gradient.
- * @param {string} gradBotCol - The lower half of the background gradient.
- * @param {string} textColor - The color of all text.
- * @param {string} title - The large, bold text at the top.
- * @param {string} subtitle - The medium, normal weight text in the middle.
- * @param {string} caption - The small, monospaced text at the bottom.
- * @param {string} stMaxWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
- * @param {string} capMaxWidth - The maximum width of the caption. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
- */
-
 const SectionContainer = styled.section`
   min-height: 68vh;
   width: 100%;
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
-    ${({ theme, gradTopCol }) => theme.colors[gradTopCol]},
-    ${({ theme, gradBotCol }) => theme.colors[gradBotCol]}
+    ${({ theme, gradientStart }) =>
+      theme.colors[gradientStart] || theme.colors.darkBlue},
+    ${({ theme, gradientEnd }) =>
+      theme.colors[gradientEnd] || theme.colors.lightBlue}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -36,9 +23,11 @@ const SectionContent = styled.div`
   flex-direction: column;
   padding: 4rem 0;
 `;
+
 const Title = styled.h3`
   font-family: ${({ theme }) => theme.fonts.poppins};
-  color: ${({ theme, textColor }) => theme.colors[textColor]};
+  color: ${({ theme, textColor }) =>
+    theme.colors[textColor] || theme.colors.white};
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: 0.95em;
@@ -58,10 +47,12 @@ const SubtitleContainer = styled.div`
   flex-direction: column;
   gap: clamp(2rem, 4vw, 4rem);
 `;
+
 const Subtitle = styled.p`
   width: 100%;
   font-family: ${({ theme }) => theme.fonts.manrope};
-  color: ${({ theme, textColor }) => theme.colors[textColor]};
+  color: ${({ theme, textColor }) =>
+    theme.colors[textColor] || theme.colors.white};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   text-align: justify;
@@ -69,15 +60,21 @@ const Subtitle = styled.p`
   letter-spacing: -0.015em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(0rem, 100%, ${({ stMaxWidth }) => stMaxWidth}rem);
-    text-align: left;
+    width: clamp(
+      0rem,
+      100%,
+      ${({ subtitleWidth = 90 }) => `${subtitleWidth}rem`}
+    );
   }
 `;
+
 const Caption = styled.p`
   width: 80vw;
-  max-width: ${({ capMaxWidth }) => capMaxWidth}rem;
+  max-width: ${({ captionWidth = 40 }) => `${captionWidth}rem`};
+
   font-family: ${({ theme }) => theme.fonts.mono};
-  color: ${({ theme, textColor }) => theme.colors[textColor]};
+  color: ${({ theme, textColor }) =>
+    theme.colors[textColor] || theme.colors.white};
   font-weight: 400;
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
@@ -89,25 +86,39 @@ const Caption = styled.p`
   }
 `;
 
-const PageHero = ({
-  gradTopCol = 'darkBlue',
-  gradBotCol = 'lightBlue',
-  textColor = 'white',
-  title = 'title',
-  subtitle,
-  caption,
-  stMaxWidth = 90,
-  capMaxWidth = 40,
-}) => {
+/**
+ * PageHero component.
+ *
+ * @param {object} style - Style object with optional keys:
+ *   - `gradientStart`: The top color of the gradient.
+ *   - `gradientEnd`: The bottom color of the gradient.
+ *   - `textColor`: The text color.
+ *   - `subtitleWidth`: The maximum width of the subtitle in rems.
+ *   - `captionWidth`: The maximum width of the caption in rems.
+ * @param {object} content - Content object with required keys:
+ *   - `title`: The title string.
+ *   - `subtitle`: The subtitle string.
+ *   - `caption`: The caption string.
+ *
+ * @returns {JSX.Element} The PageHero component.
+ *
+ * Example usage:
+ * <PageHero style={} content={} />
+ */
+const PageHero = ({ style, content }) => {
+  const { gradientStart, gradientEnd, textColor, subtitleWidth, captionWidth } =
+    style;
+  const { title, subtitle, caption } = content;
+
   return (
-    <SectionContainer gradTopCol={gradTopCol} gradBotCol={gradBotCol}>
+    <SectionContainer gradientStart={gradientStart} gradientEnd={gradientEnd}>
       <SectionContent>
         <Title textColor={textColor}>{title}</Title>
         <SubtitleContainer>
-          <Subtitle textColor={textColor} stMaxWidth={stMaxWidth}>
+          <Subtitle textColor={textColor} subtitleWidth={subtitleWidth}>
             {subtitle}
           </Subtitle>
-          <Caption textColor={textColor} capMaxWidth={capMaxWidth}>
+          <Caption textColor={textColor} captionWidth={captionWidth}>
             {caption}
           </Caption>
         </SubtitleContainer>
@@ -117,25 +128,17 @@ const PageHero = ({
 };
 
 PageHero.propTypes = {
-  gradTopCol: PropTypes.oneOf([
-    'darkBlue',
-    'lightBlue',
-    'green',
-    'fuchsia',
-    'orange',
-  ]),
-  gradBotCol: PropTypes.oneOf([
-    'darkBlue',
-    'lightBlue',
-    'green',
-    'fuchsia',
-    'orange',
-  ]),
-  textColor: PropTypes.oneOf(['black', 'white']),
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  caption: PropTypes.string,
-  stMaxWidth: PropTypes.number,
-  capMaxWidth: PropTypes.number,
+  style: PropTypes.shape({
+    gradientStart: PropTypes.string,
+    gradientEnd: PropTypes.string,
+    textColor: PropTypes.string,
+    subtitleWidth: PropTypes.number,
+    captionWidth: PropTypes.number,
+  }).isRequired,
+  content: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    caption: PropTypes.string,
+  }).isRequired,
 };
 export default PageHero;

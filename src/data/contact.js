@@ -11,8 +11,8 @@ const content = {
     formSubtitle: 'Let’s build your digital solution together!',
   },
   cta: {
-    ctaTitle: 'Still on the Fence?',
-    ctaSubtitle:
+    title: 'Still on the Fence?',
+    subtitle:
       'Feel free to meet our team, and learn more about how we approach every project with creativity, dedication and care.',
     btnText: 'About Us',
     btnUrl: '/about',

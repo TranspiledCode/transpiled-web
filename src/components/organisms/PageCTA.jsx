@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import Button from '../atoms/Button';
+import Button from 'atoms/Button';
 import PropTypes from 'prop-types';
 
 /**
@@ -8,13 +8,13 @@ import PropTypes from 'prop-types';
  * Allowed colors are hinted with PropTypes, defaults are assigned as an example.
  *
  * @component
- * @param {string} gradTopCol - The upper half of the background gradient.
- * @param {string} gradBotCol - The lower half of the background gradient.
+ * @param {string} gradientStart - The upper half of the background gradient.
+ * @param {string} gradientEnd - The lower half of the background gradient.
  * @param {string} textColor - The color of all text.
  * @param {string} title - The large, bold text at the top.
  * @param {string} subtitle - The medium, normal weight text in the middle.
  * @param {string} btnText - The contents of the button at the bottom.
- * @param {string} stMaxWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
+ * @param {string} subtitleWidth - The maximum width of the subtitle. Accepts a number to be used in rems. Only adjust for specific typesetting purposes.
  */
 
 const SectionContainer = styled.section`
@@ -22,8 +22,10 @@ const SectionContainer = styled.section`
   max-width: 100vw;
   background: linear-gradient(
     to bottom,
-    ${({ theme, gradTopCol }) => theme.colors[gradTopCol]},
-    ${({ theme, gradBotCol }) => theme.colors[gradBotCol]}
+    ${({ theme, gradientStart }) =>
+      theme.colors[gradientStart] || theme.colors.darkBlue},
+    ${({ theme, gradientEnd }) =>
+      theme.colors[gradientEnd] || theme.colors.blue}
   );
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -33,7 +35,8 @@ const SectionContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
 `;
 const Title = styled.h3`
-  color: ${({ theme, textColor }) => theme.colors[textColor]};
+  color: ${({ theme, textColor }) =>
+    theme.colors[textColor] || theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
   font-size: clamp(4.2rem, 8vw, 6.4rem);
@@ -51,7 +54,8 @@ const SubtitleContainer = styled.div`
 
 const Subtitle = styled.p`
   width: 100%;
-  color: ${({ theme, textColor }) => theme.colors[textColor]};
+  color: ${({ theme, textColor }) =>
+    theme.colors[textColor] || theme.colors.white};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
@@ -60,33 +64,24 @@ const Subtitle = styled.p`
   letter-spacing: -0.01em;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(0rem, 100%, ${({ stMaxWidth }) => stMaxWidth}rem);
+    width: clamp(0rem, 100%, ${({ subtitleWidth = 90 }) => subtitleWidth}rem);
     text-align: left;
   }
 `;
 
-const PageCTA = ({
-  gradTopCol = 'darkBlue',
-  gradBotCol = 'lightBlue',
-  textColor = 'white',
-  title = 'Title',
-  subtitle,
-  btnText = 'Button Text',
-  btnUrl = '*',
-  stMaxWidth = 80,
-}) => {
+const PageCTA = ({ style, content }) => {
+  const { gradientStart, gradientEnd, subtitleWidth } = style;
+  const { title, subtitle, btnText, btnUrl } = content;
   return (
     <SectionContainer
       id="contact-cta"
-      gradTopCol={gradTopCol}
-      gradBotCol={gradBotCol}
+      gradientStart={gradientStart}
+      gradientEnd={gradientEnd}
     >
       <SectionContent>
-        <Title textColor={textColor}>{title}</Title>
+        <Title>{title}</Title>
         <SubtitleContainer>
-          <Subtitle stMaxWidth={stMaxWidth} textColor={textColor}>
-            {subtitle}
-          </Subtitle>
+          <Subtitle subtitleWidth={subtitleWidth}>{subtitle}</Subtitle>
           <Link to={btnUrl}>
             <Button icon="FaArrowRight" variant="outline" size="medium">
               {btnText}
@@ -99,25 +94,16 @@ const PageCTA = ({
 };
 
 PageCTA.propTypes = {
-  gradTopCol: PropTypes.oneOf([
-    'darkBlue',
-    'lightBlue',
-    'green',
-    'fuchsia',
-    'orange',
-  ]),
-  gradBotCol: PropTypes.oneOf([
-    'darkBlue',
-    'lightBlue',
-    'green',
-    'fuchsia',
-    'orange',
-  ]),
-  textColor: PropTypes.oneOf(['black', 'white']),
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  btnText: PropTypes.string.isRequired,
-  btnUrl: PropTypes.string.isRequired,
-  stMaxWidth: PropTypes.number,
+  style: PropTypes.shape({
+    gradientStart: PropTypes.string,
+    gradientEnd: PropTypes.string,
+    subtitleWidth: PropTypes.number,
+  }),
+  content: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    btnText: PropTypes.string.isRequired,
+    btnUrl: PropTypes.string.isRequired,
+  }),
 };
 export default PageCTA;

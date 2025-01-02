@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import TitleSubtitle from '../molecules/TitleSubtitle';
-import CoverImage from '../molecules/CoverImage';
+import TitleSubtitle from 'molecules/TitleSubtitle';
+import CoverImage from 'molecules/CoverImage';
 
 const SectionContainer = styled.section`
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -14,7 +14,8 @@ const SectionContent = styled.div`
   gap: clamp(2rem, 4vw, 4rem);
 `;
 
-const ProjectList = ({ title, subtitle, projects }) => {
+const ProjectList = ({ content }) => {
+  const { title, subtitle, projects } = content;
   return (
     <SectionContainer>
       <SectionContent>
@@ -42,8 +43,10 @@ const ProjectList = ({ title, subtitle, projects }) => {
   );
 };
 ProjectList.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  projects: PropTypes.array.isRequired,
+  content: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
 };
 export default ProjectList;
