@@ -2,31 +2,21 @@ import ServicesInfo from 'organisms/ServicesInfo';
 import PageCTA from 'organisms/PageCTA';
 import PageHero from 'organisms/PageHero';
 import content from 'data/services';
+import style from 'style/pages';
 
 const Services = () => {
+  const { hero: heroStyle, cta: ctaStyle } = style.services;
   const {
-    hero: { title: heroTitle, subtitle: heroSubtitle, caption: heroCaption },
-    cta: { title: ctaTitle, subtitle: ctaSubtitle, btnText, btnUrl },
+    hero: heroContent,
+    infoTabs: infoTabsContent,
+    cta: ctaContent,
   } = content;
 
   return (
     <>
-      <PageHero
-        gradTopCol="lightBlue"
-        gradBotCol="green"
-        title={heroTitle}
-        subtitle={heroSubtitle}
-        caption={heroCaption}
-      />
-      <ServicesInfo />
-      <PageCTA
-        gradTopCol="darkBlue"
-        gradBotCol="fuchsia"
-        title={ctaTitle}
-        subtitle={ctaSubtitle}
-        btnText={btnText}
-        btnUrl={btnUrl}
-      />
+      <PageHero style={heroStyle} content={heroContent} />
+      <ServicesInfo infoTabs={infoTabsContent} />
+      <PageCTA style={ctaStyle} content={ctaContent} />
     </>
   );
 };

@@ -5,6 +5,16 @@ const style = {
       gradientEnd: 'fuchsia',
     },
   },
+  services: {
+    hero: {
+      gradientStart: 'lightBlue',
+      gradientEnd: 'green',
+    },
+    cta: {
+      gradientStart: 'darkBlue',
+      gradientEnd: 'fuchsia',
+    },
+  },
   portfolio: {
     hero: {
       gradientStart: 'fuchsia',
