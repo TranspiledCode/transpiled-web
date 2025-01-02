@@ -1,4 +1,10 @@
 const style = {
+  home: {
+    cta: {
+      gradientStart: 'darkBlue',
+      gradientEnd: 'fuchsia',
+    },
+  },
   portfolio: {
     hero: {
       gradientStart: 'fuchsia',
