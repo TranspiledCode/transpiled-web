@@ -64,7 +64,13 @@ const TitleSubtitle = ({
 TitleSubtitle.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  titleColor: PropTypes.oneOf(['darkBlue', 'lightBlue', 'green', 'fuchsia']),
+  titleColor: PropTypes.oneOf([
+    'darkBlue',
+    'lightBlue',
+    'green',
+    'fuchsia',
+    'orange',
+  ]),
   subtitleColor: PropTypes.oneOf(['white', 'darkGray']),
   stMaxWidth: PropTypes.number,
 };

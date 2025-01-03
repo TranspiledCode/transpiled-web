@@ -6,7 +6,7 @@ const colors = {
   darkBlue: '#214EEA',
   blueAccent: '#197F9A',
   green: '#70F25D',
-  orange: '#FF9215',
+  orange: '#FFA41C',
   pink: '#FF6B6B',
   fuchsia: '#dd53ff',
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import InfoTab from 'molecules/InfoTab';
-import content from 'data/services';
+import PropTypes from 'prop-types';
 
 const TabArea = styled.section`
   width: 100%;
@@ -16,11 +16,7 @@ const AreaContent = styled.div`
   gap: clamp(4rem, 4vw, 8rem);
 `;
 
-const ServicesInfo = () => {
-  const {
-    serviceTabs: { infoTabs },
-  } = content;
-
+const ServicesInfo = ({ infoTabs }) => {
   return (
     <TabArea>
       <AreaContent>
@@ -36,5 +32,8 @@ const ServicesInfo = () => {
       </AreaContent>
     </TabArea>
   );
+};
+ServicesInfo.propTypes = {
+  infoTabs: PropTypes.array,
 };
 export default ServicesInfo;
