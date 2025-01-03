@@ -14,11 +14,12 @@ import ProtectedRoute from './utils/ProtectedRoute';
 
 import Layout from 'components/templates/PageLayout'; // Ensure correct import path
 import Home from './pages/Home';
-import Services from './pages/Services';
+import ServicesPage from './pages/Services';
 import NotFound from './pages/404';
 import LoginPage from './pages/Login';
 import ProfilePage from './pages/Profile';
 import ContactPage from './pages/Contact';
+import PortfolioPage from './pages/Portfolio';
 
 const App = () => {
   return (
@@ -35,7 +36,7 @@ const App = () => {
               {/* Routes with Layout */}
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/services" element={<Services />} />
+                <Route path="/services" element={<ServicesPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="*" element={<NotFound />} />
                 <Route
@@ -46,6 +47,7 @@ const App = () => {
                     </ProtectedRoute>
                   }
                 />
+                <Route path="/portfolio" element={<PortfolioPage />} />
               </Route>
             </Routes>
           </ToastProvider>

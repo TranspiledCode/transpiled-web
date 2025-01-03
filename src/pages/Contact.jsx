@@ -1,34 +1,23 @@
-import ContactSection from '../components/organisms/ContactSection';
-import PageHero from '../components/organisms/PageHero';
-import PageCTA from '../components/organisms/PageCTA';
-import content from '../data/contact';
+import ContactSection from 'components/organisms/ContactSection';
+import PageHero from 'components/organisms/PageHero';
+import PageCTA from 'components/organisms/PageCTA';
+import content from 'data/contact';
+import style from 'style/pages';
 
 const ContactPage = () => {
   const {
-    hero: { title, subtitle, caption },
+    hero: heroContent,
+    cta: ctaContent,
     form: { formTitle, formSubtitle },
-    cta: { ctaTitle, ctaSubtitle, btnText, btnUrl },
   } = content;
+
+  const { hero: heroStyle, cta: ctaStyle } = style.contact;
+
   return (
     <>
-      <PageHero
-        gradTopCol="darkBlue"
-        gradBotCol="fuchsia"
-        title={title}
-        subtitle={subtitle}
-        caption={caption}
-        stMaxWidth={70}
-      />
+      <PageHero style={heroStyle} content={heroContent} />
       <ContactSection formTitle={formTitle} formSubtitle={formSubtitle} />
-      <PageCTA
-        gradTopCol="lightBlue"
-        gradBotCol="darkBlue"
-        title={ctaTitle}
-        subtitle={ctaSubtitle}
-        btnText={btnText}
-        btnUrl={btnUrl}
-        stMaxWidth={75}
-      />
+      <PageCTA style={ctaStyle} content={ctaContent} />
     </>
   );
 };
