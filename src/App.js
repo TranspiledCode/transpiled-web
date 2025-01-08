@@ -20,6 +20,7 @@ import LoginPage from './pages/Login';
 import ProfilePage from './pages/Profile';
 import ContactPage from './pages/Contact';
 import PortfolioPage from './pages/Portfolio';
+import AboutPage from './pages/About';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/about" element={<AboutPage />} />
                 <Route path="*" element={<NotFound />} />
                 <Route
                   path="/profile"
