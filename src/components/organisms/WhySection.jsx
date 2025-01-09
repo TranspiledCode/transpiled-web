@@ -10,6 +10,7 @@ const SectionContainer = styled.section`
   background-image: url('https://images.pexels.com/photos/2514035/pexels-photo-2514035.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-size: cover;
   background-position: center;
+  ${({ theme }) => theme.mixins.flexColCenter};
   z-index: 1;
 
   &::before {
@@ -28,8 +29,7 @@ const SectionContainer = styled.section`
 const SectionContent = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.layouts.maxWidth};
-  display: flex;
-  flex-direction: column;
+  ${({ theme }) => theme.mixins.flexColCenter};
   gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.md} {
