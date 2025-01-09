@@ -46,7 +46,7 @@ const Subtitle = styled.p`
   text-align: left;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
+    width: clamp(60rem, 100%, 69rem);
     text-align: left;
   }
 `;

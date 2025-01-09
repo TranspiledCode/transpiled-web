@@ -38,14 +38,15 @@ const Heading = styled.h3`
 const Position = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: 1.6rem;
+  font-size: 2rem;
+  padding-bottom: 0.4rem;
 `;
 
 const Description = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: 1.6rem;
-  text-align: justify;
+  text-align: center;
 `;
 
 const Card = ({ url, label, heading, position, description }) => {
