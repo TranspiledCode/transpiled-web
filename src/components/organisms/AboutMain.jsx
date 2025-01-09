@@ -28,23 +28,24 @@ const StyledTitle = styled.h1`
   font-weight: 700;
   font-size: clamp(4.8rem, 10vw, 9.6rem);
   line-height: clamp(4.8rem, 10vw, 8.6rem);
+  max-width: 100rem;
 `;
 
 const Subsubtitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3.6rem);
-  line-height: clamp(1.8rem, 4vw, 3.6rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: clamp(1.8rem, 4vw, 4rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   max-width: 80%;
-  margin-bottom: clamp(2rem, 8vw, 8rem);
+  margin-bottom: clamp(2rem, 8vw, 4rem);
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 1rem;
-    max-width: 60rem;
+    max-width: 90rem;
   }
 `;
 
@@ -54,7 +55,8 @@ const StyledParagraph = styled.p`
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.white};
-  max-width: 25rem;
+  max-width: 18rem;
+  margin-bottom: clamp(2rem, 8vw, 8rem);
 `;
 
 const AboutMain = () => {
