@@ -36,6 +36,35 @@ const content = {
       },
     ],
   },
+  approach: {
+    title: 'OUR APPROACH',
+    subtitle:
+      'Every project begins with a deep understanding of your business and goals. We don’t just build websites—we build experiences ',
+    cards: [
+      {
+        heading: 'Web Development',
+        description: 'Websites that look and work beautifully on all devices.',
+      },
+      {
+        heading: 'Mobile App Development',
+        description: 'Fast load times and smooth functionality.',
+      },
+      {
+        heading: 'Web App Development',
+        description:
+          'Secure, scalable online stores with payment and inventory systems.',
+      },
+      {
+        heading: 'Custom Solutions',
+        description: 'Built to help your site rank higher on search engines.',
+      },
+    ],
+  },
+  vision: {
+    title: 'Transpiled Vision',
+    subtitle:
+      'What started with a vision to build beautiful websites has now evolved into a broader mission of helping businesses succeed in the digital world. Whether it’s a small local startup or a large international brand, we want to empower businesses to connect with their audience, drive conversions, and leave a lasting impact online.',
+  },
   cta: {
     title: 'Ready to Build?',
     subtitle:

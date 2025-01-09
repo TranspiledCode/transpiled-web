@@ -7,7 +7,7 @@ const Container = styled.div`
   width: 100%;
 `;
 const Heading = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.poppins};
+  font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: 2rem;
   color: ${({ theme }) => theme.colors.black};
 `;
