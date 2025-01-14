@@ -1,3 +1,4 @@
+// src/components/organisms/ProfileDropdown.jsx
 import { useContext, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -57,8 +58,13 @@ const AvatarWrapper = styled.div`
 `;
 
 const ProfileDropdown = () => {
-  const { profileMenuOpen, toggleProfileMenu, closeProfileMenu } =
-    useContext(GlobalContext);
+  const {
+    profileMenuOpen,
+    toggleProfileMenu,
+    closeProfileMenu,
+    isEditable,
+    toggleEditable,
+  } = useContext(GlobalContext);
   const containerRef = useRef(null);
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
@@ -104,6 +110,13 @@ const ProfileDropdown = () => {
     { label: 'View Profile', onClick: handleProfileClick },
     { label: 'Settings', onClick: () => console.log('Settings') },
     { label: 'Logout', onClick: handleLogout },
+    {
+      label: isEditable ? 'Cancel Edit' : 'Edit Mode',
+      onClick: () => {
+        toggleEditable();
+        closeProfileMenu();
+      },
+    },
   ];
 
   return (

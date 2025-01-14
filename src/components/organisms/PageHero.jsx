@@ -121,9 +121,11 @@ const PageHero = ({ style, content }) => {
           <Subtitle textColor={textColor} subtitleWidth={subtitleWidth}>
             {subtitle}
           </Subtitle>
-          <Caption textColor={textColor} captionWidth={captionWidth}>
-            {caption}
-          </Caption>
+          <EditableContent>
+            <Caption textColor={textColor} captionWidth={captionWidth}>
+              {caption}
+            </Caption>
+          </EditableContent>
         </SubtitleContainer>
       </SectionContent>
     </SectionContainer>

@@ -1,3 +1,4 @@
+// EditableContent.jsx
 import React, { useState, useMemo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
@@ -7,7 +8,6 @@ import GlobalContext from 'context/GlobalContext';
 import FullScreenOverlay from 'molecules/FullScreenOverlay';
 import Button from 'atoms/Button';
 
-// Styled Components
 const EditableContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -101,8 +101,9 @@ const ContentPreviewWrapper = styled.div`
 `;
 
 function EditableContent({ children }) {
+  // Updated usage:
   const { isAuthenticated } = useAuth();
-  const { editable } = useContext(GlobalContext);
+  const { isEditable } = useContext(GlobalContext);
 
   // Validate and extract child content
   const { originalChild, originalText } = useMemo(() => {
@@ -124,8 +125,8 @@ function EditableContent({ children }) {
   const [editText, setEditText] = useState(originalText);
   const [showModal, setShowModal] = useState(false);
 
-  // If not logged in or not editable, just return the child as-is
-  if (!isAuthenticated || !editable) {
+  // Only allow editing if user is authenticated AND you are in "edit mode"
+  if (!isAuthenticated || !isEditable) {
     const clonedChild = React.cloneElement(originalChild, {}, text);
     return clonedChild;
   }

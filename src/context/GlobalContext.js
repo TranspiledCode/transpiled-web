@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 const GlobalContext = createContext({
   menuOpen: false,
   profileMenuOpen: false,
+  isEditable: false,
   scrolled: false,
   isExpanded: false,
   toggleMenu: () => {},
   closeMenu: () => {},
   toggleProfileMenu: () => {},
+  toggleEditable: () => {},
   closeProfileMenu: () => {},
   handleScroll: () => {},
   setIsExpanded: () => {},
@@ -18,6 +20,7 @@ const GlobalContext = createContext({
 export const GlobalProvider = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [isEditable, setIsEditable] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -29,6 +32,10 @@ export const GlobalProvider = ({ children }) => {
   // Function to toggle the profile menu state
   const toggleProfileMenu = () => {
     setProfileMenuOpen((prev) => !prev);
+  };
+
+  const toggleEditable = () => {
+    setIsEditable((prev) => !prev);
   };
 
   // Function to explicitly close the menu
@@ -53,6 +60,8 @@ export const GlobalProvider = ({ children }) => {
         toggleMenu,
         closeMenu,
         profileMenuOpen,
+        isEditable,
+        toggleEditable,
         toggleProfileMenu,
         closeProfileMenu,
         scrolled,

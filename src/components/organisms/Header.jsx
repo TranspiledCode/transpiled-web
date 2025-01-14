@@ -1,3 +1,4 @@
+// src/components/organisms/Header.jsx
 import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from 'context/AuthContext';
@@ -70,7 +71,11 @@ const Header = () => {
         <Nav>
           <NavMenu links={links} />
           <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
-          {currentUser && <ProfileDropdown />}
+          {currentUser && (
+            <>
+              <ProfileDropdown />
+            </>
+          )}
         </Nav>
       </HeaderContent>
     </HeaderContainer>
