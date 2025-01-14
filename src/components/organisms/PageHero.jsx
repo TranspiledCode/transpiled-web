@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import EditableContent from 'organisms/EditableContent';
 
 const SectionContainer = styled.section`
   min-height: 68vh;
@@ -113,7 +114,9 @@ const PageHero = ({ style, content }) => {
   return (
     <SectionContainer gradientStart={gradientStart} gradientEnd={gradientEnd}>
       <SectionContent>
-        <Title textColor={textColor}>{title}</Title>
+        <EditableContent>
+          <Title textColor={textColor}>{title}</Title>
+        </EditableContent>
         <SubtitleContainer>
           <Subtitle textColor={textColor} subtitleWidth={subtitleWidth}>
             {subtitle}
