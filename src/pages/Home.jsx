@@ -3,7 +3,7 @@ import HomeHero from 'organisms/HomeHero';
 import ServicesSection from 'organisms/ServicesSection';
 import WhySection from 'organisms/WhySection';
 import PageCTA from 'components/organisms/PageCTA';
-// import TestimonialsSection from 'organisms/TestimonialsSection';
+import TestimonialsSection from 'organisms/TestimonialsSection';
 import content from 'data/home';
 import style from 'style/pages';
 
@@ -16,7 +16,7 @@ const Home = () => {
       <HomeHero />
       <ServicesSection />
       <WhySection />
-      {/* <TestimonialsSection /> */}
+      <TestimonialsSection />
       <PageCTA style={ctaStyle} content={ctaContent} />
     </>
   );

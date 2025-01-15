@@ -1,5 +1,5 @@
 // EditableContent.jsx
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
@@ -99,13 +99,41 @@ const ContentPreviewWrapper = styled.div`
   max-width: 800px;
   width: 90vw;
 `;
+const extractTextContent = (children) => {
+  if (typeof children === 'string') {
+    return children;
+  }
 
-function EditableContent({ children }) {
-  // Updated usage:
+  if (typeof children === 'number') {
+    return children.toString();
+  }
+
+  if (Array.isArray(children)) {
+    return children
+      .map((child) => extractTextContent(child))
+      .filter(Boolean)
+      .join('');
+  }
+
+  if (React.isValidElement(children)) {
+    // If the child is a React element, get its children's text
+    return extractTextContent(children.props.children);
+  }
+
+  // For other types (like objects), try to find a text property
+  if (children && typeof children === 'object') {
+    if ('text' in children) return children.text;
+    if ('message' in children) return children.message;
+    if ('content' in children) return children.content;
+  }
+
+  return '';
+};
+
+function EditableContent({ children, onSave, fieldPath, documentId }) {
   const { isAuthenticated } = useAuth();
   const { isEditable } = useContext(GlobalContext);
 
-  // Validate and extract child content
   const { originalChild, originalText } = useMemo(() => {
     const childArray = React.Children.toArray(children);
 
@@ -114,9 +142,7 @@ function EditableContent({ children }) {
     }
 
     const originalChild = childArray[0];
-    const originalText = React.Children.toArray(
-      originalChild.props.children,
-    ).join('');
+    const originalText = extractTextContent(originalChild);
 
     return { originalChild, originalText };
   }, [children]);
@@ -124,17 +150,36 @@ function EditableContent({ children }) {
   const [text, setText] = useState(originalText);
   const [editText, setEditText] = useState(originalText);
   const [showModal, setShowModal] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
-  // Only allow editing if user is authenticated AND you are in "edit mode"
+  // Update text when original content changes
+  useEffect(() => {
+    setText(originalText);
+    setEditText(originalText);
+  }, [originalText]);
+
   if (!isAuthenticated || !isEditable) {
-    const clonedChild = React.cloneElement(originalChild, {}, text);
-    return clonedChild;
+    return originalChild;
   }
 
-  // Event handlers
-  const handleSave = () => {
-    setText(editText);
-    setShowModal(false);
+  const handleSave = async () => {
+    setIsSaving(true);
+    try {
+      if (onSave) {
+        await onSave({
+          id: documentId,
+          fieldPath,
+          text: editText,
+        });
+        console.log('Save successful');
+      }
+      setText(editText);
+      setShowModal(false);
+    } catch (error) {
+      console.error('Error in EditableContent save:', error);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handleCancel = () => {
@@ -147,13 +192,21 @@ function EditableContent({ children }) {
     setShowModal(true);
   };
 
-  const clonedChild = React.cloneElement(originalChild, {}, text);
-  const liveChild = React.cloneElement(originalChild, {}, editText);
+  const renderContent = (contentText) => {
+    if (typeof originalChild === 'string') {
+      return contentText;
+    }
+
+    return React.cloneElement(originalChild, {
+      ...originalChild.props,
+      children: contentText,
+    });
+  };
 
   return (
     <EditableContainer>
       <HoverOverlayContainer>
-        {clonedChild}
+        {renderContent(text)}
         <Overlay className="overlay">
           <Button variant="warning" size="small" onClick={handleOpenEditor}>
             Edit
@@ -163,7 +216,9 @@ function EditableContent({ children }) {
 
       {showModal && (
         <FullScreenOverlay>
-          <ContentPreviewWrapper>{liveChild}</ContentPreviewWrapper>
+          <ContentPreviewWrapper>
+            {renderContent(editText)}
+          </ContentPreviewWrapper>
           <ModalContainer>
             <ModalTitle>Edit Content</ModalTitle>
             <TextArea
@@ -171,8 +226,12 @@ function EditableContent({ children }) {
               onChange={(e) => setEditText(e.target.value)}
             />
             <ButtonBar>
-              <SaveButton onClick={handleSave}>Save</SaveButton>
-              <CancelButton onClick={handleCancel}>Cancel</CancelButton>
+              <SaveButton onClick={handleSave} disabled={isSaving}>
+                {isSaving ? 'Saving...' : 'Save'}
+              </SaveButton>
+              <CancelButton onClick={handleCancel} disabled={isSaving}>
+                Cancel
+              </CancelButton>
             </ButtonBar>
           </ModalContainer>
         </FullScreenOverlay>
@@ -183,6 +242,9 @@ function EditableContent({ children }) {
 
 EditableContent.propTypes = {
   children: PropTypes.node.isRequired,
+  onSave: PropTypes.func,
+  fieldPath: PropTypes.string,
+  documentId: PropTypes.string,
 };
 
 export default EditableContent;

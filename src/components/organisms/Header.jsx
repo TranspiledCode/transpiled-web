@@ -1,7 +1,6 @@
-// src/components/organisms/Header.jsx
 import { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AuthContext from 'context/AuthContext';
+import { useAuth } from 'context/AuthContext';
 import styled from '@emotion/styled';
 
 import GlobalContext from 'context/GlobalContext';
@@ -52,14 +51,24 @@ const Nav = styled.nav`
 `;
 
 const Header = () => {
-  const { scrolled, handleScroll } = useContext(GlobalContext);
-  const { menuOpen, toggleMenu } = useContext(GlobalContext);
-  const { currentUser } = useContext(AuthContext);
+  const { scrolled, handleScroll, menuOpen, toggleMenu } =
+    useContext(GlobalContext);
+  const auth = useAuth();
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
+
+  // Destructure auth state with default values as fallback
+  const {
+    currentUser = null,
+    loading = true,
+    isAuthenticated = false,
+  } = auth || {};
+
+  // Only show profile when we're not loading and the user is authenticated
+  const showProfile = !loading && isAuthenticated && currentUser;
 
   return (
     <HeaderContainer scrolled={scrolled}>
@@ -71,11 +80,7 @@ const Header = () => {
         <Nav>
           <NavMenu links={links} />
           <MobileMenuButton onClick={toggleMenu} isOpen={menuOpen} />
-          {currentUser && (
-            <>
-              <ProfileDropdown />
-            </>
-          )}
+          {showProfile && <ProfileDropdown />}
         </Nav>
       </HeaderContent>
     </HeaderContainer>

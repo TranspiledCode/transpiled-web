@@ -1,10 +1,9 @@
-// src/components/organisms/ProfileDropdown.jsx
-import { useContext, useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { signOut } from 'firebase/auth';
-import AuthContext from 'context/AuthContext';
-
+import { useAuth } from 'context/AuthContext';
+import { useContext } from 'react';
 import GlobalContext from 'context/GlobalContext';
 import { auth } from 'config/firebase';
 import Avatar from 'molecules/Avatar';
@@ -67,7 +66,7 @@ const ProfileDropdown = () => {
   } = useContext(GlobalContext);
   const containerRef = useRef(null);
   const navigate = useNavigate();
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, isAdmin } = useAuth();
 
   const handleOutsideClick = useCallback(
     (event) => {
@@ -106,18 +105,26 @@ const ProfileDropdown = () => {
     closeProfileMenu();
   };
 
-  const menuItems = [
+  // Base menu items that all users see
+  const baseMenuItems = [
     { label: 'View Profile', onClick: handleProfileClick },
     { label: 'Settings', onClick: () => console.log('Settings') },
     { label: 'Logout', onClick: handleLogout },
-    {
-      label: isEditable ? 'Cancel Edit' : 'Edit Mode',
-      onClick: () => {
-        toggleEditable();
-        closeProfileMenu();
-      },
-    },
   ];
+
+  // Add edit mode option only for admin users
+  const menuItems = isAdmin
+    ? [
+        ...baseMenuItems,
+        {
+          label: isEditable ? 'Cancel Edit' : 'Edit Mode',
+          onClick: () => {
+            toggleEditable();
+            closeProfileMenu();
+          },
+        },
+      ]
+    : baseMenuItems;
 
   return (
     <ProfileContainer ref={containerRef}>

@@ -1,8 +1,11 @@
+// TestimonialsSection.jsx (simplified)
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import useContent from 'hooks/useContent';
+import useContentUpdate from 'hooks/useContentUpdate';
 import Shimmer from 'atoms/Shimmer';
+import EditableContent from 'organisms/EditableContent';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -67,7 +70,7 @@ const QuoteBlock = styled.div`
   }
 `;
 
-const QuoteBody = styled.p`
+const QuoteBody = styled.div`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
@@ -77,7 +80,7 @@ const QuoteBody = styled.p`
   min-height: 200px;
 `;
 
-const QuoteName = styled.p`
+const QuoteName = styled.div`
   color: ${({ theme }) => theme.colors.lightBlue};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 700;
@@ -88,6 +91,7 @@ const QuoteName = styled.p`
 
 const TestimonialsSection = () => {
   const { entries, loading, error } = useContent('testimonials', 'entries');
+  const { handleSave } = useContentUpdate('testimonial');
 
   if (error) return <div>Error loading testimonials</div>;
 
@@ -104,7 +108,6 @@ const TestimonialsSection = () => {
         .sort((a, b) => a.dateCreated - b.dateCreated)
     : [];
 
-  // Create placeholder testimonials for loading state
   const placeholderTestimonials = loading ? [1, 2, 3] : testimonials;
 
   return (
@@ -116,9 +119,15 @@ const TestimonialsSection = () => {
       <QuoteArea>
         {placeholderTestimonials.map((testimonial) => (
           <QuoteBlock key={loading ? testimonial : testimonial.id}>
-            <QuoteBody>
-              {loading ? <Shimmer lines={5} gap={15} /> : testimonial.message}
-            </QuoteBody>
+            <EditableContent
+              onSave={handleSave}
+              documentId={testimonial.id}
+              fieldPath="content.text"
+            >
+              <QuoteBody>
+                {loading ? <Shimmer lines={5} gap={15} /> : testimonial.message}
+              </QuoteBody>
+            </EditableContent>
             <QuoteName>{loading ? <Shimmer /> : testimonial.author}</QuoteName>
           </QuoteBlock>
         ))}
@@ -128,16 +137,11 @@ const TestimonialsSection = () => {
 };
 
 TestimonialsSection.propTypes = {
-  quotes: PropTypes.arrayOf(
-    PropTypes.shape({
-      message: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      dateCreated: PropTypes.object.isRequired,
-      dateUpdated: PropTypes.object.isRequired,
-      updatedBy: PropTypes.string.isRequired,
-    }),
-  ),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  titleColor: PropTypes.string,
+  subtitleColor: PropTypes.string,
+  stMaxWidth: PropTypes.number,
 };
 
 export default TestimonialsSection;

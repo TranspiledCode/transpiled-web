@@ -1,13 +1,23 @@
-// src/contexts/AuthContext.js
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import { auth } from 'config/firebase';
 
-const AuthContext = createContext();
+// Create initial state object
+const initialAuthState = {
+  currentUser: null,
+  authClaims: null,
+  loading: true,
+  isAuthenticated: false,
+  isAdmin: false,
+  error: null,
+};
+
+const AuthContext = createContext(initialAuthState);
 
 function useAuth() {
   const context = useContext(AuthContext);
+
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
@@ -15,24 +25,50 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [authState, setAuthState] = useState(initialAuthState);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      console.log(
+        'Auth state changed:',
+        user ? 'User logged in' : 'User logged out',
+      );
+
+      if (user) {
+        try {
+          const idTokenResult = await user.getIdTokenResult();
+
+          setAuthState({
+            currentUser: user,
+            authClaims: idTokenResult.claims,
+            loading: false,
+            isAuthenticated: true,
+            isAdmin: idTokenResult.claims?.admin === true,
+            error: null,
+          });
+        } catch (error) {
+          setAuthState({
+            ...initialAuthState,
+            loading: false,
+            error: error.message,
+          });
+        }
+      } else {
+        setAuthState({
+          ...initialAuthState,
+          loading: false,
+        });
+      }
     });
-    return unsubscribe;
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  // Provide an isAuthenticated flag based on currentUser
-  const isAuthenticated = !!currentUser;
-
-  const value = {
-    currentUser,
-    isAuthenticated,
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
+  );
 }
 
 AuthProvider.propTypes = {
