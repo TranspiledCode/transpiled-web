@@ -9,7 +9,7 @@ const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
-  z-index: 999;
+  z-index: ${({ theme }) => theme.zIndices.fullscreenOverlay};
   display: flex;
   justify-content: center;
   align-items: center;
