@@ -3,6 +3,8 @@ import React, { useState, useMemo, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
+import useContentUpdate from 'hooks/useContentUpdate';
+
 import { useAuth } from 'context/AuthContext';
 import GlobalContext from 'context/GlobalContext';
 import FullScreenOverlay from 'molecules/FullScreenOverlay';
@@ -130,9 +132,10 @@ const extractTextContent = (children) => {
   return '';
 };
 
-function EditableContent({ children, onSave, fieldPath, documentId }) {
+function EditableContent({ children, contentType, fieldPath, documentId }) {
   const { isAuthenticated } = useAuth();
   const { isEditable } = useContext(GlobalContext);
+  const { handleSave: contentUpdateHandler } = useContentUpdate(contentType);
 
   const { originalChild, originalText } = useMemo(() => {
     const childArray = React.Children.toArray(children);
@@ -165,14 +168,12 @@ function EditableContent({ children, onSave, fieldPath, documentId }) {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      if (onSave) {
-        await onSave({
-          id: documentId,
-          fieldPath,
-          text: editText,
-        });
-        console.log('Save successful');
-      }
+      await contentUpdateHandler({
+        id: documentId,
+        fieldPath,
+        text: editText,
+      });
+      console.log('Save successful');
       setText(editText);
       setShowModal(false);
     } catch (error) {
@@ -242,7 +243,7 @@ function EditableContent({ children, onSave, fieldPath, documentId }) {
 
 EditableContent.propTypes = {
   children: PropTypes.node.isRequired,
-  onSave: PropTypes.func,
+  contentType: PropTypes.string,
   fieldPath: PropTypes.string,
   documentId: PropTypes.string,
 };

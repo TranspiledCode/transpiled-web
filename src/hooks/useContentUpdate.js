@@ -8,37 +8,12 @@ const contentTypes = {
     collection: 'content',
     docId: 'testimonials',
     subCollection: 'entries',
-    formatUpdate: ({ text, fieldPath }) => {
-      // Handle testimonial-specific formatting
-      if (fieldPath === 'content.text') {
-        return {
-          content: {
-            text: text.replace(/^"|"$/g, ''), // Remove surrounding quotes
-          },
-        };
-      }
-      // Add other field updates as needed
-      return {};
-    },
-  },
-  // Add other content types here
-  page: {
-    collection: 'content',
-    docId: 'pages',
-    formatUpdate: ({ text, fieldPath }) => {
-      // Create nested object based on fieldPath
-      const fields = fieldPath.split('.');
-      const result = {};
-      let current = result;
-
-      fields.slice(0, -1).forEach((field) => {
-        current[field] = {};
-        current = current[field];
-      });
-
-      current[fields[fields.length - 1]] = text;
-      return result;
-    },
+    formatUpdate: ({ text }) => ({
+      content: {
+        // Remove leading and trailing double quotes
+        text: text.replace(/^"|"$/g, ''),
+      },
+    }),
   },
   // Add more content types as needed
 };
@@ -58,8 +33,8 @@ const useContentUpdate = (contentType) => {
   );
 
   const handleSave = useCallback(
-    async ({ id, fieldPath, text }) => {
-      const baseUpdate = config.formatUpdate({ text, fieldPath });
+    async ({ id, text }) => {
+      const baseUpdate = config.formatUpdate({ text });
 
       const updateData = {
         ...baseUpdate,

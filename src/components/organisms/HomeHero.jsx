@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import content from 'data/home';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
-import EditableContent from 'organisms/EditableContent';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
@@ -106,9 +105,7 @@ const HomeHero = () => {
               </Word>
             ))}
           </SubtitleText>
-          <EditableContent>
-            <LearnMoreText>{learnMore}</LearnMoreText>
-          </EditableContent>
+          <LearnMoreText>{learnMore}</LearnMoreText>
           <RevealWrapper>
             <Link to="#contact-cta">
               <StyledButton icon="FaArrowDown" variant="outline" size="medium">

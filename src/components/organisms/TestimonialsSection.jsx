@@ -3,7 +3,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import useContent from 'hooks/useContent';
-import useContentUpdate from 'hooks/useContentUpdate';
 import Shimmer from 'atoms/Shimmer';
 import EditableContent from 'organisms/EditableContent';
 
@@ -91,7 +90,6 @@ const QuoteName = styled.div`
 
 const TestimonialsSection = () => {
   const { entries, loading, error } = useContent('testimonials', 'entries');
-  const { handleSave } = useContentUpdate('testimonial');
 
   if (error) return <div>Error loading testimonials</div>;
 
@@ -120,9 +118,8 @@ const TestimonialsSection = () => {
         {placeholderTestimonials.map((testimonial) => (
           <QuoteBlock key={loading ? testimonial : testimonial.id}>
             <EditableContent
-              onSave={handleSave}
               documentId={testimonial.id}
-              fieldPath="content.text"
+              contentType="testimonial"
             >
               <QuoteBody>
                 {loading ? <Shimmer lines={5} gap={15} /> : testimonial.message}
