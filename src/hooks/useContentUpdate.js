@@ -2,21 +2,7 @@
 import { useCallback } from 'react';
 import useFirestoreUpdate from './useFirestoreUpdate';
 import { useAuth } from 'context/AuthContext';
-
-const contentTypes = {
-  testimonial: {
-    collection: 'content',
-    docId: 'testimonials',
-    subCollection: 'entries',
-    formatUpdate: ({ text }) => ({
-      content: {
-        // Remove leading and trailing double quotes
-        text: text.replace(/^"|"$/g, ''),
-      },
-    }),
-  },
-  // Add more content types as needed
-};
+import contentTypes from 'cms/contentConfig';
 
 const useContentUpdate = (contentType) => {
   const { currentUser } = useAuth();

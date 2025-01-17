@@ -115,19 +115,26 @@ const TestimonialsSection = () => {
         <Subtitle>What Our Clients Say About Working with Transpiled</Subtitle>
       </SectionInfo>
       <QuoteArea>
-        {placeholderTestimonials.map((testimonial) => (
-          <QuoteBlock key={loading ? testimonial : testimonial.id}>
-            <EditableContent
-              documentId={testimonial.id}
-              contentType="testimonial"
-            >
-              <QuoteBody>
-                {loading ? <Shimmer lines={5} gap={15} /> : testimonial.message}
-              </QuoteBody>
-            </EditableContent>
-            <QuoteName>{loading ? <Shimmer /> : testimonial.author}</QuoteName>
-          </QuoteBlock>
-        ))}
+        {!loading &&
+          placeholderTestimonials.map((testimonial) => (
+            <QuoteBlock key={testimonial.id}>
+              <EditableContent
+                documentId={testimonial.id}
+                contentType="testimonial"
+              >
+                <QuoteBody>
+                  {loading ? (
+                    <Shimmer lines={5} gap={15} />
+                  ) : (
+                    testimonial.message
+                  )}
+                </QuoteBody>
+              </EditableContent>
+              <QuoteName>
+                {loading ? <Shimmer /> : testimonial.author}
+              </QuoteName>
+            </QuoteBlock>
+          ))}
       </QuoteArea>
     </Container>
   );
