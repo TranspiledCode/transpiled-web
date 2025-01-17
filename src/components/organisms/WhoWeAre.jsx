@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import WhoCard from 'molecules/WhoCard';
-import config from 'data/home';
+import config from 'data/about';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import ApproachCard from 'molecules/ApproachCard';
-import config from 'data/home';
+import config from 'data/about';
 
 const Container = styled.div`
   position: relative;
