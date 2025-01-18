@@ -54,6 +54,23 @@ const content = {
       },
     ],
   },
+  main: {
+    title: 'WERE NOT JUST DEVELOPERS',
+    subtitle:
+      'Our mission is to drive business growth through high-quality, cutting-edge digitals products built for today and the future.',
+    learnMore: 'LEARN MORE ABOUT WHO WE ARE',
+  },
+  vision: {
+    title: 'THE TRANSPILED VISION',
+    subtitle:
+      'What started with a vision to build beautiful websites has now evolved into a broader mission of helping businesses succeed in the digital world. Whether its a small local startup or a large international brand, we want to empower businesses to connect with their audience, drive conversions, and leave a lasting impact online.',
+  },
+  build: {
+    title: 'READY TO BUILD?',
+    subtitle:
+      'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.',
+    button: 'Contact Us',
+  },
 };
 
 export default content;

@@ -20,6 +20,7 @@ const SectionInfo = styled.div`
   align-items: flex-start;
   gap: 0.5rem;
 `;
+
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.lightBlue};
   font-family: ${({ theme }) => theme.fonts.poppins};
@@ -28,6 +29,7 @@ const Title = styled.h2`
   line-height: clamp(5rem, 8vw, 6.4rem);
   letter-spacing: -2px;
 `;
+
 const Position = styled.p`
   width: 100%;
   color: ${({ theme }) => theme.colors.darkGray};
@@ -64,25 +66,28 @@ const CardArea = styled.div`
 `;
 
 const ServicesSection = () => {
-  const { cards } = config.who;
+  const { cards, title, subtitle, position } = config.who;
   return (
     <Container>
       <SectionInfo>
-        <Title>{config.who.title}</Title>
-        <Position>{config.who.position}</Position>
-        <Subtitle>{config.who.subtitle}</Subtitle>
+        <Title>{title}</Title>
+        <Position>{position}</Position>
+        <Subtitle>{subtitle}</Subtitle>
       </SectionInfo>
       <CardArea>
-        {cards.map((card, index) => (
-          <WhoCard
-            key={index}
-            url={card.url}
-            label={card.label}
-            heading={card.heading}
-            position={card.position}
-            description={card.description}
-          />
-        ))}
+        {cards.map((card, index) => {
+          const { url, label, heading, position, description } = card;
+          return (
+            <WhoCard
+              key={index}
+              url={url}
+              label={label}
+              heading={heading}
+              position={position}
+              description={description}
+            />
+          );
+        })}
       </CardArea>
     </Container>
   );

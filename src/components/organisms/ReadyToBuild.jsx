@@ -1,12 +1,12 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import content from 'data/about';
 import Button from '../atoms/Button';
-
-const PageWrapper = styled.div``;
 
 const ContentWrapper = styled.div`
   min-height: 60vh;
   max-width: 100vw;
+  padding: ${({ theme }) => theme.layouts.sectionPadding};
+
   background: linear-gradient(
     to bottom,
     ${({ theme }) => theme.colors.fuchsia},
@@ -17,7 +17,6 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: ${({ theme }) => theme.layouts.sectionPadding};
 
   ${({ theme }) => theme.mediaQueries.md} {
     gap: 3rem;
@@ -49,28 +48,20 @@ const Subsubtitle = styled.h2`
   }
 `;
 
-const ButtonWrapper = styled.div`
-  margin-left: 5rem;
-`;
 const StyledButton = styled(Button)``;
 const AboutUs = () => {
+  const { title, subtitle, button } = content.build;
+
   return (
-    <PageWrapper>
-      <ContentWrapper>
-        <TitleWrapper>
-          <StyledTitle>READY TO BUILD? </StyledTitle>
-          <Subsubtitle>
-            From websites and apps to custom solutions, we’re here to bring your
-            ideas to life. Let’s create something extraordinary together.
-          </Subsubtitle>
-        </TitleWrapper>
-        <ButtonWrapper>
-          <StyledButton icon="FaArrowRight" variant="outline" size="medium">
-            CONTACT US
-          </StyledButton>
-        </ButtonWrapper>
-      </ContentWrapper>
-    </PageWrapper>
+    <ContentWrapper>
+      <TitleWrapper>
+        <StyledTitle>{title}</StyledTitle>
+        <Subsubtitle>{subtitle}</Subsubtitle>
+      </TitleWrapper>
+      <StyledButton icon="FaArrowRight" variant="outline" size="medium">
+        {button}
+      </StyledButton>
+    </ContentWrapper>
   );
 };
 

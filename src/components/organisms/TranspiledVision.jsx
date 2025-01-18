@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import content from 'data/about';
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -39,16 +39,11 @@ const SubTitle = styled.h2`
 `;
 
 const TranspiledVision = () => {
+  const { title, subtitle } = content.vision;
   return (
     <TitleWrapper>
-      <Title>THE TRANSPILED VISION</Title>
-      <SubTitle>
-        What started with a vision to build beautiful websites has now evolved
-        into a broader mission of helping businesses succeed in the digital
-        world. Whether it’s a small local startup or a large international
-        brand, we want to empower businesses to connect with their audience,
-        drive conversions, and leave a lasting impact online.
-      </SubTitle>
+      <Title>{title}</Title>
+      <SubTitle>{subtitle}</SubTitle>
     </TitleWrapper>
   );
 };
