@@ -50,7 +50,7 @@ const Subsubtitle = styled.h2`
 
 const StyledButton = styled(Button)``;
 const AboutUs = () => {
-  const { title, subtitle, button } = content.build;
+  const { title, subtitle, btnText, btnUrl } = content.cta;
 
   return (
     <ContentWrapper>
@@ -58,8 +58,8 @@ const AboutUs = () => {
         <StyledTitle>{title}</StyledTitle>
         <Subsubtitle>{subtitle}</Subsubtitle>
       </TitleWrapper>
-      <StyledButton icon="FaArrowRight" variant="outline" size="medium">
-        {button}
+      <StyledButton icon="FaArrowRight" variant="outline" href={btnUrl}>
+        {btnText}
       </StyledButton>
     </ContentWrapper>
   );

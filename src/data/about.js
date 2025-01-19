@@ -65,11 +65,12 @@ const content = {
     subtitle:
       'What started with a vision to build beautiful websites has now evolved into a broader mission of helping businesses succeed in the digital world. Whether its a small local startup or a large international brand, we want to empower businesses to connect with their audience, drive conversions, and leave a lasting impact online.',
   },
-  build: {
+  cta: {
     title: 'READY TO BUILD?',
     subtitle:
       'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.',
-    button: 'Contact Us',
+    btnText: 'Contact Us',
+    btnUrl: '/Contact',
   },
 };
 
