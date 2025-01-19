@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import content from 'data/about';
 
 const AboutUsWrapper = styled.div`
-  min-height: 80vh;
+  min-height: 60vh;
   max-width: 100vw;
   padding: ${({ theme }) => theme.layouts.sectionPadding};
 
