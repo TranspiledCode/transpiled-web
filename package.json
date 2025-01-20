@@ -32,6 +32,7 @@
   },
   "alias": {
     "components": "./src/components",
+    "cms": "./src/cms",
     "hooks": "./src/hooks",
     "pages": "./src/pages",
     "context": "./src/context",
