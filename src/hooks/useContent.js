@@ -3,6 +3,25 @@ import { useEffect, useState } from 'react';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { useFirestore } from 'context/FirestoreContext';
 
+/**
+ * Fetches data from Firestore given a document ID and optional subcollection.
+ *
+ * The returned object contains four properties:
+ *   - `data`: the main document data
+ *   - `entries`: the subcollection data, if specified
+ *   - `loading`: whether the data is still being fetched
+ *   - `error`: any errors that occurred while fetching the data
+ *
+ * If the document does not exist, `error` will be set to 'No data found'.
+ *
+ * @param {string} docId - the document ID to fetch
+ * @param {string} [subCollection] - the subcollection to fetch, if any
+ * @returns {Object} the data, entries, loading, and error
+ *
+ * @example
+ * const { data, entries, loading, error } = useContent('testimonials');
+ *
+ */
 const useContent = (docId, subCollection = null) => {
   const db = useFirestore();
   const [data, setData] = useState(null);
