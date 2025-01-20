@@ -5,28 +5,28 @@ const content = {
       'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
     cards: [
       {
-        url: 'https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg?auto=compress&cs=tinysrgb&w=1200',
-        label: 'Temporary Image',
+        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Joshua/l.png',
+        label: 'Joshua Crass Picture',
         heading: 'Joshua Crass',
         position: 'Founder & Managing Partner',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+          'Engineering leader driving technical excellence through modern JS/React architectures. Proven success scaling high-impact development teams.',
       },
       {
-        url: 'https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Dustin/l.png',
         label: 'Temporary Image',
         heading: 'Dustin Reyes',
-        position: 'Founder, Developer & Customer Relations',
+        position: 'Founder, Developer & Sales',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+          'Frontend developer with sales experience pivoting to React and modern JavaScript. Converting business sense into clean UIs while growing development expertise.',
       },
       {
-        url: 'https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg?auto=compress&cs=tinysrgb&w=1200',
-        label: 'Temporary Image',
+        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Tyron/l.png',
+        label: 'Tyron Shi Picture',
         heading: 'Tyron Shi',
         position: 'Founder, Developer & Lead Designer',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+          "Tyron is a Parsons graduate based in NYC. When he's not coding or designing, he's making music or short videos around the city.",
       },
     ],
   },

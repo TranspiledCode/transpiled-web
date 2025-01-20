@@ -60,7 +60,7 @@ const CardArea = styled.div`
   flex-direction: column;
   gap: 2rem;
 
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.lg} {
     flex-direction: row;
   }
 `;

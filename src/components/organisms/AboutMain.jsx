@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import content from 'data/about';
 
 const AboutUsWrapper = styled.div`
-  min-height: 60vh;
+  min-height: 100vh;
   max-width: 100vw;
   padding: ${({ theme }) => theme.layouts.sectionPadding};
 
@@ -11,7 +11,13 @@ const AboutUsWrapper = styled.div`
     ${({ theme }) => theme.colors.darkBlue},
     ${({ theme }) => theme.colors.lightBlue}
   );
+
+  @media (min-height: 680px) {
+    height: 80rem;
+    min-height: 80rem;
+  }
 `;
+
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,7 +33,7 @@ const StyledTitle = styled.h1`
   font-family: ${({ theme }) => theme.fonts.poppins};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 700;
-  font-size: clamp(4.8rem, 10vw, 9.6rem);
+  font-size: clamp(3.5rem, 10vw, 9.6rem);
   line-height: clamp(4.8rem, 10vw, 8.6rem);
   max-width: 100rem;
 `;
@@ -37,7 +43,7 @@ const Subsubtitle = styled.h2`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
   font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: clamp(1.8rem, 4vw, 4rem);
+  line-height: clamp(2.5rem, 4vw, 4rem);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
