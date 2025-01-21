@@ -54,7 +54,7 @@ const ServicesSection = () => {
         ))}
       </CardArea>
       <ButtonArea>
-        <Link to="/services">
+        <Link to="/services" aria-label="Learn more about our services">
           <Button
             type="call to action"
             icon="FaArrowRight"

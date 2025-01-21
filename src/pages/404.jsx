@@ -38,7 +38,7 @@ const Services = () => {
         <Title>404</Title>
         <Subtitle>Page Not Found</Subtitle>
       </TitleWrapper>
-      <Link to="/">
+      <Link to="/" aria-label="Return to Home">
         <Button variant="outline" size="medium" icon="FaHome">
           Return to Home
         </Button>

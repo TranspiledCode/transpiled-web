@@ -1,4 +1,10 @@
 const content = {
+  seo: {
+    title: 'Transpiled | Contact',
+    canonical: '/contact',
+    description:
+      'Whether you need a website refresh or something totally custom, we are here to make it happen.',
+  },
   hero: {
     title: 'Build your future here, today',
     subtitle:

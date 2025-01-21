@@ -1,4 +1,10 @@
 const content = {
+  seo: {
+    title: 'Transpiled | Services',
+    canonical: '/services',
+    description:
+      'Whether you need a dynamic website, a mobile app, or a custom-built system, Transpiled delivers exceptional results.',
+  },
   hero: {
     title: "TODAY'S SOLUTIONS FUTURE PROOFED",
     subtitle:

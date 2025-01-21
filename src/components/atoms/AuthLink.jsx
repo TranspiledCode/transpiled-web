@@ -29,7 +29,9 @@ const AuthLink = () => {
 
   return (
     <StyledLoginLink>
-      <Link to="/login">Login</Link>
+      <Link to="/login" aria-label="Login">
+        Login
+      </Link>
     </StyledLoginLink>
   );
 };

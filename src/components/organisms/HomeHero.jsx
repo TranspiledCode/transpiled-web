@@ -107,7 +107,7 @@ const HomeHero = () => {
           </SubtitleText>
           <LearnMoreText>{learnMore}</LearnMoreText>
           <RevealWrapper>
-            <Link to="#contact-cta">
+            <Link to="#contact-cta" aria-label="Contact Us">
               <StyledButton icon="FaArrowDown" variant="outline" size="medium">
                 {buttonText}
               </StyledButton>

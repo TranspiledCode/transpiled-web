@@ -1,22 +1,23 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import SEO from 'components/templates/SEO';
 import AboutMain from 'components/organisms/AboutMain';
 import WhoWeAre from 'components/organisms/WhoWeAre';
 import OurApproach from 'components/organisms/OurApproach';
 import TranspiledVision from 'components/organisms/TranspiledVision';
 import ReadyToBuild from 'components/organisms/ReadyToBuild';
-
-const PageWrapper = styled.div``;
+import content from 'data/about';
 
 const AboutUs = () => {
+  const { title, canonical, description } = content.who;
   return (
-    <PageWrapper>
+    <>
+      <SEO title={title} canonical={canonical} desciription={description} />
       <AboutMain />
       <WhoWeAre />
       <OurApproach />
       <TranspiledVision />
       <ReadyToBuild />
-    </PageWrapper>
+    </>
   );
 };
 
