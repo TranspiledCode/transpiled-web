@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import content from 'data/about';
+import { Link } from 'react-router-dom';
 import Button from '../atoms/Button';
 
 const ContentWrapper = styled.div`
@@ -13,6 +14,7 @@ const ContentWrapper = styled.div`
     ${({ theme }) => theme.colors.darkBlue}
   );
 `;
+
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,9 +60,11 @@ const AboutUs = () => {
         <StyledTitle>{title}</StyledTitle>
         <Subsubtitle>{subtitle}</Subsubtitle>
       </TitleWrapper>
-      <StyledButton icon="FaArrowRight" variant="outline" href={btnUrl}>
-        {btnText}
-      </StyledButton>
+      <Link to={btnUrl}>
+        <StyledButton icon="FaArrowRight" variant="outline">
+          {btnText}
+        </StyledButton>
+      </Link>
     </ContentWrapper>
   );
 };

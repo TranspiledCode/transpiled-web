@@ -14,11 +14,11 @@ const content = {
       },
       {
         url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Dustin/l.png',
-        label: 'Temporary Image',
+        label: 'Dustin Reyes Picture',
         heading: 'Dustin Reyes',
         position: 'Founder, Developer & Sales',
         description:
-          'Frontend developer with sales experience pivoting to React and modern JavaScript. Converting business sense into clean UIs while growing development expertise.',
+          'OSU graduate blending 6 years in sales with a passion for coding and golf, always focused on learning and evolving.',
       },
       {
         url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Tyron/l.png',
@@ -70,7 +70,7 @@ const content = {
     subtitle:
       'From websites and apps to custom solutions, we’re here to bring your ideas to life. Let’s create something extraordinary together.',
     btnText: 'Contact Us',
-    btnUrl: '/Contact',
+    btnUrl: '/contact',
   },
 };
 

@@ -13,13 +13,9 @@ const Container = styled.div`
   border-width: 4px;
   border-style: solid;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 3fr 1fr;
   background-color: white;
   overflow: hidden;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-rows: auto auto;
-  }
 `;
 
 const ImageContainer = styled.div`
