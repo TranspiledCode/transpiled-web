@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import SEO from '../components/templates/SEO';
 import Button from '../components/atoms/Button';
 
 const PageWrapper = styled.section`
@@ -31,20 +32,31 @@ const Subtitle = styled.p`
   text-transform: uppercase;
 `;
 
-const Services = () => {
+const NotFound = () => {
+  const description =
+    'The page you are looking for does not exist. Please return to the home page or explore other sections of the site.';
+
   return (
-    <PageWrapper>
-      <TitleWrapper>
-        <Title>404</Title>
-        <Subtitle>Page Not Found</Subtitle>
-      </TitleWrapper>
-      <Link to="/" aria-label="Return to Home">
-        <Button variant="outline" size="medium" icon="FaHome">
-          Return to Home
-        </Button>
-      </Link>
-    </PageWrapper>
+    <>
+      <SEO
+        title="404 - Page Not Found"
+        canonical="/404"
+        description={description}
+        noindex={true}
+      />
+      <PageWrapper>
+        <TitleWrapper>
+          <Title>404</Title>
+          <Subtitle>Page Not Found</Subtitle>
+        </TitleWrapper>
+        <Link to="/" aria-label="Return to Home">
+          <Button variant="outline" size="medium" icon="FaHome">
+            Return to Home
+          </Button>
+        </Link>
+      </PageWrapper>
+    </>
   );
 };
 
-export default Services;
+export default NotFound;
