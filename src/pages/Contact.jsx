@@ -1,3 +1,4 @@
+import SEO from 'components/templates/SEO';
 import ContactSection from 'components/organisms/ContactSection';
 import PageHero from 'components/organisms/PageHero';
 import PageCTA from 'components/organisms/PageCTA';
@@ -12,9 +13,10 @@ const ContactPage = () => {
   } = content;
 
   const { hero: heroStyle, cta: ctaStyle } = style.contact;
-
+  const { title, canonical, description } = content.seo;
   return (
     <>
+      <SEO title={title} canonical={canonical} description={description} />
       <PageHero style={heroStyle} content={heroContent} />
       <ContactSection formTitle={formTitle} formSubtitle={formSubtitle} />
       <PageCTA style={ctaStyle} content={ctaContent} />

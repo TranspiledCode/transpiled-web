@@ -75,7 +75,9 @@ const Header = () => {
       <HeaderContent>
         <MobileNavMenu links={links} />
         <Logo>
-          <Link to="/">Transpiled</Link>
+          <Link to="/" aria-label="Home">
+            Transpiled
+          </Link>
         </Logo>
         <Nav>
           <NavMenu links={links} />
