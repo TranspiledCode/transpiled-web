@@ -18,12 +18,12 @@ const Container = styled.section`
 const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2rem;
+  grid-template-columns: repeat(1, 1fr);
 
-  ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 

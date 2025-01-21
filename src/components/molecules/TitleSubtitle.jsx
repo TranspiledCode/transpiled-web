@@ -36,7 +36,6 @@ const Subtitle = styled.p`
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: justify;
   line-height: 1.4em;
   letter-spacing: -0.01em;
 
