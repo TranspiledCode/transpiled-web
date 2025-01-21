@@ -41,7 +41,7 @@ const MobileNavMenu = ({ links }) => {
   return (
     <StyledMobileNav aria-hidden={!menuOpen}>
       {links.map(({ url, label }) => (
-        <StyledLink key={url} to={url} onClick={toggleMenu}>
+        <StyledLink key={url} to={url} onClick={toggleMenu} aria-label={label}>
           {label}
         </StyledLink>
       ))}

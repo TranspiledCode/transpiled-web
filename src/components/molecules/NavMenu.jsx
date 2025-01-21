@@ -33,7 +33,7 @@ const NavBar = ({ links }) => {
     <NavMenu>
       <NavLinks>
         {links.map((link) => (
-          <Link key={link.url} to={link.url}>
+          <Link key={link.url} to={link.url} aria-label={link.label}>
             {link.label}
           </Link>
         ))}
