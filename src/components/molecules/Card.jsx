@@ -16,6 +16,7 @@ const Container = styled.div`
 const Image = styled.img`
   width: 100%;
   object-fit: cover;
+  max-height: 250px;
 `;
 const TextContainer = styled.div`
   display: flex;
@@ -34,7 +35,6 @@ const Description = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-size: 1.6rem;
-  text-align: justify;
   line-height: 1.4em;
   letter-spacing: -0.01em;
 `;
@@ -42,7 +42,6 @@ const Description = styled.p`
 const Card = ({ url, label, heading, description }) => {
   return (
     <Container>
-      {/* TODO:Replace after Image compoent is built */}
       <Image src={url} alt={label} aria-label={label} loading="lazy" />
       <TextContainer>
         <Heading>{heading}</Heading>
