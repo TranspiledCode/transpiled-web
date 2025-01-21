@@ -12,7 +12,7 @@ import RouteToTop from './utils/RouteToTop';
 import ScrollToHash from './utils/ScrollToHash';
 import ProtectedRoute from './utils/ProtectedRoute';
 
-import Layout from 'components/templates/PageLayout'; // Ensure correct import path
+import Layout from 'components/templates/PageLayout';
 import Home from './pages/Home';
 import ServicesPage from './pages/Services';
 import NotFound from './pages/404';
@@ -20,6 +20,7 @@ import LoginPage from './pages/Login';
 import ProfilePage from './pages/Profile';
 import ContactPage from './pages/Contact';
 import PortfolioPage from './pages/Portfolio';
+import About from './pages/About';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />
                 <Route
                   path="/profile"
