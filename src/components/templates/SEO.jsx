@@ -11,6 +11,7 @@ const SEO = ({
   ogImage = 'https://storage.googleapis.com/transpiled-web/logos/transpiled-white-bg/l.png',
   ogType = 'website',
   noindex = false,
+  keywords = 'Web Development, Web Design, Mobile Development, Custom App Development, Transpiled, Transpiled Web, Transpiled Code, Transpiled LLC, Transpiled Bytes',
 }) => {
   const siteUrl = 'https://transpiled.com';
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -21,6 +22,7 @@ const SEO = ({
       {/* Basic Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
       <link rel="canonical" href={canonicalUrl} />
       {noindex && <meta name="robots" content="noindex" />}
 
@@ -44,6 +46,7 @@ SEO.propTypes = {
   twitterCard: PropTypes.string,
   twitterCreator: PropTypes.string,
   noindex: PropTypes.bool,
+  keywords: PropTypes.string,
 };
 
 export default SEO;
