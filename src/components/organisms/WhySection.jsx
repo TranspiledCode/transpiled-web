@@ -124,17 +124,14 @@ const WhySection = () => {
           </CardArea>
         </CardGridWrapper>
         <ButtonArea>
-          <Link
-            to="/about"
-            aria-label="Learn more about Transpiled's development and consulting services"
-          >
+          <Link to="/about">
             <Button
               type="call to action"
               icon="FaArrowRight"
               variant="outline"
               size="medium"
             >
-              Learn More
+              Learn Why
             </Button>
           </Link>
         </ButtonArea>
