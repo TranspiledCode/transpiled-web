@@ -34,6 +34,7 @@ const useContentUpdate = (contentType) => {
         await updateDocument(id, updateData);
         return true;
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error updating content:', error);
         throw error;
       }

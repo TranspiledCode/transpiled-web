@@ -132,7 +132,7 @@ const extractTextContent = (children) => {
   return '';
 };
 
-function EditableContent({ children, contentType, fieldPath, documentId }) {
+const EditableContent = ({ children, contentType, fieldPath, documentId }) => {
   const { isAuthenticated } = useAuth();
   const { isEditable } = useContext(GlobalContext);
   const { handleSave: contentUpdateHandler } = useContentUpdate(contentType);
@@ -173,10 +173,10 @@ function EditableContent({ children, contentType, fieldPath, documentId }) {
         fieldPath,
         text: editText,
       });
-      console.log('Save successful');
       setText(editText);
       setShowModal(false);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error in EditableContent save:', error);
     } finally {
       setIsSaving(false);
@@ -239,7 +239,7 @@ function EditableContent({ children, contentType, fieldPath, documentId }) {
       )}
     </EditableContainer>
   );
-}
+};
 
 EditableContent.propTypes = {
   children: PropTypes.node.isRequired,
