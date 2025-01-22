@@ -124,7 +124,10 @@ const WhySection = () => {
           </CardArea>
         </CardGridWrapper>
         <ButtonArea>
-          <Link to="/about" aria-label="Learn more about us">
+          <Link
+            to="/about"
+            aria-label="Learn more about Transpiled's development and consulting services"
+          >
             <Button
               type="call to action"
               icon="FaArrowRight"
