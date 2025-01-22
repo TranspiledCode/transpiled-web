@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
 import AuthContext from 'context/AuthContext';
 
-export default function ProtectedRoute({ children }) {
+const ProtectedRoute = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
 
   if (!currentUser) {
@@ -14,8 +14,10 @@ export default function ProtectedRoute({ children }) {
 
   // Otherwise, render the children
   return children;
-}
+};
 
 ProtectedRoute.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default ProtectedRoute;

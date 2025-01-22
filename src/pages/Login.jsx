@@ -67,7 +67,7 @@ const NavigationLink = styled(Link)`
   }
 `;
 
-function LoginPage() {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -153,6 +153,6 @@ function LoginPage() {
       </LoginFormStyled>
     </LoginFormWrapper>
   );
-}
+};
 
 export default LoginPage;

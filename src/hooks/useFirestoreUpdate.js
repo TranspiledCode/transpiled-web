@@ -13,14 +13,6 @@ const useFirestoreUpdate = (collection, docId, subCollection = null) => {
     setError(null);
 
     try {
-      console.log('Updating document with params:', {
-        collection,
-        docId,
-        subCollection,
-        documentId,
-        data,
-      });
-
       const docPath = subCollection
         ? `${collection}/${docId}/${subCollection}/${documentId}`
         : `${collection}/${docId}`;
@@ -28,9 +20,9 @@ const useFirestoreUpdate = (collection, docId, subCollection = null) => {
       const docRef = doc(db, docPath);
 
       await updateDoc(docRef, data);
-      console.log('Update successful!');
       return true;
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Error in useFirestoreUpdate:', err);
       setError(err.message);
       throw err;

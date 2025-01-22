@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import Icon from 'atoms/Icon';
-import GlobalContext from '../context/GlobalContext'; // Ensure correct import
-
-import useScrollToTop from '../hooks/useScrollToTop';
+import GlobalContext from 'context/GlobalContext';
+import useScrollToTop from 'hooks/useScrollToTop';
 
 const StyledButton = styled.button`
   z-index: ${({ theme }) => theme.zIndices.scrollToTop};
