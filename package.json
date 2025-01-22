@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel public/index.html --port 3000 --no-cache",
-    "build": "node buildTools/copy-public.js && parcel build public/index.html",
+    "build": "parcel build public/index.html",
     "start": "yarn build && serve dist",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\""
