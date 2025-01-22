@@ -124,14 +124,14 @@ const WhySection = () => {
           </CardArea>
         </CardGridWrapper>
         <ButtonArea>
-          <Link to="/about" aria-label="Learn more about us">
+          <Link to="/about">
             <Button
               type="call to action"
               icon="FaArrowRight"
               variant="outline"
               size="medium"
             >
-              Learn More
+              Learn Why
             </Button>
           </Link>
         </ButtonArea>
