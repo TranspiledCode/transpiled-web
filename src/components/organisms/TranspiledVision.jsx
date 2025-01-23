@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import content from 'data/about';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -42,8 +43,10 @@ const TranspiledVision = () => {
   const { title, subtitle } = content.vision;
   return (
     <TitleWrapper>
-      <Title>{title}</Title>
-      <SubTitle>{subtitle}</SubTitle>
+      <RevealWrapper>
+        <Title>{title}</Title>
+        <SubTitle>{subtitle}</SubTitle>
+      </RevealWrapper>
     </TitleWrapper>
   );
 };

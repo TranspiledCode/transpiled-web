@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import WhoCard from 'molecules/WhoCard';
 import config from 'data/about';
 
+import RevealWrapper from 'molecules/RevealWrapper';
+
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
   padding: ${({ theme }) => theme.layouts.sectionPadding};
@@ -58,6 +60,9 @@ const CardArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
 
   ${({ theme }) => theme.mediaQueries.lg} {
@@ -68,12 +73,14 @@ const CardArea = styled.div`
 const ServicesSection = () => {
   const { cards, title, subtitle, position } = config.who;
   return (
-    <Container>
-      <SectionInfo>
-        <Title>{title}</Title>
-        <Position>{position}</Position>
-        <Subtitle>{subtitle}</Subtitle>
-      </SectionInfo>
+    <Container id="who">
+      <RevealWrapper>
+        <SectionInfo>
+          <Title>{title}</Title>
+          <Position>{position}</Position>
+          <Subtitle>{subtitle}</Subtitle>
+        </SectionInfo>
+      </RevealWrapper>
       <CardArea>
         {cards.map((card, index) => {
           const { url, label, heading, position, description } = card;

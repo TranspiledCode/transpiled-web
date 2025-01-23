@@ -1,31 +1,37 @@
+// hooks/useIntersectionObserver.js
 import { useState, useEffect } from 'react';
+import { useScrollDirection } from './useScrollDirection';
 
-const useIntersectionObserver = (ref, options) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const { onIntersect, ...observerOptions } = options;
+const useIntersectionObserver = (ref, options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
-    const currentRef = ref.current; // Store ref.current in a variable
     const observer = new IntersectionObserver(([entry]) => {
-      const isIntersecting = entry.isIntersecting;
-      setIsVisible(isIntersecting);
-      if (onIntersect) {
-        onIntersect(isIntersecting);
+      // Only show animation when scrolling down and element hasn't been animated yet
+      if (entry.isIntersecting && scrollDirection === 'down' && !hasAnimated) {
+        setIsIntersecting(true);
+        setHasAnimated(true);
       }
-    }, observerOptions);
+      // When scrolling up, don't reset the animation
+      else if (!entry.isIntersecting && !hasAnimated) {
+        setIsIntersecting(false);
+      }
+    }, options);
 
-    if (currentRef) {
-      observer.observe(currentRef);
+    if (ref.current) {
+      observer.observe(ref.current);
     }
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (ref.current) {
+        observer.unobserve(ref.current);
       }
     };
-  }, [ref, onIntersect, observerOptions]);
+  }, [ref, options, scrollDirection, hasAnimated]);
 
-  return isVisible;
+  return isIntersecting;
 };
 
 export default useIntersectionObserver;

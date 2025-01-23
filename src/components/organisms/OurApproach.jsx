@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import ApproachCard from 'molecules/ApproachCard';
 import config from 'data/about';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const Container = styled.div`
   position: relative;
@@ -85,7 +86,7 @@ const CardArea = styled.div`
   grid-template-rows: repeat(4, 1fr);
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: 50vw;
+    width: 70vw;
     gap: 6rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -98,19 +99,22 @@ const OurApproach = () => {
 
   return (
     <Container>
-      <SectionInfo>
-        <Title>{config.approach.title}</Title>
-        <Subtitle>{config.approach.subtitle}</Subtitle>
-      </SectionInfo>
+      <RevealWrapper>
+        <SectionInfo>
+          <Title>{config.approach.title}</Title>
+          <Subtitle>{config.approach.subtitle}</Subtitle>
+        </SectionInfo>
+      </RevealWrapper>
       <CardGridWrapper>
         <CardArea>
           {cards.map((card, index) => (
-            <ApproachCard
-              key={index}
-              label={card.label}
-              heading={card.heading}
-              description={card.description}
-            />
+            <RevealWrapper key={index}>
+              <ApproachCard
+                label={card.label}
+                heading={card.heading}
+                description={card.description}
+              />
+            </RevealWrapper>
           ))}
         </CardArea>
       </CardGridWrapper>

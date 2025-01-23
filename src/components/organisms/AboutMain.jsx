@@ -1,4 +1,8 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
+import Button from 'atoms/Button';
+import RevealWrapper from 'molecules/RevealWrapper';
+
 import content from 'data/about';
 
 const AboutUsWrapper = styled.div`
@@ -56,14 +60,13 @@ const Subsubtitle = styled.h2`
   }
 `;
 
-const StyledParagraph = styled.p`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  font-weight: 400;
-  font-size: clamp(1.4rem, 2vw, 1.6rem);
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.white};
-  max-width: 18rem;
-  margin-bottom: clamp(2rem, 8vw, 8rem);
+const StyledButton = styled(Button)`
+  font-size: clamp(2rem, 4vw, 5rem);
+  width: 100%;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: auto;
+  }
 `;
 
 const AboutMain = () => {
@@ -73,7 +76,13 @@ const AboutMain = () => {
       <TitleWrapper>
         <StyledTitle>{title}</StyledTitle>
         <Subsubtitle>{subtitle}</Subsubtitle>
-        <StyledParagraph>{learnMore}</StyledParagraph>
+        <RevealWrapper>
+          <Link to="#who" aria-label="Contact Us">
+            <StyledButton icon="FaArrowDown" variant="outline" size="medium">
+              {learnMore}
+            </StyledButton>
+          </Link>
+        </RevealWrapper>
       </TitleWrapper>
     </AboutUsWrapper>
   );

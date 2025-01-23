@@ -1,9 +1,14 @@
+import { useState, useCallback } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import RevealWrapper from 'molecules/RevealWrapper';
+import Loader from 'atoms/Loader';
 
 // Styled Components
 const Container = styled.div`
   width: 100%;
+  min-width: 300px;
+  max-width: 400px;
 
   border-image: linear-gradient(
       ${({ theme }) => theme.colors.lightBlue},
@@ -14,7 +19,7 @@ const Container = styled.div`
   border-style: solid;
   display: grid;
   grid-template-rows: 3fr 1fr;
-  background-color: white;
+  background-color: #bbbbbb;
   overflow: hidden;
 `;
 
@@ -29,6 +34,7 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  aspect-ratio: 1/1;
 `;
 
 const TextContainer = styled.div`
@@ -83,11 +89,32 @@ const Description = styled.p`
 
 // Card Component
 const Card = ({ url, label, heading, position, description }) => {
+  const [isImageLoading, setImageLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  const handleImageLoading = useCallback(() => {
+    setImageLoading(false);
+  }, []);
+
+  const handleImageError = useCallback(() => {
+    setHasError(true);
+    setImageLoading(false);
+  }, []);
+
   return (
-    <>
+    <RevealWrapper>
       <Container>
         <ImageContainer>
-          <Image src={url} alt={label} aria-label={label} loading="lazy" />
+          {isImageLoading && <Loader />}
+          {hasError && <p>Failed to load image</p>}
+          {!hasError && (
+            <Image
+              src={url}
+              alt={label}
+              onLoad={handleImageLoading}
+              onError={handleImageError}
+            />
+          )}
         </ImageContainer>
         <TextContainer>
           <Heading>{heading}</Heading>
@@ -95,7 +122,7 @@ const Card = ({ url, label, heading, position, description }) => {
           <Description>{description}</Description>
         </TextContainer>
       </Container>
-    </>
+    </RevealWrapper>
   );
 };
 

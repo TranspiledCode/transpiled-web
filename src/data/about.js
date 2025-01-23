@@ -8,15 +8,7 @@ const content = {
       'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
     cards: [
       {
-        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Joshua/l.png',
-        label: 'Joshua Crass Picture',
-        heading: 'Joshua Crass',
-        position: 'Founder & Managing Partner',
-        description:
-          'Engineering leader driving technical excellence through modern JS/React architectures. Proven success scaling high-impact development teams.',
-      },
-      {
-        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Dustin/l.png',
+        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/DustinReyes/l.png',
         label: 'Dustin Reyes Picture',
         heading: 'Dustin Reyes',
         position: 'Founder, Developer & Sales',
@@ -30,6 +22,14 @@ const content = {
         position: 'Founder, Developer & Lead Designer',
         description:
           "Tyron is a Parsons graduate based in NYC. When he's not coding or designing, he's making music or short videos around the city.",
+      },
+      {
+        url: 'https://storage.googleapis.com/transpiled-web/images/aboutPage/Joshua/l.png',
+        label: 'Joshua Crass Picture',
+        heading: 'Joshua Crass',
+        position: 'Founder & Managing Partner',
+        description:
+          'Engineering leader driving technical excellence through modern JS/React architectures. Proven success scaling high-impact development teams.',
       },
     ],
   },
@@ -61,7 +61,7 @@ const content = {
     title: 'WERE NOT JUST DEVELOPERS',
     subtitle:
       'Our mission is to drive business growth through high-quality, cutting-edge digitals products built for today and the future.',
-    learnMore: 'LEARN MORE ABOUT WHO WE ARE',
+    learnMore: 'WHO WE ARE',
   },
   vision: {
     title: 'THE TRANSPILED VISION',
