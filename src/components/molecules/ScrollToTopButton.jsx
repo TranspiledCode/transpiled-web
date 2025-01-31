@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
-import Icon from 'atoms/Icon';
 import GlobalContext from 'context/GlobalContext';
 import useScrollToTop from 'hooks/useScrollToTop';
+import { ArrowUpToLine } from 'lucide-react';
 
 const StyledButton = styled.button`
   z-index: ${({ theme }) => theme.zIndices.scrollToTop};
@@ -58,7 +58,7 @@ const ScrollToTopButton = () => {
       onClick={scrollToTop}
     >
       <IconWrapper className="icon-wrapper" isVisible={isVisible}>
-        <Icon name="FaArrowUp" size={1.8} />
+        <ArrowUpToLine />
       </IconWrapper>
     </StyledButton>
   );

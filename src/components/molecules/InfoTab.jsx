@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import Icon from '../atoms/Icon';
+import { Minus, Plus } from 'lucide-react';
 
 const TabContainer = styled.div`
   max-width: 100vw;
@@ -102,7 +102,7 @@ const InfoTab = ({ title, subtitle, features, titleColor }) => {
           <Subtitle>{subtitle}</Subtitle>
         </TitleArea>
         <IconWrapper aria-hidden="true">
-          <Icon name={isVisible ? 'FaMinus' : 'FaPlus'} size={1.6} />
+          {isVisible ? <Minus /> : <Plus />}
         </IconWrapper>
       </TabHead>
       <FeatureTab isVisible={isVisible}>

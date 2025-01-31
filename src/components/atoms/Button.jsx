@@ -2,14 +2,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import Icon from 'atoms/Icon';
-import { useTheme } from '@emotion/react';
-
-// Styled components
-const IconWrapper = styled.span`
-  display: inline-flex;
-  margin-left: 2rem;
-`;
 
 const getButtonStyles = ({ variant, theme, size, fullWidth }) => ({
   backgroundColor: theme.buttons.variants[variant].bgColor || 'transparent',
@@ -57,7 +49,6 @@ const StyledButton = styled.button(({ variant, theme, size, fullWidth }) => ({
 
 const Button = ({
   children,
-  icon,
   variant = 'primary',
   size = 'medium',
   type = 'button',
@@ -65,9 +56,6 @@ const Button = ({
   fullWidth = false,
   onClick,
 }) => {
-  const theme = useTheme();
-  const iconSize = Number(theme.buttons.sizes[size].iconSize);
-
   return (
     <StyledButton
       variant={variant}
@@ -78,18 +66,12 @@ const Button = ({
       onClick={onClick}
     >
       {children}
-      {icon && (
-        <IconWrapper>
-          <Icon name={icon} size={iconSize} color="white" />
-        </IconWrapper>
-      )}
     </StyledButton>
   );
 };
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  icon: PropTypes.string,
   variant: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -98,6 +80,7 @@ Button.propTypes = {
     'danger',
     'ghost',
     'outline',
+    'outlineGray',
   ]),
   size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
   type: PropTypes.string,

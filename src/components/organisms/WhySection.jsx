@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
 import content from 'data/home';
+import { ArrowRight } from 'lucide-react';
 
 const SectionContainer = styled.section`
   position: relative;
@@ -99,6 +100,10 @@ const ButtonArea = styled.div`
   justify-content: flex-end;
 `;
 
+const Icon = styled(ArrowRight)`
+  margin-left: 2rem;
+`;
+
 const WhySection = () => {
   const {
     why: { title, subtitle, cards },
@@ -125,13 +130,8 @@ const WhySection = () => {
         </CardGridWrapper>
         <ButtonArea>
           <Link to="/about">
-            <Button
-              type="call to action"
-              icon="FaArrowRight"
-              variant="outline"
-              size="medium"
-            >
-              Learn Why
+            <Button type="call to action" variant="outline" size="medium">
+              Learn Why <Icon />
             </Button>
           </Link>
         </ButtonArea>
