@@ -36,10 +36,12 @@ const CopyRight = styled.div`
 const MiniFooter = () => {
   const { isVisible, scrollToTop } = useScrollToTop();
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <ContentWrapper>
       <CopyRight>
-        <Icon name="FaCopyright" size={1.5} /> Transpiled 2024
+        <Icon name="FaCopyright" size={1.5} /> Transpiled {currentYear}
       </CopyRight>
       {isVisible && (
         <ScrollTop aria-label="Scroll to top" onClick={scrollToTop}>
