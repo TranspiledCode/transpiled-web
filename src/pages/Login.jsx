@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'config/firebase';
 import { useToast } from 'context/ToastContext';
+import { KeySquare } from 'lucide-react';
 
 import Input from 'atoms/Input';
 import Button from 'atoms/Button';
@@ -65,6 +66,10 @@ const NavigationLink = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.colors.green};
   }
+`;
+
+const Icon = styled(KeySquare)`
+  margin-left: 2rem;
 `;
 
 const LoginPage = () => {
@@ -143,10 +148,9 @@ const LoginPage = () => {
               type="submit"
               disabled={isSubmitting}
               variant="outline"
-              icon="FaArrowRight"
               size="small"
             >
-              {isSubmitting ? 'Signing in...' : 'Sign In'}
+              {isSubmitting ? 'Signing in...' : 'Sign In'} <Icon />
             </Button>
           </Navigation>
         </FormInputs>
