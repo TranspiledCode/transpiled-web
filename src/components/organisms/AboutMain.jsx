@@ -12,9 +12,8 @@ const AboutUsWrapper = styled.div`
     ${({ theme }) => theme.colors.lightBlue}
   );
 
-  @media (min-height: 680px) {
-    height: 80rem;
-    min-height: 80rem;
+  ${({ theme }) => theme.mediaQueries.md} {
+    max-height: 120rem;
   }
 `;
 
