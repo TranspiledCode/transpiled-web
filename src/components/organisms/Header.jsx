@@ -9,7 +9,7 @@ import MobileNavMenu from 'organisms/MobileNavMenu';
 import MobileMenuButton from 'atoms/MobileMenuButton';
 import links from 'data/navigation';
 import ProfileDropdown from 'organisms/ProfileDropdown';
-import useNoScroll from '../../hooks/useNoScroll';
+import useNoScroll from 'hooks/useNoScroll';
 
 const HeaderContainer = styled.header`
   width: 100%;
