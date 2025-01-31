@@ -6,6 +6,12 @@ import content from 'data/home';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
 
+import { MoveDownRight } from 'lucide-react';
+
+const Icon = styled(MoveDownRight)`
+  margin-left: 2rem;
+`;
+
 const HeroWrapper = styled.section`
   min-height: 100vh;
   max-width: 100vw;
@@ -108,8 +114,8 @@ const HomeHero = () => {
           <LearnMoreText>{learnMore}</LearnMoreText>
           <RevealWrapper>
             <Link to="#contact-cta" aria-label="Contact Us">
-              <StyledButton icon="FaArrowDown" variant="outline" size="medium">
-                {buttonText}
+              <StyledButton variant="outline" size="medium">
+                {buttonText} <Icon />
               </StyledButton>
             </Link>
           </RevealWrapper>
