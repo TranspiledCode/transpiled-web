@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import GlobalContext from 'context/GlobalContext';
 
 const StyledMobileNav = styled.nav`
-  min-height: 100vh;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -34,7 +33,6 @@ const StyledLink = styled(Link)`
   font-weight: 400;
   font-size: clamp(2rem, 2vw, 2.4rem);
   letter-spacing: -0.015em;
-  position: relative;
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
   transition: opacity 0.4s ease;
   transition-delay: ${({ delay }) => `${delay}s`};
@@ -44,10 +42,9 @@ const BgOverlay = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
   height: 100%;
   width: 100%;
-  content: '';
+  position: fixed;
   top: 0;
   left: 0;
-  position: fixed;
   z-index: -1;
   transform: scaleY(${({ isOpen }) => (isOpen ? '1' : '0')});
   transform-origin: top;
@@ -80,11 +77,7 @@ const MobileNavMenu = ({ links }) => {
           </StyledLink>
         ))}
       </StyledMobileNav>
-      <BgOverlay
-        isOpen={menuOpen}
-        aria-hidden={true}
-        aria-label="menu background overlay"
-      ></BgOverlay>
+      <BgOverlay isOpen={menuOpen} aria-label="menu background overlay" />
     </>
   );
 };
