@@ -18,8 +18,8 @@ const StyledMobileNav = styled.nav`
   left: 0;
   z-index: ${({ theme }) => theme.zIndices.mobileNavOverlay};
   transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+    opacity 0.4s ease,
+    visibility 0.4s ease;
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
 `;
@@ -46,8 +46,8 @@ const BgOverlay = styled.div`
   transform-origin: top;
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   transition:
-    transform 0.3s ease,
-    visibility 0.3s ease;
+    transform 0.4s ease,
+    visibility 0.4s ease;
 `;
 
 const MobileNavMenu = ({ links }) => {
