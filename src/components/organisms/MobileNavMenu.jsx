@@ -22,6 +22,10 @@ const StyledMobileNav = styled.nav`
     visibility 0.4s ease;
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    display: none;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -48,6 +52,10 @@ const BgOverlay = styled.div`
   transition:
     transform 0.4s ease,
     visibility 0.4s ease;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    display: none;
+  }
 `;
 
 const MobileNavMenu = ({ links }) => {
