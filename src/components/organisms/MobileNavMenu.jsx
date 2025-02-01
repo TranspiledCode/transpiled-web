@@ -7,7 +7,7 @@ import GlobalContext from 'context/GlobalContext';
 const StyledMobileNav = styled.nav`
   min-height: 100vh;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.black};
+  // background-color: ${({ theme }) => theme.colors.black};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +20,8 @@ const StyledMobileNav = styled.nav`
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-  opacity: ${({ ariaHidden }) => (ariaHidden ? 0 : 1)};
-  visibility: ${({ ariaHidden }) => (ariaHidden ? 'hidden' : 'visible')};
+  // opacity: ${({ ariaHidden }) => (ariaHidden ? 0 : 1)};
+  // visibility: ${({ ariaHidden }) => (ariaHidden ? 'hidden' : 'visible')};
 `;
 
 const StyledLink = styled(Link)`
@@ -33,18 +33,35 @@ const StyledLink = styled(Link)`
   position: relative;
 `;
 
+const BgOverlay = styled.div`
+  background-color: ${({ theme }) => theme.colors.black};
+  height: 100%;
+  width: 100%;
+  content: '';
+  position: fixed;
+  z-index: -1;
+  transform: scaleY(${({ isOpen }) => (isOpen ? '1' : '0')});
+  transform-origin: top;
+  transition: transform 0.3s ease;
+`;
+
 const MobileNavMenu = ({ links }) => {
   const { menuOpen, toggleMenu } = useContext(GlobalContext);
 
-  if (!menuOpen) return null;
+  // if (!menuOpen) return null;
 
   return (
-    <StyledMobileNav aria-hidden={!menuOpen}>
+    <StyledMobileNav isOpen={menuOpen} aria-hidden={!menuOpen}>
       {links.map(({ url, label }) => (
         <StyledLink key={url} to={url} onClick={toggleMenu} aria-label={label}>
           {label}
         </StyledLink>
       ))}
+      <BgOverlay
+        isOpen={menuOpen}
+        aria-hidden={true}
+        aria-label="menu background overlay"
+      ></BgOverlay>
     </StyledMobileNav>
   );
 };
