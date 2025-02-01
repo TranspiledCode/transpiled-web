@@ -35,6 +35,9 @@ const StyledLink = styled(Link)`
   font-size: clamp(2rem, 2vw, 2.4rem);
   letter-spacing: -0.015em;
   position: relative;
+  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+  transition: opacity 0.4s ease;
+  transition-delay: ${({ delay }) => `${delay}s`};
 `;
 
 const BgOverlay = styled.div`
@@ -64,12 +67,14 @@ const MobileNavMenu = ({ links }) => {
   return (
     <>
       <StyledMobileNav isOpen={menuOpen} aria-hidden={!menuOpen}>
-        {links.map(({ url, label }) => (
+        {links.map(({ url, label }, index) => (
           <StyledLink
             key={url}
             to={url}
             onClick={toggleMenu}
             aria-label={label}
+            isOpen={menuOpen}
+            delay={menuOpen ? index * 0.1 : 0}
           >
             {label}
           </StyledLink>
