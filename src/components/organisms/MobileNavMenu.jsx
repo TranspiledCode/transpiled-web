@@ -6,8 +6,8 @@ import GlobalContext from 'context/GlobalContext';
 
 const StyledMobileNav = styled.nav`
   min-height: 100vh;
+  height: 100%;
   width: 100%;
-  // background-color: ${({ theme }) => theme.colors.black};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +20,8 @@ const StyledMobileNav = styled.nav`
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-  // opacity: ${({ ariaHidden }) => (ariaHidden ? 0 : 1)};
-  // visibility: ${({ ariaHidden }) => (ariaHidden ? 'hidden' : 'visible')};
+  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
 `;
 
 const StyledLink = styled(Link)`
@@ -38,31 +38,41 @@ const BgOverlay = styled.div`
   height: 100%;
   width: 100%;
   content: '';
+  top: 0;
+  left: 0;
   position: fixed;
   z-index: -1;
   transform: scaleY(${({ isOpen }) => (isOpen ? '1' : '0')});
   transform-origin: top;
-  transition: transform 0.3s ease;
+  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  transition:
+    transform 0.3s ease,
+    visibility 0.3s ease;
 `;
 
 const MobileNavMenu = ({ links }) => {
   const { menuOpen, toggleMenu } = useContext(GlobalContext);
 
-  // if (!menuOpen) return null;
-
   return (
-    <StyledMobileNav isOpen={menuOpen} aria-hidden={!menuOpen}>
-      {links.map(({ url, label }) => (
-        <StyledLink key={url} to={url} onClick={toggleMenu} aria-label={label}>
-          {label}
-        </StyledLink>
-      ))}
+    <>
+      <StyledMobileNav isOpen={menuOpen} aria-hidden={!menuOpen}>
+        {links.map(({ url, label }) => (
+          <StyledLink
+            key={url}
+            to={url}
+            onClick={toggleMenu}
+            aria-label={label}
+          >
+            {label}
+          </StyledLink>
+        ))}
+      </StyledMobileNav>
       <BgOverlay
         isOpen={menuOpen}
         aria-hidden={true}
         aria-label="menu background overlay"
       ></BgOverlay>
-    </StyledMobileNav>
+    </>
   );
 };
 
