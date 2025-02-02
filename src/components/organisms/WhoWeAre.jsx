@@ -21,7 +21,7 @@ const SectionInfo = styled.div`
   gap: 0.5rem;
 `;
 
-const Hero = styled.h2`
+const Title = styled.h2`
   color: ${({ theme }) => theme.colors.lightBlue};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
@@ -70,7 +70,7 @@ const ServicesSection = () => {
   return (
     <Container>
       <SectionInfo>
-        <Hero>{title}</Hero>
+        <Title>{title}</Title>
         <Position>{position}</Position>
         <Subtitle>{subtitle}</Subtitle>
       </SectionInfo>
