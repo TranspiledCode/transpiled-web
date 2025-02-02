@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 const SectionContainer = styled.section`
   position: relative;
   padding: ${({ theme }) => theme.layouts.sectionPadding};
-  background-image: url('https://images.pexels.com/photos/2514035/pexels-photo-2514035.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: url('https://storage.googleapis.com/transpiled-web/images/whybackground/m.webp');
   background-size: cover;
   background-position: center;
   ${({ theme }) => theme.mixins.flexColCenter};
