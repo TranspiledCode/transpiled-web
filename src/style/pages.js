@@ -40,6 +40,12 @@ const style = {
       subtitleWidth: 75,
     },
   },
+  about: {
+    cta: {
+      gradientStart: 'darkBlue',
+      gradientEnd: 'fuchsia',
+    },
+  },
 };
 
 export default style;
