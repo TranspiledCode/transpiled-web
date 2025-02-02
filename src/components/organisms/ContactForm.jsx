@@ -5,7 +5,8 @@ import Input from 'atoms/Input';
 import Button from 'atoms/Button';
 import Textarea from 'atoms/Textarea';
 import FormContext from 'context/ContactForm';
-import { useToast } from 'context/ToastContext'; // Import useToast hook
+import { useToast } from 'context/ToastContext';
+import { ArrowRight } from 'lucide-react';
 
 const ContactFormWrapper = styled.div`
   width: clamp(0rem, 100%, 160rem);
@@ -24,6 +25,10 @@ const FormInputs = styled.div`
   button {
     align-self: flex-end;
   }
+`;
+
+const Icon = styled(ArrowRight)`
+  margin-left: 2rem;
 `;
 
 const InputField = styled(Input)``;
@@ -75,18 +80,37 @@ const ContactForm = () => {
       >
         <input type="hidden" name="form-name" value="contact-form" />
         <FormInputs>
-          <InputField type="text" name="name" label="Name" />
-          <InputField type="email" name="email" label="Email" />
-          <InputField type="tel" name="phone" label="Phone" />
-          <TextareaField name="message" label="Message" maxLength={250} />
+          <InputField
+            type="text"
+            name="name"
+            label="Name"
+            autocomplete="name"
+          />
+          <InputField
+            type="email"
+            name="email"
+            label="Email"
+            autocomplete="email"
+          />
+          <InputField
+            type="tel"
+            name="phone"
+            label="Phone"
+            autocomplete="tel"
+          />
+          <TextareaField
+            name="message"
+            label="Message"
+            maxLength={250}
+            autocomplete="off"
+          />
           <Button
             type="submit"
             disabled={isSubmitting}
             variant="outlineGray"
-            icon="FaArrowRight"
             size="medium"
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? 'Sending...' : 'Send Message'} <Icon />
           </Button>
         </FormInputs>
       </ContactFormStyled>

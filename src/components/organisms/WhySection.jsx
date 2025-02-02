@@ -3,11 +3,12 @@ import styled from '@emotion/styled';
 import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
 import content from 'data/home';
+import { ArrowRight } from 'lucide-react';
 
 const SectionContainer = styled.section`
   position: relative;
   padding: ${({ theme }) => theme.layouts.sectionPadding};
-  background-image: url('https://images.pexels.com/photos/2514035/pexels-photo-2514035.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: url('https://storage.googleapis.com/transpiled-web/images/whybackground/m.webp');
   background-size: cover;
   background-position: center;
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -48,7 +49,7 @@ const Title = styled.h2`
   color: ${({ theme }) => theme.colors.green};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: clamp(4.8rem, 8vw, 6.4rem);
+  font-size: clamp(3.8rem, 8vw, 6.4rem);
   line-height: 0.95em;
   letter-spacing: -0.04em;
 `;
@@ -99,6 +100,10 @@ const ButtonArea = styled.div`
   justify-content: flex-end;
 `;
 
+const Icon = styled(ArrowRight)`
+  margin-left: 2rem;
+`;
+
 const WhySection = () => {
   const {
     why: { title, subtitle, cards },
@@ -125,13 +130,8 @@ const WhySection = () => {
         </CardGridWrapper>
         <ButtonArea>
           <Link to="/about">
-            <Button
-              type="call to action"
-              icon="FaArrowRight"
-              variant="outline"
-              size="medium"
-            >
-              Learn Why
+            <Button type="call to action" variant="outline" size="medium">
+              Learn Why <Icon />
             </Button>
           </Link>
         </ButtonArea>

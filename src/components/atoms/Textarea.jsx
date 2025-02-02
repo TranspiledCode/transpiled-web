@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { FaTimes } from 'react-icons/fa';
+import { X } from 'lucide-react';
 
 import FormContext from 'context/ContactForm';
 
@@ -151,7 +151,7 @@ const Textarea = ({
           color={color}
           hoverColor={hoverColor}
         >
-          <FaTimes aria-hidden="true" />
+          <X />
         </ClearButton>
       )}
       <CharacterCount>{`${value.length}/${maxLength}`}</CharacterCount>

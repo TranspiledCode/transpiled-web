@@ -9,14 +9,13 @@ import style from 'style/pages';
 import content from 'data/about';
 
 const AboutUs = () => {
-  const { title, canonical, description } = content.who;
   const { cta: ctaContent } = content;
-
   const { cta: ctaStyle } = style.about;
-
+  const { title, description, canonical } = content.seo;
+  
   return (
     <>
-      <SEO title={title} canonical={canonical} desciription={description} />
+      <SEO title={title} canonical={canonical} description={description} />
       <AboutMain />
       <WhoWeAre />
       <OurApproach />

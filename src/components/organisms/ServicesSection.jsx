@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import Card from 'molecules/Card';
 import Button from 'atoms/Button';
 import content from 'data/home';
-import TitleSubtitle from '../molecules/TitleSubtitle';
+import TitleSubtitle from 'molecules/TitleSubtitle';
+import { ArrowRight } from 'lucide-react';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -34,6 +35,10 @@ const ButtonArea = styled.div`
   justify-content: flex-end;
 `;
 
+const Icon = styled(ArrowRight)`
+  margin-left: 2rem;
+`;
+
 const ServicesSection = () => {
   const {
     services: { title, subtitle, cards },
@@ -55,13 +60,8 @@ const ServicesSection = () => {
       </CardArea>
       <ButtonArea>
         <Link to="/services" aria-label="Learn more about our services">
-          <Button
-            type="call to action"
-            icon="FaArrowRight"
-            variant="ghost"
-            size="medium"
-          >
-            Explore Services
+          <Button type="call to action" variant="ghost" size="medium">
+            Explore Services <Icon />
           </Button>
         </Link>
       </ButtonArea>

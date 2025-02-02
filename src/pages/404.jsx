@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import SEO from '../components/templates/SEO';
 import Button from '../components/atoms/Button';
+import { Home } from 'lucide-react';
 
 const PageWrapper = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -32,6 +33,10 @@ const Subtitle = styled.p`
   text-transform: uppercase;
 `;
 
+const Icon = styled(Home)`
+  margin-left: 2rem;
+`;
+
 const NotFound = () => {
   const description =
     'The page you are looking for does not exist. Please return to the home page or explore other sections of the site.';
@@ -50,8 +55,8 @@ const NotFound = () => {
           <Subtitle>Page Not Found</Subtitle>
         </TitleWrapper>
         <Link to="/" aria-label="Return to Home">
-          <Button variant="outline" size="medium" icon="FaHome">
-            Return to Home
+          <Button variant="outline" size="medium">
+            Return to Home <Icon />
           </Button>
         </Link>
       </PageWrapper>

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import WhoCard from 'molecules/WhoCard';
-import config from 'data/about';
+import content from 'data/about';
 
 const Container = styled.section`
   ${({ theme }) => theme.mixins.flexColCenter};
@@ -66,7 +66,7 @@ const CardArea = styled.div`
 `;
 
 const ServicesSection = () => {
-  const { cards, title, subtitle, position } = config.who;
+  const { cards, title, subtitle, position } = content.who;
   return (
     <Container>
       <SectionInfo>
