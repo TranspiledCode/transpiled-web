@@ -1,9 +1,8 @@
 const content = {
   who: {
     title: 'Transpiled | About',
+    hero: 'WHO WE ARE',
     canonical: '/about',
-    description:
-      'Our mission is to drive business growth through high-quality, cutting-edge digitals products built for today and the future.',
     subtitle:
       'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
     cards: [

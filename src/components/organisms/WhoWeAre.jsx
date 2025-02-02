@@ -21,7 +21,7 @@ const SectionInfo = styled.div`
   gap: 0.5rem;
 `;
 
-const Title = styled.h2`
+const Hero = styled.h2`
   color: ${({ theme }) => theme.colors.lightBlue};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
@@ -66,11 +66,11 @@ const CardArea = styled.div`
 `;
 
 const ServicesSection = () => {
-  const { cards, title, subtitle, position } = config.who;
+  const { cards, hero, subtitle, position } = config.who;
   return (
     <Container>
       <SectionInfo>
-        <Title>{title}</Title>
+        <Hero>{hero}</Hero>
         <Position>{position}</Position>
         <Subtitle>{subtitle}</Subtitle>
       </SectionInfo>
