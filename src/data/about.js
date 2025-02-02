@@ -1,8 +1,12 @@
 const content = {
-  who: {
+  seo: {
     title: 'Transpiled | About',
-    hero: 'WHO WE ARE',
     canonical: '/about',
+    description:
+      'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
+  },
+  who: {
+    title: 'WHO WE ARE',
     subtitle:
       'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
     cards: [
