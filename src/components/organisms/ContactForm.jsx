@@ -80,10 +80,30 @@ const ContactForm = () => {
       >
         <input type="hidden" name="form-name" value="contact-form" />
         <FormInputs>
-          <InputField type="text" name="name" label="Name" />
-          <InputField type="email" name="email" label="Email" />
-          <InputField type="tel" name="phone" label="Phone" />
-          <TextareaField name="message" label="Message" maxLength={250} />
+          <InputField
+            type="text"
+            name="name"
+            label="Name"
+            autocomplete="name"
+          />
+          <InputField
+            type="email"
+            name="email"
+            label="Email"
+            autocomplete="email"
+          />
+          <InputField
+            type="tel"
+            name="phone"
+            label="Phone"
+            autocomplete="tel"
+          />
+          <TextareaField
+            name="message"
+            label="Message"
+            maxLength={250}
+            autocomplete="off"
+          />
           <Button
             type="submit"
             disabled={isSubmitting}
