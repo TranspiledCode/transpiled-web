@@ -8,10 +8,10 @@ import ReadyToBuild from 'components/organisms/ReadyToBuild';
 import content from 'data/about';
 
 const AboutUs = () => {
-  const { title, canonical, description } = content.who;
+  const { title, description, canonical } = content.seo;
   return (
     <>
-      <SEO title={title} canonical={canonical} desciription={description} />
+      <SEO title={title} canonical={canonical} description={description} />
       <AboutMain />
       <WhoWeAre />
       <OurApproach />

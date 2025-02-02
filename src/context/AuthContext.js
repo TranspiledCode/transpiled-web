@@ -24,16 +24,11 @@ function useAuth() {
   return context;
 }
 
-function AuthProvider({ children }) {
+const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(initialAuthState);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      console.log(
-        'Auth state changed:',
-        user ? 'User logged in' : 'User logged out',
-      );
-
       if (user) {
         try {
           const idTokenResult = await user.getIdTokenResult();
@@ -69,7 +64,7 @@ function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
   );
-}
+};
 
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,

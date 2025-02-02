@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import useScrollToTop from 'hooks/useScrollToTop';
-import Icon from 'atoms/Icon';
+import { Copyright, MoveUp } from 'lucide-react';
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const ScrollTop = styled.button`
   }
 `;
 
-const CopyRight = styled.div`
+const CopyRightWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -36,15 +36,17 @@ const CopyRight = styled.div`
 const MiniFooter = () => {
   const { isVisible, scrollToTop } = useScrollToTop();
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <ContentWrapper>
-      <CopyRight>
-        <Icon name="FaCopyright" size={1.5} /> Transpiled 2024
-      </CopyRight>
+      <CopyRightWrapper>
+        <Copyright /> Transpiled {currentYear}
+      </CopyRightWrapper>
       {isVisible && (
         <ScrollTop aria-label="Scroll to top" onClick={scrollToTop}>
           Scroll to Top
-          <Icon name="FaArrowUp" size={1.5} />
+          <MoveUp />
         </ScrollTop>
       )}
     </ContentWrapper>

@@ -96,6 +96,7 @@ const ProfileDropdown = () => {
       await signOut(auth);
       navigate('/');
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Logout Error:', err);
     }
   };
@@ -108,7 +109,7 @@ const ProfileDropdown = () => {
   // Base menu items that all users see
   const baseMenuItems = [
     { label: 'View Profile', onClick: handleProfileClick },
-    { label: 'Settings', onClick: () => console.log('Settings') },
+    // { label: 'Settings', onClick: () => console.log('Settings') },
     { label: 'Logout', onClick: handleLogout },
   ];
 

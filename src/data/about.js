@@ -1,9 +1,12 @@
 const content = {
-  who: {
-    title: 'WHO WE ARE',
+  seo: {
+    title: 'Transpiled | About',
     canonical: '/about',
     description:
-      'Our mission is to drive business growth through high-quality, cutting-edge digitals products built for today and the future.',
+      'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
+  },
+  who: {
+    title: 'WHO WE ARE',
     subtitle:
       'Our team is made up of creative thinkers, technical experts, and problem solvers who thrive on challenges.',
     cards: [
@@ -58,7 +61,7 @@ const content = {
     ],
   },
   main: {
-    title: 'WERE NOT JUST DEVELOPERS',
+    title: "WE'RE NOT JUST DEVELOPERS",
     subtitle:
       'Our mission is to drive business growth through high-quality, cutting-edge digitals products built for today and the future.',
     learnMore: 'LEARN MORE ABOUT WHO WE ARE',

@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'config/firebase';
 import { useToast } from 'context/ToastContext';
+import { KeySquare } from 'lucide-react';
 
 import Input from 'atoms/Input';
 import Button from 'atoms/Button';
@@ -67,7 +68,11 @@ const NavigationLink = styled(Link)`
   }
 `;
 
-function LoginPage() {
+const Icon = styled(KeySquare)`
+  margin-left: 2rem;
+`;
+
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -143,16 +148,15 @@ function LoginPage() {
               type="submit"
               disabled={isSubmitting}
               variant="outline"
-              icon="FaArrowRight"
               size="small"
             >
-              {isSubmitting ? 'Signing in...' : 'Sign In'}
+              {isSubmitting ? 'Signing in...' : 'Sign In'} <Icon />
             </Button>
           </Navigation>
         </FormInputs>
       </LoginFormStyled>
     </LoginFormWrapper>
   );
-}
+};
 
 export default LoginPage;

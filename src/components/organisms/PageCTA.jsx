@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Button from 'atoms/Button';
 import PropTypes from 'prop-types';
+import { ArrowRight } from 'lucide-react';
 
 /**
  * Page call to action component.
@@ -69,6 +70,10 @@ const Subtitle = styled.p`
   }
 `;
 
+const Icon = styled(ArrowRight)`
+  margin-left: 2rem;
+`;
+
 const PageCTA = ({ style, content }) => {
   const { gradientStart, gradientEnd, subtitleWidth } = style;
   const { title, subtitle, btnText, btnUrl } = content;
@@ -83,8 +88,9 @@ const PageCTA = ({ style, content }) => {
         <SubtitleContainer>
           <Subtitle subtitleWidth={subtitleWidth}>{subtitle}</Subtitle>
           <Link to={btnUrl}>
-            <Button icon="FaArrowRight" variant="outline" size="medium">
+            <Button variant="outline" size="medium">
               {btnText}
+              <Icon />
             </Button>
           </Link>
         </SubtitleContainer>

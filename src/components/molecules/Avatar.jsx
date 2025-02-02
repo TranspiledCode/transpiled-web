@@ -35,7 +35,7 @@ const AvatarFallback = styled.div`
 const DEFAULT_AVATAR_URL =
   'https://storage.googleapis.com/transpiled-web/images/default-user-image.png';
 
-function Avatar({ image, name = '' }) {
+const Avatar = ({ image, name = '' }) => {
   const [imgSrc, setImgSrc] = useState(image || DEFAULT_AVATAR_URL);
   const [triedDefault, setTriedDefault] = useState(!image);
 
@@ -63,7 +63,7 @@ function Avatar({ image, name = '' }) {
       <AvatarImage src={imgSrc} alt={name} onError={handleError} />
     </AvatarContainer>
   );
-}
+};
 
 Avatar.propTypes = {
   image: PropTypes.string,
