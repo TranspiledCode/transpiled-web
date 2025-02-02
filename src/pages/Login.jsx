@@ -132,6 +132,7 @@ const LoginPage = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             color="white"
+            autocomplete="email"
           />
           <Input
             type="password"
