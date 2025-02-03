@@ -122,6 +122,7 @@ const WhySection = () => {
               <WhyCard
                 key={index}
                 label={card.label}
+                loading="lazy"
                 heading={card.heading}
                 description={card.description}
               />
