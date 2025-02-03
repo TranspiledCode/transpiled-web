@@ -82,6 +82,7 @@ const ServicesSection = () => {
               key={index}
               url={url}
               label={label}
+              loading="lazy"
               heading={heading}
               position={position}
               description={description}

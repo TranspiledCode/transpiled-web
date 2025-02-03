@@ -52,6 +52,7 @@ const ServicesSection = () => {
           <Card
             key={index}
             url={card.url}
+            loading="lazy"
             label={card.label}
             heading={card.heading}
             description={card.description}
