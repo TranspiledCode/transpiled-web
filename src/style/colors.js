@@ -1,21 +1,18 @@
-// colors.js
 const colors = {
   // Standard Colors
-  blue: '#25B0D3',
-  lightBlue: '#15B5FA',
-  darkBlue: '#214EEA',
-  blueAccent: '#197F9A',
-  green: '#70F25D',
-  orange: '#FFA41C',
-  pink: '#FF6B6B',
-  fuchsia: '#dd53ff',
+  lightBlue: '#0098E4',
+  darkBlue: '#123EDB',
+  green: '#3CEE39',
+  orange: '#ED951A',
+  red: '#F34D2C',
+  yellow: '#E7C61E',
+  fuchsia: '#D05FEC',
 
   // Neutral Colors
-  black: '#090909',
-  white: '#ffffff',
-  gray: '#afafaf',
-  lightGray: '#f5f5f5',
-  darkGray: '#757575',
+  black: '#141515',
+  white: '#FAF9F8',
+  lightGray: '#B7B8BA',
+  darkGray: '#6E7275',
 
   // Functional Colors
   success: '#28a745',

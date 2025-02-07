@@ -7,7 +7,7 @@ const TabContainer = styled.div`
   max-width: 100vw;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.gray};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.lightGray};
 `;
 
 const TabHead = styled.div`
