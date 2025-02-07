@@ -42,7 +42,12 @@ const MenuElementBottom = styled(MenuElement)`
 `;
 
 const MobileMenuButton = ({ onClick, isOpen }) => (
-  <ButtonWrapper onClick={onClick} aria-expanded={isOpen}>
+  <ButtonWrapper
+    onClick={onClick}
+    aria-expanded={isOpen}
+    aria-label="mobile navigation menu toggle button"
+    role="button"
+  >
     <MenuElementTop isOpen={isOpen} aria-hidden="true" />
     <MenuElementBottom isOpen={isOpen} aria-hidden="true" />
   </ButtonWrapper>
