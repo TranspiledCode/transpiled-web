@@ -14,7 +14,7 @@ const Container = styled.div`
   border-style: solid;
   display: grid;
   grid-template-rows: 3fr 1fr;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   overflow: hidden;
 `;
 
@@ -34,7 +34,6 @@ const Image = styled.img`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.lightGray};
   align-items: center;
   gap: 0.5rem;
   padding: 1.4rem 2rem 2rem;
