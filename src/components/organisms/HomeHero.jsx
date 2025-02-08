@@ -33,37 +33,23 @@ const HeroContent = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    gap: 2rem;
-  }
+  gap: 1em;
 `;
 
 const Title = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.poppins};
+  ${({ theme }) => theme.mixins.textH1};
   color: ${({ theme }) => theme.colors.white};
-  font-weight: 700;
-  font-size: clamp(4.8rem, 10vw, 9.6rem);
-  line-height: clamp(4.8rem, 10vw, 8.6rem);
 `;
 
 const SubtitleText = styled.div`
-  font-family: ${({ theme }) => theme.fonts.manrope};
+  ${({ theme }) => theme.mixins.textSubtitle};
   color: ${({ theme }) => theme.colors.white};
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3.6rem);
-  line-height: clamp(1.8rem, 4vw, 3.6rem);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  max-width: 80%;
+  gap: 0.2em;
+  width: clamp(28rem, 20vw, 50rem);
   margin-bottom: clamp(2rem, 8vw, 8rem);
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    gap: 1rem;
-    max-width: 60rem;
-  }
+  line-height: 1em;
 `;
 
 const Word = styled.span`
@@ -72,12 +58,9 @@ const Word = styled.span`
 `;
 
 const LearnMoreText = styled.div`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  font-weight: 400;
-  font-size: clamp(1.4rem, 2vw, 1.6rem);
-  text-transform: uppercase;
+  ${({ theme }) => theme.mixins.textMono};
   color: ${({ theme }) => theme.colors.white};
-  max-width: 25rem;
+  max-width: 28rem;
 `;
 
 const StyledButton = styled(Button)`

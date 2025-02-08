@@ -47,24 +47,11 @@ const SectionInfo = styled.div`
 `;
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.green};
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-weight: 700;
-  font-size: clamp(3.8rem, 8vw, 6.4rem);
-  line-height: 0.95em;
-  letter-spacing: -0.04em;
+  ${({ theme }) => theme.mixins.textH2};
 `;
 const Subtitle = styled.p`
-  width: 100%;
   color: ${({ theme }) => theme.colors.lightGray};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 70rem);
-  }
+  ${({ theme }) => theme.mixins.textBody};
 `;
 
 const CardGridWrapper = styled.div`

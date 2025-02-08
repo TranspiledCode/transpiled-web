@@ -4,24 +4,20 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
   ${({ theme }) => theme.mediaQueries.sm} {
     width: clamp(0rem, 100%, 38rem);
   }
 `;
-const Heading = styled.h1`
+const Heading = styled.h3`
   color: ${({ theme }) => theme.colors.lightBlue};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
+  ${({ theme }) => theme.mixins.textH3};
 `;
 const Description = styled.p`
   color: ${({ theme }) => theme.colors.lightGray};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-size: 1.6rem;
-  text-align: justify;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
+  ${({ theme }) => theme.mixins.textBodySm};
 `;
 
 const WhyCard = ({ heading, description }) => {
