@@ -66,7 +66,6 @@ const mixins = {
     letterSpacing: '0.02em',
     textTransform: 'uppercase',
   },
-  textNav: {},
 };
 
 export default mixins;
