@@ -3,13 +3,11 @@ import WhoCard from 'molecules/WhoCard';
 import content from 'data/about';
 
 const Container = styled.section`
-  ${({ theme }) => theme.mixins.flexColCenter};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: ${({ theme }) => theme.layouts.sectionPadding};
-  gap: 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    gap: 4rem;
-  }
 `;
 
 const SectionInfo = styled.div`
@@ -17,17 +15,35 @@ const SectionInfo = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
+  margin-bottom: 3rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin-bottom: 4rem;
+  }
 `;
 
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.lightBlue};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 700;
-  font-size: clamp(5rem, 8vw, 6.4rem);
-  line-height: clamp(5rem, 8vw, 6.4rem);
-  letter-spacing: -2px;
+  font-size: 3.2rem;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin: 0 0 1rem 0;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    font-size: 4rem;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 5rem;
+    letter-spacing: -1.5px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    font-size: 6.4rem;
+    letter-spacing: -2px;
+  }
 `;
 
 const Position = styled.p`
@@ -35,8 +51,16 @@ const Position = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: justify;
+  font-size: 1.6rem;
+  margin: 0 0 1rem 0;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 1.8rem;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    font-size: 2.4rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -44,28 +68,40 @@ const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
   font-family: ${({ theme }) => theme.fonts.manrope};
   font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: left;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 1.8rem;
+    width: 90%;
+  }
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    width: clamp(60rem, 100%, 69rem);
-    text-align: left;
+    font-size: 2.4rem;
+    width: 80%;
   }
 `;
 
 const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    flex-direction: row;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
   }
 `;
 
-const ServicesSection = () => {
+const WhoWeAre = () => {
   const { cards, title, subtitle, position } = content.who;
   return (
     <Container>
@@ -92,4 +128,4 @@ const ServicesSection = () => {
     </Container>
   );
 };
-export default ServicesSection;
+export default WhoWeAre;

@@ -4,6 +4,7 @@ import WhyCard from 'molecules/WhyCard';
 import Button from 'atoms/Button';
 import content from 'data/home';
 import { ArrowRight } from 'lucide-react';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const SectionContainer = styled.section`
   position: relative;
@@ -104,16 +105,18 @@ const WhySection = () => {
           <Subtitle>{subtitle}</Subtitle>
         </SectionInfo>
         <CardGridWrapper>
-          <CardArea>
-            {cards.map((card, index) => (
-              <WhyCard
-                key={index}
-                label={card.label}
-                heading={card.heading}
-                description={card.description}
-              />
-            ))}
-          </CardArea>
+          <RevealWrapper>
+            <CardArea>
+              {cards.map((card, index) => (
+                <WhyCard
+                  key={index}
+                  label={card.label}
+                  heading={card.heading}
+                  description={card.description}
+                />
+              ))}
+            </CardArea>
+          </RevealWrapper>
         </CardGridWrapper>
         <ButtonArea>
           <Link to="/about">

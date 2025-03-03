@@ -5,26 +5,33 @@ import Button from 'atoms/Button';
 import content from 'data/home';
 import TitleSubtitle from 'molecules/TitleSubtitle';
 import { ArrowRight } from 'lucide-react';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const Container = styled.section`
-  ${({ theme }) => theme.mixins.flexColCenter};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: ${({ theme }) => theme.layouts.sectionPadding};
-  gap: 2rem;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    gap: 4rem;
-  }
 `;
 
 const CardArea = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
   display: grid;
-  gap: 2rem;
   grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
 
   ${({ theme }) => theme.mediaQueries.lg} {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
   }
 `;
 
@@ -33,10 +40,19 @@ const ButtonArea = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin-top: 2rem;
+  }
 `;
 
 const Icon = styled(ArrowRight)`
-  margin-left: 2rem;
+  margin-left: 1rem;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    margin-left: 2rem;
+  }
 `;
 
 const ServicesSection = () => {
@@ -45,24 +61,27 @@ const ServicesSection = () => {
   } = content;
 
   return (
-    <Container>
+    <Container id="services">
       <TitleSubtitle
         title={title}
         subtitle={subtitle}
         titleColor="lightBlue"
         stMaxWidth="70"
       />
-      <CardArea>
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            url={card.url}
-            label={card.label}
-            heading={card.heading}
-            description={card.description}
-          />
-        ))}
-      </CardArea>
+      <RevealWrapper>
+        <CardArea>
+          {cards.map((card, index) => (
+            <Card
+              key={index}
+              url={card.url}
+              label={card.label}
+              heading={card.heading}
+              description={card.description}
+            />
+          ))}
+        </CardArea>
+      </RevealWrapper>
+
       <ButtonArea>
         <Link to="/services" aria-label="Learn more about our services">
           <Button type="call to action" variant="ghost" size="medium">

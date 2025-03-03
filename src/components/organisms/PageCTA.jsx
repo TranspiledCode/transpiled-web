@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Button from 'atoms/Button';
 import PropTypes from 'prop-types';
 import { ArrowRight } from 'lucide-react';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 /**
  * Page call to action component.
@@ -71,18 +72,20 @@ const PageCTA = ({ style, content }) => {
       gradientStart={gradientStart}
       gradientEnd={gradientEnd}
     >
-      <SectionContent>
-        <Title>{title}</Title>
-        <SubtitleContainer>
-          <Subtitle subtitleWidth={subtitleWidth}>{subtitle}</Subtitle>
-          <Link to={btnUrl}>
-            <Button variant="outline" size="medium">
-              {btnText}
-              <Icon />
-            </Button>
-          </Link>
-        </SubtitleContainer>
-      </SectionContent>
+      <RevealWrapper>
+        <SectionContent>
+          <Title>{title}</Title>
+          <SubtitleContainer>
+            <Subtitle subtitleWidth={subtitleWidth}>{subtitle}</Subtitle>
+            <Link to={btnUrl}>
+              <Button variant="outline" size="medium">
+                {btnText}
+                <Icon />
+              </Button>
+            </Link>
+          </SubtitleContainer>
+        </SectionContent>
+      </RevealWrapper>
     </SectionContainer>
   );
 };
