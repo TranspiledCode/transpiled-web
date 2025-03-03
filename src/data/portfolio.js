@@ -12,7 +12,8 @@ const content = {
     projects: [
       {
         projectUrl: 'tigerdc.com',
-        imageUrl: '',
+        imageUrl:
+          'https://storage.googleapis.com/transpiled-web/images/portfolio/tigerdc/l.webp',
         label: '',
         title: 'TigerDC',
         category: 'Technology Services',
@@ -21,7 +22,8 @@ const content = {
       },
       {
         projectUrl: 'whiskeythrottlecafe.com',
-        imageUrl: '',
+        imageUrl:
+          'https://storage.googleapis.com/transpiled-web/images/portfolio/whiskeyThrottleCafe/l.webp',
         label: '',
         title: 'Whiskey Throttle Cafe',
         category: 'Hospitality',
@@ -30,7 +32,8 @@ const content = {
       },
       {
         projectUrl: 'imagescoop.app',
-        imageUrl: '',
+        imageUrl:
+          'https://storage.googleapis.com/transpiled-web/images/portfolio/imageScoop/l.webp',
         label: '',
         title: 'Image Scoop',
         category: 'Software',
