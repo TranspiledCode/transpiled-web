@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import content from 'data/about';
+import RevealWrapper from 'molecules/RevealWrapper';
 
 const AboutUsWrapper = styled.div`
   min-height: 100vh;
@@ -37,7 +38,7 @@ const StyledTitle = styled.h1`
   max-width: 100rem;
 `;
 
-const Subsubtitle = styled.h2`
+const Subtitle = styled.h2`
   font-family: ${({ theme }) => theme.fonts.manrope};
   color: ${({ theme }) => theme.colors.white};
   font-weight: 400;
@@ -69,11 +70,13 @@ const AboutMain = () => {
   const { title, subtitle, learnMore } = content.main;
   return (
     <AboutUsWrapper>
-      <TitleWrapper>
-        <StyledTitle>{title}</StyledTitle>
-        <Subsubtitle>{subtitle}</Subsubtitle>
-        <StyledParagraph>{learnMore}</StyledParagraph>
-      </TitleWrapper>
+      <RevealWrapper>
+        <TitleWrapper>
+          <StyledTitle>{title}</StyledTitle>
+          <Subtitle>{subtitle}</Subtitle>
+          <StyledParagraph>{learnMore}</StyledParagraph>
+        </TitleWrapper>
+      </RevealWrapper>
     </AboutUsWrapper>
   );
 };
