@@ -3,12 +3,12 @@ const content = {
     title: 'Work that speaks for itself',
     subtitle:
       'From responsive designs to user-friendly interfaces, our work reflects our commitment to quality and innovation.',
-    caption: 'Take a look at our past projects below',
+    caption: 'Explore our past projects below',
   },
   projectList: {
     title: 'Featured Work',
     subtitle:
-      'Our portfolio is a showcase of how we transform ideas into impactful websites.',
+      'Notable projects from our constantly expanding collection of projects.',
     projects: [
       {
         projectUrl: 'tigerdc.com',
