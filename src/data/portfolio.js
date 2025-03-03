@@ -3,35 +3,41 @@ const content = {
     title: 'Work that speaks for itself',
     subtitle:
       'From responsive designs to user-friendly interfaces, our work reflects our commitment to quality and innovation.',
-    caption: 'Take a look at our past projects below',
+    caption: 'Explore our past projects below',
   },
   projectList: {
     title: 'Featured Work',
     subtitle:
-      'Our portfolio is a showcase of how we transform ideas into impactful websites.',
+      'Notable projects from our constantly expanding collection of projects.',
     projects: [
       {
-        url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-        label: 'test image',
-        title: 'FitLife',
-        category: 'Healthcare',
-        caption: 'Web and Mobile App Design',
-        catColor: 'orange',
-      },
-      {
-        url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-        label: 'test image',
-        title: 'TechFlow Solutions',
+        projectUrl: 'tigerdc.com',
+        imageUrl:
+          'https://storage.googleapis.com/transpiled-web/images/portfolio/tigerdc/l.webp',
+        label: '',
+        title: 'TigerDC',
         category: 'Technology Services',
-        caption: 'AI Systems Design & Engineering',
+        caption: 'Design & Development',
         catColor: 'green',
       },
       {
-        url: 'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-        label: 'test image',
-        title: 'InnovateCo',
-        category: 'E-Commerce',
-        caption: 'Digital Point of Sale System Design, Production & Deployment',
+        projectUrl: 'whiskeythrottlecafe.com',
+        imageUrl:
+          'https://storage.googleapis.com/transpiled-web/images/portfolio/whiskeyThrottleCafe/l.webp',
+        label: '',
+        title: 'Whiskey Throttle Cafe',
+        category: 'Hospitality',
+        caption: 'Design & Development',
+        catColor: 'orange',
+      },
+      {
+        projectUrl: 'imagescoop.app',
+        imageUrl:
+          'https://storage.googleapis.com/transpiled-web/images/portfolio/imageScoop/l.webp',
+        label: '',
+        title: 'Image Scoop',
+        category: 'Software',
+        caption: 'Design & Development',
         catColor: 'lightBlue',
       },
     ],

@@ -15,11 +15,17 @@ import Image from '../atoms/Image';
  * @param {string} caption - Small text overlay below the category that describes the project.
  */
 
-const Container = styled.div`
+const Container = styled.a`
   position: relative;
   height: clamp(30rem, 50vw, 60rem);
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
+
+  @media (min-width: 768px) {
+    :hover .Overlay {
+      opacity: 1;
+    }
+  }
 `;
 const TextContainer = styled.div`
   position: absolute;
@@ -53,15 +59,20 @@ const Caption = styled.p`
 
 const Overlay = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
-  opacity: 0.8;
+  opacity: 0.9;
   position: absolute;
   height: 100%;
   width: 100%;
   z-index: -1;
+  transition: opacity 0.2s ease-in;
 `;
 
+const ensureFullUrl = (url) =>
+  url.startsWith('http') ? url : `https://${url}`;
+
 const CoverImage = ({
-  url,
+  projectUrl,
+  imageUrl,
   label,
   title,
   category,
@@ -69,7 +80,11 @@ const CoverImage = ({
   catColor = 'lightBlue',
 }) => {
   return (
-    <Container>
+    <Container
+      href={ensureFullUrl(projectUrl)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <TextContainer>
         <Title>{title}</Title>
         <SubtitleContainer>
@@ -77,13 +92,14 @@ const CoverImage = ({
           <Caption>{caption}</Caption>
         </SubtitleContainer>
       </TextContainer>
-      <Overlay></Overlay>
-      <Image url={url} label={label} zIndex={-2} />
+      <Overlay className="Overlay"></Overlay>
+      {imageUrl && <Image url={imageUrl} label={label} zIndex={-2} />}
     </Container>
   );
 };
 CoverImage.propTypes = {
-  url: PropTypes.string.isRequired,
+  projectUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
   label: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string,
