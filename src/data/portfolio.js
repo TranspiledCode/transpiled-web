@@ -14,7 +14,7 @@ const content = {
         projectUrl: 'tigerdc.com',
         imageUrl: '',
         label: '',
-        title: 'Tiger DC',
+        title: 'TigerDC',
         category: 'Technology Services',
         caption: 'Design & Development',
         catColor: 'green',
