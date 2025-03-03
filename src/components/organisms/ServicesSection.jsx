@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import Card from 'molecules/Card';
 import Button from 'atoms/Button';
 import content from 'data/home';
 import TitleSubtitle from 'molecules/TitleSubtitle';
-import { ArrowRight } from 'lucide-react';
 import RevealWrapper from 'molecules/RevealWrapper';
+import ServiceCardGrid from 'molecules/ServiceCardGrid';
+import useIsMobile from 'hooks/useIsMobile';
+import { ArrowRight } from 'lucide-react';
 
 const Container = styled.section`
   width: 100%;
@@ -23,30 +23,6 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const CardArea = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.5rem;
-  }
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
 `;
 
 const ButtonArea = styled.div`
@@ -76,29 +52,17 @@ const Icon = styled(ArrowRight)`
 `;
 
 const ServicesSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile(640);
   const {
     services: { title, subtitle, cards },
   } = content;
 
-  // Check viewport size on mount and resize
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    // Initial check
-    checkIfMobile();
-
-    // Add listener for window resize
-    window.addEventListener('resize', checkIfMobile);
-
-    // Cleanup
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
-
   // Filter cards for mobile
   const displayedCards = isMobile ? cards.slice(0, 3) : cards;
+  const shouldShowViewAll = isMobile && cards.length > 3;
+  const buttonText = shouldShowViewAll
+    ? 'View All Services'
+    : 'Explore All Services';
 
   return (
     <Container id="services">
@@ -111,26 +75,13 @@ const ServicesSection = () => {
           alignment="center"
         />
         <RevealWrapper>
-          <CardArea>
-            {displayedCards.map((card, index) => (
-              <Card
-                key={index}
-                url={card.url}
-                label={card.label}
-                heading={card.heading}
-                description={card.description}
-              />
-            ))}
-          </CardArea>
+          <ServiceCardGrid cards={displayedCards} />
         </RevealWrapper>
 
         <ButtonArea>
           <Link to="/services" aria-label="Learn more about our services">
             <StyledButton variant="ghost" size="medium">
-              {isMobile && cards.length > 3
-                ? 'View All Services'
-                : 'Explore All Services'}{' '}
-              <Icon size={20} />
+              {buttonText} <Icon size={20} />
             </StyledButton>
           </Link>
         </ButtonArea>
