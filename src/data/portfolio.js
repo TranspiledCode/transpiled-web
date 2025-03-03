@@ -12,9 +12,8 @@ const content = {
     projects: [
       {
         projectUrl: 'tigerdc.com',
-        imageUrl:
-          'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
-        label: 'test image',
+        imageUrl: '',
+        label: '',
         title: 'Tiger DC',
         category: 'Technology Services',
         caption: 'Design & Development',
@@ -23,7 +22,7 @@ const content = {
       {
         projectUrl: 'whiskeythrottlecafe.com',
         imageUrl: '',
-        label: 'test image',
+        label: '',
         title: 'Whiskey Throttle Cafe',
         category: 'Hospitality',
         caption: 'Design & Development',
@@ -32,7 +31,7 @@ const content = {
       {
         projectUrl: 'imagescoop.app',
         imageUrl: '',
-        label: 'test image',
+        label: '',
         title: 'Image Scoop',
         category: 'Web App',
         caption: 'Design & Development',

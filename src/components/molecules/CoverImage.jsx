@@ -20,6 +20,10 @@ const Container = styled.a`
   height: clamp(30rem, 50vw, 60rem);
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
+
+  :hover .Overlay {
+    opacity: 1;
+  }
 `;
 const TextContainer = styled.div`
   position: absolute;
@@ -58,6 +62,7 @@ const Overlay = styled.div`
   height: 100%;
   width: 100%;
   z-index: -1;
+  transition: opacity 0.2s ease-in;
 `;
 
 const ensureFullUrl = (url) =>
@@ -85,8 +90,8 @@ const CoverImage = ({
           <Caption>{caption}</Caption>
         </SubtitleContainer>
       </TextContainer>
-      <Overlay></Overlay>
-      <Image url={imageUrl} label={label} zIndex={-2} />
+      <Overlay className="Overlay"></Overlay>
+      {imageUrl && <Image url={imageUrl} label={label} zIndex={-2} />}
     </Container>
   );
 };
