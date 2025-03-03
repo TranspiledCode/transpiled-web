@@ -23,25 +23,14 @@ const Container = styled.div`
 `;
 const Title = styled.h2`
   color: ${({ theme, titleColor }) => theme.colors[titleColor]};
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-weight: 700;
-  font-size: clamp(4.8rem, 8vw, 6.4rem);
-  line-height: 0.95em;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  ${({ theme }) => theme.mixins.textH2};
 `;
 const Subtitle = styled.p`
-  width: 100%;
   color: ${({ theme, subtitleColor }) => theme.colors[subtitleColor]};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
+  ${({ theme }) => theme.mixins.textBody};
 
-  ${({ theme }) => theme.mediaQueries.lg} {
+  ${({ theme }) => theme.mediaQueries.md} {
     width: clamp(0rem, 100%, ${({ stMaxWidth }) => stMaxWidth}rem);
-    text-align: left;
   }
 `;
 const TitleSubtitle = ({

@@ -4,10 +4,15 @@ import AboutMain from 'components/organisms/AboutMain';
 import WhoWeAre from 'components/organisms/WhoWeAre';
 import OurApproach from 'components/organisms/OurApproach';
 import TranspiledVision from 'components/organisms/TranspiledVision';
-import ReadyToBuild from 'components/organisms/ReadyToBuild';
+import PageCTA from 'organisms/PageCTA';
+import style from 'style/pages';
 import content from 'data/about';
 
 const AboutUs = () => {
+  const { cta: ctaContent } = content;
+  const { cta: ctaStyle } = style.about;
+  const { title, description, canonical } = content.seo;
+  
   const { title, description, canonical } = content.seo;
   return (
     <>
@@ -16,7 +21,7 @@ const AboutUs = () => {
       <WhoWeAre />
       <OurApproach />
       <TranspiledVision />
-      <ReadyToBuild />
+      <PageCTA style={ctaStyle} content={ctaContent} />
     </>
   );
 };

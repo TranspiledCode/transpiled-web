@@ -13,7 +13,7 @@ const ContactInfo = () => {
       <Column>
         <ContactDetails>
           <ContactItem>
-            <ContactLink href="mailto:info@yourcompany.com">
+            <ContactLink href="mailto:info@transpiled.com">
               info@transpiled.com
             </ContactLink>
           </ContactItem>

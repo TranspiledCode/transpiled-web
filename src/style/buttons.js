@@ -34,8 +34,8 @@ const buttons = {
       hoverTextColor: colors.white,
     },
     ghost: {
-      borderColor: colors.blue,
-      textColor: colors.blue,
+      borderColor: colors.lightBlue,
+      textColor: colors.lightBlue,
       hoverBgColor: colors.lightBlue,
       hoverTextColor: colors.white,
     },
