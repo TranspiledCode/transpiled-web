@@ -1,9 +1,11 @@
 const content = {
   seo: { title: 'Transpiled | Home', canonical: '/' },
   hero: {
-    title: 'BUILD YOUR FUTURE',
-    subtitle: 'With our Web and Mobile App Development Services',
-    learnMore: 'start with a consultation or scroll to learn more',
+    title: 'Built from Scratch, Designed for You.',
+    subtitle1: 'We handle the tech.',
+    subtitle2: 'You focus on what you do best.',
+    learnMore1: 'start with a consultation',
+    learnMore2: 'or scroll to learn more',
     buttonText: 'Get Started',
   },
   services: {
@@ -83,7 +85,7 @@ const content = {
       {
         heading: 'Transparency',
         description:
-          'From project updates to pricing, we ensure clarity, so youre always in the loop-no hidden costs',
+          'From project updates to pricing, we ensure clarity, so you are always in the loop-no hidden costs',
       },
     ],
   },
