@@ -15,22 +15,49 @@ const content = {
         url: 'https://storage.googleapis.com/transpiled-web/images/webdev/l.webp',
         label: 'Web Development',
         heading: 'Web Development',
+        briefDescription: 'Scalable, future-proof websites.',
         description:
           'We build responsive, scalable websites with clean, future-proof code, optimized for performance and built to grow with your business.',
       },
       {
-        url: 'https://storage.googleapis.com/transpiled-web/images/mobiledev/l.webp',
-        label: 'Mobile App Development',
-        heading: 'Mobile Development',
+        url: 'https://storage.googleapis.com/transpiled-web/images/customdev/l.webp',
+        label: 'Custom App Solutions',
+        heading: 'Custom App Solutions',
+        briefDescription: 'Tailored, secure web applications.',
         description:
-          'Native and cross-platform mobile apps designed for performance and user satisfaction, ensuring smooth navigation and fast load times.',
+          'We develop secure, optimized custom solutions tailored to your unique business needs, including specialized web apps and advanced integrations.',
       },
       {
-        url: 'https://storage.googleapis.com/transpiled-web/images/customdev/l.webp',
-        label: 'Custom Solutions',
-        heading: 'Custom Solutions',
+        url: 'https://storage.googleapis.com/transpiled-web/images/design/l.webp',
+        label: 'Web Design',
+        heading: 'Web Design',
+        briefDescription: 'Stunning, user-friendly interfaces.',
         description:
-          'Optimized, secure e-commerce platforms designed to convert visitors into customers while delivering a smooth shopping experience.',
+          'We create visually striking and user-centric designs, ensuring your website or app is intuitive, accessible, and enjoyable to use.',
+      },
+      {
+        url: 'https://storage.googleapis.com/transpiled-web/images/ecommerce/l.webp',
+        label: 'E-Commerce Solutions',
+        heading: 'E-Commerce Solutions',
+        briefDescription: 'Boost sales with seamless shopping.',
+        description:
+          'We build secure, conversion-focused e-commerce platforms that streamline the shopping experience and drive repeat business.',
+      },
+      {
+        url: 'https://storage.googleapis.com/transpiled-web/images/domain/l.webp',
+        label: 'Domain Services',
+        heading: 'Domain Services',
+        briefDescription: 'Register and protect your brand.',
+        description:
+          'We offer domain registration and management, helping you establish a memorable online identity and protect your brand.',
+      },
+      {
+        url: 'https://storage.googleapis.com/transpiled-web/images/hosting/l.webp',
+        label: 'Hosting & Maintenance',
+        heading: 'Hosting & Maintenance',
+        briefDescription: 'Reliable uptime and security.',
+        description:
+          'Enjoy high-performance hosting solutions with ongoing maintenance to keep your site secure, backed up, and running smoothly.',
       },
     ],
   },
