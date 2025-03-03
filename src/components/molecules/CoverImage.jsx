@@ -21,8 +21,10 @@ const Container = styled.a`
   width: 100%;
   ${({ theme }) => theme.mixins.flexColCenter};
 
-  :hover .Overlay {
-    opacity: 1;
+  @media (min-width: 768px) {
+    :hover .Overlay {
+      opacity: 1;
+    }
   }
 `;
 const TextContainer = styled.div`
@@ -57,7 +59,7 @@ const Caption = styled.p`
 
 const Overlay = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
-  opacity: 0.8;
+  opacity: 0.9;
   position: absolute;
   height: 100%;
   width: 100%;
