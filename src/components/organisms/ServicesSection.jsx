@@ -46,7 +46,12 @@ const ServicesSection = () => {
 
   return (
     <Container>
-      <TitleSubtitle title={title} subtitle={subtitle} titleColor="lightBlue" />
+      <TitleSubtitle
+        title={title}
+        subtitle={subtitle}
+        titleColor="lightBlue"
+        stMaxWidth="70"
+      />
       <CardArea>
         {cards.map((card, index) => (
           <Card

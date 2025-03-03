@@ -38,12 +38,7 @@ const SectionContent = styled.div`
 const Title = styled.h3`
   color: ${({ theme, textColor }) =>
     theme.colors[textColor] || theme.colors.white};
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  font-weight: 700;
-  font-size: clamp(4.2rem, 8vw, 6.4rem);
-  line-height: 0.95em;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  ${({ theme }) => theme.mixins.textH2};
 `;
 
 const SubtitleContainer = styled.div`
@@ -54,19 +49,12 @@ const SubtitleContainer = styled.div`
 `;
 
 const Subtitle = styled.p`
-  width: 100%;
   color: ${({ theme, textColor }) =>
     theme.colors[textColor] || theme.colors.white};
-  font-family: ${({ theme }) => theme.fonts.manrope};
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  text-align: justify;
-  line-height: 1.4em;
-  letter-spacing: -0.01em;
+  ${({ theme }) => theme.mixins.textBody};
 
   ${({ theme }) => theme.mediaQueries.lg} {
     width: clamp(0rem, 100%, ${({ subtitleWidth = 90 }) => subtitleWidth}rem);
-    text-align: left;
   }
 `;
 
