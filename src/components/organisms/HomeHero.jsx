@@ -96,7 +96,7 @@ const HomeHero = () => {
           </SubtitleText>
           <LearnMoreText>{learnMore}</LearnMoreText>
           <RevealWrapper>
-            <Link to="#contact-cta" aria-label="Contact Us">
+            <Link to="#services" aria-label="Contact Us">
               <StyledButton variant="outline" size="medium">
                 {buttonText} <Icon />
               </StyledButton>
