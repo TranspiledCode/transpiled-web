@@ -29,7 +29,7 @@ const SocialIcons = () => {
   return (
     <SocialContainer>
       <SocialLink
-        href="https://www.facebook.com"
+        href="https://www.facebook.com/Transpiled/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Visit our Facebook page"
@@ -38,7 +38,7 @@ const SocialIcons = () => {
       </SocialLink>
 
       <SocialLink
-        href="https://www.instagram.com"
+        href="https://www.instagram.com/transpiled"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Visit our Instagram page"
@@ -47,7 +47,7 @@ const SocialIcons = () => {
       </SocialLink>
 
       <SocialLink
-        href="https://www.linkedin.com"
+        href="https://www.linkedin.com/company/transpiled"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Visit our LinkedIn page"
