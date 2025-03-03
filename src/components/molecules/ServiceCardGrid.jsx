@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import Card from 'molecules/Card';
 
 const CardArea = styled.div`
@@ -40,6 +41,10 @@ const ServiceCardGrid = ({ cards }) => {
       ))}
     </CardArea>
   );
+};
+
+ServiceCardGrid.propTypes = {
+  cards: PropTypes.array,
 };
 
 export default ServiceCardGrid;
