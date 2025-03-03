@@ -13,7 +13,6 @@ const SectionContent = styled.div`
   ${({ theme }) => theme.mixins.flexColCenter};
   gap: clamp(2rem, 4vw, 4rem);
 `;
-
 const ProjectList = ({ content }) => {
   const { title, subtitle, projects } = content;
   return (
@@ -29,7 +28,8 @@ const ProjectList = ({ content }) => {
           {projects.map((project, index) => (
             <CoverImage
               key={index}
-              url={project.url}
+              projectUrl={project.projectUrl}
+              imageUrl={project.imageUrl}
               label={project.label}
               title={project.title}
               category={project.category}

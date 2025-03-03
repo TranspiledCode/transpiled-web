@@ -15,7 +15,7 @@ import Image from '../atoms/Image';
  * @param {string} caption - Small text overlay below the category that describes the project.
  */
 
-const Container = styled.div`
+const Container = styled.a`
   position: relative;
   height: clamp(30rem, 50vw, 60rem);
   width: 100%;
@@ -61,7 +61,8 @@ const Overlay = styled.div`
 `;
 
 const CoverImage = ({
-  url,
+  projectUrl,
+  imageUrl,
   label,
   title,
   category,
@@ -69,7 +70,7 @@ const CoverImage = ({
   catColor = 'lightBlue',
 }) => {
   return (
-    <Container>
+    <Container href={projectUrl} target="_blank">
       <TextContainer>
         <Title>{title}</Title>
         <SubtitleContainer>
@@ -78,12 +79,13 @@ const CoverImage = ({
         </SubtitleContainer>
       </TextContainer>
       <Overlay></Overlay>
-      <Image url={url} label={label} zIndex={-2} />
+      <Image url={imageUrl} label={label} zIndex={-2} />
     </Container>
   );
 };
 CoverImage.propTypes = {
-  url: PropTypes.string.isRequired,
+  projectUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
   label: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string,
