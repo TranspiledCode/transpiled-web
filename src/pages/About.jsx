@@ -12,8 +12,7 @@ const AboutUs = () => {
   const { cta: ctaContent } = content;
   const { cta: ctaStyle } = style.about;
   const { title, description, canonical } = content.seo;
-  
-  const { title, description, canonical } = content.seo;
+
   return (
     <>
       <SEO title={title} canonical={canonical} description={description} />
