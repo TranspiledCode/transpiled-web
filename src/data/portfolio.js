@@ -11,7 +11,7 @@ const content = {
       'Our portfolio is a showcase of how we transform ideas into impactful websites.',
     projects: [
       {
-        projectUrl: 'https://www.tigerdc.com',
+        projectUrl: 'tigerdc.com',
         imageUrl:
           'https://transpiled.s3.us-west-2.amazonaws.com/assets/img/nvmFish/m.webp',
         label: 'test image',
@@ -21,7 +21,7 @@ const content = {
         catColor: 'orange',
       },
       {
-        projectUrl: 'https://www.whiskeythrottlecafe.com',
+        projectUrl: 'whiskeythrottlecafe.com',
         imageUrl: '',
         label: 'test image',
         title: 'Whiskey Throttle Cafe',
@@ -30,7 +30,7 @@ const content = {
         catColor: 'green',
       },
       {
-        projectUrl: 'https://www.imagescoop.app',
+        projectUrl: 'imagescoop.app',
         imageUrl: '',
         label: 'test image',
         title: 'Image Scoop',

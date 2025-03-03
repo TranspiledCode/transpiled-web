@@ -60,6 +60,9 @@ const Overlay = styled.div`
   z-index: -1;
 `;
 
+const ensureFullUrl = (url) =>
+  url.startsWith('http') ? url : `https://${url}`;
+
 const CoverImage = ({
   projectUrl,
   imageUrl,
@@ -70,7 +73,11 @@ const CoverImage = ({
   catColor = 'lightBlue',
 }) => {
   return (
-    <Container href={projectUrl} target="_blank">
+    <Container
+      href={ensureFullUrl(projectUrl)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <TextContainer>
         <Title>{title}</Title>
         <SubtitleContainer>
