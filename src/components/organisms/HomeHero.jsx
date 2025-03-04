@@ -1,23 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
+import { useState, useEffect, useRef } from 'react';
 import content from 'data/home';
 import Button from 'atoms/Button';
 import RevealWrapper from 'molecules/RevealWrapper';
-import { MoveDownRight, Terminal, Code, Layers } from 'lucide-react';
-
-// Animated background elements
-const floatAnimation = keyframes`
-  0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-  50% { transform: translateY(-15px) rotate(5deg); opacity: 1; }
-  100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-`;
-
-const slideInAnimation = keyframes`
-  0% { transform: translateY(30px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-`;
+import { MoveDownRight } from 'lucide-react';
+import HeroBackground from 'molecules/HeroBackground';
+import Typewriter from 'molecules/Typewriter';
 
 const HeroWrapper = styled.section`
   min-height: 100vh;
@@ -33,32 +22,6 @@ const HeroWrapper = styled.section`
   padding: ${({ theme }) => theme.layouts.sectionPadding};
 `;
 
-const BackgroundShape = styled.div`
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  animation: ${floatAnimation} ${(props) => props.duration || '10s'} ease-in-out
-    infinite;
-  animation-delay: ${(props) => props.delay || '0s'};
-  z-index: 1;
-`;
-
-const CodeBlock = styled.div`
-  position: absolute;
-  font-family: 'Fira Code', monospace;
-  color: rgba(255, 255, 255, 0.1);
-  font-size: clamp(0.7rem, 1vw, 1rem);
-  z-index: 1;
-  user-select: none;
-  animation: ${floatAnimation} ${(props) => props.duration || '15s'} ease-in-out
-    infinite;
-  animation-delay: ${(props) => props.delay || '0s'};
-`;
-
 const HeroContent = styled.div`
   max-width: ${({ theme }) => theme.layouts.maxWidth};
   width: 100%;
@@ -71,10 +34,9 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  animation: ${slideInAnimation} 0.6s ease-out forwards;
 `;
 
-const Title = styled.h1`
+const Title = styled.span`
   ${({ theme }) => theme.mixins.textH1};
   color: ${({ theme }) => theme.colors.white};
   font-size: clamp(2.8rem, 7.6vw, 5rem);
@@ -89,21 +51,53 @@ const Title = styled.h1`
   }
 `;
 
+const LineOne = styled.span`
+  display: flex;
+  flex-direction: row;
+  word-spacing: 0.5rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    word-spacing: 1rem;
+  }
+`;
+
+const LineTwo = styled.span`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  word-spacing: 0.5rem;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    gap: 2rem;
+    word-spacing: 1rem;
+  }
+`;
+
 const TitleCode = styled.span`
   position: relative;
   color: ${({ theme }) => theme.colors.green};
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'DM Mono', monospace;
   text-transform: lowercase;
+  display: ${(props) => (props.hidden ? 'none' : 'inline')};
+  width: 100%;
+`;
 
-  &::before {
-    content: '<';
-    margin-right: 0.2rem;
-  }
+const TitleSecondary = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity 1s ease-in-out;
+`;
 
-  &::after {
-    content: '/>';
-    margin-left: 0.2rem;
-  }
+const TitleContainer = styled.span`
+  display: flex;
+  position: relative;
+  width: 100%;
+`;
+
+const TransitionWord = styled.span`
+  transition: all 0.5s ease-in-out;
 `;
 
 const SubTitleWrapper = styled.div`
@@ -119,10 +113,8 @@ const SubtitleText = styled.div`
   color: ${({ theme }) => theme.colors.white};
   max-width: 80rem;
   font-size: clamp(2rem, 3.5vw, 2.6rem);
-  animation: ${slideInAnimation} 0.8s ease-out forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
 `;
+
 const LearnMoreWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -134,18 +126,13 @@ const LearnMoreText = styled.div`
   ${({ theme }) => theme.mixins.textMono};
   color: ${({ theme }) => theme.colors.white};
   max-width: 50rem;
-  animation: ${slideInAnimation} 1s ease-out forwards;
-  animation-delay: 0.6s;
-  opacity: 0;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   line-height: 1;
 `;
 
 const ButtonWrapper = styled.div`
   margin-top: 2rem;
-  animation: ${slideInAnimation} 1.2s ease-out forwards;
   animation-delay: 0.9s;
-  opacity: 0;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -178,150 +165,63 @@ const IconWrapper = styled.span`
   transition: transform 0.3s ease;
 `;
 
-const FloatingIcon = styled.div`
-  position: absolute;
-  animation: ${floatAnimation} ${(props) => props.duration || '10s'} ease-in-out
-    infinite;
-  animation-delay: ${(props) => props.delay || '0s'};
-  opacity: 0.2;
-  z-index: 1;
+const Green = styled.span`
+  color: ${({ theme }) => theme.colors.green};
 `;
-
-// Sample code snippets for background
-const codeSnippets = [
-  `const transpile = (code) => {
-  return babel.transform(code, {
-    presets: ['@babel/preset-env']
-  }).code;
-};`,
-  `function createComponent(name, props) {
-  return React.createElement(
-    name,
-    props,
-    ...children
-  );
-}`,
-  `export const Button = styled.button\`
-  background: \${props => props.theme.colors.primary};
-  color: white;
-  border-radius: 4px;
-  padding: 0.5em 1em;
-\`;`,
-];
 
 const HomeHero = () => {
   const {
     hero: { subtitle1, subtitle2, learnMore1, learnMore2, buttonText },
   } = content;
 
-  // Generate random positions for background elements
-  const [backgroundElements, setBackgroundElements] = useState([]);
+  const [showScratch, setShowScratch] = useState(true);
+  const [showYou, setShowYou] = useState(false);
+  const [preposition, setPreposition] = useState('from');
+  const typewriterRef = useRef(null);
+  const timeoutRef = useRef(null);
 
+  // This useEffect handles the timing of our transitions
   useEffect(() => {
-    const elements = [];
+    const typewriterDuration = 10 * 100 + 2000; // Add a buffer of 500ms
 
-    // Add shapes
-    for (let i = 0; i < 8; i++) {
-      elements.push({
-        type: 'shape',
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        size: `${Math.random() * 300 + 100}px`,
-        duration: `${Math.random() * 10 + 10}s`,
-        delay: `${Math.random() * 5}s`,
-      });
-    }
+    timeoutRef.current = setTimeout(() => {
+      setShowScratch(false);
 
-    // Add code snippets
-    for (let i = 0; i < 3; i++) {
-      elements.push({
-        type: 'code',
-        top: `${Math.random() * 80}%`,
-        left: `${Math.random() * 80}%`,
-        content: codeSnippets[i],
-        duration: `${Math.random() * 10 + 15}s`,
-        delay: `${Math.random() * 5}s`,
-      });
-    }
+      setPreposition('for');
+      setShowYou(true);
+    }, typewriterDuration);
 
-    // Add icons
-    for (let i = 0; i < 5; i++) {
-      elements.push({
-        type: 'icon',
-        top: `${Math.random() * 90}%`,
-        left: `${Math.random() * 90}%`,
-        icon: i % 3 === 0 ? Terminal : i % 3 === 1 ? Code : Layers,
-        size: `${Math.random() * 20 + 20}px`,
-        duration: `${Math.random() * 10 + 8}s`,
-        delay: `${Math.random() * 5}s`,
-      });
-    }
-
-    setBackgroundElements(elements);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   return (
     <HeroWrapper>
-      {/* Background elements */}
-      {backgroundElements.map((element, index) => {
-        if (element.type === 'shape') {
-          return (
-            <BackgroundShape
-              key={`shape-${index}`}
-              style={{
-                top: element.top,
-                left: element.left,
-                width: element.size,
-                height: element.size,
-              }}
-              duration={element.duration}
-              delay={element.delay}
-            />
-          );
-        } else if (element.type === 'code') {
-          return (
-            <CodeBlock
-              key={`code-${index}`}
-              style={{
-                top: element.top,
-                left: element.left,
-                maxWidth: '300px',
-              }}
-              duration={element.duration}
-              delay={element.delay}
-            >
-              <pre>{element.content}</pre>
-            </CodeBlock>
-          );
-        } else if (element.type === 'icon') {
-          const IconComponent = element.icon;
-          return (
-            <FloatingIcon
-              key={`icon-${index}`}
-              style={{
-                top: element.top,
-                left: element.left,
-              }}
-              duration={element.duration}
-              delay={element.delay}
-            >
-              <IconComponent
-                size={element.size}
-                color="rgba(255,255,255,0.1)"
-              />
-            </FloatingIcon>
-          );
-        }
-        return null;
-      })}
-
+      <HeroBackground speed={1.5} />
       <HeroContent>
         <ContentContainer>
           <Title>
-            <span>Designed for You.</span>
-            <span>
-              Built from <TitleCode>Scratch</TitleCode>
-            </span>
+            <LineOne>
+              Designed for You<Green>.</Green>
+            </LineOne>
+            <LineTwo>
+              Built <TransitionWord>{preposition}</TransitionWord>
+              <TitleContainer>
+                {showScratch && (
+                  <TitleCode ref={typewriterRef}>
+                    <Typewriter text={' <scratch/>'} speed={100} cursor />
+                  </TitleCode>
+                )}
+                {showYou && (
+                  <TitleSecondary visible={showYou}>
+                    you<Green>!</Green>
+                  </TitleSecondary>
+                )}
+              </TitleContainer>
+            </LineTwo>
           </Title>
 
           <SubTitleWrapper>
@@ -335,7 +235,7 @@ const HomeHero = () => {
           </LearnMoreWrapper>
 
           <ButtonWrapper>
-            <RevealWrapper>
+            <RevealWrapper direction="right">
               <Link to="#services" aria-label="Contact Us">
                 <StyledButton variant="outline" size="small">
                   {buttonText}

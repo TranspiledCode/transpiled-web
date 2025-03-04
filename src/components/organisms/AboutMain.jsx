@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import content from 'data/about';
 import RevealWrapper from 'molecules/RevealWrapper';
+import HeroBackground from 'molecules/HeroBackground';
 
 const AboutUsWrapper = styled.div`
   min-height: 100vh;
@@ -70,6 +71,8 @@ const AboutMain = () => {
   const { title, subtitle, learnMore } = content.main;
   return (
     <AboutUsWrapper>
+      <HeroBackground speed={1.5} />
+
       <RevealWrapper>
         <TitleWrapper>
           <StyledTitle>{title}</StyledTitle>
