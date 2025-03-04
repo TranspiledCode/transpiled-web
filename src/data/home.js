@@ -1,7 +1,7 @@
 const content = {
   seo: { title: 'Transpiled | Home', canonical: '/' },
   hero: {
-    title: 'BUILD YOUR FUTURE',
+    title: 'Designed for you, built from scratch',
     subtitle: 'With our Web and Mobile App Development Services',
     learnMore: 'start with a consultation or scroll to learn more',
     buttonText: 'Get Started',

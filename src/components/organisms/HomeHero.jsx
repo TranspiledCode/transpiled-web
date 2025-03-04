@@ -8,6 +8,8 @@ import RevealWrapper from 'molecules/RevealWrapper';
 
 import { MoveDownRight } from 'lucide-react';
 
+import { useState, useEffect } from 'react';
+
 const Icon = styled(MoveDownRight)`
   margin-left: 2rem;
 `;
@@ -39,7 +41,11 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.mixins.textH1};
   color: ${({ theme }) => theme.colors.white};
+  max-width: 100rem;
 `;
+
+const TypeReveal = styled.span``;
+const Cursor = styled.span``;
 
 const SubtitleText = styled.div`
   ${({ theme }) => theme.mixins.textSubtitle};
@@ -82,11 +88,39 @@ const HomeHero = () => {
   const greenIndices = useMemo(() => new Set([2, 4, 5]), []);
   const getWordColor = (index) => (greenIndices.has(index) ? 'green' : 'white');
 
+  const text = title;
+  const speed = 100;
+
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    setDisplayedText(''); // Reset text on re-render
+    let index = 0;
+
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        setDisplayedText(text.slice(0, index + 1)); // Add the next character
+        index++;
+      } else {
+        clearInterval(interval);
+        setShowCursor(false); // Stop cursor blinking when done
+      }
+    }, speed);
+
+    return () => clearInterval(interval); // Cleanup when unmounted
+  }, [text, speed]);
+
   return (
     <HeroWrapper>
       <HeroContent>
         <TitleWrapper>
-          <Title>{title}</Title>
+          <Title>
+            <TypeReveal>
+              {displayedText}
+              {showCursor && <Cursor>_</Cursor>}
+            </TypeReveal>
+          </Title>
           <SubtitleText>
             {subtitleWords.map((word, index) => (
               <Word key={`${word}-${index}`} color={getWordColor(index)}>

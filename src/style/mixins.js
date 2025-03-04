@@ -19,7 +19,7 @@ const mixins = {
     fontFamily: fonts.poppins,
     fontSize: 'clamp(5.8rem, 5vw, 9.6rem)',
     fontWeight: 700,
-    lineHeight: '0.8em',
+    lineHeight: '1em',
     letterSpacing: '-0.04em',
     textTransform: 'uppercase',
   },
