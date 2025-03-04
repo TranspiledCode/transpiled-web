@@ -41,11 +41,15 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.mixins.textH1};
   color: ${({ theme }) => theme.colors.white};
-  max-width: 100rem;
+  max-width: 95rem;
+  min-height: 2em;
 `;
 
 const TypeReveal = styled.span``;
-const Cursor = styled.span``;
+const Cursor = styled.span`
+  ${({ theme }) => theme.fonts.manrope};
+  font-weight: 400;
+`;
 
 const SubtitleText = styled.div`
   ${({ theme }) => theme.mixins.textSubtitle};
@@ -95,20 +99,20 @@ const HomeHero = () => {
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
-    setDisplayedText(''); // Reset text on re-render
+    setDisplayedText('');
     let index = 0;
 
     const interval = setInterval(() => {
       if (index < text.length) {
-        setDisplayedText(text.slice(0, index + 1)); // Add the next character
+        setDisplayedText(text.slice(0, index + 1));
         index++;
       } else {
         clearInterval(interval);
-        setShowCursor(false); // Stop cursor blinking when done
+        setShowCursor(false);
       }
     }, speed);
 
-    return () => clearInterval(interval); // Cleanup when unmounted
+    return () => clearInterval(interval);
   }, [text, speed]);
 
   return (
