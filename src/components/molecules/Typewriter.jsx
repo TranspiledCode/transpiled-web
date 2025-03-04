@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 
 const Cursor = styled.span`
   display: inline-block;
-  width: 15px;
-  height: 5px;
+  width: clamp(1.5rem, 2vw, 3rem);
+  height: clamp(0.3rem, 0.5vw, 0.6rem);
   background: ${({ theme, blinking }) =>
     blinking ? theme.colors.green : 'transparent'};
   margin-left: 2px;
   animation: ${({ blinking }) => (blinking ? 'blink 0.7s infinite' : 'none')};
 
   @media (min-width: 768px) {
-    width: 30px;
-    height: 10px;
+    width: clamp(1.5rem, 2vw, 3rem);
+    height: clamp(0.3rem, 0.5vw, 0.6rem);
   }
   @keyframes blink {
     50% {

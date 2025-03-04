@@ -39,7 +39,7 @@ const ContentContainer = styled.div`
 const Title = styled.span`
   ${({ theme }) => theme.mixins.textH1};
   color: ${({ theme }) => theme.colors.white};
-  font-size: clamp(2.8rem, 7.6vw, 5rem);
+  font-size: clamp(2rem, 6.6vw, 4rem);
   margin: 0;
   line-height: 1.2;
   display: flex;
@@ -47,7 +47,7 @@ const Title = styled.span`
   width: 100%;
 
   @media (min-width: 1024px) {
-    font-size: clamp(8rem, 10vw, 5rem);
+    font-size: clamp(7rem, 11vw, 5rem);
   }
 `;
 
@@ -176,26 +176,16 @@ const HomeHero = () => {
 
   const [showScratch, setShowScratch] = useState(true);
   const [showYou, setShowYou] = useState(false);
-  const [preposition, setPreposition] = useState('from');
   const typewriterRef = useRef(null);
   const timeoutRef = useRef(null);
 
-  // This useEffect handles the timing of our transitions
   useEffect(() => {
-    const typewriterDuration = 10 * 100 + 2000; // Add a buffer of 500ms
-
+    const typewriterDuration = 10 * 100 + 2000;
     timeoutRef.current = setTimeout(() => {
       setShowScratch(false);
-
-      setPreposition('for');
       setShowYou(true);
     }, typewriterDuration);
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+    return () => clearTimeout(timeoutRef.current);
   }, []);
 
   return (
@@ -208,7 +198,8 @@ const HomeHero = () => {
               Designed for You<Green>.</Green>
             </LineOne>
             <LineTwo>
-              Built <TransitionWord>{preposition}</TransitionWord>
+              Built
+              <TransitionWord>{showScratch ? 'from' : 'for'}</TransitionWord>
               <TitleContainer>
                 {showScratch && (
                   <TitleCode ref={typewriterRef}>
@@ -223,17 +214,14 @@ const HomeHero = () => {
               </TitleContainer>
             </LineTwo>
           </Title>
-
           <SubTitleWrapper>
             <SubtitleText>{subtitle1}</SubtitleText>
             <SubtitleText>{subtitle2}</SubtitleText>
           </SubTitleWrapper>
-
           <LearnMoreWrapper>
             <LearnMoreText>{learnMore1}</LearnMoreText>
             <LearnMoreText>{learnMore2}</LearnMoreText>
           </LearnMoreWrapper>
-
           <ButtonWrapper>
             <RevealWrapper direction="right">
               <Link to="#services" aria-label="Contact Us">

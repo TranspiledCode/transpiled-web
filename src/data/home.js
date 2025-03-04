@@ -2,8 +2,8 @@ const content = {
   seo: { title: 'Transpiled | Home', canonical: '/' },
   hero: {
     title: 'Built from Scratch, Designed for You.',
-    subtitle1: 'We handle the tech.',
-    subtitle2: 'You focus on what you do best.',
+    subtitle1: 'No hassle,',
+    subtitle2: 'just solutions.',
     learnMore1: 'start with a consultation',
     learnMore2: 'or scroll to learn more',
     buttonText: 'Get Started',
