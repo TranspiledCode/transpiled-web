@@ -41,8 +41,18 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.mixins.textH1};
   color: ${({ theme }) => theme.colors.white};
-  max-width: 95rem;
-  min-height: 2em;
+  width: 100%;
+  max-width: 60rem;
+  // width: clamp(0rem, 55vw, 95rem);
+  min-height: 4em;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    min-height: 2em;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 58vw;
+    max-width: 95rem;
+  }
 `;
 
 const TypeReveal = styled.span``;
